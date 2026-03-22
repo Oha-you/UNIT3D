@@ -45,16 +45,12 @@
     margin: 0;
 }
 
-.key-value__group:nth-child(odd):not(
-        .key-value__group--nested .key-value__group
-    ),
+.key-value__group:nth-child(odd):not(.key-value__group--nested .key-value__group),
 .key-value__group--nested:nth-child(odd) {
     background-color: var(--key-value-odd-bg) !important;
 }
 
-.key-value__group:nth-child(even):not(
-        .key-value__group--nested .key-value__group
-    ),
+.key-value__group:nth-child(even):not(.key-value__group--nested .key-value__group),
 .key-value__group--nested:nth-child(even) {
     background-color: var(--key-value-even-bg) !important;
 }

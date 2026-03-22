@@ -505,10 +505,7 @@ hr {
 }
 
 /* Bottom-most table header cells which don't have a following tbody nor tfoot */
-.data-table
-    > thead:not(:has(+ tbody > tr)):not(:has(~ tfoot > tr))
-    > tr:last-of-type
-    > th {
+.data-table > thead:not(:has(+ tbody > tr)):not(:has(~ tfoot > tr)) > tr:last-of-type > th {
     border-bottom: none;
 }
 
@@ -550,12 +547,7 @@ svg > circle:last-child {
     padding: 12px 0 8px 0;
 }
 
-.page__topic--show
-    > article
-    > div
-    > section
-    > .panel__header
-    > .panel__heading {
+.page__topic--show > article > div > section > .panel__header > .panel__heading {
     font-size: 16px;
     text-transform: initial;
 }

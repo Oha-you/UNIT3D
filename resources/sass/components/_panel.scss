@@ -41,9 +41,7 @@
 .panel__header:has(+ [style='display: none;']),
 .panel__header:has(+ [style='display: none;']) > .panel__heading,
 .panel__header:has(+ [style='display: none;']) > .panel__actions,
-.panel__header:has(+ [style='display: none;'])
-    > .panel__actions
-    > .panel__action,
+.panel__header:has(+ [style='display: none;']) > .panel__actions > .panel__action,
 .panel__heading:has(+ [style='display: none;']),
 .panel__heading:has(+ .data-table-wrapper):not(:has(+ .data-table-wrapper tr)) {
     border-radius: var(--panel-head-border-radius);

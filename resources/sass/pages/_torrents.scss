@@ -15,9 +15,7 @@
         margin: 0 max(12px, 45vw - 600px); /* Adds magic numbers to shrink the advanced search a shorter width than the results on higher resolutions. */
     }
 
-    .torrent-search__filters:has(
-        + .torrent-search__results .torrent-search--grouped__results
-    ) {
+    .torrent-search__filters:has(+ .torrent-search__results .torrent-search--grouped__results) {
         margin: 0 calc(-1 * max(0px, 45vw - 800px) + max(12px, 45vw - 600px)); /* Inverses the magic numbers used in main layout styles for high resolution then adds own magic numbers */
     }
 }
@@ -554,9 +552,7 @@
         }
 
         &:hover::before {
-            filter: brightness(
-                calc(1 / var(--torrent-group-hover-brightness-emphasis))
-            );
+            filter: brightness(calc(1 / var(--torrent-group-hover-brightness-emphasis)));
             transition: filter 0.1s;
         }
     }
@@ -577,17 +573,11 @@
     > .torrent-search--grouped__dropdown[open]
     + .torrent-search--grouped__dropdown
     > summary,
-.torrent-search--grouped__dropdown[open]
-    > .torrent-search--grouped__dropdown
-    > summary,
-.torrent-search--grouped__dropdown[open]:not(
-        :has(.torrent-search--grouped__dropdown)
-    )
+.torrent-search--grouped__dropdown[open] > .torrent-search--grouped__dropdown > summary,
+.torrent-search--grouped__dropdown[open]:not(:has(.torrent-search--grouped__dropdown))
     + .torrent-search--grouped__dropdown
     > summary,
-.torrent-search--grouped__dropdown[open]:has(
-        .torrent-search--grouped__dropdown[open]:last-of-type
-    )
+.torrent-search--grouped__dropdown[open]:has(.torrent-search--grouped__dropdown[open]:last-of-type)
     + .torrent-search--grouped__dropdown
     > summary {
     border-width: 0;
@@ -614,9 +604,7 @@
     border-bottom: 0;
 }
 
-.torrent-search--grouped__header
-    + section
-    > .torrent-search--grouped__torrents:first-child {
+.torrent-search--grouped__header + section > .torrent-search--grouped__torrents:first-child {
     border-width: 0;
 }
 
@@ -638,9 +626,7 @@
 .torrent-search--grouped__bookmark button:hover,
 .torrent-search--grouped__edit a:hover {
     color: inherit;
-    filter: brightness(
-        calc(1 / var(--torrent-group-hover-brightness-emphasis))
-    );
+    filter: brightness(calc(1 / var(--torrent-group-hover-brightness-emphasis)));
 }
 
 /* Table cells */
