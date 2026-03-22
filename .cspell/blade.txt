@@ -1,0 +1,13 @@
+endcomponent
+enderror
+endfor
+endforeach
+endforelse
+endisset
+endphp
+endscript
+endsection
+endslot
+endswitch
+forelse
+isset
