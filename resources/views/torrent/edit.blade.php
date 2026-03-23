@@ -117,7 +117,7 @@
                             @else
                                 <option
                                     x-bind:value="(cats[cat].type === 'movie' || cats[cat]
-                                    .type === 'tv') && types[type].name === 'Full Disc' ?
+                                        .type === 'tv') && types[type].name === 'Full Disc' ?
                                         '{{ $torrent->distributor->id }}' :
                                         ''"
                                     selected>
@@ -129,7 +129,7 @@
                             @foreach ($distributors as $distributor)
                                 <option
                                     x-bind:value="(cats[cat].type === 'movie' || cats[cat]
-                                    .type === 'tv') &&
+                                        .type === 'tv') &&
                                     types[type].name === 'Full Disc' ?
                                         '{{ $distributor->id }}' :
                                         ''"
@@ -265,12 +265,12 @@
                                 name="imdb" pattern="[0-9]*" placeholder=" " type="text"
                                 value="{{ old('imdb', $torrent->imdb) }}"
                                 x-bind:value="(cats[cat].type === 'movie' || cats[cat]
-                                .type === 'tv') && imdb_title_exists
+                                    .type === 'tv') && imdb_title_exists
                                     ?
                                     '{{ old('imdb', $torrent->imdb) }}' :
                                     ''"
                                 x-bind:required="(cats[cat].type === 'movie' || cats[cat]
-                                .type === 'tv') && imdb_title_exists"
+                                    .type === 'tv') && imdb_title_exists"
                                 x-on:paste="
                                     matches = $event.clipboardData.getData('text').match(/tt0*(\d{7,})/);
 
@@ -324,12 +324,12 @@
                                 name="mal" pattern="[0-9]*" placeholder=" " type="text"
                                 value="{{ old('mal', $torrent->mal) }}"
                                 x-bind:value="(cats[cat].type === 'movie' || cats[cat]
-                                .type === 'tv') && mal_anime_exists
+                                    .type === 'tv') && mal_anime_exists
                                     ?
                                     '{{ old('mal', $torrent->mal) }}' :
                                     ''"
                                 x-bind:required="(cats[cat].type === 'movie' || cats[cat]
-                                .type === 'tv') && mal_anime_exists" />
+                                    .type === 'tv') && mal_anime_exists" />
                             <label class="form__label form__label--floating" for="mal">
                                 MAL ID
                             </label>
@@ -375,8 +375,7 @@
                     'content' => $torrent->description,
                 ])
                 <p class="form__group">
-                    <textarea id="description" class="form__textarea" name="mediainfo"
-                        placeholder=" ">
+                    <textarea id="description" class="form__textarea" name="mediainfo" placeholder=" ">
     {{ old('mediainfo') ?? $torrent->mediainfo }}</textarea>
                     <label class="form__label form__label--floating" for="description">
                         {{ __('torrent.media-info') }}

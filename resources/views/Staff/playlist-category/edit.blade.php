@@ -45,8 +45,7 @@
                     </label>
                 </p>
                 <p class="form__group">
-                    <textarea id="description" name="description" class="form__textarea"
-                        placeholder=" ">
+                    <textarea id="description" name="description" class="form__textarea" placeholder=" ">
     {{ $playlistCategory->description }}</textarea>
                     <label class="form__label form__label--floating" for="description">
                         {{ __('common.description') }}

@@ -37,8 +37,7 @@
                                     value="{{ $playlist->id }}" />
                             </p>
                             <p class="form__group">
-                                <textarea id="torrent_urls" class="form__textarea" name="torrent_urls"
-                                    type="text" required>
+                                <textarea id="torrent_urls" class="form__textarea" name="torrent_urls" type="text" required>
     {{ old('torrent_urls') }}</textarea>
                                 <label class="form__label form__label--floating" for="torrent_urls">
                                     Torrent IDs/URLs (one per line)
@@ -102,8 +101,7 @@
                                 </label>
                             </p>
                             <p class="form__group">
-                                <textarea id="suggest_message" class="form__textarea" name="message"
-                                    type="text" required>
+                                <textarea id="suggest_message" class="form__textarea" name="message" type="text" required>
     {{ old('message') }}</textarea>
                                 <label class="form__label form__label--floating" for="suggest_message">
                                     {{ __('common.message') }}
@@ -307,9 +305,7 @@
                                                 <input type="hidden" name="status"
                                                     value="{{ \App\Enums\ModerationStatus::REJECTED }}" />
                                                 <div class="form__group">
-                                                    <textarea
-                                                        id="rejection_message{{ $playlistSuggestion->id }}"
-                                                        class="form__textarea"
+                                                    <textarea id="rejection_message{{ $playlistSuggestion->id }}" class="form__textarea"
                                                         name="rejection_message" required>
     {{ old('rejection_message') }}</textarea>
                                                     <label

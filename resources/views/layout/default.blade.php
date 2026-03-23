@@ -83,7 +83,7 @@
                             );
                             this.minutes = this.padNum(
                                 Math.floor((this.distance % (1000 * 60 * 60)) / (1000 *
-                                60)),
+                                    60)),
                             );
                             this.seconds = this.padNum(
                                 Math.floor((this.distance % (1000 * 60)) / 1000),

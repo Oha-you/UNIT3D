@@ -63,8 +63,7 @@
                     </label>
                 </p>
                 <p class="form__group">
-                    <textarea id="description" name="forum[description]" class="form__textarea"
-                        required>
+                    <textarea id="description" name="forum[description]" class="form__textarea" required>
     {{ $forum->description }}</textarea>
                     <label class="form__label form__label--floating" for="description">
                         Description

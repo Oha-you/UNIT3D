@@ -57,7 +57,8 @@
                     }
 
                     fetch(
-                            `/api/quicksearch?query=${encodeURIComponent(this.searchText)}`)
+                            `/api/quicksearch?query=${encodeURIComponent(this.searchText)}`
+                            )
                         .then((response) => response.json())
                         .then((data) => {
                             this.searchResults = data.results.map((result) => {

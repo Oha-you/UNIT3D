@@ -173,7 +173,7 @@
 
             // Monthly donations chart
             const monthlyCtx = document.getElementById('monthlyDonationsChart').getContext(
-            '2d');
+                '2d');
             new Chart(monthlyCtx, {
                 type: 'line',
                 data: {

@@ -137,8 +137,7 @@
                             <input id="email" name="email" type="hidden"
                                 value="{{ $application->email }}" />
                             <p class="form__group">
-                                <textarea id="approve" class="form__textarea" name="approve"
-                                    placeholder=" ">
+                                <textarea id="approve" class="form__textarea" name="approve" placeholder=" ">
     Application approved!</textarea>
                                 <label class="form__label form__label--floating" for="approve">
                                     Invitation message

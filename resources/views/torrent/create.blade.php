@@ -252,12 +252,12 @@
                             <input type="text" name="imdb" id="autoimdb" class="form__text"
                                 inputmode="numeric" pattern="[0-9]*" placeholder=" "
                                 x-bind:value="(cats[cat].type === 'movie' || cats[cat]
-                                .type === 'tv') && imdb_title_exists
+                                    .type === 'tv') && imdb_title_exists
                                     ?
                                     '{{ old('imdb', $imdb) }}' :
                                     ''"
                                 x-bind:required="(cats[cat].type === 'movie' || cats[cat]
-                                .type === 'tv') && imdb_title_exists"
+                                    .type === 'tv') && imdb_title_exists"
                                 x-bind="imdbInput" />
                             <label class="form__label form__label--floating" for="autoimdb">
                                 IMDB ID
@@ -303,12 +303,12 @@
                             <input type="text" name="mal" id="automal" inputmode="numeric"
                                 pattern="[0-9]*"
                                 x-bind:value="(cats[cat].type === 'movie' || cats[cat]
-                                .type === 'tv') && mal_anime_exists
+                                    .type === 'tv') && mal_anime_exists
                                     ?
                                     '{{ old('mal', $mal) }}' :
                                     ''"
                                 x-bind:required="(cats[cat].type === 'movie' || cats[cat]
-                                .type === 'tv') && mal_anime_exists"
+                                    .type === 'tv') && mal_anime_exists"
                                 class="form__text" placeholder=" " />
                             <label class="form__label form__label--floating" for="automal">
                                 MAL ID
@@ -350,16 +350,14 @@
                 </p>
                 @livewire('bbcode-input', ['name' => 'description', 'label' => __('common.description'), 'required' => true])
                 <p class="form__group" x-show="cats[cat].type === 'movie' || cats[cat].type === 'tv'">
-                    <textarea id="upload-form-mediainfo" name="mediainfo" class="form__textarea"
-                        placeholder=" ">
+                    <textarea id="upload-form-mediainfo" name="mediainfo" class="form__textarea" placeholder=" ">
     {{ old('mediainfo') }}</textarea>
                     <label class="form__label form__label--floating" for="upload-form-mediainfo">
                         {{ __('torrent.media-info-parser') }}
                     </label>
                 </p>
                 <p class="form__group" x-show="cats[cat].type === 'movie' || cats[cat].type === 'tv'">
-                    <textarea id="upload-form-bdinfo" name="bdinfo" class="form__textarea"
-                        placeholder=" ">
+                    <textarea id="upload-form-bdinfo" name="bdinfo" class="form__textarea" placeholder=" ">
     {{ old('bdinfo') }}</textarea>
                     <label class="form__label form__label--floating" for="upload-form-bdinfo">
                         BDInfo (quick summary)
