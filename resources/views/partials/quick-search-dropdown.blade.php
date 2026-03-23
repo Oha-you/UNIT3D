@@ -1,16 +1,9 @@
 <div class="quick-search" x-data="quickSearch" x-on:keydown.escape.window="clearSearch()">
     <div class="quick-search__inputs">
-        <input
-            class="quick-search__input"
-            type="text"
-            placeholder="Search"
-            x-model="searchText"
-            x-on:input.debounce="performSearch"
-            x-ref="quickSearch"
-            x-on:keydown.down.prevent="focusFirstResult"
-            x-on:keydown.up.prevent="focusLastResult"
-            x-on:focus="searchPerformed = true"
-        />
+        <input class="quick-search__input" type="text" placeholder="Search" x-model="searchText"
+            x-on:input.debounce="performSearch" x-ref="quickSearch"
+            x-on:keydown.down.prevent="focusFirstResult" x-on:keydown.up.prevent="focusLastResult"
+            x-on:focus="searchPerformed = true" />
         <template x-if="searchResults === null">
             <div class="quick-search__results">
                 <article class="quick-search__result--default">
@@ -28,28 +21,20 @@
         <template x-if="showNonEmptyResults">
             <div class="quick-search__results" x-ref="searchResults">
                 <template x-for="result in searchResults" :key="result.id">
-                    <article
-                        class="quick-search__result"
+                    <article class="quick-search__result"
                         x-on:keydown.down.prevent="focusNextResult"
-                        x-on:keydown.up.prevent="focusPreviousResult"
-                    >
+                        x-on:keydown.up.prevent="focusPreviousResult">
                         <a class="quick-search__result-link" :href="result.url">
-                            <img class="quick-search__image" :src="getSrc(result.image)" alt="" />
+                            <img class="quick-search__image" :src="getSrc(result.image)"
+                                alt="" />
                             <h2 class="quick-search__result-text">
-                                <span
-                                    class="quick-search__result-name"
-                                    x-text="result.name"
-                                ></span>
+                                <span class="quick-search__result-name" x-text="result.name"></span>
                                 <span x-show="result.type != 'Person'">
-                                    <time
-                                        class="quick-search__result-year"
-                                        x-text="result.year"
-                                    ></time>
+                                    <time class="quick-search__result-year"
+                                        x-text="result.year"></time>
                                     &bull;
-                                    <span
-                                        class="quick-search__result-type"
-                                        x-text="result.type"
-                                    ></span>
+                                    <span class="quick-search__result-type"
+                                        x-text="result.type"></span>
                                 </span>
                             </h2>
                         </a>
@@ -71,7 +56,8 @@
                         return;
                     }
 
-                    fetch(`/api/quicksearch?query=${encodeURIComponent(this.searchText)}`)
+                    fetch(
+                            `/api/quicksearch?query=${encodeURIComponent(this.searchText)}`)
                         .then((response) => response.json())
                         .then((data) => {
                             this.searchResults = data.results.map((result) => {
@@ -80,10 +66,12 @@
                         });
                 },
                 get showEmptyResults() {
-                    return Array.isArray(this.searchResults) && this.searchResults.length === 0;
+                    return Array.isArray(this.searchResults) && this
+                        .searchResults.length === 0;
                 },
                 get showNonEmptyResults() {
-                    return Array.isArray(this.searchResults) && this.searchResults.length > 0;
+                    return Array.isArray(this.searchResults) && this
+                        .searchResults.length > 0;
                 },
                 clearSearch() {
                     this.searchText = '';
@@ -91,7 +79,8 @@
                     this.searchPerformed = false;
                 },
                 focusFirstResult() {
-                    document.querySelector('[x-ref="searchResults"]').querySelector('a').focus();
+                    document.querySelector('[x-ref="searchResults"]').querySelector(
+                        'a').focus();
                 },
                 focusLastResult() {
                     document
@@ -102,7 +91,8 @@
                 focusNextResult() {
                     const el = this.$el;
                     if (el.nextElementSibling === null) {
-                        el.parentNode?.firstElementChild?.nextElementSibling?.firstElementChild?.focus();
+                        el.parentNode?.firstElementChild?.nextElementSibling
+                            ?.firstElementChild?.focus();
                     } else {
                         el.nextElementSibling?.firstElementChild?.focus();
                     }
@@ -116,10 +106,10 @@
                     }
                 },
                 getSrc(image) {
-                    return image.length > 2
-                        ? image
-                        : 'data:image/svg+xml;charset=utf-8,' +
-                              `<svg viewBox='0 0 40 60' width='40' height='60' xmlns='http://www.w3.org/2000/svg'>
+                    return image.length > 2 ?
+                        image :
+                        'data:image/svg+xml;charset=utf-8,' +
+                        `<svg viewBox='0 0 40 60' width='40' height='60' xmlns='http://www.w3.org/2000/svg'>
                                 <defs>
                                     <linearGradient id='grad' gradientTransform='rotate(90)'>
                                         <stop offset='0%' stop-color='%23a5abb8' />

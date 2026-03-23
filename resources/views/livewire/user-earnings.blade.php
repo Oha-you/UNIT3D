@@ -21,13 +21,13 @@
                                     @if ($bonEarning->operation === 'multiply')
                                         &times;
                                     @else
-                                            &plus;
+                                        &plus;
                                     @endif
 
                                     {{ preg_replace('/(\.\d+?)0+$/', '$1', $bonEarning->multiplier) }}
 
                                     @if ($bonEarning->variable != 1)
-                                            &times; {{ $bonEarning->variable }}
+                                        &times; {{ $bonEarning->variable }}
                                     @endif
                                 </td>
                                 <td>{{ $bonEarning->torrents_count }}</td>
@@ -43,12 +43,8 @@
                 <div class="panel__actions">
                     <div class="panel__action">
                         <div class="form__group">
-                            <input
-                                id="torrentName"
-                                class="form__text"
-                                wire:model.live="torrentName"
-                                placeholder=" "
-                            />
+                            <input id="torrentName" class="form__text" wire:model.live="torrentName"
+                                placeholder=" " />
                             <label class="form__label form__label--floating" for="torrentName">
                                 {{ __('torrent.name') }}
                             </label>
@@ -67,118 +63,100 @@
                         <tr>
                             <th class="user-earnings__type-header" wire:click="sortBy('type_id')">
                                 {{ __('torrent.type') }}
-                                @include('livewire.includes._sort-icon', ['field' => 'type_id'])
+                                @include('livewire.includes._sort-icon', [
+                                    'field' => 'type_id',
+                                ])
                             </th>
-                            <th
-                                class="user-earnings__name-header"
-                                wire:click="sortBy('name')"
-                                role="columnheader button"
-                            >
+                            <th class="user-earnings__name-header" wire:click="sortBy('name')"
+                                role="columnheader button">
                                 {{ __('torrent.name') }}
-                                @include('livewire.includes._sort-icon', ['field' => 'name'])
+                                @include('livewire.includes._sort-icon', [
+                                    'field' => 'name',
+                                ])
                             </th>
-                            <th
-                                class="user-earnings__size-header"
-                                wire:click="sortBy('size')"
-                                role="columnheader button"
-                            >
+                            <th class="user-earnings__size-header" wire:click="sortBy('size')"
+                                role="columnheader button">
                                 {{ __('torrent.size') }}
-                                @include('livewire.includes._sort-icon', ['field' => 'size'])
+                                @include('livewire.includes._sort-icon', [
+                                    'field' => 'size',
+                                ])
                             </th>
-                            <th
-                                class="user-earnings__seeders-header"
-                                wire:click="sortBy('seeders')"
-                                role="columnheader button"
-                                title="{{ __('torrent.seeders') }}"
-                            >
+                            <th class="user-earnings__seeders-header" wire:click="sortBy('seeders')"
+                                role="columnheader button" title="{{ __('torrent.seeders') }}">
                                 <i class="fas fa-arrow-alt-circle-up"></i>
-                                @include('livewire.includes._sort-icon', ['field' => 'seeders'])
+                                @include('livewire.includes._sort-icon', [
+                                    'field' => 'seeders',
+                                ])
                             </th>
-                            <th
-                                class="user-earnings__leechers-header"
-                                wire:click="sortBy('leechers')"
-                                role="columnheader button"
-                                title="{{ __('torrent.leechers') }}"
-                            >
+                            <th class="user-earnings__leechers-header"
+                                wire:click="sortBy('leechers')" role="columnheader button"
+                                title="{{ __('torrent.leechers') }}">
                                 <i class="fas fa-arrow-alt-circle-down"></i>
-                                @include('livewire.includes._sort-icon', ['field' => 'leechers'])
+                                @include('livewire.includes._sort-icon', [
+                                    'field' => 'leechers',
+                                ])
                             </th>
-                            <th
-                                class="user-earnings__times-header"
-                                wire:click="sortBy('times_completed')"
-                                role="columnheader button"
-                                title="{{ __('torrent.completed') }}"
-                            >
+                            <th class="user-earnings__times-header"
+                                wire:click="sortBy('times_completed')" role="columnheader button"
+                                title="{{ __('torrent.completed') }}">
                                 <i class="fas fa-check-circle"></i>
-                                @include('livewire.includes._sort-icon', ['field' => 'times_completed'])
+                                @include('livewire.includes._sort-icon', [
+                                    'field' => 'times_completed',
+                                ])
                             </th>
-                            <th
-                                class="user-earnings__internal-header"
-                                wire:click="sortBy('internal')"
-                                role="columnheader button"
-                                title="{{ __('torrent.internal') }}"
-                            >
+                            <th class="user-earnings__internal-header"
+                                wire:click="sortBy('internal')" role="columnheader button"
+                                title="{{ __('torrent.internal') }}">
                                 <i class="fas fa-magic"></i>
-                                @include('livewire.includes._sort-icon', ['field' => 'internal'])
+                                @include('livewire.includes._sort-icon', [
+                                    'field' => 'internal',
+                                ])
                             </th>
-                            <th
-                                class="user-earnings__personal-release-header"
-                                wire:click="sortBy('personal_release')"
-                                role="columnheader button"
-                                title="{{ __('torrent.personal-release') }}"
-                            >
+                            <th class="user-earnings__personal-release-header"
+                                wire:click="sortBy('personal_release')" role="columnheader button"
+                                title="{{ __('torrent.personal-release') }}">
                                 <i class="fas fa-user-plus"></i>
-                                @include('livewire.includes._sort-icon', ['field' => 'personal_release'])
+                                @include('livewire.includes._sort-icon', [
+                                    'field' => 'personal_release',
+                                ])
                             </th>
-                            <th
-                                class="user-earnings__connectable-header"
-                                wire:click="sortBy('connectable')"
-                                role="columnheader button"
-                            >
-                                <i
-                                    class="{{ config('other.font-awesome') }} fa-wifi"
-                                    title="Connectable"
-                                ></i>
-                                @include('livewire.includes._sort-icon', ['field' => 'connectable'])
+                            <th class="user-earnings__connectable-header"
+                                wire:click="sortBy('connectable')" role="columnheader button">
+                                <i class="{{ config('other.font-awesome') }} fa-wifi"
+                                    title="Connectable"></i>
+                                @include('livewire.includes._sort-icon', [
+                                    'field' => 'connectable',
+                                ])
                             </th>
-                            <th
-                                class="user-earnings__seedtime-header"
-                                wire:click="sortBy('seedtime')"
-                                role="columnheader button"
-                            >
+                            <th class="user-earnings__seedtime-header"
+                                wire:click="sortBy('seedtime')" role="columnheader button">
                                 {{ __('torrent.seedtime') }}
-                                @include('livewire.includes._sort-icon', ['field' => 'seedtime'])
+                                @include('livewire.includes._sort-icon', [
+                                    'field' => 'seedtime',
+                                ])
                             </th>
-                            <th
-                                class="user-earnings__age-header"
+                            <th class="user-earnings__age-header"
                                 wire:click="sortBy('torrents.created_at')"
-                                role="columnheader button"
-                            >
+                                role="columnheader button">
                                 {{ __('torrent.age') }}
-                                @include('livewire.includes._sort-icon', ['field' => 'created_at'])
+                                @include('livewire.includes._sort-icon', [
+                                    'field' => 'created_at',
+                                ])
                             </th>
-                            <th
-                                class="user-earnings__hourly-header"
-                                wire:click="sortBy('hourly_earnings')"
-                            >
+                            <th class="user-earnings__hourly-header"
+                                wire:click="sortBy('hourly_earnings')">
                                 Hourly
-                                @include('livewire.includes._sort-icon', ['field' => 'hourly_earnings'])
+                                @include('livewire.includes._sort-icon', [
+                                    'field' => 'hourly_earnings',
+                                ])
                             </th>
                             <th class="user-earnings__daily-header" x-cloak x-show="isToggledOn">
                                 Daily
                             </th>
-                            <th
-                                class="user-earnings__weekly-header"
-                                x-cloak
-                                x-show="isToggledOn"
-                            >
+                            <th class="user-earnings__weekly-header" x-cloak x-show="isToggledOn">
                                 Weekly
                             </th>
-                            <th
-                                class="user-earnings__monthly-header"
-                                x-cloak
-                                x-show="isToggledOn"
-                            >
+                            <th class="user-earnings__monthly-header" x-cloak x-show="isToggledOn">
                                 Monthly
                             </th>
                         </tr>
@@ -190,10 +168,8 @@
                                     {{ $types[$torrent->type_id] ??= \App\Models\Type::query()->find($torrent->type_id)?->name ?? __('common.unknown') }}
                                 </td>
                                 <td>
-                                    <a
-                                        class="user-earnings__name"
-                                        href="{{ route('torrents.show', ['id' => $torrent->torrent_id]) }}"
-                                    >
+                                    <a class="user-earnings__name"
+                                        href="{{ route('torrents.show', ['id' => $torrent->torrent_id]) }}">
                                         {{ $torrent->name }}
                                     </a>
                                 </td>
@@ -201,47 +177,37 @@
                                     {{ \App\Helpers\StringHelper::formatBytes($torrent->size) }}
                                 </td>
                                 <td class="user-earnings__seeders">
-                                    <a
-                                        class="torrent__seeder-count"
-                                        href="{{ route('peers', ['id' => $torrent->torrent_id]) }}"
-                                    >
+                                    <a class="torrent__seeder-count"
+                                        href="{{ route('peers', ['id' => $torrent->torrent_id]) }}">
                                         {{ $torrent->seeders }}
                                     </a>
                                 </td>
                                 <td class="user-earnings__leechers">
-                                    <a
-                                        class="torrent__leecher-count"
-                                        href="{{ route('peers', ['id' => $torrent->torrent_id]) }}"
-                                    >
+                                    <a class="torrent__leecher-count"
+                                        href="{{ route('peers', ['id' => $torrent->torrent_id]) }}">
                                         {{ $torrent->leechers }}
                                     </a>
                                 </td>
                                 <td class="user-earnings__times">
-                                    <a
-                                        class="torrent__times-completed-count"
-                                        href="{{ route('history', ['id' => $torrent->torrent_id]) }}"
-                                    >
+                                    <a class="torrent__times-completed-count"
+                                        href="{{ route('history', ['id' => $torrent->torrent_id]) }}">
                                         {{ $torrent->times_completed }}
                                     </a>
                                 </td>
                                 <td class="user-earnings__internal">
                                     @if ($torrent->internal)
-                                        <i
-                                            class="{{ config('other.font-awesome') }} fa-magic"
+                                        <i class="{{ config('other.font-awesome') }} fa-magic"
                                             style="color: var(--torrent-row-internal-fg)"
-                                            title="{{ __('torrent.internal') }}"
-                                        ></i>
+                                            title="{{ __('torrent.internal') }}"></i>
                                     @else
                                         <span title="Not {{ __('torrent.internal') }}">-</span>
                                     @endif
                                 </td>
                                 <td class="user-earnings__personal-release">
                                     @if ($torrent->personal_release)
-                                        <i
-                                            class="{{ config('other.font-awesome') }} fa-user-plus"
+                                        <i class="{{ config('other.font-awesome') }} fa-user-plus"
                                             title="{{ __('torrent.personal-release') }}"
-                                            style="color: var(--torrent-row-personal-fg)"
-                                        ></i>
+                                            style="color: var(--torrent-row-personal-fg)"></i>
                                     @else
                                         <span title="{{ __('torrent.not-personal-release') }}">
                                             -
@@ -250,10 +216,8 @@
                                 </td>
                                 <td class="user-earnings__connectable">
                                     @if ($torrent->connectable)
-                                        <i
-                                            class="{{ config('other.font-awesome') }} text-green fa-wifi"
-                                            title="Connectable"
-                                        ></i>
+                                        <i class="{{ config('other.font-awesome') }} text-green fa-wifi"
+                                            title="Connectable"></i>
                                     @else
                                         <span title="Not connectable">-</span>
                                     @endif

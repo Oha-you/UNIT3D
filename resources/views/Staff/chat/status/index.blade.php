@@ -37,10 +37,8 @@
             </h2>
             <div class="panel__actions">
                 <div class="panel__action">
-                    <a
-                        class="form__button form__button--text"
-                        href="{{ route('staff.statuses.create') }}"
-                    >
+                    <a class="form__button form__button--text"
+                        href="{{ route('staff.statuses.create') }}">
                         {{ __('common.add') }}
                     </a>
                 </div>
@@ -63,16 +61,13 @@
                             <td>{{ $chatstatus->id }}</td>
                             <td>
                                 <a
-                                    href="{{ route('staff.statuses.edit', ['chatStatus' => $chatstatus]) }}"
-                                >
+                                    href="{{ route('staff.statuses.edit', ['chatStatus' => $chatstatus]) }}">
                                     {{ $chatstatus->name }}
                                 </a>
                             </td>
                             <td>
-                                <i
-                                    class="{{ config('other.font-awesome') }} fa-circle"
-                                    style="color: {{ $chatstatus->color }}"
-                                ></i>
+                                <i class="{{ config('other.font-awesome') }} fa-circle"
+                                    style="color: {{ $chatstatus->color }}"></i>
                                 {{ $chatstatus->color }}
                             </td>
                             <td>
@@ -82,26 +77,20 @@
                             <td>
                                 <menu class="data-table__actions">
                                     <li class="data-table__action">
-                                        <a
-                                            class="form__button form__button--text"
-                                            href="{{ route('staff.statuses.edit', ['chatStatus' => $chatstatus]) }}"
-                                        >
+                                        <a class="form__button form__button--text"
+                                            href="{{ route('staff.statuses.edit', ['chatStatus' => $chatstatus]) }}">
                                             {{ __('common.edit') }}
                                         </a>
                                     </li>
                                     <li class="data-table__action">
-                                        <form
-                                            method="POST"
+                                        <form method="POST"
                                             action="{{ route('staff.statuses.destroy', ['chatStatus' => $chatstatus]) }}"
-                                            x-data="confirmation"
-                                        >
+                                            x-data="confirmation">
                                             @csrf
                                             @method('DELETE')
-                                            <button
-                                                x-on:click.prevent="confirmAction"
+                                            <button x-on:click.prevent="confirmAction"
                                                 data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete this chat status: ' . $chatstatus->name . '?') }}"
-                                                class="form__button form__button--text"
-                                            >
+                                                class="form__button form__button--text">
                                                 {{ __('common.delete') }}
                                             </button>
                                         </form>

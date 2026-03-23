@@ -15,14 +15,8 @@
             </div>
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="receiver"
-                        class="form__text"
-                        type="search"
-                        autocomplete="off"
-                        wire:model.live="email"
-                        placeholder=" "
-                    />
+                    <input id="receiver" class="form__text" type="search" autocomplete="off"
+                        wire:model.live="email" placeholder=" " />
                     <label class="form__label form__label--floating" for="receiver">
                         {{ __('common.email') }}
                     </label>
@@ -74,10 +68,8 @@
                         <td>{{ $application->imageProofs->count() }}</td>
                         <td>{{ $application->urlProofs->count() }}</td>
                         <td>
-                            <time
-                                datetime="{{ $application->created_at }}"
-                                title="{{ $application->created_at }}"
-                            >
+                            <time datetime="{{ $application->created_at }}"
+                                title="{{ $application->created_at }}">
                                 {{ $application->created_at->diffForHumans() }}
                             </time>
                         </td>
@@ -85,16 +77,16 @@
                             @switch($application->status)
                                 @case(\App\Enums\ModerationStatus::PENDING)
                                     <span class="application--pending">Pending</span>
+                                @break
 
-                                    @break
                                 @case(\App\Enums\ModerationStatus::APPROVED)
                                     <span class="application--approved">Approved</span>
+                                @break
 
-                                    @break
                                 @case(\App\Enums\ModerationStatus::REJECTED)
                                     <span class="application--rejected">Rejected</span>
+                                @break
 
-                                    @break
                                 @default
                                     <span class="application--unknown">Unknown</span>
                             @endswitch
@@ -109,20 +101,16 @@
                         <td>
                             <menu class="data-table__actions">
                                 <li class="data-table__action">
-                                    <a
-                                        class="form__button form__button--text"
-                                        href="{{ route('staff.applications.show', ['id' => $application->id]) }}"
-                                    >
+                                    <a class="form__button form__button--text"
+                                        href="{{ route('staff.applications.show', ['id' => $application->id]) }}">
                                         {{ __('common.view') }}
                                     </a>
                                 </li>
                                 <li class="data-table__action">
                                     <form>
-                                        <button
-                                            x-on:click.prevent="destroy"
+                                        <button x-on:click.prevent="destroy"
                                             data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete this application from: ' . $application->email . '?') }}"
-                                            class="form__button form__button--text"
-                                        >
+                                            class="form__button form__button--text">
                                             {{ __('common.delete') }}
                                         </button>
                                     </form>
@@ -130,32 +118,34 @@
                             </menu>
                         </td>
                     </tr>
-                @empty
-                    <tr class="applications--empty">
-                        <td colspan="10">{{ __('common.no') }} {{ __('staff.applications') }}</td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
-    </div>
-    {{ $applications->links('partials.pagination') }}
-    <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
-        document.addEventListener('alpine:init', () => {
-            Alpine.data('application', () => ({
-                destroy() {
-                    Swal.fire({
-                        title: 'Are you sure?',
-                        text: atob(this.$el.dataset.b64DeletionMessage),
-                        icon: 'warning',
-                        showConfirmButton: true,
-                        showCancelButton: true,
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            this.$wire.destroy(this.$root.dataset.applicationId);
-                        }
-                    });
-                },
-            }));
-        });
-    </script>
-</section>
+                    @empty
+                        <tr class="applications--empty">
+                            <td colspan="10">{{ __('common.no') }} {{ __('staff.applications') }}
+                            </td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+        {{ $applications->links('partials.pagination') }}
+        <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
+            document.addEventListener('alpine:init', () => {
+                Alpine.data('application', () => ({
+                    destroy() {
+                        Swal.fire({
+                            title: 'Are you sure?',
+                            text: atob(this.$el.dataset.b64DeletionMessage),
+                            icon: 'warning',
+                            showConfirmButton: true,
+                            showCancelButton: true,
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                this.$wire.destroy(this.$root.dataset
+                                    .applicationId);
+                            }
+                        });
+                    },
+                }));
+            });
+        </script>
+    </section>

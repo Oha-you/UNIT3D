@@ -16,10 +16,8 @@
         <header class="panel__header">
             <h2 class="panel__heading">Torrent regions</h2>
             <div class="panel__actions">
-                <a
-                    href="{{ route('staff.regions.create') }}"
-                    class="panel__action form__button form__button--text"
-                >
+                <a href="{{ route('staff.regions.create') }}"
+                    class="panel__action form__button form__button--text">
                     {{ __('common.add') }}
                 </a>
             </div>
@@ -49,18 +47,14 @@
                             <td>
                                 <menu class="data-table__actions">
                                     <li class="data-table__action">
-                                        <a
-                                            href="{{ route('staff.regions.edit', ['region' => $region]) }}"
-                                            class="form__button form__button--text"
-                                        >
+                                        <a href="{{ route('staff.regions.edit', ['region' => $region]) }}"
+                                            class="form__button form__button--text">
                                             {{ __('common.edit') }}
                                         </a>
                                     </li>
                                     <li class="data-table__action" x-data="dialog">
-                                        <button
-                                            class="form__button form__button--text"
-                                            x-bind="showDialog"
-                                        >
+                                        <button class="form__button form__button--text"
+                                            x-bind="showDialog">
                                             {{ __('common.delete') }}
                                         </button>
                                         <dialog class="dialog" x-bind="dialogElement">
@@ -68,12 +62,9 @@
                                                 Delete torrent region:
                                                 {{ $region->name . ' (' . __('regions.' . $region->name) . ')' }}
                                             </h4>
-                                            <form
-                                                class="dialog__form"
-                                                method="POST"
+                                            <form class="dialog__form" method="POST"
                                                 action="{{ route('staff.regions.destroy', ['region' => $region]) }}"
-                                                x-bind="dialogForm"
-                                            >
+                                                x-bind="dialogForm">
                                                 @csrf
                                                 @method('DELETE')
                                                 <p class="form__group">
@@ -81,44 +72,30 @@
                                                     region. Would you like to change it?
                                                 </p>
                                                 <p class="form__group" x-data>
-                                                    <select
-                                                        name="region_id"
-                                                        id="autoreg"
-                                                        class="form__select"
-                                                        x-data="{ region: '' }"
+                                                    <select name="region_id" id="autoreg"
+                                                        class="form__select" x-data="{ region: '' }"
                                                         x-model="region"
-                                                        x-bind:class="region === '' ? 'form__select--default' : ''"
-                                                    >
-                                                        <option
-                                                            hidden
-                                                            disabled
-                                                            selected
-                                                            value=""
-                                                        ></option>
+                                                        x-bind:class="region === '' ?
+                                                            'form__select--default' : ''">
+                                                        <option hidden disabled selected value="">
+                                                        </option>
                                                         @foreach ($regions as $region)
                                                             <option value="{{ $region->id }}">
                                                                 {{ $region->name . ' (' . __('regions.' . $region->name) . ')' }}
                                                             </option>
                                                         @endforeach
                                                     </select>
-                                                    <label
-                                                        class="form__label form__label--floating"
-                                                        for="autoreg"
-                                                    >
+                                                    <label class="form__label form__label--floating"
+                                                        for="autoreg">
                                                         Replacement region
                                                     </label>
                                                 </p>
                                                 <p class="form__group">
-                                                    <button
-                                                        class="form__button form__button--filled"
-                                                    >
+                                                    <button class="form__button form__button--filled">
                                                         {{ __('common.delete') }}
                                                     </button>
-                                                    <button
-                                                        formmethod="dialog"
-                                                        formnovalidate
-                                                        class="form__button form__button--outlined"
-                                                    >
+                                                    <button formmethod="dialog" formnovalidate
+                                                        class="form__button form__button--outlined">
                                                         {{ __('common.cancel') }}
                                                     </button>
                                                 </p>

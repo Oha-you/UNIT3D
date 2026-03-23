@@ -26,63 +26,33 @@
             {{ __('bon.bon') }} {{ __('bon.earning') }}
         </h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
-                action="{{ route('staff.bon_earnings.store') }}"
-                x-data="{ conditions: 0 }"
-            >
+            <form class="form" method="POST" action="{{ route('staff.bon_earnings.store') }}"
+                x-data="{ conditions: 0 }">
                 @csrf
                 <p class="form__group">
-                    <input
-                        id="name"
-                        class="form__text"
-                        name="bon_earning[name]"
-                        required
-                        type="text"
-                        maxlength="255"
-                        value="{{ old('name') }}"
-                    />
+                    <input id="name" class="form__text" name="bon_earning[name]" required
+                        type="text" maxlength="255" value="{{ old('name') }}" />
                     <label class="form__label form__label--floating" for="name">
                         {{ __('common.name') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="description"
-                        class="form__text"
-                        name="bon_earning[description]"
-                        required
-                        type="text"
-                        maxlength="255"
-                        value="{{ old('description') }}"
-                    />
+                    <input id="description" class="form__text" name="bon_earning[description]" required
+                        type="text" maxlength="255" value="{{ old('description') }}" />
                     <label class="form__label form__label--floating" for="description">
                         {{ __('common.description') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="position"
-                        class="form__text"
-                        inputmode="numeric"
-                        name="bon_earning[position]"
-                        pattern="[0-9]*"
-                        required
-                        type="text"
-                        value="{{ old('position') }}"
-                    />
+                    <input id="position" class="form__text" inputmode="numeric"
+                        name="bon_earning[position]" pattern="[0-9]*" required type="text"
+                        value="{{ old('position') }}" />
                     <label class="form__label form__label--floating" for="position">
                         {{ __('common.position') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <select
-                        id="variable"
-                        class="form__select"
-                        name="bon_earning[variable]"
-                        required
-                    >
+                    <select id="variable" class="form__select" name="bon_earning[variable]" required>
                         <option hidden selected disabled value=""></option>
                         <option class="form__option" value="1">1 (Constant)</option>
                         <option class="form__option" value="age">
@@ -116,28 +86,16 @@
                     <label class="form__label form__label--floating" for="autocat">Variable</label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="multiplier"
-                        class="form__text"
-                        inputmode="numeric"
-                        name="bon_earning[multiplier]"
-                        pattern="[0-9.]*"
-                        required
-                        type="text"
-                        value="{{ old('multiplier') }}"
-                    />
+                    <input id="multiplier" class="form__text" inputmode="numeric"
+                        name="bon_earning[multiplier]" pattern="[0-9.]*" required type="text"
+                        value="{{ old('multiplier') }}" />
                     <label class="form__label form__label--floating" for="multiplier">
                         Multiplier
                     </label>
                 </p>
                 <p class="form__group">
-                    <select
-                        id="type"
-                        class="form__select"
-                        name="bon_earning[operation]"
-                        required
-                        value="{{ old('operation') }}"
-                    >
+                    <select id="type" class="form__select" name="bon_earning[operation]" required
+                        value="{{ old('operation') }}">
                         <option hidden selected disabled value=""></option>
                         <option class="form__option" value="append">Append</option>
                         <option class="form__option" value="multiply">Multiply</option>
@@ -150,12 +108,9 @@
                 <template x-for="condition in conditions">
                     <div class="form__group--horizontal">
                         <p class="form__group">
-                            <select
-                                x-bind:id="'condition' + condition + 'operand1'"
+                            <select x-bind:id="'condition' + condition + 'operand1'"
                                 class="form__select"
-                                x-bind:name="'conditions[' + condition + '][operand1]'"
-                                required
-                            >
+                                x-bind:name="'conditions[' + condition + '][operand1]'" required>
                                 <option hidden selected disabled value=""></option>
                                 <option class="form__option" value="1">1 (Constant)</option>
                                 <option class="form__option" value="age">
@@ -189,20 +144,15 @@
                                     Connectable (1 (true) or 0 (false))
                                 </option>
                             </select>
-                            <label
-                                class="form__label form__label--floating"
-                                x-bind:for="'condition' + condition + 'operand1'"
-                            >
+                            <label class="form__label form__label--floating"
+                                x-bind:for="'condition' + condition + 'operand1'">
                                 Operand 1
                             </label>
                         </p>
                         <p class="form__group">
-                            <select
-                                x-bind:id="'condition' + condition + 'operator'"
+                            <select x-bind:id="'condition' + condition + 'operator'"
                                 class="form__select"
-                                x-bind:name="'conditions[' + condition + '][operator]'"
-                                required
-                            >
+                                x-bind:name="'conditions[' + condition + '][operator]'" required>
                                 <option hidden selected disabled value=""></option>
                                 <option class="form__option" value="<">&lt;</option>
                                 <option class="form__option" value=">">&gt;</option>
@@ -211,41 +161,29 @@
                                 <option class="form__option" value="=">&equals;</option>
                                 <option class="form__option" value="!=">&ne;</option>
                             </select>
-                            <label
-                                class="form__label form__label--floating"
-                                x-bind:for="'condition' + condition + 'operator'"
-                            >
+                            <label class="form__label form__label--floating"
+                                x-bind:for="'condition' + condition + 'operator'">
                                 Operator
                             </label>
                         </p>
                         <p class="form__group">
-                            <input
-                                x-bind:id="'condition' + condition + 'operand2'"
-                                class="form__text"
-                                x-bind:name="'conditions[' + condition + '][operand2]'"
-                                required
-                                type="text"
-                            />
-                            <label
-                                class="form__label form__label--floating"
-                                x-bind:for="'condition' + condition + 'operand2'"
-                            >
+                            <input x-bind:id="'condition' + condition + 'operand2'" class="form__text"
+                                x-bind:name="'conditions[' + condition + '][operand2]'" required
+                                type="text" />
+                            <label class="form__label form__label--floating"
+                                x-bind:for="'condition' + condition + 'operand2'">
                                 Operand 2
                             </label>
                         </p>
                     </div>
                 </template>
                 <p class="form__group">
-                    <button
-                        x-on:click.prevent="conditions++"
-                        class="form__button form__button--outlined"
-                    >
+                    <button x-on:click.prevent="conditions++"
+                        class="form__button form__button--outlined">
                         Add condition
                     </button>
-                    <button
-                        class="form__button form__button--outlined"
-                        x-on:click.prevent="conditions = Math.max(0, conditions - 1)"
-                    >
+                    <button class="form__button form__button--outlined"
+                        x-on:click.prevent="conditions = Math.max(0, conditions - 1)">
                         Delete condition
                     </button>
                 </p>

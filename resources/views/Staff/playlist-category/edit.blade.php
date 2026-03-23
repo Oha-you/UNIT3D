@@ -25,47 +25,29 @@
     <section class="panelV2">
         <h2 class="panel__heading">Edit playlist category</h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
+            <form class="form" method="POST"
                 action="{{ route('staff.playlist_categories.update', ['playlistCategory' => $playlistCategory]) }}"
-                enctype="multipart/form-data"
-            >
+                enctype="multipart/form-data">
                 @method('PATCH')
                 @csrf
                 <p class="form__group">
-                    <input
-                        id="name"
-                        class="form__text"
-                        type="text"
-                        name="name"
-                        value="{{ $playlistCategory->name }}"
-                    />
+                    <input id="name" class="form__text" type="text" name="name"
+                        value="{{ $playlistCategory->name }}" />
                     <label class="form__label form__label--floating" for="name">
                         {{ __('common.name') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="position"
-                        class="form__text"
-                        type="text"
-                        name="position"
-                        value="{{ $playlistCategory->position }}"
-                    />
+                    <input id="position" class="form__text" type="text" name="position"
+                        value="{{ $playlistCategory->position }}" />
                     <label class="form__label form__label--floating" for="position" for="position">
                         {{ __('common.position') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <textarea
-                        id="description"
-                        name="description"
-                        class="form__textarea"
-                        placeholder=" "
-                    >
-{{ $playlistCategory->description }}</textarea
-                    >
+                    <textarea id="description" name="description" class="form__textarea"
+                        placeholder=" ">
+    {{ $playlistCategory->description }}</textarea>
                     <label class="form__label form__label--floating" for="description">
                         {{ __('common.description') }}
                     </label>

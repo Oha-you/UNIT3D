@@ -56,10 +56,8 @@
                                 <x-user-tag :user="$invite->receiver" :anon="false">
                                     @if ($user->warnings_count > 1)
                                         <x-slot:appended-icons>
-                                            <i
-                                                class="{{ config('other.font-awesome') }} fa-exclamation-circle text-orange"
-                                                title="{{ __('common.active-warning') }} ({{ $user->warnings_count }})"
-                                            ></i>
+                                            <i class="{{ config('other.font-awesome') }} fa-exclamation-circle text-orange"
+                                                title="{{ __('common.active-warning') }} ({{ $user->warnings_count }})"></i>
                                         </x-slot>
                                     @endif
                                 </x-user-tag>
@@ -98,11 +96,9 @@
                                     @if ($invite->receiver->created_at === null)
                                         N/A
                                     @else
-                                        <time
-                                            class="{{ $invite->receiver->created_at }}"
+                                        <time class="{{ $invite->receiver->created_at }}"
                                             datetime="{{ $invite->receiver->created_at }}"
-                                            title="{{ $invite->receiver->created_at }}"
-                                        >
+                                            title="{{ $invite->receiver->created_at }}">
                                             {{ $invite->receiver->created_at->diffForHumans() }}
                                         </time>
                                     @endif
@@ -111,11 +107,9 @@
                                     @if ($invite->receiver->last_action === null)
                                         N/A
                                     @else
-                                        <time
-                                            class="{{ $invite->receiver->last_action }}"
+                                        <time class="{{ $invite->receiver->last_action }}"
                                             datetime="{{ $invite->receiver->last_action }}"
-                                            title="{{ $invite->receiver->last_action }}"
-                                        >
+                                            title="{{ $invite->receiver->last_action }}">
                                             {{ $invite->receiver->last_action->diffForHumans() }}
                                         </time>
                                     @endif
@@ -123,11 +117,9 @@
                                 <td>
                                     <menu class="data-table__actions">
                                         <li class="data-table__action">
-                                            <a
-                                                href="{{ route('users.invite_tree.index', ['user' => $invite->receiver]) }}"
+                                            <a href="{{ route('users.invite_tree.index', ['user' => $invite->receiver]) }}"
                                                 class="form__button form__button--text"
-                                                style="margin-top: -4px; margin-bottom: -4px"
-                                            >
+                                                style="margin-top: -4px; margin-bottom: -4px">
                                                 {{ __('common.view') }}
                                             </a>
                                         </li>
@@ -181,10 +173,8 @@
                                 <x-user-tag :user="$user" :anon="false">
                                     @if ($user->warnings_exists)
                                         <x-slot:appended-icons>
-                                            <i
-                                                class="{{ config('other.font-awesome') }} fa-exclamation-circle text-orange"
-                                                title="{{ __('common.active-warning') }} ({{ $user->warnings_count }})"
-                                            ></i>
+                                            <i class="{{ config('other.font-awesome') }} fa-exclamation-circle text-orange"
+                                                title="{{ __('common.active-warning') }} ({{ $user->warnings_count }})"></i>
                                         </x-slot>
                                     @endif
                                 </x-user-tag>
@@ -199,10 +189,8 @@
                                     <x-user-tag :user="$inviter" :anon="false">
                                         @if ($user->warnings_exists)
                                             <x-slot:appended-icons>
-                                                <i
-                                                    class="{{ config('other.font-awesome') }} fa-exclamation-circle text-orange"
-                                                    title="{{ __('common.active-warning') }} ({{ $user->warnings_count }})"
-                                                ></i>
+                                                <i class="{{ config('other.font-awesome') }} fa-exclamation-circle text-orange"
+                                                    title="{{ __('common.active-warning') }} ({{ $user->warnings_count }})"></i>
                                             </x-slot>
                                         @endif
                                     </x-user-tag>
@@ -211,11 +199,9 @@
                                     <td>
                                         <menu class="data-table__actions">
                                             <li class="data-table__action">
-                                                <a
-                                                    href="{{ route('users.invite_tree.index', ['user' => $inviter]) }}"
+                                                <a href="{{ route('users.invite_tree.index', ['user' => $inviter]) }}"
                                                     class="form__button form__button--text"
-                                                    style="margin-top: -4px; margin-bottom: -4px"
-                                                >
+                                                    style="margin-top: -4px; margin-bottom: -4px">
                                                     {{ __('common.view') }}
                                                 </a>
                                             </li>
@@ -311,11 +297,9 @@
                         <tr>
                             <td>
                                 <span class="user-tag">
-                                    <span
-                                        class="user-tag__link {{ $groups->first()->icon }}"
+                                    <span class="user-tag__link {{ $groups->first()->icon }}"
                                         style="color: {{ $groups->first()->color }}"
-                                        title="{{ $groups->first()->name }}"
-                                    >
+                                        title="{{ $groups->first()->name }}">
                                         {{ $groups->first()->name }}
                                     </span>
                                 </span>

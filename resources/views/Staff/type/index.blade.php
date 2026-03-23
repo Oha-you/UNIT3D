@@ -18,10 +18,8 @@
         <header class="panel__header">
             <h2 class="panel__heading">{{ __('common.types') }}</h2>
             <div class="panel__actions">
-                <a
-                    href="{{ route('staff.types.create') }}"
-                    class="panel__action form__button form__button--text"
-                >
+                <a href="{{ route('staff.types.create') }}"
+                    class="panel__action form__button form__button--text">
                     {{ __('common.add') }}
                 </a>
             </div>
@@ -47,26 +45,20 @@
                             <td>
                                 <menu class="data-table__actions">
                                     <li class="data-table__action">
-                                        <a
-                                            href="{{ route('staff.types.edit', ['type' => $type]) }}"
-                                            class="form__button form__button--text"
-                                        >
+                                        <a href="{{ route('staff.types.edit', ['type' => $type]) }}"
+                                            class="form__button form__button--text">
                                             {{ __('common.edit') }}
                                         </a>
                                     </li>
                                     <li class="data-table__action">
                                         <form
                                             action="{{ route('staff.types.destroy', ['type' => $type]) }}"
-                                            method="POST"
-                                            x-data="confirmation"
-                                        >
+                                            method="POST" x-data="confirmation">
                                             @csrf
                                             @method('DELETE')
-                                            <button
-                                                x-on:click.prevent="confirmAction"
+                                            <button x-on:click.prevent="confirmAction"
                                                 data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete this type: ' . $type->name . '?') }}"
-                                                class="form__button form__button--text"
-                                            >
+                                                class="form__button form__button--text">
                                                 {{ __('common.delete') }}
                                             </button>
                                         </form>

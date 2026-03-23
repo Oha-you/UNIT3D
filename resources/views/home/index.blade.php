@@ -7,49 +7,48 @@
         @switch($block)
             @case('news')
                 @include('blocks.news')
+            @break
 
-                @break
             @case('chat')
                 @include('blocks.chat')
                 @vite('resources/js/unit3d/chat.js')
+            @break
 
-                @break
             @case('featured')
                 @include('blocks.featured')
+            @break
 
-                @break
             @case('random_media')
                 @livewire('random-media')
+            @break
 
-                @break
             @case('poll')
                 @include('blocks.poll')
+            @break
 
-                @break
             @case('top_torrents')
                 @livewire('top-torrents')
+            @break
 
-                @break
             @case('top_users')
                 @livewire('top-users')
+            @break
 
-                @break
             @case('latest_topics')
                 @include('blocks.latest-topics')
+            @break
 
-                @break
             @case('latest_posts')
                 @include('blocks.latest-posts')
+            @break
 
-                @break
             @case('latest_comments')
                 @include('blocks.latest-comments')
+            @break
 
-                @break
             @case('online')
                 @include('blocks.online')
-
-                @break
+            @break
         @endswitch
     @endforeach
 @endsection

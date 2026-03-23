@@ -30,30 +30,24 @@
                                 </a>
                             </td>
                             <td>
-                                <time
-                                    datetime="{{ $giveaway->starts_at }}"
-                                    title="{{ $giveaway->starts_at }}"
-                                >
+                                <time datetime="{{ $giveaway->starts_at }}"
+                                    title="{{ $giveaway->starts_at }}">
                                     {{ $giveaway->starts_at->format('Y-m-d') }}
                                 </time>
                             </td>
                             <td>
-                                <time
-                                    datetime="{{ $giveaway->ends_at }}"
-                                    title="{{ $giveaway->ends_at }}"
-                                >
+                                <time datetime="{{ $giveaway->ends_at }}"
+                                    title="{{ $giveaway->ends_at }}">
                                     {{ $giveaway->ends_at->format('Y-m-d') }}
                                 </time>
                             </td>
                             <td>
                                 @if ($giveaway->active)
                                     <i
-                                        class="{{ config('other.font-awesome') }} fa-check text-green"
-                                    ></i>
+                                        class="{{ config('other.font-awesome') }} fa-check text-green"></i>
                                 @else
                                     <i
-                                        class="{{ config('other.font-awesome') }} fa-times text-red"
-                                    ></i>
+                                        class="{{ config('other.font-awesome') }} fa-times text-red"></i>
                                 @endif
                             </td>
                         </tr>

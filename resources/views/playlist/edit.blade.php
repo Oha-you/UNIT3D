@@ -15,10 +15,7 @@
         </a>
     </li>
     <li class="breadcrumbV2">
-        <a
-            href="{{ route('playlists.edit', ['playlist' => $playlist]) }}"
-            class="breadcrumb__link"
-        >
+        <a href="{{ route('playlists.edit', ['playlist' => $playlist]) }}" class="breadcrumb__link">
             {{ $playlist->name }}
         </a>
     </li>
@@ -33,41 +30,24 @@
     <section class="panelV2">
         <h2 class="panel__heading">{{ __('playlist.edit-playlist') }}</h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
+            <form class="form" method="POST"
                 action="{{ route('playlists.update', ['playlist' => $playlist]) }}"
-                enctype="multipart/form-data"
-            >
+                enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <p class="form__group">
-                    <input
-                        id="name"
-                        class="form__text"
-                        type="text"
-                        name="name"
-                        placeholder=" "
-                        required
-                        value="{{ $playlist->name }}"
-                    />
+                    <input id="name" class="form__text" type="text" name="name"
+                        placeholder=" " required value="{{ $playlist->name }}" />
                     <label class="form__label form__label--floating" for="name">
                         {{ __('playlist.title') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <select
-                        id="playlist_category_id"
-                        class="form__select"
-                        name="playlist_category_id"
-                    >
+                    <select id="playlist_category_id" class="form__select" name="playlist_category_id">
                         @foreach ($playlistCategories as $playlistCategory)
                             @if ($playlist->playlist_category_id === $playlistCategory->id)
-                                <option
-                                    class="form__option"
-                                    value="{{ $playlistCategory->id }}"
-                                    selected
-                                >
+                                <option class="form__option" value="{{ $playlistCategory->id }}"
+                                    selected>
                                     {{ $playlistCategory->name }} ({{ __('torrent.current') }})
                                 </option>
                             @else
@@ -83,10 +63,10 @@
                 </p>
                 <p class="form__group">
                     @livewire('bbcode-input', [
-                        'name'     => 'description',
-                        'label'    => __('common.description'),
+                        'name' => 'description',
+                        'label' => __('common.description'),
                         'required' => true,
-                        'content'  => $playlist->description
+                        'content' => $playlist->description,
                     ])
                 </p>
                 <p class="form__group">
@@ -97,14 +77,8 @@
                 </p>
                 <p class="form__group">
                     <input type="hidden" name="is_private" value="0" />
-                    <input
-                        id="is_private"
-                        class="form__checkbox"
-                        name="is_private"
-                        type="checkbox"
-                        value="1"
-                        @checked($playlist->is_private)
-                    />
+                    <input id="is_private" class="form__checkbox" name="is_private" type="checkbox"
+                        value="1" @checked($playlist->is_private) />
                     <label class="form__label" for="is_private">
                         {{ __('playlist.is-private') }}
                     </label>

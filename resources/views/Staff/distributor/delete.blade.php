@@ -27,12 +27,9 @@
             {{ __('common.delete') }} torrent distributor: {{ $distributor->name }}
         </h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
+            <form class="form" method="POST"
                 action="{{ route('staff.distributors.destroy', ['distributor' => $distributor]) }}"
-                x-data="confirmation"
-            >
+                x-data="confirmation">
                 @csrf
                 @method('DELETE')
                 <p class="form__group">
@@ -40,14 +37,9 @@
                     change it?
                 </p>
                 <p class="form__group">
-                    <select
-                        name="distributor_id"
-                        id="autoreg"
-                        class="form__select"
-                        x-data="{ distributor: '' }"
-                        x-model="distributor"
-                        x-bind:class="distributor === '' ? 'form__select--default' : ''"
-                    >
+                    <select name="distributor_id" id="autoreg" class="form__select"
+                        x-data="{ distributor: '' }" x-model="distributor"
+                        x-bind:class="distributor === '' ? 'form__select--default' : ''">
                         <option hidden disabled selected value=""></option>
                         @foreach ($distributors as $distributor)
                             <option value="{{ $distributor->id }}">
@@ -60,11 +52,9 @@
                     </label>
                 </p>
                 <p class="form__group">
-                    <button
-                        x-on:click.prevent="confirmAction"
+                    <button x-on:click.prevent="confirmAction"
                         data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete this distributor: ' . $distributor->name . '?') }}"
-                        class="form__button form__button--filled"
-                    >
+                        class="form__button form__button--filled">
                         {{ __('common.delete') }}
                     </button>
                 </p>

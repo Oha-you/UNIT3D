@@ -20,11 +20,8 @@
             <h2 class="panel__heading">Edit: {{ $package->name }}</h2>
         </header>
         <div class="data-table-wrapper">
-            <form
-                role="form"
-                method="POST"
-                action="{{ route('staff.packages.update', ['package' => $package]) }}"
-            >
+            <form role="form" method="POST"
+                action="{{ route('staff.packages.update', ['package' => $package]) }}">
                 @csrf
                 @method('PATCH')
                 <div class="table-responsive">
@@ -46,78 +43,42 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <input
-                                        type="text"
-                                        name="position"
-                                        value="{{ $package->position }}"
-                                        class="form__text"
-                                    />
+                                    <input type="text" name="position"
+                                        value="{{ $package->position }}" class="form__text" />
                                 </td>
                                 <td>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        value="{{ $package->name }}"
-                                        class="form__text"
-                                    />
+                                    <input type="text" name="name" value="{{ $package->name }}"
+                                        class="form__text" />
                                 </td>
                                 <td>
                                     <textarea name="description" class="form__textarea">
-{{ $package->description }}</textarea
-                                    >
+    {{ $package->description }}</textarea>
                                 </td>
 
                                 <td>
-                                    <input
-                                        type="number"
-                                        step="0.01"
-                                        name="cost"
-                                        value="{{ $package->cost }}"
-                                        class="form__text"
-                                    />
+                                    <input type="number" step="0.01" name="cost"
+                                        value="{{ $package->cost }}" class="form__text" />
                                 </td>
                                 <td>
-                                    <input
-                                        type="number"
-                                        name="upload_value"
-                                        value="{{ $package->upload_value }}"
-                                        class="form__text"
-                                    />
+                                    <input type="number" name="upload_value"
+                                        value="{{ $package->upload_value }}" class="form__text" />
                                 </td>
                                 <td>
-                                    <input
-                                        type="number"
-                                        name="invite_value"
-                                        value="{{ $package->invite_value }}"
-                                        class="form__text"
-                                    />
+                                    <input type="number" name="invite_value"
+                                        value="{{ $package->invite_value }}" class="form__text" />
                                 </td>
                                 <td>
-                                    <input
-                                        type="number"
-                                        name="bonus_value"
-                                        value="{{ $package->bonus_value }}"
-                                        class="form__text"
-                                    />
+                                    <input type="number" name="bonus_value"
+                                        value="{{ $package->bonus_value }}" class="form__text" />
                                 </td>
                                 <td>
-                                    <input
-                                        type="number"
-                                        name="donor_value"
-                                        value="{{ $package->donor_value }}"
-                                        class="form__text"
-                                    />
+                                    <input type="number" name="donor_value"
+                                        value="{{ $package->donor_value }}" class="form__text" />
                                 </td>
                                 <td>
                                     <input name="is_active" type="hidden" value="0" />
-                                    <input
-                                        id="is_active"
-                                        class="form__checkbox"
-                                        name="is_active"
-                                        type="checkbox"
-                                        value="1"
-                                        @checked($package->is_active)
-                                    />
+                                    <input id="is_active" class="form__checkbox" name="is_active"
+                                        type="checkbox" value="1" @checked($package->is_active) />
                                 </td>
                             </tr>
                         </tbody>

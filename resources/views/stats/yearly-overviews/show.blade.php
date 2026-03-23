@@ -21,10 +21,8 @@
 @section('nav-tabs')
     @for ($i = $birthYear; $i < now()->year; $i++)
         <li class="{{ $i === $year ? 'nav-tab--active' : 'nav-tabV2' }}">
-            <a
-                class="{{ $i === $year ? 'nav-tab--active__link' : 'nav-tab__link' }}"
-                href="{{ route('yearly_overviews.show', ['year' => $i]) }}"
-            >
+            <a class="{{ $i === $year ? 'nav-tab--active__link' : 'nav-tab__link' }}"
+                href="{{ route('yearly_overviews.show', ['year' => $i]) }}">
                 {{ $i }}
             </a>
         </li>
@@ -53,15 +51,9 @@
         <div class="panel__body overview__poster-grid">
             @foreach ($topMovies as $work)
                 <figure class="trending-poster overview__poster">
-                    <x-movie.poster
-                        :movie="$work->movie"
-                        :categoryId="$work->category_id"
-                        :tmdb="$work->tmdb_movie_id"
-                    />
-                    <figcaption
-                        class="trending-poster__download-count"
-                        title="{{ __('torrent.completed-times') }}"
-                    >
+                    <x-movie.poster :movie="$work->movie" :categoryId="$work->category_id" :tmdb="$work->tmdb_movie_id" />
+                    <figcaption class="trending-poster__download-count"
+                        title="{{ __('torrent.completed-times') }}">
                         {{ $work->download_count }}
                     </figcaption>
                 </figure>
@@ -73,15 +65,9 @@
         <div class="panel__body overview__poster-grid">
             @foreach ($topTv as $work)
                 <figure class="trending-poster overview__poster">
-                    <x-tv.poster
-                        :tv="$work->tv"
-                        :categoryId="$work->category_id"
-                        :tmdb="$work->tmdb_tv_id"
-                    />
-                    <figcaption
-                        class="trending-poster__download-count"
-                        title="{{ __('torrent.completed-times') }}"
-                    >
+                    <x-tv.poster :tv="$work->tv" :categoryId="$work->category_id" :tmdb="$work->tmdb_tv_id" />
+                    <figcaption class="trending-poster__download-count"
+                        title="{{ __('torrent.completed-times') }}">
                         {{ $work->download_count }}
                     </figcaption>
                 </figure>
@@ -99,11 +85,8 @@
                     <h4 class="user-stat-card__stat">
                         {{ $uploader->value }} {{ __('user.uploads') }}
                     </h4>
-                    <img
-                        class="user-stat-card__avatar"
-                        alt=""
-                        src="{{ $uploader->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $uploader->user]) }}"
-                    />
+                    <img class="user-stat-card__avatar" alt=""
+                        src="{{ $uploader->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $uploader->user]) }}" />
                 </article>
             @endforeach
         </div>
@@ -119,11 +102,8 @@
                     <h4 class="user-stat-card__stat">
                         {{ $requester->value }} {{ __('request.requests') }}
                     </h4>
-                    <img
-                        class="user-stat-card__avatar"
-                        alt=""
-                        src="{{ $requester->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $requester->user]) }}"
-                    />
+                    <img class="user-stat-card__avatar" alt=""
+                        src="{{ $requester->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $requester->user]) }}" />
                 </article>
             @endforeach
         </div>
@@ -139,11 +119,8 @@
                     <h4 class="user-stat-card__stat">
                         {{ $filler->value }} {{ __('notification.request-fills') }}
                     </h4>
-                    <img
-                        class="user-stat-card__avatar"
-                        alt=""
-                        src="{{ $filler->filler->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $filler->filler]) }}"
-                    />
+                    <img class="user-stat-card__avatar" alt=""
+                        src="{{ $filler->filler->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $filler->filler]) }}" />
                 </article>
             @endforeach
         </div>
@@ -159,11 +136,8 @@
                     <h4 class="user-stat-card__stat">
                         {{ $commenter->value }} {{ __('user.comments') }}
                     </h4>
-                    <img
-                        class="user-stat-card__avatar"
-                        alt=""
-                        src="{{ $commenter->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $commenter->user]) }}"
-                    />
+                    <img class="user-stat-card__avatar" alt=""
+                        src="{{ $commenter->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $commenter->user]) }}" />
                 </article>
             @endforeach
         </div>
@@ -179,11 +153,8 @@
                     <h4 class="user-stat-card__stat">
                         {{ $poster->value }} {{ __('common.posts') }}
                     </h4>
-                    <img
-                        class="user-stat-card__avatar"
-                        alt=""
-                        src="{{ $poster->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $poster->user]) }}"
-                    />
+                    <img class="user-stat-card__avatar" alt=""
+                        src="{{ $poster->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $poster->user]) }}" />
                 </article>
             @endforeach
         </div>
@@ -199,11 +170,8 @@
                     <h4 class="user-stat-card__stat">
                         {{ $thanker->value }} {{ __('torrent.thanks') }}
                     </h4>
-                    <img
-                        class="user-stat-card__avatar"
-                        alt=""
-                        src="{{ $thanker->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $thanker->user]) }}"
-                    />
+                    <img class="user-stat-card__avatar" alt=""
+                        src="{{ $thanker->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $thanker->user]) }}" />
                 </article>
             @endforeach
         </div>

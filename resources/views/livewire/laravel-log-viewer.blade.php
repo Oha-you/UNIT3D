@@ -25,8 +25,7 @@
         grid-template-columns: minmax(0, 1fr) 225px;
         gap: 12px;
         align-items: flex-start;
-    "
->
+    ">
     <section class="panelV2">
         <header class="panel__header">
             <h2 class="panel__heading">
@@ -69,26 +68,26 @@
                                         <span class="text-danger">
                                             {{ $groupedEntry[0]['level'] }}
                                         </span>
+                                    @break
 
-                                        @break
                                     @case('ERROR')
                                         <span class="text-warning">
                                             {{ $groupedEntry[0]['level'] }}
                                         </span>
+                                    @break
 
-                                        @break
                                     @case('INFO')
                                         <span class="text-info">
                                             {{ $groupedEntry[0]['level'] }}
                                         </span>
+                                    @break
 
-                                        @break
                                     @case('WARNING')
                                         <span class="text-info">
                                             {{ $groupedEntry[0]['level'] }}
                                         </span>
+                                    @break
 
-                                        @break
                                     @default
                                         {{ $groupedEntry[0]['level'] }}
                                 @endswitch
@@ -115,10 +114,8 @@
                                                 <td>{{ $entry['date'] }}</td>
                                                 <td>{{ $entry['env'] }}</td>
                                                 <td>
-                                                    <button
-                                                        class="form__button form__button--text"
-                                                        x-on:click.stop="navigator.clipboard.writeText($refs.stacktrace.textContent)"
-                                                    >
+                                                    <button class="form__button form__button--text"
+                                                        x-on:click.stop="navigator.clipboard.writeText($refs.stacktrace.textContent)">
                                                         Copy
                                                     </button>
                                                 </td>
@@ -136,38 +133,33 @@
                             </td>
                         </tr>
                     </tbody>
-                @empty
-                    <tbody>
-                        <tr>
-                            <td colspan="7">No logs have been created yet.</td>
-                        </tr>
-                    </tbody>
-                @endforelse
-            </table>
-        </div>
-        @if ($entries->hasMorePages())
-            <div class="text-center">
-                <button class="form__button form__button--filled" wire:click.prevent="loadMore">
-                    Load more entries
-                </button>
+                    @empty
+                        <tbody>
+                            <tr>
+                                <td colspan="7">No logs have been created yet.</td>
+                            </tr>
+                        </tbody>
+                    @endforelse
+                </table>
             </div>
-        @endif
-    </section>
-    <section class="panelV2">
-        <h2 class="panel__heading">Entries</h2>
-        <select
-            multiple
-            wire:model.live="logs"
-            style="height: 320px; padding: 8px; border-radius: 4px; width: 100%"
-        >
-            @foreach ($files as $file)
-                <option
-                    value="{{ $loop->index }}"
-                    style="padding: 6px; border-radius: 4px; cursor: pointer"
-                >
-                    {{ $file->getFilename() }}
-                </option>
-            @endforeach
-        </select>
-    </section>
-</div>
+            @if ($entries->hasMorePages())
+                <div class="text-center">
+                    <button class="form__button form__button--filled" wire:click.prevent="loadMore">
+                        Load more entries
+                    </button>
+                </div>
+            @endif
+        </section>
+        <section class="panelV2">
+            <h2 class="panel__heading">Entries</h2>
+            <select multiple wire:model.live="logs"
+                style="height: 320px; padding: 8px; border-radius: 4px; width: 100%">
+                @foreach ($files as $file)
+                    <option value="{{ $loop->index }}"
+                        style="padding: 6px; border-radius: 4px; cursor: pointer">
+                        {{ $file->getFilename() }}
+                    </option>
+                @endforeach
+            </select>
+        </section>
+    </div>

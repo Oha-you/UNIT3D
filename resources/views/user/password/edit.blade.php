@@ -14,10 +14,7 @@
         </a>
     </li>
     <li class="breadcrumbV2">
-        <a
-            href="{{ route('users.general_settings.edit', ['user' => $user]) }}"
-            class="breadcrumb__link"
-        >
+        <a href="{{ route('users.general_settings.edit', ['user' => $user]) }}" class="breadcrumb__link">
             {{ __('user.settings') }}
         </a>
     </li>
@@ -36,11 +33,8 @@
     <section class="panelV2">
         <h2 class="panel__heading">{{ __('user.change-password') }}</h2>
         <div class="panel__body">
-            <form
-                class="form"
-                action="{{ route('users.password.update', ['user' => $user]) }}"
-                method="POST"
-            >
+            <form class="form" action="{{ route('users.password.update', ['user' => $user]) }}"
+                method="POST">
                 @csrf
                 @method('PATCH')
                 <p>{{ __('user.change-password-help') }}.</p>
@@ -50,15 +44,8 @@
                 </p>
                 @if (auth()->id() == $user->id)
                     <p class="form__group">
-                        <input
-                            id="current_password"
-                            class="form__text"
-                            autocomplete="current-password"
-                            name="current_password"
-                            placeholder=" "
-                            required
-                            type="password"
-                        />
+                        <input id="current_password" class="form__text" autocomplete="current-password"
+                            name="current_password" placeholder=" " required type="password" />
                         <label class="form__label form__label--floating" for="current_password">
                             Current password
                         </label>
@@ -90,10 +77,8 @@
                     @forelse ($passwordResetHistories as $passwordResetHistory)
                         <tr>
                             <td>
-                                <time
-                                    datetime="{{ $passwordResetHistory->created_at }}"
-                                    title="{{ $passwordResetHistory->created_at }}"
-                                >
+                                <time datetime="{{ $passwordResetHistory->created_at }}"
+                                    title="{{ $passwordResetHistory->created_at }}">
                                     {{ $passwordResetHistory->created_at }}
                                 </time>
                             </td>

@@ -28,49 +28,28 @@
             {{ $chatstatus->name }}
         </h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
+            <form class="form" method="POST"
                 action="{{ route('staff.statuses.update', ['chatStatus' => $chatstatus]) }}"
-                enctype="multipart/form-data"
-            >
+                enctype="multipart/form-data">
                 @csrf
                 <p class="form__group">
-                    <input
-                        id="name"
-                        class="form__text"
-                        name="name"
-                        required
-                        type="text"
-                        value="{{ $chatstatus->name }}"
-                    />
+                    <input id="name" class="form__text" name="name" required type="text"
+                        value="{{ $chatstatus->name }}" />
                     <label class="form__label form__label--floating" for="name">
                         {{ __('common.name') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="color"
-                        class="form__text"
-                        name="color"
-                        required
-                        type="text"
-                        value="{{ $chatstatus->color }}"
-                    />
+                    <input id="color" class="form__text" name="color" required type="text"
+                        value="{{ $chatstatus->color }}" />
                     <label class="form__label form__label--floating" for="color">
                         {{ __('common.color') }} (e.g. #ff0000)
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="icon"
-                        class="form__text"
-                        name="icon"
-                        placeholder="Enter Font Awesome code here..."
-                        required
-                        type="text"
-                        value="{{ $chatstatus->icon }}"
-                    />
+                    <input id="icon" class="form__text" name="icon"
+                        placeholder="Enter Font Awesome code here..." required type="text"
+                        value="{{ $chatstatus->icon }}" />
                     <label class="form__label form__label--floating" for="icon">
                         Font Awesome icon code (e.g. fas fa-comment-smile)
                     </label>

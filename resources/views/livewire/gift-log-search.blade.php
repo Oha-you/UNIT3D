@@ -4,14 +4,8 @@
         <div class="panel__actions">
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="sender"
-                        class="form__text"
-                        type="search"
-                        autocomplete="off"
-                        wire:model.live="sender"
-                        placeholder=" "
-                    />
+                    <input id="sender" class="form__text" type="search" autocomplete="off"
+                        wire:model.live="sender" placeholder=" " />
                     <label class="form__label form__label--floating" for="sender">
                         {{ __('user.sender') }}
                     </label>
@@ -19,14 +13,8 @@
             </div>
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="receiver"
-                        class="form__text"
-                        type="search"
-                        autocomplete="off"
-                        wire:model.live="receiver"
-                        placeholder=" "
-                    />
+                    <input id="receiver" class="form__text" type="search" autocomplete="off"
+                        wire:model.live="receiver" placeholder=" " />
                     <label class="form__label form__label--floating" for="receiver">
                         {{ __('bon.receiver') }}
                     </label>
@@ -34,14 +22,8 @@
             </div>
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="message"
-                        class="form__text"
-                        type="search"
-                        autocomplete="off"
-                        wire:model.live="message"
-                        placeholder=" "
-                    />
+                    <input id="message" class="form__text" type="search" autocomplete="off"
+                        wire:model.live="message" placeholder=" " />
                     <label class="form__label form__label--floating" for="message">
                         {{ __('common.message') }}
                     </label>
@@ -67,11 +49,15 @@
                 <tr>
                     <th wire:click="sortBy('sender_id')" role="columnheader button">
                         {{ __('user.sender') }}
-                        @include('livewire.includes._sort-icon', ['field' => 'sender_id'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'sender_id',
+                        ])
                     </th>
                     <th wire:click="sortBy('recipient_id')" role="columnheader button">
                         {{ __('bon.receiver') }}
-                        @include('livewire.includes._sort-icon', ['field' => 'recipient_id'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'recipient_id',
+                        ])
                     </th>
                     <th wire:click="sortBy('bon')" role="columnheader button">
                         {{ __('bon.points') }}
@@ -79,11 +65,15 @@
                     </th>
                     <th wire:click="sortBy('message')" role="columnheader button">
                         {{ __('common.message') }}
-                        @include('livewire.includes._sort-icon', ['field' => 'message'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'message',
+                        ])
                     </th>
                     <th wire:click="sortBy('created_at')" role="columnheader button">
                         {{ __('user.created-on') }}
-                        @include('livewire.includes._sort-icon', ['field' => 'created_at'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'created_at',
+                        ])
                     </th>
                 </tr>
             </thead>
@@ -107,10 +97,8 @@
                         <td>{{ $gift->bon }}</td>
                         <td>{{ $gift->message }}</td>
                         <td>
-                            <time
-                                datetime="{{ $gift->created_at }}"
-                                title="{{ $gift->created_at }}"
-                            >
+                            <time datetime="{{ $gift->created_at }}"
+                                title="{{ $gift->created_at }}">
                                 {{ $gift->created_at }}
                             </time>
                         </td>

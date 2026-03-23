@@ -7,10 +7,7 @@
 @endsection
 
 @section('meta')
-    <meta
-        name="description"
-        content="Possible leech cheaters - {{ __('staff.staff-dashboard') }}"
-    />
+    <meta name="description" content="Possible leech cheaters - {{ __('staff.staff-dashboard') }}" />
 @endsection
 
 @section('breadcrumbs')
@@ -45,18 +42,14 @@
                                 <x-user-tag :anon="false" :user="$cheater" />
                             </td>
                             <td>
-                                <time
-                                    datetime="{{ $cheater->created_at }}"
-                                    title="{{ $cheater->created_at }}"
-                                >
+                                <time datetime="{{ $cheater->created_at }}"
+                                    title="{{ $cheater->created_at }}">
                                     {{ $cheater->created_at ?? 'N/A' }}
                                 </time>
                             </td>
                             <td>
-                                <time
-                                    datetime="{{ $cheater->last_login }}"
-                                    title="{{ $cheater->last_login }}"
-                                >
+                                <time datetime="{{ $cheater->last_login }}"
+                                    title="{{ $cheater->last_login }}">
                                     {{ $cheater->last_login ?? 'N/A' }}
                                 </time>
                             </td>

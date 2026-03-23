@@ -7,10 +7,8 @@
 @endsection
 
 @section('meta')
-    <meta
-        name="description"
-        content="{{ __('user.profile-desc', ['user' => $user->username, 'title' => config('other.title')]) }}"
-    />
+    <meta name="description"
+        content="{{ __('user.profile-desc', ['user' => $user->username, 'title' => config('other.title')]) }}" />
 @endsection
 
 @section('breadcrumbs')
@@ -33,35 +31,26 @@
                 <div class="panel__actions">
                     @if (auth()->user()->is($user))
                         <div class="panel__action">
-                            <a
-                                href="{{ route('users.edit', ['user' => $user]) }}"
-                                class="form__button form__button--text"
-                            >
+                            <a href="{{ route('users.edit', ['user' => $user]) }}"
+                                class="form__button form__button--text">
                                 {{ __('common.edit') }}
                             </a>
                         </div>
                     @elseif (auth()->user()->group->is_modo)
                         <div class="panel__action">
-                            <a
-                                href="{{ route('staff.users.edit', ['user' => $user]) }}"
-                                class="form__button form__button--text"
-                            >
+                            <a href="{{ route('staff.users.edit', ['user' => $user]) }}"
+                                class="form__button form__button--text">
                                 {{ __('common.edit') }}
                             </a>
                         </div>
                         <div class="panel__action">
-                            <form
-                                action="{{ route('staff.users.destroy', ['user' => $user]) }}"
-                                method="POST"
-                                x-data="confirmation"
-                            >
+                            <form action="{{ route('staff.users.destroy', ['user' => $user]) }}"
+                                method="POST" x-data="confirmation">
                                 @csrf
                                 @method('DELETE')
-                                <button
-                                    x-on:click.prevent="confirmAction"
+                                <button x-on:click.prevent="confirmAction"
                                     data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete this user and all their associated records: ' . $user->username . '?') }}"
-                                    class="form__button form__button--text"
-                                >
+                                    class="form__button form__button--text">
                                     {{ __('common.delete') }}
                                 </button>
                             </form>
@@ -74,24 +63,14 @@
                             </button>
                             <dialog class="dialog" x-bind="dialogElement">
                                 <h3 class="dialog__heading">Report user: {{ $user->username }}</h3>
-                                <form
-                                    class="dialog__form"
-                                    method="POST"
+                                <form class="dialog__form" method="POST"
                                     action="{{ route('report_user', ['username' => $user->username]) }}"
-                                    x-bind="dialogForm"
-                                >
+                                    x-bind="dialogForm">
                                     @csrf
                                     <p class="form__group">
-                                        <textarea
-                                            id="report_reason"
-                                            class="form__textarea"
-                                            name="message"
-                                            required
-                                        ></textarea>
-                                        <label
-                                            class="form__label form__label--floating"
-                                            for="report_reason"
-                                        >
+                                        <textarea id="report_reason" class="form__textarea" name="message" required></textarea>
+                                        <label class="form__label form__label--floating"
+                                            for="report_reason">
                                             Reason
                                         </label>
                                     </p>
@@ -99,11 +78,8 @@
                                         <button class="form__button form__button--filled">
                                             {{ __('common.save') }}
                                         </button>
-                                        <button
-                                            formmethod="dialog"
-                                            formnovalidate
-                                            class="form__button form__button--outlined"
-                                        >
+                                        <button formmethod="dialog" formnovalidate
+                                            class="form__button form__button--outlined">
                                             {{ __('common.cancel') }}
                                         </button>
                                     </p>
@@ -118,45 +94,30 @@
                     <x-user-tag :user="$user" :anon="false" class="profile__username">
                         <x-slot:appendedIcons>
                             @if ($user->isOnline())
-                                <i
-                                    class="{{ config('other.font-awesome') }} fa-circle text-green"
-                                    title="{{ __('user.online') }}"
-                                ></i>
+                                <i class="{{ config('other.font-awesome') }} fa-circle text-green"
+                                    title="{{ __('user.online') }}"></i>
                             @else
-                                <i
-                                    class="{{ config('other.font-awesome') }} fa-circle text-red"
-                                    title="{{ __('user.offline') }}"
-                                ></i>
+                                <i class="{{ config('other.font-awesome') }} fa-circle text-red"
+                                    title="{{ __('user.offline') }}"></i>
                             @endif
                             <a
-                                href="{{ route('users.conversations.create', ['user' => auth()->user(), 'username' => $user->username]) }}"
-                            >
+                                href="{{ route('users.conversations.create', ['user' => auth()->user(), 'username' => $user->username]) }}">
                                 <i
-                                    class="{{ config('other.font-awesome') }} fa-envelope text-info"
-                                ></i>
+                                    class="{{ config('other.font-awesome') }} fa-envelope text-info"></i>
                             </a>
                             @if ($user->warnings()->active()->exists())
-                                <i
-                                    class="{{ config('other.font-awesome') }} fa-exclamation-circle text-orange"
-                                    aria-hidden="true"
-                                    title="{{ __('user.active-warning') }}"
-                                ></i>
+                                <i class="{{ config('other.font-awesome') }} fa-exclamation-circle text-orange"
+                                    aria-hidden="true" title="{{ __('user.active-warning') }}"></i>
                             @endif
                         </x-slot>
                     </x-user-tag>
-                    <time
-                        datetime="{{ $user->created_at }}"
-                        title="{{ $user->created_at }}"
-                        class="profile__registration"
-                    >
+                    <time datetime="{{ $user->created_at }}" title="{{ $user->created_at }}"
+                        class="profile__registration">
                         {{ __('user.registration-date') }}:
                         {{ $user->created_at?->format('Y-m-d') ?? 'N/A' }}
                     </time>
-                    <img
-                        src="{{ $user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $user]) }}"
-                        alt=""
-                        class="profile__avatar"
-                    />
+                    <img src="{{ $user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $user]) }}"
+                        alt="" class="profile__avatar" />
                     @if (auth()->user()->isAllowed($user, 'profile', 'show_profile_title') && $user->title)
                         <span class="profile__title">
                             {{ __('user.title') }}: {{ $user->title }}
@@ -177,12 +138,9 @@
                 <h2 class="panel__heading">{{ __('user.recent-achievements') }}</h2>
                 <div class="panel__body">
                     @forelse ($achievements->take(25) as $achievement)
-                        <img
-                            src="/img/badges/{{ $achievement->details->name }}.png"
-                            title="{{ $achievement->details->name }}"
-                            height="50px"
-                            alt="{{ $achievement->details->name }}"
-                        />
+                        <img src="/img/badges/{{ $achievement->details->name }}.png"
+                            title="{{ $achievement->details->name }}" height="50px"
+                            alt="{{ $achievement->details->name }}" />
                     @empty
                         No recent achievements.
                     @endforelse
@@ -199,27 +157,20 @@
                             @if ($user->followers()->where('users.id', '=', auth()->id())->exists())
                                 <form
                                     action="{{ route('users.followers.destroy', ['user' => $user]) }}"
-                                    method="POST"
-                                >
+                                    method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button
-                                        class="form__button form__button--text"
-                                        id="delete-follow-{{ $user->target_id }}"
-                                    >
+                                    <button class="form__button form__button--text"
+                                        id="delete-follow-{{ $user->target_id }}">
                                         {{ __('user.unfollow') }}
                                     </button>
                                 </form>
                             @else
-                                <form
-                                    action="{{ route('users.followers.store', ['user' => $user]) }}"
-                                    method="POST"
-                                >
+                                <form action="{{ route('users.followers.store', ['user' => $user]) }}"
+                                    method="POST">
                                     @csrf
-                                    <button
-                                        class="form__button form__button--text"
-                                        id="follow-user-{{ $user->id }}"
-                                    >
+                                    <button class="form__button form__button--text"
+                                        id="follow-user-{{ $user->id }}">
                                         {{ __('user.follow') }}
                                     </button>
                                 </form>
@@ -230,13 +181,10 @@
                 <div class="panel__body">
                     @forelse ($followers as $follower)
                         <a href="{{ route('users.show', ['user' => $follower]) }}">
-                            <img
-                                class="user-search__avatar"
-                                alt="{{ $follower->username }}"
+                            <img class="user-search__avatar" alt="{{ $follower->username }}"
                                 height="50px"
                                 src="{{ $follower->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $follower]) }}"
-                                title="{{ $follower->username }}"
-                            />
+                                title="{{ $follower->username }}" />
                         </a>
                     @empty
                         No recent followers
@@ -271,8 +219,7 @@
                                     <td>
                                         @if (auth()->user()->group->is_modo)
                                             <a
-                                                href="{{ route('staff.peers.index', ['ip' => $client->ip, 'groupBy' => 'user_ip']) }}"
-                                            >
+                                                href="{{ route('staff.peers.index', ['ip' => $client->ip, 'groupBy' => 'user_ip']) }}">
                                                 {{ $client->ip }}
                                             </a>
                                         @elseif (auth()->id() === $user->id)
@@ -281,25 +228,20 @@
                                     </td>
                                     <td>{{ $client->port }}</td>
                                     <td>
-                                        <time
-                                            datetime="{{ $client->created_at }}"
-                                            title="{{ $client->created_at }}"
-                                        >
+                                        <time datetime="{{ $client->created_at }}"
+                                            title="{{ $client->created_at }}">
                                             {{ $client->created_at?->diffForHumans() ?? 'N/A' }}
                                         </time>
                                     </td>
                                     <td>
-                                        <time
-                                            datetime="{{ $client->updated_at }}"
-                                            title="{{ $client->updated_at }}"
-                                        >
+                                        <time datetime="{{ $client->updated_at }}"
+                                            title="{{ $client->updated_at }}">
                                             {{ $client->updated_at?->diffForHumans() ?? 'N/A' }}
                                         </time>
                                     </td>
                                     <td>
                                         <a
-                                            href="{{ route('users.peers.index', ['user' => $user, 'ip' => $client->ip, 'port' => $client->port, 'client' => $client->agent]) }}"
-                                        >
+                                            href="{{ route('users.peers.index', ['user' => $user, 'ip' => $client->ip, 'port' => $client->port, 'client' => $client->agent]) }}">
                                             {{ $client->num_peers }}
                                         </a>
                                     </td>
@@ -311,8 +253,24 @@
                                             $connectable = false;
                                             if (config('announce.external_tracker.is_enabled')) {
                                                 $connectable = $client->connectable;
-                                            } elseif (cache()->has('peers:connectable:' . $client->ip . '-' . $client->port . '-' . $client->agent)) {
-                                                $connectable = cache()->get('peers:connectable:' . $client->ip . '-' . $client->port . '-' . $client->agent);
+                                            } elseif (
+                                                cache()->has(
+                                                    'peers:connectable:' .
+                                                        $client->ip .
+                                                        '-' .
+                                                        $client->port .
+                                                        '-' .
+                                                        $client->agent,
+                                                )
+                                            ) {
+                                                $connectable = cache()->get(
+                                                    'peers:connectable:' .
+                                                        $client->ip .
+                                                        '-' .
+                                                        $client->port .
+                                                        '-' .
+                                                        $client->agent,
+                                                );
                                             }
                                         @endphp
 
@@ -324,8 +282,7 @@
                             @empty
                                 <tr>
                                     <td
-                                        colspan="{{ \config('announce.connectable_check') === true ? 8 : 7 }}"
-                                    >
+                                        colspan="{{ \config('announce.connectable_check') === true ? 8 : 7 }}">
                                         No clients
                                     </td>
                                 </tr>
@@ -367,10 +324,8 @@
                                 <td>{{ $user->application->email }}</td>
                                 <td>{{ $user->application->type }}</td>
                                 <td>
-                                    <time
-                                        datetime="{{ $user->application->created_at }}"
-                                        title="{{ $user->application->created_at }}"
-                                    >
+                                    <time datetime="{{ $user->application->created_at }}"
+                                        title="{{ $user->application->created_at }}">
                                         {{ $user->application->created_at->diffForHumans() }}
                                     </time>
                                 </td>
@@ -378,16 +333,16 @@
                                     @switch($user->application->status)
                                         @case(\App\Enums\ModerationStatus::PENDING)
                                             <span class="application--pending">Pending</span>
+                                        @break
 
-                                            @break
                                         @case(\App\Enums\ModerationStatus::APPROVED)
                                             <span class="application--approved">Approved</span>
+                                        @break
 
-                                            @break
                                         @case(\App\Enums\ModerationStatus::REJECTED)
                                             <span class="application--rejected">Rejected</span>
+                                        @break
 
-                                            @break
                                         @default
                                             <span class="application--unknown">Unknown</span>
                                     @endswitch
@@ -395,10 +350,8 @@
                                 <td>
                                     <menu class="data-table__actions">
                                         <li class="data-table__action">
-                                            <a
-                                                class="form__button form__button--text"
-                                                href="{{ route('staff.applications.show', ['id' => $user->application->id]) }}"
-                                            >
+                                            <a class="form__button form__button--text"
+                                                href="{{ route('staff.applications.show', ['id' => $user->application->id]) }}">
                                                 {{ __('common.view') }}
                                             </a>
                                         </li>
@@ -411,7 +364,7 @@
             @endif
         @endif
 
-        @if (auth()->user()->group->is_modo ||auth()->user()->is($user))
+        @if (auth()->user()->group->is_modo || auth()->user()->is($user))
             <section class="panelV2">
                 <h2 class="panel__heading">{{ __('ticket.helpdesk') }}</h2>
                 <div class="data-table-wrapper">
@@ -427,9 +380,7 @@
                             @foreach ($user->tickets as $ticket)
                                 <tr>
                                     <td>
-                                        <a
-                                            href="{{ route('tickets.show', ['ticket' => $ticket]) }}"
-                                        >
+                                        <a href="{{ route('tickets.show', ['ticket' => $ticket]) }}">
                                             {{ $ticket->subject }}
                                         </a>
                                     </td>
@@ -455,7 +406,7 @@
             @include('user.profile.partials.bans', ['bans' => $user->bans])
         @endif
 
-        @if (auth()->user()->group->is_modo ||auth()->user()->is($user))
+        @if (auth()->user()->group->is_modo || auth()->user()->is($user))
             <livewire:user-warnings :user="$user" />
         @endif
 
@@ -466,39 +417,23 @@
                     <div class="panel__actions">
                         @if ($watch === null)
                             <div class="panel__action" x-data="dialog">
-                                <button
-                                    class="form__button form__button--text"
-                                    x-bind="showDialog"
-                                >
+                                <button class="form__button form__button--text" x-bind="showDialog">
                                     Watch
                                 </button>
                                 <dialog class="dialog" x-bind="dialogElement">
                                     <h3 class="dialog__heading">
                                         Watch user: {{ $user->username }}
                                     </h3>
-                                    <form
-                                        class="dialog__form"
-                                        method="POST"
+                                    <form class="dialog__form" method="POST"
                                         action="{{ route('staff.watchlist.store') }}"
-                                        x-bind="dialogForm"
-                                    >
+                                        x-bind="dialogForm">
                                         @csrf
-                                        <input
-                                            type="hidden"
-                                            name="user_id"
-                                            value="{{ $user->id }}"
-                                        />
+                                        <input type="hidden" name="user_id"
+                                            value="{{ $user->id }}" />
                                         <p class="form__group">
-                                            <textarea
-                                                id="watchlist_reason"
-                                                class="form__textarea"
-                                                name="message"
-                                                required
-                                            ></textarea>
-                                            <label
-                                                class="form__label form__label--floating"
-                                                for="watchlist_reason"
-                                            >
+                                            <textarea id="watchlist_reason" class="form__textarea" name="message" required></textarea>
+                                            <label class="form__label form__label--floating"
+                                                for="watchlist_reason">
                                                 Reason
                                             </label>
                                         </p>
@@ -506,11 +441,8 @@
                                             <button class="form__button form__button--filled">
                                                 {{ __('common.save') }}
                                             </button>
-                                            <button
-                                                formaction="dialog"
-                                                formnovalidate
-                                                class="form__button form__button--outlined"
-                                            >
+                                            <button formaction="dialog" formnovalidate
+                                                class="form__button form__button--outlined">
                                                 {{ __('common.cancel') }}
                                             </button>
                                         </p>
@@ -518,11 +450,9 @@
                                 </dialog>
                             </div>
                         @else
-                            <form
-                                class="panel__action"
+                            <form class="panel__action"
                                 action="{{ route('staff.watchlist.destroy', ['watchlist' => $watch]) }}"
-                                method="POST"
-                            >
+                                method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button class="form__button form__button--text">Unwatch</button>
@@ -552,10 +482,8 @@
                                     </td>
                                     <td>{{ $watch->message }}</td>
                                     <td>
-                                        <time
-                                            datetime="{{ $watch->created_at }}"
-                                            title="{{ $watch->created_at }}"
-                                        >
+                                        <time datetime="{{ $watch->created_at }}"
+                                            title="{{ $watch->created_at }}">
                                             {{ $watch->created_at }}
                                         </time>
                                     </td>
@@ -564,16 +492,12 @@
                                             <li class="data-table__action">
                                                 <form
                                                     action="{{ route('staff.watchlist.destroy', ['watchlist' => $watch]) }}"
-                                                    method="POST"
-                                                    x-data="confirmation"
-                                                >
+                                                    method="POST" x-data="confirmation">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button
-                                                        x-on:click.prevent="confirmAction"
+                                                    <button x-on:click.prevent="confirmAction"
                                                         data-b64-deletion-message="{{ base64_encode('Are you sure you want to unwatch this user: ' . $watch->user->username . '?') }}"
-                                                        class="form__button form__button--text"
-                                                    >
+                                                        class="form__button form__button--text">
                                                         Unwatch
                                                     </button>
                                                 </form>
@@ -590,7 +514,7 @@
     @endsection
 
     @section('sidebar')
-        @if (auth()->user()->group->is_modo ||auth()->user()->is($user))
+        @if (auth()->user()->group->is_modo || auth()->user()->is($user))
             <section class="panelV2">
                 <h2 class="panel__heading">Donations</h2>
                 <dl class="key-value">
@@ -599,12 +523,9 @@
                         <dd>
                             @if ($user->is_donor)
                                 <i
-                                    class="{{ config('other.font-awesome') }} fa-check text-green"
-                                ></i>
+                                    class="{{ config('other.font-awesome') }} fa-check text-green"></i>
                             @else
-                                <i
-                                    class="{{ config('other.font-awesome') }} fa-times text-red"
-                                ></i>
+                                <i class="{{ config('other.font-awesome') }} fa-times text-red"></i>
                             @endif
                         </dd>
                     </div>
@@ -613,12 +534,9 @@
                         <dd>
                             @if ($user->is_lifetime)
                                 <i
-                                    class="{{ config('other.font-awesome') }} fa-check text-green"
-                                ></i>
+                                    class="{{ config('other.font-awesome') }} fa-check text-green"></i>
                             @else
-                                <i
-                                    class="{{ config('other.font-awesome') }} fa-times text-red"
-                                ></i>
+                                <i class="{{ config('other.font-awesome') }} fa-times text-red"></i>
                             @endif
                         </dd>
                     </div>
@@ -672,8 +590,7 @@
                     <div class="key-value__group">
                         <dt>
                             <abbr
-                                title="{{ __('user.total-seedtime') }} ({{ __('user.all-torrents') }})"
-                            >
+                                title="{{ __('user.total-seedtime') }} ({{ __('user.all-torrents') }})">
                                 {{ __('user.total-seedtime') }}
                             </abbr>
                         </dt>
@@ -684,8 +601,7 @@
                     <div class="key-value__group">
                         <dt>
                             <abbr
-                                title="{{ __('user.avg-seedtime') }} ({{ __('user.per-torrent') }})"
-                            >
+                                title="{{ __('user.avg-seedtime') }} ({{ __('user.per-torrent') }})">
                                 {{ __('user.avg-seedtime') }}
                             </abbr>
                         </dt>
@@ -697,8 +613,7 @@
                     <div class="key-value__group">
                         <dt>
                             <abbr
-                                title="{{ __('user.seeding-size') }} ({{ __('user.all-torrents') }})"
-                            >
+                                title="{{ __('user.seeding-size') }} ({{ __('user.all-torrents') }})">
                                 {{ __('user.seeding-size') }}
                             </abbr>
                         </dt>
@@ -735,8 +650,7 @@
                         <div class="key-value__group">
                             <dt>
                                 <a
-                                    href="{{ route('users.history.index', ['user' => $user, 'downloaded' => 'include']) }}"
-                                >
+                                    href="{{ route('users.history.index', ['user' => $user, 'downloaded' => 'include']) }}">
                                     {{ __('user.total-downloads') }}
                                 </a>
                             </dt>
@@ -745,8 +659,7 @@
                         <div class="key-value__group">
                             <dt>
                                 <a
-                                    href="{{ route('users.peers.index', ['user' => $user, 'seeding' => 'include']) }}"
-                                >
+                                    href="{{ route('users.peers.index', ['user' => $user, 'seeding' => 'include']) }}">
                                     {{ __('user.total-seeding') }}
                                 </a>
                             </dt>
@@ -755,8 +668,7 @@
                         <div class="key-value__group">
                             <dt>
                                 <a
-                                    href="{{ route('users.peers.index', ['user' => $user, 'seeding' => 'exclude']) }}"
-                                >
+                                    href="{{ route('users.peers.index', ['user' => $user, 'seeding' => 'exclude']) }}">
                                     {{ __('user.total-leeching') }}
                                 </a>
                             </dt>
@@ -765,8 +677,7 @@
                         <div class="key-value__group">
                             <dt>
                                 <a
-                                    href="{{ route('users.peers.index', ['user' => $user, 'active' => 'exclude']) }}"
-                                >
+                                    href="{{ route('users.peers.index', ['user' => $user, 'active' => 'exclude']) }}">
                                     Total inactive peers
                                 </a>
                             </dt>
@@ -781,8 +692,7 @@
                         <div class="key-value__group">
                             <dt>
                                 <a
-                                    href="{{ route('torrents.index', ['uploader' => $user->username]) }}"
-                                >
+                                    href="{{ route('torrents.index', ['uploader' => $user->username]) }}">
                                     {{ __('user.total-uploads') }}
                                 </a>
                             </dt>
@@ -907,11 +817,9 @@
                             <dd>
                                 @if (null !== ($group = \App\Models\Group::query()->find($externalUser['group_id'])))
                                     <span class="user-tag">
-                                        <span
-                                            class="user-tag__link {{ $group->icon }}"
+                                        <span class="user-tag__link {{ $group->icon }}"
                                             style="color: {{ $group->color }}"
-                                            title="{{ $group->name }}"
-                                        >
+                                            title="{{ $group->name }}">
                                             {{ $group->name }}
                                         </span>
                                     </span>
@@ -927,7 +835,9 @@
                                     <summary style="cursor: pointer">
                                         {{ __('user.show-passkey') }}
                                     </summary>
-                                    <code><pre>{{ $externalUser['passkey'] }}</pre></code>
+                                    <code>
+                                        <pre>{{ $externalUser['passkey'] }}</pre>
+                                    </code>
                                     <span class="text-red">{{ __('user.passkey-warning') }}</span>
                                 </details>
                             </dd>
@@ -959,8 +869,7 @@
                                 @foreach ($externalUser['receive_seed_list_rates']['rates'] as $rate)
                                     <tr>
                                         <td
-                                            title="Updated at: {{ $lastUpdatedAt = \Illuminate\Support\Carbon::createFromTimestampUTC($rate['updated_at']) }} ({{ $lastUpdatedAt->diffForHumans() }})"
-                                        >
+                                            title="Updated at: {{ $lastUpdatedAt = \Illuminate\Support\Carbon::createFromTimestampUTC($rate['updated_at']) }} ({{ $lastUpdatedAt->diffForHumans() }})">
                                             {{ \number_format($rate['count'], 2, null, "\u{202F}") }}
                                         </td>
                                         <td>{{ $rate['window'] }}</td>
@@ -985,8 +894,7 @@
                                 @foreach ($externalUser['receive_leech_list_rates']['rates'] as $rate)
                                     <tr>
                                         <td
-                                            title="Updated at: {{ $lastUpdatedAt = \Illuminate\Support\Carbon::createFromTimestampUTC($rate['updated_at']) }} ({{ $lastUpdatedAt->diffForHumans() }})"
-                                        >
+                                            title="Updated at: {{ $lastUpdatedAt = \Illuminate\Support\Carbon::createFromTimestampUTC($rate['updated_at']) }} ({{ $lastUpdatedAt->diffForHumans() }})">
                                             {{ \number_format($rate['count'], 2, null, "\u{202F}") }}
                                         </td>
                                         <td>{{ $rate['window'] }}</td>
@@ -1030,7 +938,9 @@
                                 <summary style="cursor: pointer">
                                     {{ __('user.show-passkey') }}
                                 </summary>
-                                <code><pre>{{ $user->passkey }}</pre></code>
+                                <code>
+                                    <pre>{{ $user->passkey }}</pre>
+                                </code>
                                 <span class="text-red">{{ __('user.passkey-warning') }}</span>
                             </details>
                         </dd>
@@ -1055,13 +965,10 @@
                         </dt>
                         <dd>
                             @if ($user->two_factor_confirmed_at !== null)
-                                <i
-                                    class="{{ config('other.font-awesome') }} fa-lock text-green"
-                                ></i>
+                                <i class="{{ config('other.font-awesome') }} fa-lock text-green"></i>
                             @else
                                 <i
-                                    class="{{ config('other.font-awesome') }} fa-lock-open text-red"
-                                ></i>
+                                    class="{{ config('other.font-awesome') }} fa-lock-open text-red"></i>
                             @endif
                         </dd>
                     </div>
@@ -1071,11 +978,9 @@
                             @if ($user->last_login === null)
                                 N/A
                             @else
-                                <time
-                                    class="{{ $user->last_login }}"
+                                <time class="{{ $user->last_login }}"
                                     datetime="{{ $user->last_login }}"
-                                    title="{{ $user->last_login }}"
-                                >
+                                    title="{{ $user->last_login }}">
                                     {{ $user->last_login->diffForHumans() }}
                                 </time>
                             @endif
@@ -1087,11 +992,9 @@
                             @if ($user->last_action === null)
                                 N/A
                             @else
-                                <time
-                                    class="{{ $user->last_action }}"
+                                <time class="{{ $user->last_action }}"
                                     datetime="{{ $user->last_action }}"
-                                    title="{{ $user->last_action }}"
-                                >
+                                    title="{{ $user->last_action }}">
                                     {{ $user->last_action->diffForHumans() }}
                                 </time>
                             @endif
@@ -1102,12 +1005,9 @@
                         <dd>
                             @if ($user->can_upload ?? $user->group->can_upload)
                                 <i
-                                    class="{{ config('other.font-awesome') }} fa-check text-green"
-                                ></i>
+                                    class="{{ config('other.font-awesome') }} fa-check text-green"></i>
                             @else
-                                <i
-                                    class="{{ config('other.font-awesome') }} fa-times text-red"
-                                ></i>
+                                <i class="{{ config('other.font-awesome') }} fa-times text-red"></i>
                             @endif
                         </dd>
                     </div>
@@ -1116,12 +1016,9 @@
                         <dd>
                             @if ($user->can_download == 1)
                                 <i
-                                    class="{{ config('other.font-awesome') }} fa-check text-green"
-                                ></i>
+                                    class="{{ config('other.font-awesome') }} fa-check text-green"></i>
                             @else
-                                <i
-                                    class="{{ config('other.font-awesome') }} fa-times text-red"
-                                ></i>
+                                <i class="{{ config('other.font-awesome') }} fa-times text-red"></i>
                             @endif
                         </dd>
                     </div>
@@ -1130,12 +1027,9 @@
                         <dd>
                             @if ($user->can_comment ?? $user->group->can_comment)
                                 <i
-                                    class="{{ config('other.font-awesome') }} fa-check text-green"
-                                ></i>
+                                    class="{{ config('other.font-awesome') }} fa-check text-green"></i>
                             @else
-                                <i
-                                    class="{{ config('other.font-awesome') }} fa-times text-red"
-                                ></i>
+                                <i class="{{ config('other.font-awesome') }} fa-times text-red"></i>
                             @endif
                         </dd>
                     </div>
@@ -1144,12 +1038,9 @@
                         <dd>
                             @if ($user->can_request ?? $user->group->can_request)
                                 <i
-                                    class="{{ config('other.font-awesome') }} fa-check text-green"
-                                ></i>
+                                    class="{{ config('other.font-awesome') }} fa-check text-green"></i>
                             @else
-                                <i
-                                    class="{{ config('other.font-awesome') }} fa-times text-red"
-                                ></i>
+                                <i class="{{ config('other.font-awesome') }} fa-times text-red"></i>
                             @endif
                         </dd>
                     </div>
@@ -1158,12 +1049,9 @@
                         <dd>
                             @if ($user->can_chat ?? $user->group->can_chat)
                                 <i
-                                    class="{{ config('other.font-awesome') }} fa-check text-green"
-                                ></i>
+                                    class="{{ config('other.font-awesome') }} fa-check text-green"></i>
                             @else
-                                <i
-                                    class="{{ config('other.font-awesome') }} fa-times text-red"
-                                ></i>
+                                <i class="{{ config('other.font-awesome') }} fa-times text-red"></i>
                             @endif
                         </dd>
                     </div>
@@ -1172,12 +1060,9 @@
                         <dd>
                             @if (($user->can_invite ?? $user->group->can_invite) && $user->two_factor_confirmed_at !== null)
                                 <i
-                                    class="{{ config('other.font-awesome') }} fa-check text-green"
-                                ></i>
+                                    class="{{ config('other.font-awesome') }} fa-check text-green"></i>
                             @else
-                                <i
-                                    class="{{ config('other.font-awesome') }} fa-times text-red"
-                                ></i>
+                                <i class="{{ config('other.font-awesome') }} fa-times text-red"></i>
                             @endif
                         </dd>
                     </div>
@@ -1200,57 +1085,33 @@
                     @if (auth()->user()->isNot($user))
                         <div class="panel__actions">
                             <div class="panel__action" x-data="dialog">
-                                <button
-                                    class="form__button form__button--text"
-                                    x-bind="showDialog"
-                                >
+                                <button class="form__button form__button--text" x-bind="showDialog">
                                     Gift BON
                                 </button>
                                 <dialog class="dialog" x-bind="dialogElement">
                                     <h3 class="dialog__heading">
                                         Gift BON to: {{ $user->username }}
                                     </h3>
-                                    <form
-                                        class="dialog__form"
-                                        method="POST"
+                                    <form class="dialog__form" method="POST"
                                         action="{{ route('users.gifts.store', ['user' => auth()->user()]) }}"
-                                        x-bind="dialogForm"
-                                    >
+                                        x-bind="dialogForm">
                                         @csrf
-                                        <input
-                                            type="hidden"
-                                            name="recipient_username"
-                                            value="{{ $user->username }}"
-                                        />
+                                        <input type="hidden" name="recipient_username"
+                                            value="{{ $user->username }}" />
                                         <p class="form__group">
-                                            <input
-                                                id="bon"
-                                                class="form__text"
-                                                name="bon"
-                                                type="text"
-                                                pattern="[0-9]*"
-                                                inputmode="numeric"
-                                                placeholder=" "
-                                            />
-                                            <label
-                                                class="form__label form__label--floating"
-                                                for="bon"
-                                            >
+                                            <input id="bon" class="form__text" name="bon"
+                                                type="text" pattern="[0-9]*" inputmode="numeric"
+                                                placeholder=" " />
+                                            <label class="form__label form__label--floating"
+                                                for="bon">
                                                 {{ __('bon.amount') }}
                                             </label>
                                         </p>
 
                                         <p class="form__group">
-                                            <textarea
-                                                id="message"
-                                                class="form__textarea"
-                                                name="message"
-                                                placeholder=" "
-                                            ></textarea>
-                                            <label
-                                                class="form__label form__label--floating"
-                                                for="message"
-                                            >
+                                            <textarea id="message" class="form__textarea" name="message" placeholder=" "></textarea>
+                                            <label class="form__label form__label--floating"
+                                                for="message">
                                                 {{ __('pm.message') }}
                                             </label>
                                         </p>
@@ -1258,11 +1119,8 @@
                                             <button class="form__button form__button--filled">
                                                 {{ __('bon.gift') }}
                                             </button>
-                                            <button
-                                                formmethod="dialog"
-                                                formnovalidate
-                                                class="form__button form__button--outlined"
-                                            >
+                                            <button formmethod="dialog" formnovalidate
+                                                class="form__button form__button--outlined">
                                                 {{ __('common.cancel') }}
                                             </button>
                                         </p>
@@ -1405,8 +1263,7 @@
                     <div class="key-value__group">
                         <dt>
                             <a
-                                href="{{ route('requests.index', ['requestor' => $user->username]) }}"
-                            >
+                                href="{{ route('requests.index', ['requestor' => $user->username]) }}">
                                 {{ __('user.requested') }}
                             </a>
                         </dt>

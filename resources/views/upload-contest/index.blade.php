@@ -29,41 +29,33 @@
                                 </a>
                             </td>
                             <td>
-                                <time
-                                    datetime="{{ $uploadContest->starts_at }}"
-                                    title="{{ $uploadContest->starts_at }}"
-                                >
+                                <time datetime="{{ $uploadContest->starts_at }}"
+                                    title="{{ $uploadContest->starts_at }}">
                                     {{ $uploadContest->starts_at->startOfDay() }}
                                 </time>
                             </td>
                             <td>
-                                <time
-                                    datetime="{{ $uploadContest->ends_at }}"
-                                    title="{{ $uploadContest->ends_at }}"
-                                >
+                                <time datetime="{{ $uploadContest->ends_at }}"
+                                    title="{{ $uploadContest->ends_at }}">
                                     {{ $uploadContest->ends_at->endOfDay() }}
                                 </time>
                             </td>
                             <td>
                                 @if ($uploadContest->active)
                                     <i
-                                        class="{{ config('other.font-awesome') }} fa-check text-green"
-                                    ></i>
+                                        class="{{ config('other.font-awesome') }} fa-check text-green"></i>
                                 @else
                                     <i
-                                        class="{{ config('other.font-awesome') }} fa-times text-red"
-                                    ></i>
+                                        class="{{ config('other.font-awesome') }} fa-times text-red"></i>
                                 @endif
                             </td>
                             <td>
                                 @if ($uploadContest->awarded)
                                     <i
-                                        class="{{ config('other.font-awesome') }} fa-check text-green"
-                                    ></i>
+                                        class="{{ config('other.font-awesome') }} fa-check text-green"></i>
                                 @else
                                     <i
-                                        class="{{ config('other.font-awesome') }} fa-times text-red"
-                                    ></i>
+                                        class="{{ config('other.font-awesome') }} fa-times text-red"></i>
                                 @endif
                             </td>
                         </tr>

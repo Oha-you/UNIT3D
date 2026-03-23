@@ -3,36 +3,22 @@
         <header class="panel__header">
             <h2 class="panel__heading">UNIT3D backup manager</h2>
             <div class="panel__actions">
-                <button
-                    id="create-backup"
-                    class="panel__action form__button form__button--text"
-                    x-on:click="backup()"
-                >
+                <button id="create-backup" class="panel__action form__button form__button--text"
+                    x-on:click="backup()">
                     {{ __('backup.create_a_new_backup') }}
                 </button>
-                <a
-                    class="panel__action form__button form__button--text"
-                    id="create-backup-only-db"
-                    x-on:click.prevent="backup('only-db')"
-                >
+                <a class="panel__action form__button form__button--text" id="create-backup-only-db"
+                    x-on:click.prevent="backup('only-db')">
                     {{ __('backup.create_a_new_db_backup') }}
                 </a>
-                <a
-                    class="panel__action form__button form__button--text"
-                    id="create-backup-only-files"
-                    x-on:click.prevent="backup('only-files')"
-                >
+                <a class="panel__action form__button form__button--text"
+                    id="create-backup-only-files" x-on:click.prevent="backup('only-files')">
                     {{ __('backup.create_a_new_files_backup') }}
                 </a>
-                <button
-                    class="form__standard-icon-button"
-                    wire:loading.attr="disabled"
-                    wire:click="$refresh"
-                >
-                    <i
-                        class="{{ config('other.font-awesome') }} fa-sync"
-                        wire:loading.class="fa-spin"
-                    ></i>
+                <button class="form__standard-icon-button" wire:loading.attr="disabled"
+                    wire:click="$refresh">
+                    <i class="{{ config('other.font-awesome') }} fa-sync"
+                        wire:loading.class="fa-spin"></i>
                 </button>
             </div>
         </header>
@@ -54,12 +40,10 @@
                             <td>
                                 @if ($backupStatus['healthy'])
                                     <i
-                                        class="{{ config('other.font-awesome') }} fa-check-circle text-success"
-                                    ></i>
+                                        class="{{ config('other.font-awesome') }} fa-check-circle text-success"></i>
                                 @else
                                     <i
-                                        class="{{ config('other.font-awesome') }} fa-times-circle text-danger"
-                                    ></i>
+                                        class="{{ config('other.font-awesome') }} fa-times-circle text-danger"></i>
                                 @endif
                             </td>
                             <td>{{ $backupStatus['amount'] }}</td>
@@ -94,19 +78,14 @@
                             <td>
                                 <menu class="data-table__actions">
                                     <li class="data-table__action">
-                                        <a
-                                            class="form__button form__button--text"
-                                            target="_blank"
-                                            wire:click.prevent="downloadBackup('{{ $backup['path'] }}')"
-                                        >
+                                        <a class="form__button form__button--text" target="_blank"
+                                            wire:click.prevent="downloadBackup('{{ $backup['path'] }}')">
                                             {{ __('common.download') }}
                                         </a>
                                     </li>
                                     <li class="data-table__action" x-data="dialog">
-                                        <button
-                                            class="form__button form__button--text"
-                                            x-bind="showDialog"
-                                        >
+                                        <button class="form__button form__button--text"
+                                            x-bind="showDialog">
                                             {{ __('common.delete') }}
                                         </button>
                                         <dialog class="dialog" x-bind="dialogElement">
@@ -120,17 +99,12 @@
                                                 <p class="form__group">
                                                     <button
                                                         wire:click="deleteBackup({{ $loop->index }}); $refresh;"
-                                                        formmethod="dialog"
-                                                        formnovalidate
-                                                        class="form__button form__button--filled"
-                                                    >
+                                                        formmethod="dialog" formnovalidate
+                                                        class="form__button form__button--filled">
                                                         {{ __('common.delete') }}
                                                     </button>
-                                                    <button
-                                                        formmethod="dialog"
-                                                        formnovalidate
-                                                        class="form__button form__button--outlined"
-                                                    >
+                                                    <button formmethod="dialog" formnovalidate
+                                                        class="form__button form__button--outlined">
                                                         {{ __('common.cancel') }}
                                                     </button>
                                                 </p>
@@ -150,31 +124,33 @@
         </div>
     </section>
     <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
-        document.addEventListener('livewire:init', function () {
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
-          })
-          @this.on('showErrorToast', function (message) {
-            Toast.fire({
-              text: message,
-              duration: 10000,
-              gravity: 'bottom',
-              position: 'right',
-              backgroundColor: 'red',
+        document.addEventListener('livewire:init', function() {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
             })
-          })
+            @this.on('showErrorToast', function(message) {
+                Toast.fire({
+                    text: message,
+                    duration: 10000,
+                    gravity: 'bottom',
+                    position: 'right',
+                    backgroundColor: 'red',
+                })
+            })
         })
+
         function backup(option = '') {
-          @this.createBackup(option)
-          Swal.fire({
-            title: '<strong style=" color: rgb(17,17,17);">Success</strong>',
-            icon: 'success',
-            html: 'Creating a new backup in the background...' + (option ? ' (' + option + ')' : ''),
-            showCloseButton: true,
-          })
+            @this.createBackup(option)
+            Swal.fire({
+                title: '<strong style=" color: rgb(17,17,17);">Success</strong>',
+                icon: 'success',
+                html: 'Creating a new backup in the background...' + (option ? ' (' + option +
+                    ')' : ''),
+                showCloseButton: true,
+            })
         }
     </script>
 </div>

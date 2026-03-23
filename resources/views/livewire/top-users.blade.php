@@ -25,10 +25,7 @@
                     @foreach ($this->uploaders as $uploader)
                         <article class="user-stat-card">
                             <h3 class="user-stat-card__username">
-                                <x-user-tag
-                                    :user="$uploader->user"
-                                    :anon="$uploader->user->privacy?->private_profile"
-                                />
+                                <x-user-tag :user="$uploader->user" :anon="$uploader->user->privacy?->private_profile" />
                                 <div title="Place" class="top-users__place">
                                     {{ Number::ordinal($loop->iteration) }}
                                 </div>
@@ -36,31 +33,21 @@
                             <h4 class="user-stat-card__stat">{{ $uploader->value }} uploads</h4>
 
                             @if ($uploader->user->privacy?->private_profile)
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ url('img/profile.png') }}"
-                                    loading="lazy"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ url('img/profile.png') }}" loading="lazy" />
                             @else
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ $uploader->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $uploader->user]) }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ $uploader->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $uploader->user]) }}" />
                             @endif
                         </article>
                     @endforeach
+                @break
 
-                    @break
                 @case('downloaders')
                     @foreach ($this->downloaders as $downloader)
                         <article class="user-stat-card">
                             <h3 class="user-stat-card__username">
-                                <x-user-tag
-                                    :user="$downloader->user"
-                                    :anon="$downloader->user->privacy?->private_profile"
-                                />
+                                <x-user-tag :user="$downloader->user" :anon="$downloader->user->privacy?->private_profile" />
                                 <div title="Place" class="top-users__place">
                                     {{ Number::ordinal($loop->iteration) }}
                                 </div>
@@ -70,30 +57,21 @@
                             </h4>
 
                             @if ($downloader->user->privacy?->private_profile)
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ url('img/profile.png') }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ url('img/profile.png') }}" />
                             @else
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ $downloader->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $downloader->user]) }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ $downloader->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $downloader->user]) }}" />
                             @endif
                         </article>
                     @endforeach
+                @break
 
-                    @break
                 @case('uploaded')
                     @foreach ($this->uploaded as $upload)
                         <article class="user-stat-card">
                             <h3 class="user-stat-card__username">
-                                <x-user-tag
-                                    :user="$upload"
-                                    :anon="$upload->privacy?->private_profile"
-                                />
+                                <x-user-tag :user="$upload" :anon="$upload->privacy?->private_profile" />
                                 <div title="Place" class="top-users__place">
                                     {{ Number::ordinal($loop->iteration) }}
                                 </div>
@@ -104,30 +82,21 @@
                             </h4>
 
                             @if ($upload->privacy?->private_profile)
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ url('img/profile.png') }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ url('img/profile.png') }}" />
                             @else
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ $upload->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $upload]) }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ $upload->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $upload]) }}" />
                             @endif
                         </article>
                     @endforeach
+                @break
 
-                    @break
                 @case('downloaded')
                     @foreach ($this->downloaded as $download)
                         <article class="user-stat-card">
                             <h3 class="user-stat-card__username">
-                                <x-user-tag
-                                    :user="$download"
-                                    :anon="$download->privacy?->private_profile"
-                                />
+                                <x-user-tag :user="$download" :anon="$download->privacy?->private_profile" />
                                 <div title="Place" class="top-users__place">
                                     {{ Number::ordinal($loop->iteration) }}
                                 </div>
@@ -138,30 +107,21 @@
                             </h4>
 
                             @if ($download->privacy?->private_profile)
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ url('img/profile.png') }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ url('img/profile.png') }}" />
                             @else
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ $download->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $download]) }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ $download->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $download]) }}" />
                             @endif
                         </article>
                     @endforeach
+                @break
 
-                    @break
                 @case('seeders')
                     @foreach ($this->seeders as $seeder)
                         <article class="user-stat-card">
                             <h3 class="user-stat-card__username">
-                                <x-user-tag
-                                    :user="$seeder->user"
-                                    :anon="$seeder->user->privacy?->private_profile"
-                                />
+                                <x-user-tag :user="$seeder->user" :anon="$seeder->user->privacy?->private_profile" />
                                 <div title="Place" class="top-users__place">
                                     {{ Number::ordinal($loop->iteration) }}
                                 </div>
@@ -169,30 +129,21 @@
                             <h4 class="user-stat-card__stat">{{ $seeder->value }} seeds</h4>
 
                             @if ($seeder->user->privacy?->private_profile)
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ url('img/profile.png') }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ url('img/profile.png') }}" />
                             @else
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ $seeder->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $seeder->user]) }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ $seeder->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $seeder->user]) }}" />
                             @endif
                         </article>
                     @endforeach
+                @break
 
-                    @break
                 @case('seedtime')
                     @foreach ($this->seedtimes as $seedtime)
                         <article class="user-stat-card">
                             <h3 class="user-stat-card__username">
-                                <x-user-tag
-                                    :user="$seedtime"
-                                    :anon="$seedtime->privacy?->private_profile"
-                                />
+                                <x-user-tag :user="$seedtime" :anon="$seedtime->privacy?->private_profile" />
                                 <div title="Place" class="top-users__place">
                                     {{ Number::ordinal($loop->iteration) }}
                                 </div>
@@ -203,30 +154,21 @@
                             </h4>
 
                             @if ($seedtime->privacy?->private_profile)
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ url('img/profile.png') }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ url('img/profile.png') }}" />
                             @else
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ $seedtime->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $seedtime]) }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ $seedtime->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $seedtime]) }}" />
                             @endif
                         </article>
                     @endforeach
+                @break
 
-                    @break
                 @case('served')
                     @foreach ($this->served as $serve)
                         <article class="user-stat-card">
                             <h3 class="user-stat-card__username">
-                                <x-user-tag
-                                    :user="$serve"
-                                    :anon="$serve->privacy?->private_profile"
-                                />
+                                <x-user-tag :user="$serve" :anon="$serve->privacy?->private_profile" />
                                 <div title="Place" class="top-users__place">
                                     {{ Number::ordinal($loop->iteration) }}
                                 </div>
@@ -236,30 +178,21 @@
                             </h4>
 
                             @if ($serve->privacy?->private_profile)
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ url('img/profile.png') }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ url('img/profile.png') }}" />
                             @else
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ $serve->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $serve]) }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ $serve->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $serve]) }}" />
                             @endif
                         </article>
                     @endforeach
+                @break
 
-                    @break
                 @case('commenters')
                     @foreach ($this->commenters as $commenter)
                         <article class="user-stat-card">
                             <h3 class="user-stat-card__username">
-                                <x-user-tag
-                                    :user="$commenter->user"
-                                    :anon="$commenter->user->privacy?->private_profile"
-                                />
+                                <x-user-tag :user="$commenter->user" :anon="$commenter->user->privacy?->private_profile" />
                                 <div title="Place" class="top-users__place">
                                     {{ Number::ordinal($loop->iteration) }}
                                 </div>
@@ -269,30 +202,21 @@
                             </h4>
 
                             @if ($commenter->user->privacy?->private_profile)
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ url('img/profile.png') }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ url('img/profile.png') }}" />
                             @else
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ $commenter->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $commenter->user]) }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ $commenter->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $commenter->user]) }}" />
                             @endif
                         </article>
                     @endforeach
+                @break
 
-                    @break
                 @case('posters')
                     @foreach ($this->posters as $poster)
                         <article class="user-stat-card">
                             <h3 class="user-stat-card__username">
-                                <x-user-tag
-                                    :user="$poster->user"
-                                    :anon="$poster->user->privacy?->private_profile"
-                                />
+                                <x-user-tag :user="$poster->user" :anon="$poster->user->privacy?->private_profile" />
                                 <div title="Place" class="top-users__place">
                                     {{ Number::ordinal($loop->iteration) }}
                                 </div>
@@ -300,30 +224,21 @@
                             <h4 class="user-stat-card__stat">{{ $poster->value }} posts made</h4>
 
                             @if ($poster->user->privacy?->private_profile)
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ url('img/profile.png') }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ url('img/profile.png') }}" />
                             @else
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ $poster->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $poster->user]) }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ $poster->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $poster->user]) }}" />
                             @endif
                         </article>
                     @endforeach
+                @break
 
-                    @break
                 @case('thanked')
                     @foreach ($this->thanked as $thanked)
                         <article class="user-stat-card">
                             <h3 class="user-stat-card__username">
-                                <x-user-tag
-                                    :user="$thanked->user"
-                                    :anon="$thanked->user->privacy?->private_profile"
-                                />
+                                <x-user-tag :user="$thanked->user" :anon="$thanked->user->privacy?->private_profile" />
                                 <div title="Place" class="top-users__place">
                                     {{ Number::ordinal($loop->iteration) }}
                                 </div>
@@ -333,30 +248,21 @@
                             </h4>
 
                             @if ($thanked->user->privacy?->private_profile)
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ url('img/profile.png') }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ url('img/profile.png') }}" />
                             @else
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ $thanked->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $thanked->user]) }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ $thanked->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $thanked->user]) }}" />
                             @endif
                         </article>
                     @endforeach
+                @break
 
-                    @break
                 @case('thankers')
                     @foreach ($this->thankers as $thanker)
                         <article class="user-stat-card">
                             <h3 class="user-stat-card__username">
-                                <x-user-tag
-                                    :user="$thanker->user"
-                                    :anon="$thanker->user->privacy?->private_profile"
-                                />
+                                <x-user-tag :user="$thanker->user" :anon="$thanker->user->privacy?->private_profile" />
                                 <div title="Place" class="top-users__place">
                                     {{ Number::ordinal($loop->iteration) }}
                                 </div>
@@ -366,30 +272,21 @@
                             </h4>
 
                             @if ($thanker->user->privacy?->private_profile)
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ url('img/profile.png') }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ url('img/profile.png') }}" />
                             @else
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ $thanker->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $thanker->user]) }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ $thanker->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $thanker->user]) }}" />
                             @endif
                         </article>
                     @endforeach
+                @break
 
-                    @break
                 @case('personals')
                     @foreach ($this->personals as $personal)
                         <article class="user-stat-card">
                             <h3 class="user-stat-card__username">
-                                <x-user-tag
-                                    :user="$personal->user"
-                                    :anon="$personal->user->privacy?->private_profile"
-                                />
+                                <x-user-tag :user="$personal->user" :anon="$personal->user->privacy?->private_profile" />
                                 <div title="Place" class="top-users__place">
                                     {{ Number::ordinal($loop->iteration) }}
                                 </div>
@@ -399,22 +296,16 @@
                             </h4>
 
                             @if ($personal->user->privacy?->private_profile)
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ url('img/profile.png') }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ url('img/profile.png') }}" />
                             @else
-                                <img
-                                    class="user-stat-card__avatar"
-                                    alt=""
-                                    src="{{ $personal->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $personal->user]) }}"
-                                />
+                                <img class="user-stat-card__avatar" alt=""
+                                    src="{{ $personal->user->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $personal->user]) }}" />
                             @endif
                         </article>
                     @endforeach
+                @break
 
-                    @break
             @endswitch
         </div>
     </div>

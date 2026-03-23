@@ -8,10 +8,8 @@
 @endsection
 
 @section('meta')
-    <meta
-        name="description"
-        content="{{ __('backup.backup') }} {{ __('backup.manager') }} - {{ __('staff.staff-dashboard') }}"
-    />
+    <meta name="description"
+        content="{{ __('backup.backup') }} {{ __('backup.manager') }} - {{ __('staff.staff-dashboard') }}" />
 @endsection
 
 @section('breadcrumbs')

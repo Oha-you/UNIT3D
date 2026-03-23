@@ -39,85 +39,40 @@
                     <tbody>
                         <tr>
                             <td>
-                                <input
-                                    type="number"
-                                    name="position"
-                                    value=""
-                                    placeholder="0"
-                                    class="form__text"
-                                />
+                                <input type="number" name="position" value="" placeholder="0"
+                                    class="form__text" />
                             </td>
                             <td>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    value=""
-                                    placeholder="Name"
-                                    class="form__text"
-                                />
+                                <input type="text" name="name" value="" placeholder="Name"
+                                    class="form__text" />
                             </td>
                             <td>
-                                <textarea
-                                    name="description"
-                                    placeholder="Description"
-                                    class="form__textarea"
-                                ></textarea>
+                                <textarea name="description" placeholder="Description" class="form__textarea"></textarea>
                             </td>
                             <td>
-                                <input
-                                    type="number"
-                                    step="1.00"
-                                    name="cost"
-                                    value=""
-                                    placeholder="Cost"
-                                    class="form__text"
-                                />
+                                <input type="number" step="1.00" name="cost" value=""
+                                    placeholder="Cost" class="form__text" />
                             </td>
                             <td>
-                                <input
-                                    type="number"
-                                    name="upload_value"
-                                    value=""
-                                    placeholder="nullable"
-                                    class="form__text"
-                                />
+                                <input type="number" name="upload_value" value=""
+                                    placeholder="nullable" class="form__text" />
                             </td>
                             <td>
-                                <input
-                                    type="number"
-                                    name="invite_value"
-                                    value=""
-                                    placeholder="nullable"
-                                    class="form__text"
-                                />
+                                <input type="number" name="invite_value" value=""
+                                    placeholder="nullable" class="form__text" />
                             </td>
                             <td>
-                                <input
-                                    type="number"
-                                    name="bonus_value"
-                                    value=""
-                                    placeholder="nullable"
-                                    class="form__text"
-                                />
+                                <input type="number" name="bonus_value" value=""
+                                    placeholder="nullable" class="form__text" />
                             </td>
                             <td>
-                                <input
-                                    type="number"
-                                    name="donor_value"
-                                    value=""
-                                    placeholder="(empty for lifetime)"
-                                    class="form__text"
-                                />
+                                <input type="number" name="donor_value" value=""
+                                    placeholder="(empty for lifetime)" class="form__text" />
                             </td>
                             <td>
                                 <input name="is_active" type="hidden" value="0" />
-                                <input
-                                    id="is_active"
-                                    class="form__checkbox"
-                                    name="is_active"
-                                    type="checkbox"
-                                    value="1"
-                                />
+                                <input id="is_active" class="form__checkbox" name="is_active"
+                                    type="checkbox" value="1" />
                             </td>
                         </tr>
                     </tbody>

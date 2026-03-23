@@ -30,95 +30,52 @@
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="search"
-                        class="form__text"
-                        name="search"
-                        placeholder=" "
-                        type="text"
-                    />
+                    <input id="search" class="form__text" name="search" placeholder=" "
+                        type="text" />
                     <label class="form__label form__label--floating" for="search">
                         {{ __('torrent.torrent') }} {{ __('torrent.name') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="description"
-                        type="text"
-                        class="form__text"
-                        name="description"
-                        placeholder=" "
-                    />
+                    <input id="description" type="text" class="form__text" name="description"
+                        placeholder=" " />
                     <label class="form__label form__label--floating" for="description">
                         {{ __('torrent.torrent') }} {{ __('torrent.description') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="uploader"
-                        type="text"
-                        class="form__text"
-                        name="uploader"
-                        placeholder=" "
-                    />
+                    <input id="uploader" type="text" class="form__text" name="uploader"
+                        placeholder=" " />
                     <label class="form__label form__label--floating" for="uploader">
                         {{ __('torrent.torrent') }} {{ __('torrent.uploader') }}
                     </label>
                 </p>
                 <div class="form__group--horizontal">
                     <p class="form__group">
-                        <input
-                            id="autotmdb"
-                            class="form__text"
-                            inputmode="numeric"
-                            name="tmdb"
-                            pattern="[0-9]*"
-                            placeholder=" "
-                            type="text"
-                        />
+                        <input id="autotmdb" class="form__text" inputmode="numeric" name="tmdb"
+                            pattern="[0-9]*" placeholder=" " type="text" />
                         <label class="form__label form__label--floating" for="autotmdb">
                             TMDB ID
                         </label>
                     </p>
                     <p class="form__group">
-                        <input
-                            id="autoimdb"
-                            class="form__text"
-                            inputmode="numeric"
-                            name="imdb"
-                            pattern="[0-9]*"
-                            placeholder=" "
-                            type="text"
-                        />
+                        <input id="autoimdb" class="form__text" inputmode="numeric" name="imdb"
+                            pattern="[0-9]*" placeholder=" " type="text" />
                         <label class="form__label form__label--floating" for="autoimdb">
                             IMDB ID
                         </label>
                     </p>
                     <p class="form__group">
-                        <input
-                            id="autotvdb"
-                            class="form__text"
-                            inputmode="numeric"
-                            name="tvdb"
-                            pattern="[0-9]*"
-                            placeholder=" "
-                            type="text"
-                        />
+                        <input id="autotvdb" class="form__text" inputmode="numeric" name="tvdb"
+                            pattern="[0-9]*" placeholder=" " type="text" />
                         <label class="form__label form__label--floating" for="autotvdb">
                             TVDB ID
                         </label>
                     </p>
                     <p class="form__group">
                         <input type="hidden" name="mal" value="0" />
-                        <input
-                            id="automal"
-                            class="form__text"
-                            inputmode="numeric"
-                            name="mal"
-                            pattern="[0-9]*"
-                            placeholder=" "
-                            type="text"
-                        />
+                        <input id="automal" class="form__text" inputmode="numeric" name="mal"
+                            pattern="[0-9]*" placeholder=" " type="text" />
                         <label class="form__label form__label--floating" for="automal">
                             MAL ID
                         </label>
@@ -132,13 +89,9 @@
                                 @foreach ($categories as $category)
                                     <p class="form__group">
                                         <label class="form__label">
-                                            <input
-                                                id="{{ $category->name }}"
-                                                class="form__checkbox"
-                                                name="categories[]"
-                                                type="checkbox"
-                                                value="{{ $category->id }}"
-                                            />
+                                            <input id="{{ $category->name }}" class="form__checkbox"
+                                                name="categories[]" type="checkbox"
+                                                value="{{ $category->id }}" />
                                             {{ $category->name }}
                                         </label>
                                     </p>
@@ -153,13 +106,9 @@
                                 @foreach ($types as $type)
                                     <p class="form__group">
                                         <label class="form__label">
-                                            <input
-                                                id="{{ $type->name }}"
-                                                class="form__checkbox"
-                                                name="types[]"
-                                                type="checkbox"
-                                                value="{{ $type->id }}"
-                                            />
+                                            <input id="{{ $type->name }}" class="form__checkbox"
+                                                name="types[]" type="checkbox"
+                                                value="{{ $type->id }}" />
                                             {{ $type->name }}
                                         </label>
                                     </p>
@@ -174,13 +123,9 @@
                                 @foreach ($resolutions as $resolution)
                                     <p class="form__group">
                                         <label class="form__label">
-                                            <input
-                                                id="{{ $resolution->name }}"
-                                                class="form__checkbox"
-                                                name="resolutions[]"
-                                                type="checkbox"
-                                                value="{{ $resolution->id }}"
-                                            />
+                                            <input id="{{ $resolution->name }}"
+                                                class="form__checkbox" name="resolutions[]"
+                                                type="checkbox" value="{{ $resolution->id }}" />
                                             {{ $resolution->name }}
                                         </label>
                                     </p>
@@ -195,13 +140,9 @@
                                 @foreach ($genres as $genre)
                                     <p class="form__group">
                                         <label class="form__label">
-                                            <input
-                                                id="{{ $genre->name }}"
-                                                class="form__checkbox"
-                                                name="genres[]"
-                                                type="checkbox"
-                                                value="{{ $genre->id }}"
-                                            />
+                                            <input id="{{ $genre->name }}" class="form__checkbox"
+                                                name="genres[]" type="checkbox"
+                                                value="{{ $genre->id }}" />
                                             {{ $genre->name }}
                                         </label>
                                     </p>
@@ -215,46 +156,28 @@
                             <div class="form__fieldset-checkbox-container">
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            id="freeleech"
-                                            class="form__checkbox"
-                                            name="freeleech"
-                                            type="checkbox"
-                                            value="1"
-                                        />
+                                        <input id="freeleech" class="form__checkbox" name="freeleech"
+                                            type="checkbox" value="1" />
                                         <span
-                                            class="{{ config('other.font-awesome') }} fa-star text-gold"
-                                        ></span>
+                                            class="{{ config('other.font-awesome') }} fa-star text-gold"></span>
                                         {{ __('torrent.freeleech') }}
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            id="doubleupload"
-                                            class="form__checkbox"
-                                            name="doubleupload"
-                                            type="checkbox"
-                                            value="1"
-                                        />
+                                        <input id="doubleupload" class="form__checkbox"
+                                            name="doubleupload" type="checkbox" value="1" />
                                         <span
-                                            class="{{ config('other.font-awesome') }} fa-gem text-green"
-                                        ></span>
+                                            class="{{ config('other.font-awesome') }} fa-gem text-green"></span>
                                         {{ __('torrent.double-upload') }}
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            id="featured"
-                                            class="form__checkbox"
-                                            name="featured"
-                                            type="checkbox"
-                                            value="1"
-                                        />
+                                        <input id="featured" class="form__checkbox" name="featured"
+                                            type="checkbox" value="1" />
                                         <span
-                                            class="{{ config('other.font-awesome') }} fa-certificate text-pink"
-                                        ></span>
+                                            class="{{ config('other.font-awesome') }} fa-certificate text-pink"></span>
                                         {{ __('torrent.featured') }}
                                     </label>
                                 </p>
@@ -267,63 +190,37 @@
                             <div class="form__fieldset-checkbox-container">
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            id="highspeed"
-                                            class="form__checkbox"
-                                            name="highspeed"
-                                            type="checkbox"
-                                            value="1"
-                                        />
+                                        <input id="highspeed" class="form__checkbox" name="highspeed"
+                                            type="checkbox" value="1" />
                                         <span
-                                            class="{{ config('other.font-awesome') }} fa-tachometer text-red"
-                                        ></span>
+                                            class="{{ config('other.font-awesome') }} fa-tachometer text-red"></span>
                                         {{ __('common.high-speeds') }}
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            id="internal"
-                                            class="form__checkbox"
-                                            name="internal"
-                                            type="checkbox"
-                                            value="1"
-                                        />
-                                        <span
-                                            class="{{ config('other.font-awesome') }} fa-magic"
-                                            style="color: #baaf92"
-                                        ></span>
+                                        <input id="internal" class="form__checkbox" name="internal"
+                                            type="checkbox" value="1" />
+                                        <span class="{{ config('other.font-awesome') }} fa-magic"
+                                            style="color: #baaf92"></span>
                                         {{ __('torrent.internal') }}
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            id="personalrelease"
-                                            class="form__checkbox"
-                                            name="personalrelease"
-                                            type="checkbox"
-                                            value="1"
-                                        />
-                                        <span
-                                            class="{{ config('other.font-awesome') }} fa-user-plus"
-                                            style="color: #865be9"
-                                        ></span>
+                                        <input id="personalrelease" class="form__checkbox"
+                                            name="personalrelease" type="checkbox" value="1" />
+                                        <span class="{{ config('other.font-awesome') }} fa-user-plus"
+                                            style="color: #865be9"></span>
                                         {{ __('torrent.personal-release') }}
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            id="bookmark"
-                                            class="form__checkbox"
-                                            name="bookmark"
-                                            type="checkbox"
-                                            value="1"
-                                        />
+                                        <input id="bookmark" class="form__checkbox" name="bookmark"
+                                            type="checkbox" value="1" />
                                         <span
-                                            class="{{ config('other.font-awesome') }} fa-bookmark text-blue"
-                                        ></span>
+                                            class="{{ config('other.font-awesome') }} fa-bookmark text-blue"></span>
                                         {{ __('torrent.bookmark') }}
                                     </label>
                                 </p>
@@ -336,46 +233,28 @@
                             <div class="form__fieldset-checkbox-container">
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            id="alive"
-                                            class="form__checkbox"
-                                            name="alive"
-                                            type="checkbox"
-                                            value="1"
-                                        />
+                                        <input id="alive" class="form__checkbox" name="alive"
+                                            type="checkbox" value="1" />
                                         <span
-                                            class="{{ config('other.font-awesome') }} fa-smile text-green"
-                                        ></span>
+                                            class="{{ config('other.font-awesome') }} fa-smile text-green"></span>
                                         {{ __('torrent.alive') }}
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            id="dying"
-                                            class="form__checkbox"
-                                            name="dying"
-                                            type="checkbox"
-                                            value="1"
-                                        />
+                                        <input id="dying" class="form__checkbox" name="dying"
+                                            type="checkbox" value="1" />
                                         <span
-                                            class="{{ config('other.font-awesome') }} fa-meh text-orange"
-                                        ></span>
+                                            class="{{ config('other.font-awesome') }} fa-meh text-orange"></span>
                                         {{ __('torrent.dying-torrent') }}
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            id="dead"
-                                            class="form__checkbox"
-                                            name="dead"
-                                            type="checkbox"
-                                            value="0"
-                                        />
+                                        <input id="dead" class="form__checkbox" name="dead"
+                                            type="checkbox" value="0" />
                                         <span
-                                            class="{{ config('other.font-awesome') }} fa-frown text-red"
-                                        ></span>
+                                            class="{{ config('other.font-awesome') }} fa-frown text-red"></span>
                                         {{ __('torrent.dead-torrent') }}
                                     </label>
                                 </p>

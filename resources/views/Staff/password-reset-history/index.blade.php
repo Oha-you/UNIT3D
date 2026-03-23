@@ -8,10 +8,8 @@
 @endsection
 
 @section('meta')
-    <meta
-        name="description"
-        content="{{ __('user.password-resets') }} - {{ __('staff.staff-dashboard') }}"
-    />
+    <meta name="description"
+        content="{{ __('user.password-resets') }} - {{ __('staff.staff-dashboard') }}" />
 @endsection
 
 @section('breadcrumbs')

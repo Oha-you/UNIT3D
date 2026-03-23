@@ -4,14 +4,8 @@
         <div class="panel__actions">
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="search"
-                        class="form__text"
-                        type="search"
-                        autocomplete="off"
-                        wire:model.live="search"
-                        placeholder=" "
-                    />
+                    <input id="search" class="form__text" type="search" autocomplete="off"
+                        wire:model.live="search" placeholder=" " />
                     <label for="search" class="form__label form__label--floating">
                         {{ __('common.search') }}
                     </label>
@@ -19,7 +13,14 @@
             </div>
         </div>
     </header>
-    @if ($topic->approved || $topic->denied || $topic->solved || $topic->invalid || $topic->bug || $topic->suggestion || $topic->implemented)
+    @if (
+        $topic->approved ||
+            $topic->denied ||
+            $topic->solved ||
+            $topic->invalid ||
+            $topic->bug ||
+            $topic->suggestion ||
+            $topic->implemented)
         <ul class="topic-tags">
             <li class="topic-tag">
                 <i class="{{ config('other.font-awesome') }} fa-tags"></i>

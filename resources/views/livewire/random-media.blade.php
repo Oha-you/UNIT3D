@@ -16,8 +16,7 @@
     <div class="panel__body" style="padding: 0">
         <div class="random__media">
             @foreach ($movies as $key => $movie)
-                <a
-                    target="_blank"
+                <a target="_blank"
                     href="{{ route('torrents.similar', ['category_id' => $movie->torrents_min_category_id ?? 1, 'tmdb' => $movie->id]) }}"
                     class="@if ($loop->iteration == 1) media @elseif ($loop->iteration == 2)media1 @else media2 @endif"
                     style="
@@ -25,8 +24,7 @@
                         background-repeat: no-repeat;
                         background-position: center center;
                         background-size: cover;
-                    "
-                >
+                    ">
                     <span style="padding-left: 6px">MOVIE</span>
                     <div class="media__title">
                         {{ $movie->title }} ({{ $movie->release_date?->format('Y') }})
@@ -35,8 +33,7 @@
             @endforeach
 
             @foreach ($tvs as $key => $tv)
-                <a
-                    target="_blank"
+                <a target="_blank"
                     href="{{ route('torrents.similar', ['category_id' => $tv->torrents_min_category_id ?? 2, 'tmdb' => $tv->id]) }}"
                     class="@if ($loop->iteration == 1) media3 @elseif ($loop->iteration == 2) media4 @else media5 @endif"
                     style="
@@ -44,8 +41,7 @@
                         background-repeat: no-repeat;
                         background-position: center center;
                         background-size: cover;
-                    "
-                >
+                    ">
                     <span style="padding-left: 6px">TV</span>
                     <div class="media__title">
                         {{ $tv->name }} ({{ $tv->first_air_date?->format('Y') }})
@@ -54,8 +50,7 @@
             @endforeach
 
             @foreach ($movies2 as $key => $movie)
-                <a
-                    target="_blank"
+                <a target="_blank"
                     href="{{ route('torrents.similar', ['category_id' => $movie->torrents_min_category_id ?? 1, 'tmdb' => $movie->id]) }}"
                     class="@if ($loop->iteration == 1) media6 @elseif ($loop->iteration == 2) media7 @else media8 @endif"
                     style="
@@ -63,8 +58,7 @@
                         background-repeat: no-repeat;
                         background-position: center center;
                         background-size: cover;
-                    "
-                >
+                    ">
                     <span style="padding-left: 6px">MOVIE</span>
                     <div class="media__title">
                         {{ $movie->title }} ({{ $movie->release_date?->format('Y') }})

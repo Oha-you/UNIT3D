@@ -24,10 +24,8 @@
     @foreach ($categories as $category)
         <section class="panelV2">
             <h2 class="panel__heading">
-                <a
-                    class="panel__header-link"
-                    href="{{ route('forums.categories.show', ['id' => $category->id]) }}"
-                >
+                <a class="panel__header-link"
+                    href="{{ route('forums.categories.show', ['id' => $category->id]) }}">
                     {{ $category->name }}
                 </a>
             </h2>
@@ -74,10 +72,8 @@
                 @method('PUT')
                 <input type="hidden" name="catchup_type" value="all" />
                 <p class="form__group form__group--horizontal">
-                    <button
-                        class="form__button form__button--filled form__button--centered"
-                        title="Mark all topics as read"
-                    >
+                    <button class="form__button form__button--filled form__button--centered"
+                        title="Mark all topics as read">
                         Mark all read
                     </button>
                 </p>

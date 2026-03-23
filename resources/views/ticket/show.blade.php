@@ -20,7 +20,8 @@
 @section('main')
     <section class="panelV2">
         <h2 class="panel__heading">{{ $ticket->subject }}</h2>
-        {{-- format-ignore-start --}}<div class="panel__body" style="white-space: pre-wrap">{{ $ticket->body }}</div>{{-- format-ignore-end --}}
+        {{-- format-ignore-start --}}<div class="panel__body" style="white-space: pre-wrap">{{ $ticket->body }}
+        </div>{{-- format-ignore-end --}}
     </section>
     @if ($user->group->is_modo)
         <section class="panelV2">
@@ -33,21 +34,12 @@
                         </button>
                         <dialog class="dialog" x-bind="dialogElement">
                             <h4 class="dialog__heading">Add staff note</h4>
-                            <form
-                                class="dialog__form"
-                                method="POST"
+                            <form class="dialog__form" method="POST"
                                 action="{{ route('tickets.note.store', ['ticket' => $ticket]) }}"
-                                x-bind="dialogForm"
-                            >
+                                x-bind="dialogForm">
                                 @csrf
                                 <p class="form__group">
-                                    <textarea
-                                        id="message"
-                                        class="form__textarea"
-                                        name="message"
-                                        type="text"
-                                        required
-                                    ></textarea>
+                                    <textarea id="message" class="form__textarea" name="message" type="text" required></textarea>
                                     <label class="form__label form__label--floating" for="message">
                                         Message
                                     </label>
@@ -56,11 +48,8 @@
                                     <button class="form__button form__button--filled">
                                         {{ __('common.add') }}
                                     </button>
-                                    <button
-                                        formmethod="dialog"
-                                        formnovalidate
-                                        class="form__button form__button--outlined"
-                                    >
+                                    <button formmethod="dialog" formnovalidate
+                                        class="form__button form__button--outlined">
                                         {{ __('common.cancel') }}
                                     </button>
                                 </p>
@@ -85,12 +74,11 @@
                                 <td>
                                     <x-user-tag :anon="false" :user="$note->user" />
                                 </td>
-                                {{-- format-ignore-start --}}<td style="white-space: pre-wrap">@linkify($note->message)</td>{{-- format-ignore-end --}}
+                                {{-- format-ignore-start --}}<td style="white-space: pre-wrap">@linkify($note->message)
+                                </td>{{-- format-ignore-end --}}
                                 <td>
-                                    <time
-                                        datetime="{{ $note->created_at }}"
-                                        title="{{ $note->created_at }}"
-                                    >
+                                    <time datetime="{{ $note->created_at }}"
+                                        title="{{ $note->created_at }}">
                                         {{ $note->created_at->diffForHumans() }}
                                     </time>
                                 </td>
@@ -99,17 +87,13 @@
                                         <li class="data-table__action">
                                             <form
                                                 action="{{ route('tickets.note.destroy', ['ticket' => $ticket]) }}"
-                                                method="POST"
-                                                x-data="confirmation"
-                                            >
+                                                method="POST" x-data="confirmation">
                                                 @csrf
                                                 @method('DELETE')
                                                 <p class="form__group form__group--horizontal">
-                                                    <button
-                                                        x-on:click.prevent="confirmAction"
+                                                    <button x-on:click.prevent="confirmAction"
                                                         data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete this note: ' . $note->message . '?') }}"
-                                                        class="form__button form__button--text form__button--centered"
-                                                    >
+                                                        class="form__button form__button--text form__button--centered">
                                                         {{ __('ticket.delete') }}
                                                     </button>
                                                 </p>
@@ -157,10 +141,8 @@
             <div class="key-value__group">
                 <dt>{{ __('ticket.priority') }}</dt>
                 <dd>
-                    <i
-                        class="{{ config('other.font-awesome') }} {{ $ticket->priority->icon }}"
-                        style="color: {{ $ticket->priority->color }}"
-                    ></i>
+                    <i class="{{ config('other.font-awesome') }} {{ $ticket->priority->icon }}"
+                        style="color: {{ $ticket->priority->color }}"></i>
                     {{ $ticket->priority->name }}
                 </dd>
             </div>
@@ -168,10 +150,7 @@
                 <div class="key-value__group">
                     <dt>{{ __('ticket.closed') }}</dt>
                     <dd>
-                        <time
-                            datetime="{{ $ticket->closed_at }}"
-                            title="{{ $ticket->closed_at }}"
-                        >
+                        <time datetime="{{ $ticket->closed_at }}" title="{{ $ticket->closed_at }}">
                             {{ $ticket->closed_at->format('Y-m-d') }}
                         </time>
                     </dd>
@@ -183,26 +162,19 @@
         <h2 class="panel__heading">{{ __('common.actions') }}</h2>
         <div class="panel__body">
             @if ($user->group->is_modo)
-                <form
-                    class="form form--horizontal"
+                <form class="form form--horizontal"
                     action="{{ route('tickets.assignee.store', ['ticket' => $ticket]) }}"
-                    method="POST"
-                    x-data
-                >
+                    method="POST" x-data>
                     @csrf
                     <p class="form__group">
-                        <select
-                            id="staff_id"
-                            name="staff_id"
-                            class="form__select"
-                            x-on:change="$root.submit()"
-                        >
+                        <select id="staff_id" name="staff_id" class="form__select"
+                            x-on:change="$root.submit()">
                             <option hidden disabled selected value=""></option>
-                            @foreach (App\Models\User::query()->select(['id', 'username'])->whereIn('group_id', App\Models\Group::query()->where('is_modo', 1)->whereNotIn('id', [9])->pluck('id')->toArray())->get() as $user)
-                                <option
-                                    value="{{ $user->id }}"
-                                    @selected($user->id === $ticket->staff_id)
-                                >
+                            @foreach (App\Models\User::query()->select(['id', 'username'])->whereIn(
+                'group_id',
+                App\Models\Group::query()->where('is_modo', 1)->whereNotIn('id', [9])->pluck('id')->toArray(),
+            )->get() as $user)
+                                <option value="{{ $user->id }}" @selected($user->id === $ticket->staff_id)>
                                     {{ $user->username }}
                                 </option>
                             @endforeach
@@ -214,16 +186,12 @@
                 </form>
 
                 @if ($ticket->staff_id !== null)
-                    <form
-                        action="{{ route('tickets.assignee.destroy', ['ticket' => $ticket]) }}"
-                        method="POST"
-                    >
+                    <form action="{{ route('tickets.assignee.destroy', ['ticket' => $ticket]) }}"
+                        method="POST">
                         @csrf
                         @method('DELETE')
                         <p class="form__group form__group--horizontal">
-                            <button
-                                class="form__button form__button--filled form__button--centered"
-                            >
+                            <button class="form__button form__button--filled form__button--centered">
                                 {{ __('ticket.unassign') }}
                             </button>
                         </p>
@@ -278,19 +246,15 @@
                         @foreach ($pastUserTickets as $ticket)
                             <tr>
                                 <td>
-                                    <i
-                                        class="{{ config('other.font-awesome') }} {{ $ticket->priority->icon }}"
-                                        style="color: {{ $ticket->priority->color }}"
-                                    ></i>
+                                    <i class="{{ config('other.font-awesome') }} {{ $ticket->priority->icon }}"
+                                        style="color: {{ $ticket->priority->color }}"></i>
                                     <a href="{{ route('tickets.show', ['ticket' => $ticket]) }}">
                                         {{ $ticket->subject }}
                                     </a>
                                 </td>
                                 <td>
-                                    <time
-                                        title="{{ $ticket->created_at }}"
-                                        datetime="{{ $ticket->created_at }}"
-                                    >
+                                    <time title="{{ $ticket->created_at }}"
+                                        datetime="{{ $ticket->created_at }}">
                                         {{ $ticket->created_at->format('Y-m') }}
                                     </time>
                                 </td>

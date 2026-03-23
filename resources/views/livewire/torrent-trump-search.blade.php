@@ -25,23 +25,15 @@
         <div class="panel__actions">
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="username"
-                        wire:model.live="username"
-                        class="form__text"
-                        placeholder=" "
-                    />
+                    <input id="username" wire:model.live="username" class="form__text"
+                        placeholder=" " />
                     <label class="form__label form__label--floating" for="username">Username</label>
                 </div>
             </div>
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="torrent"
-                        wire:model.live="torrentName"
-                        class="form__text"
-                        placeholder=" "
-                    />
+                    <input id="torrent" wire:model.live="torrentName" class="form__text"
+                        placeholder=" " />
                     <label class="form__label form__label--floating" for="torrent">Torrent</label>
                 </div>
             </div>
@@ -70,11 +62,15 @@
                     </th>
                     <th wire:click="sortBy('user_id')" role="columnheader button">
                         User
-                        @include('livewire.includes._sort-icon', ['field' => 'user_id'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'user_id',
+                        ])
                     </th>
                     <th wire:click="sortBy('torrent_id')" role="columnheader button">
                         Torrent
-                        @include('livewire.includes._sort-icon', ['field' => 'torrent_id'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'torrent_id',
+                        ])
                     </th>
                     <th wire:click="sortBy('reason')" role="columnheader button">
                         Reason
@@ -82,7 +78,9 @@
                     </th>
                     <th wire:click="sortBy('created_at')" role="columnheader button">
                         {{ __('common.created_at') }}
-                        @include('livewire.includes._sort-icon', ['field' => 'created_at'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'created_at',
+                        ])
                     </th>
                 </tr>
             </thead>
@@ -95,26 +93,21 @@
                         </td>
                         <td>
                             @if ($torrentTrump->torrent->trashed())
-                                <a
-                                    class="text-danger"
-                                    href="{{ route('torrents.show', ['id' => $torrentTrump->torrent->id]) }}"
-                                >
+                                <a class="text-danger"
+                                    href="{{ route('torrents.show', ['id' => $torrentTrump->torrent->id]) }}">
                                     {{ $torrentTrump->torrent->name }}
                                 </a>
                             @else
                                 <a
-                                    href="{{ route('torrents.show', ['id' => $torrentTrump->torrent->id]) }}"
-                                >
+                                    href="{{ route('torrents.show', ['id' => $torrentTrump->torrent->id]) }}">
                                     {{ $torrentTrump->torrent->name }}
                                 </a>
                             @endif
                         </td>
                         <td>{{ $torrentTrump->reason }}</td>
                         <td>
-                            <time
-                                datetime="{{ $torrentTrump->created_at }}"
-                                title="{{ $torrentTrump->created_at }}"
-                            >
+                            <time datetime="{{ $torrentTrump->created_at }}"
+                                title="{{ $torrentTrump->created_at }}">
                                 {{ $torrentTrump->created_at->format('Y-m-d') }}
                             </time>
                         </td>

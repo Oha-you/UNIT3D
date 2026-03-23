@@ -7,16 +7,16 @@
                 @empty
                     No recommendations found!
                 @endforelse
+            @break
 
-                @break
             @case($torrent->category->tv_meta)
                 @forelse ($meta->recommendedTv ?? [] as $tv)
                     <x-tv.poster :$tv :categoryId="$tv->torrents_min_category_id" />
                 @empty
                     No recommendations found!
                 @endforelse
+            @break
 
-                @break
             @default
                 No recommendations Found!
         @endswitch

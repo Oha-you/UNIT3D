@@ -7,90 +7,50 @@
             <form class="form">
                 <div class="form__group--short-horizontal">
                     <p class="form__group">
-                        <input
-                            id="reporter"
-                            class="form__text"
-                            autocomplete="off"
-                            placeholder=" "
-                            type="search"
-                            wire:model.live="reporter"
-                        />
+                        <input id="reporter" class="form__text" autocomplete="off" placeholder=" "
+                            type="search" wire:model.live="reporter" />
                         <label class="form__label form__label--floating" for="reporter">
                             {{ __('common.reporter') }}
                         </label>
                     </p>
                     <p class="form__group">
-                        <input
-                            id="reported"
-                            class="form__text"
-                            autocomplete="off"
-                            placeholder=" "
-                            type="search"
-                            wire:model.live="reported"
-                        />
+                        <input id="reported" class="form__text" autocomplete="off" placeholder=" "
+                            type="search" wire:model.live="reported" />
                         <label class="form__label form__label--floating" for="reported">
                             Reported
                         </label>
                     </p>
                     <p class="form__group">
-                        <input
-                            id="staff"
-                            class="form__text"
-                            autocomplete="off"
-                            placeholder=" "
-                            type="search"
-                            wire:model.live="staff"
-                        />
+                        <input id="staff" class="form__text" autocomplete="off" placeholder=" "
+                            type="search" wire:model.live="staff" />
                         <label class="form__label form__label--floating" for="staff">
                             {{ __('user.judge') }}
                         </label>
                     </p>
                     <p class="form__group">
-                        <input
-                            id="verdict"
-                            class="form__text"
-                            autocomplete="off"
-                            placeholder=" "
-                            type="search"
-                            wire:model.live="verdict"
-                        />
+                        <input id="verdict" class="form__text" autocomplete="off" placeholder=" "
+                            type="search" wire:model.live="verdict" />
                         <label class="form__label form__label--floating" for="verdict">
                             Verdict
                         </label>
                     </p>
                     <p class="form__group">
-                        <input
-                            id="message"
-                            class="form__text"
-                            autocomplete="off"
-                            placeholder=" "
-                            type="search"
-                            wire:model.live="message"
-                        />
+                        <input id="message" class="form__text" autocomplete="off" placeholder=" "
+                            type="search" wire:model.live="message" />
                         <label class="form__label form__label--floating" for="message">
                             {{ __('common.message') }}
                         </label>
                     </p>
                     <p class="form__group">
-                        <input
-                            id="title"
-                            class="form__text"
-                            autocomplete="off"
-                            placeholder=" "
-                            type="search"
-                            wire:model.live="title"
-                        />
+                        <input id="title" class="form__text" autocomplete="off" placeholder=" "
+                            type="search" wire:model.live="title" />
                         <label class="form__label form__label--floating" for="title">
                             {{ __('common.title') }}
                         </label>
                     </p>
                     <p class="form__group">
-                        <select
-                            id="type"
-                            wire:model.live="type"
-                            class="form__select"
-                            placeholder=" "
-                        >
+                        <select id="type" wire:model.live="type" class="form__select"
+                            placeholder=" ">
                             <option value="">Any</option>
                             <option value="Torrent">Torrent</option>
                             <option value="Request">Request</option>
@@ -101,12 +61,8 @@
                         </label>
                     </p>
                     <p class="form__group">
-                        <select
-                            id="status"
-                            wire:model.live="status"
-                            class="form__select"
-                            placeholder=" "
-                        >
+                        <select id="status" wire:model.live="status" class="form__select"
+                            placeholder=" ">
                             <option value="open">Open</option>
                             <option value="snoozed">Snoozed</option>
                             <option value="closed">Closed</option>
@@ -118,12 +74,8 @@
                         </label>
                     </p>
                     <p class="form__group">
-                        <select
-                            id="quantity"
-                            class="form__select"
-                            wire:model.live="perPage"
-                            required
-                        >
+                        <select id="quantity" class="form__select" wire:model.live="perPage"
+                            required>
                             <option>25</option>
                             <option>50</option>
                             <option>100</option>
@@ -148,31 +100,45 @@
                         </th>
                         <th wire:click="sortBy('type')" role="columnheader button">
                             Type
-                            @include('livewire.includes._sort-icon', ['field' => 'type'])
+                            @include('livewire.includes._sort-icon', [
+                                'field' => 'type',
+                            ])
                         </th>
                         <th wire:click="sortBy('title')" role="columnheader button">
                             {{ __('common.title') }}
-                            @include('livewire.includes._sort-icon', ['field' => 'title'])
+                            @include('livewire.includes._sort-icon', [
+                                'field' => 'title',
+                            ])
                         </th>
                         <th wire:click="sortBy('reported_user')" role="columnheader button">
                             Reported
-                            @include('livewire.includes._sort-icon', ['field' => 'reported_user'])
+                            @include('livewire.includes._sort-icon', [
+                                'field' => 'reported_user',
+                            ])
                         </th>
                         <th wire:click="sortBy('reporter_id')" role="columnheader button">
                             {{ __('common.reporter') }}
-                            @include('livewire.includes._sort-icon', ['field' => 'reporter_id'])
+                            @include('livewire.includes._sort-icon', [
+                                'field' => 'reporter_id',
+                            ])
                         </th>
                         <th wire:click="sortBy('assigned_to')" role="columnheader button">
                             {{ __('ticket.assigned-staff') }}
-                            @include('livewire.includes._sort-icon', ['field' => 'assigned_to'])
+                            @include('livewire.includes._sort-icon', [
+                                'field' => 'assigned_to',
+                            ])
                         </th>
                         <th wire:click="sortBy('created_at')" role="columnheader button">
                             {{ __('user.created-on') }}
-                            @include('livewire.includes._sort-icon', ['field' => 'created_at'])
+                            @include('livewire.includes._sort-icon', [
+                                'field' => 'created_at',
+                            ])
                         </th>
                         <th wire:click="sortBy('solved_by')" role="columnheader button">
                             {{ __('user.judge') }}
-                            @include('livewire.includes._sort-icon', ['field' => 'solved_by'])
+                            @include('livewire.includes._sort-icon', [
+                                'field' => 'solved_by',
+                            ])
                         </th>
                     </tr>
                 </thead>
@@ -182,7 +148,8 @@
                             <td>{{ $report->id }}</td>
                             <td>{{ $report->type }}</td>
                             <td>
-                                <a href="{{ route('staff.reports.show', ['report' => $report]) }}">
+                                <a
+                                    href="{{ route('staff.reports.show', ['report' => $report]) }}">
                                     {{ $report->title }}
                                 </a>
                             </td>
@@ -196,14 +163,12 @@
                                 @if ($report->assignee)
                                     <x-user-tag :anon="false" :user="$report->assignee" />
                                 @else
-                                        Unassigned
+                                    Unassigned
                                 @endif
                             </td>
                             <td>
-                                <time
-                                    datetime="{{ $report->created_at }}"
-                                    title="{{ $report->created_at }}"
-                                >
+                                <time datetime="{{ $report->created_at }}"
+                                    title="{{ $report->created_at }}">
                                     {{ $report->created_at->toDayDateTimeString() }}
                                 </time>
                             </td>
@@ -212,8 +177,7 @@
                                     <x-user-tag :anon="false" :user="$report->judge" />
                                 @else
                                     <i
-                                        class="{{ config('other.font-awesome') }} fa-times text-red"
-                                    ></i>
+                                        class="{{ config('other.font-awesome') }} fa-times text-red"></i>
                                 @endif
                             </td>
                         </tr>

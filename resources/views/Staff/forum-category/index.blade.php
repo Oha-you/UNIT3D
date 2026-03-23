@@ -28,34 +28,25 @@
                 <h2 class="panel__heading">{{ $category->name }}</h2>
                 <div class="panel__actions">
                     <div class="panel__action">
-                        <a
-                            href="{{ route('staff.forums.create', ['forumCategoryId' => $category->id]) }}"
-                            class="form__button form__button--text"
-                        >
+                        <a href="{{ route('staff.forums.create', ['forumCategoryId' => $category->id]) }}"
+                            class="form__button form__button--text">
                             {{ __('common.add') }}
                         </a>
                     </div>
                     <div class="panel__action">
-                        <a
-                            href="{{ route('staff.forum_categories.edit', ['forumCategory' => $category]) }}"
-                            class="form__button form__button--text"
-                        >
+                        <a href="{{ route('staff.forum_categories.edit', ['forumCategory' => $category]) }}"
+                            class="form__button form__button--text">
                             {{ __('common.edit') }}
                         </a>
                     </div>
                     <form
                         action="{{ route('staff.forum_categories.destroy', ['forumCategory' => $category]) }}"
-                        method="POST"
-                        style="display: contents"
-                        x-data="confirmation"
-                    >
+                        method="POST" style="display: contents" x-data="confirmation">
                         @csrf
                         @method('DELETE')
-                        <button
-                            class="form__button form__button--text"
+                        <button class="form__button form__button--text"
                             x-on:click.prevent="confirmAction"
-                            data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete this forum category (' . $category->name . ') and all forums, topics, and posts within?') }}"
-                        >
+                            data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete this forum category (' . $category->name . ') and all forums, topics, and posts within?') }}">
                             {{ __('common.delete') }}
                         </button>
                     </form>
@@ -75,35 +66,27 @@
                             <tr>
                                 <td>{{ $forum->position }}</td>
                                 <td>
-                                    <a
-                                        href="{{ route('staff.forums.edit', ['forum' => $forum]) }}"
-                                    >
+                                    <a href="{{ route('staff.forums.edit', ['forum' => $forum]) }}">
                                         {{ $forum->name }}
                                     </a>
                                 </td>
                                 <td>
                                     <menu class="data-table__actions">
                                         <li class="data-table__action">
-                                            <a
-                                                class="form__button form__button--text"
-                                                href="{{ route('staff.forums.edit', ['forum' => $forum]) }}"
-                                            >
+                                            <a class="form__button form__button--text"
+                                                href="{{ route('staff.forums.edit', ['forum' => $forum]) }}">
                                                 {{ __('common.edit') }}
                                             </a>
                                         </li>
                                         <li class="data-table__action">
-                                            <form
-                                                method="POST"
+                                            <form method="POST"
                                                 action="{{ route('staff.forums.destroy', ['forum' => $forum]) }}"
-                                                x-data="confirmation"
-                                            >
+                                                x-data="confirmation">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button
-                                                    x-on:click.prevent="confirmAction"
+                                                <button x-on:click.prevent="confirmAction"
                                                     data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete this forum (' . $forum->name . ') including all topics and posts within?') }}"
-                                                    class="form__button form__button--text"
-                                                >
+                                                    class="form__button form__button--text">
                                                     {{ __('common.delete') }}
                                                 </button>
                                             </form>
@@ -124,18 +107,14 @@
         <h2 class="panel__heading">{{ __('common.actions') }}</h2>
         <div class="panel__body">
             <p class="form__group form__group--horizontal">
-                <a
-                    href="{{ route('staff.forum_categories.create') }}"
-                    class="form__button form__button--filled form__button--centered"
-                >
+                <a href="{{ route('staff.forum_categories.create') }}"
+                    class="form__button form__button--filled form__button--centered">
                     Create new category
                 </a>
             </p>
             <p class="form__group form__group--horizontal">
-                <a
-                    href="{{ route('staff.forums.create') }}"
-                    class="form__button form__button--filled form__button--centered"
-                >
+                <a href="{{ route('staff.forums.create') }}"
+                    class="form__button form__button--filled form__button--centered">
                     Create new forum
                 </a>
             </p>

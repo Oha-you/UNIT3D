@@ -29,21 +29,16 @@
 @section('main')
     <section class="meta">
         @if ($collection?->backdrop)
-            <img
-                class="meta__backdrop"
-                src="{{ tmdb_image('back_big', $collection->backdrop) }}"
-                alt=""
-            />
+            <img class="meta__backdrop" src="{{ tmdb_image('back_big', $collection->backdrop) }}"
+                alt="" />
         @endif
 
         <a class="meta__title-link" href="#">
             <h1 class="meta__title">{{ $collection->name }}</h1>
         </a>
         <a class="meta__poster-link" href="#">
-            <img
-                src="{{ $collection?->poster ? tmdb_image('poster_big', $collection->poster) : 'https://via.placeholder.com/400x600' }}"
-                class="meta__poster"
-            />
+            <img src="{{ $collection?->poster ? tmdb_image('poster_big', $collection->poster) : 'https://via.placeholder.com/400x600' }}"
+                class="meta__poster" />
         </a>
         <div class="meta__actions"></div>
         <ul class="meta__ids"></ul>
@@ -58,11 +53,8 @@
             </h2>
             <div class="panel__actions">
                 <div class="panel__action">
-                    <a
-                        href="{{ route('torrents.index', ['collectionId' => $collection->id]) }}"
-                        role="button"
-                        class="form__button form__button--text"
-                    >
+                    <a href="{{ route('torrents.index', ['collectionId' => $collection->id]) }}"
+                        role="button" class="form__button form__button--text">
                         <i class="{{ config('other.font-awesome') }} fa-eye"></i>
                         Collection torrents list
                     </a>
@@ -71,10 +63,7 @@
         </header>
         <div class="panel__body torrent-search--poster__results">
             @foreach ($collection->movies->sortBy('release_date') as $movie)
-                <x-movie.poster
-                    :movie="$movie"
-                    :category-id="$movie->torrents()->first()->category_id"
-                />
+                <x-movie.poster :movie="$movie" :category-id="$movie->torrents()->first()->category_id" />
             @endforeach
         </div>
     </section>

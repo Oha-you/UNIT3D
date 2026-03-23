@@ -25,34 +25,19 @@
     <section class="panelV2">
         <h2 class="panel__heading">{{ __('playlist.create') }}</h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
-                action="{{ route('playlists.store') }}"
-                enctype="multipart/form-data"
-            >
+            <form class="form" method="POST" action="{{ route('playlists.store') }}"
+                enctype="multipart/form-data">
                 @csrf
                 <p class="form__group">
-                    <input
-                        id="name"
-                        class="form__text"
-                        type="text"
-                        name="name"
-                        placeholder=" "
-                        required
-                        value="{{ old('name') }}"
-                    />
+                    <input id="name" class="form__text" type="text" name="name"
+                        placeholder=" " required value="{{ old('name') }}" />
                     <label class="form__label form__label--floating" for="name">
                         {{ __('playlist.title') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <select
-                        id="playlist_category_id"
-                        class="form__select"
-                        name="playlist_category_id"
-                        required
-                    >
+                    <select id="playlist_category_id" class="form__select" name="playlist_category_id"
+                        required>
                         <option hidden selected disabled value=""></option>
                         @foreach ($playlistCategories as $playlistCategory)
                             <option class="form__option" value="{{ $playlistCategory->id }}">
@@ -75,13 +60,8 @@
                 </p>
                 <p class="form__group">
                     <input type="hidden" name="is_private" value="0" />
-                    <input
-                        id="is_private"
-                        class="form__checkbox"
-                        name="is_private"
-                        type="checkbox"
-                        value="1"
-                    />
+                    <input id="is_private" class="form__checkbox" name="is_private" type="checkbox"
+                        value="1" />
                     <label class="form__label" for="is_private">
                         {{ __('playlist.is-private') }}
                     </label>

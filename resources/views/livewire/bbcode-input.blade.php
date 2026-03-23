@@ -1,32 +1,21 @@
 <div id="bbcode-input" class="bbcode-input" x-data="{{ $name }}BbcodeInput">
     <p class="bbcode-input__tabs">
-        <input
-            class="bbcode-input__tab-input"
-            type="radio"
-            id="{{ $name }}-bbcode-preview-disabled"
-            value="0"
-            wire:model.live="isPreviewEnabled"
-        />
+        <input class="bbcode-input__tab-input" type="radio"
+            id="{{ $name }}-bbcode-preview-disabled" value="0"
+            wire:model.live="isPreviewEnabled" />
         <label class="bbcode-input__tab-label" for="{{ $name }}-bbcode-preview-disabled">
             Write
         </label>
-        <input
-            class="bbcode-input__tab-input"
-            type="radio"
-            id="{{ $name }}-bbcode-preview-enabled"
-            value="1"
-            wire:model.live="isPreviewEnabled"
-        />
+        <input class="bbcode-input__tab-input" type="radio"
+            id="{{ $name }}-bbcode-preview-enabled" value="1"
+            wire:model.live="isPreviewEnabled" />
         <label class="bbcode-input__tab-label" for="{{ $name }}-bbcode-preview-enabled">
             {{ __('common.preview') }}
         </label>
     </p>
     <p class="bbcode-input__icon-bar-toggle">
-        <button
-            type="button"
-            class="form__button form__button--text"
-            x-on:click="toggleButtonVisibility"
-        >
+        <button type="button" class="form__button form__button--text"
+            x-on:click="toggleButtonVisibility">
             BBCode
         </button>
     </p>
@@ -46,22 +35,15 @@
             </button>
         </li>
         <li>
-            <button
-                type="button"
-                class="form__standard-icon-button"
-                x-on:click="insertUnderline"
-            >
+            <button type="button" class="form__standard-icon-button" x-on:click="insertUnderline">
                 <abbr title="Underline">
                     <i class="{{ config('other.font-awesome') }} fa-underline"></i>
                 </abbr>
             </button>
         </li>
         <li>
-            <button
-                type="button"
-                class="form__standard-icon-button"
-                x-on:click="insertStrikethrough"
-            >
+            <button type="button" class="form__standard-icon-button"
+                x-on:click="insertStrikethrough">
                 <abbr title="Strikethrough">
                     <i class="{{ config('other.font-awesome') }} fa-strikethrough"></i>
                 </abbr>
@@ -91,22 +73,16 @@
         </li>
         <hr class="bbcode-input__icon-separator" />
         <li>
-            <button
-                type="button"
-                class="form__standard-icon-button"
-                x-on:click="insertUnorderedList"
-            >
+            <button type="button" class="form__standard-icon-button"
+                x-on:click="insertUnorderedList">
                 <abbr title="Unordered list">
                     <i class="{{ config('other.font-awesome') }} fa-list"></i>
                 </abbr>
             </button>
         </li>
         <li>
-            <button
-                type="button"
-                class="form__standard-icon-button"
-                x-on:click="insertOrderedList"
-            >
+            <button type="button" class="form__standard-icon-button"
+                x-on:click="insertOrderedList">
                 <abbr title="Ordered list">
                     <i class="{{ config('other.font-awesome') }} fa-list-ol"></i>
                 </abbr>
@@ -128,11 +104,7 @@
             </button>
         </li>
         <li>
-            <button
-                type="button"
-                class="form__button form__button--text"
-                x-on:click="insertFont"
-            >
+            <button type="button" class="form__button form__button--text" x-on:click="insertFont">
                 <abbr title="Font family">Font</abbr>
             </button>
         </li>
@@ -204,8 +176,7 @@
         <li>
             <button type="button" class="form__standard-icon-button" x-on:click="insertEmoji">
                 <abbr
-                    title="If using MacOS, press Ctrl + Cmd + Space bar&NewLine;If using Windows or Linux, press Windows logo key + ."
-                >
+                    title="If using MacOS, press Ctrl + Cmd + Space bar&NewLine;If using Windows or Linux, press Windows logo key + .">
                     <i class="{{ config('other.font-awesome') }} fa-face-smile"></i>
                 </abbr>
             </button>
@@ -216,15 +187,9 @@
             @bbcode($contentBbcode)
         </div>
         <p class="form__group" x-show="isPreviewDisabled">
-            <textarea
-                id="bbcode-{{ $name }}"
-                name="{{ $name }}"
-                class="form__textarea bbcode-input__input"
-                placeholder=" "
-                x-bind="textarea"
-                wire:model="contentBbcode"
-                @required($isRequired)
-            ></textarea>
+            <textarea id="bbcode-{{ $name }}" name="{{ $name }}"
+                class="form__textarea bbcode-input__input" placeholder=" " x-bind="textarea"
+                wire:model="contentBbcode" @required($isRequired)></textarea>
             <label class="form__label form__label--floating" for="bbcode-{{ $name }}">
                 {{ $label }}
             </label>
@@ -262,11 +227,11 @@
                     },
                     ['x-bind:style']() {
                         return {
-                            height: this.bbcodePreviewHeight !== null && this.bbcodePreviewHeight,
-                            transition:
-                                this.previousActiveElement === this.$el
-                                    ? 'none'
-                                    : 'border-color 600ms cubic-bezier(0.25, 0.8, 0.25, 1), height 600ms cubic-bezier(0.25, 0.8, 0.25, 1)',
+                            height: this.bbcodePreviewHeight !== null && this
+                                .bbcodePreviewHeight,
+                            transition: this.previousActiveElement === this.$el ?
+                                'none' :
+                                'border-color 600ms cubic-bezier(0.25, 0.8, 0.25, 1), height 600ms cubic-bezier(0.25, 0.8, 0.25, 1)',
                         };
                     },
                     ['x-on:keydown.self.ctrl.b.prevent']() {
@@ -355,12 +320,15 @@
                     start = input.selectionStart;
                     end = input.selectionEnd;
                     alreadyNested =
-                        input.value.substring(start, start + openTag.length) === openTag &&
-                        input.value.substring(end - closeTag.length, end) === closeTag;
+                        input.value.substring(start, start + openTag.length) ===
+                        openTag &&
+                        input.value.substring(end - closeTag.length, end) ===
+                        closeTag;
                     if (alreadyNested) {
                         input.value =
                             input.value.substring(0, start) +
-                            input.value.substring(start + openTag.length, end - closeTag.length) +
+                            input.value.substring(start + openTag.length, end -
+                                closeTag.length) +
                             input.value.substring(end);
                     } else {
                         input.value =
@@ -378,12 +346,15 @@
                             start + openTag.length - 1,
                         );
                     } else if (start == end) {
-                        input.setSelectionRange(start + openTag.length, end + openTag.length);
+                        input.setSelectionRange(start + openTag.length, end +
+                            openTag.length);
                     } else {
                         if (alreadyNested) {
-                            input.setSelectionRange(start, end - openTag.length - closeTag.length);
+                            input.setSelectionRange(start, end - openTag.length -
+                                closeTag.length);
                         } else {
-                            input.setSelectionRange(start, end + openTag.length + closeTag.length);
+                            input.setSelectionRange(start, end + openTag.length +
+                                closeTag.length);
                         }
                     }
                 },

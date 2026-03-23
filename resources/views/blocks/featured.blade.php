@@ -22,18 +22,13 @@
             <ul class="featured-carousel" x-ref="featured" x-bind="list">
                 @foreach ($featured as $feature)
                     <li class="featured-carousel__slide">
-                        <x-torrent.card
-                            :meta="$feature->torrent->meta"
-                            :torrent="$feature->torrent"
-                        />
+                        <x-torrent.card :meta="$feature->torrent->meta" :torrent="$feature->torrent" />
                         <footer class="featured-carousel__feature-details">
                             <p class="featured-carousel__featured-until">
                                 {{ __('blocks.featured-until') }}:
                                 <br />
-                                <time
-                                    datetime="{{ $feature->created_at->addDay(7) }}"
-                                    title="{{ $feature->created_at->addDay(7) }}"
-                                >
+                                <time datetime="{{ $feature->created_at->addDay(7) }}"
+                                    title="{{ $feature->created_at->addDay(7) }}">
                                     {{ $feature->created_at->addDay(7)->toFormattedDateString() }}
                                     ({{ $feature->created_at->addDay(7)->diffForHumans() }}!)
                                 </time>
@@ -53,10 +48,12 @@
                     left: {
                         ['x-on:click']() {
                             if (this.$refs.featured.scrollLeft == 16) {
-                                this.$refs.featured.scrollLeft = this.$refs.featured.scrollWidth;
+                                this.$refs.featured.scrollLeft = this.$refs.featured
+                                    .scrollWidth;
                             } else {
                                 this.$refs.featured.scrollLeft -=
-                                    (this.$refs.featured.children[0].offsetWidth + 16) / 2 + 2;
+                                    (this.$refs.featured.children[0].offsetWidth + 16) /
+                                    2 + 2;
                             }
                         },
                     },
@@ -65,13 +62,14 @@
                             if (
                                 this.$refs.featured.scrollLeft ==
                                 this.$refs.featured.scrollWidth -
-                                    this.$refs.featured.offsetWidth -
-                                    16
+                                this.$refs.featured.offsetWidth -
+                                16
                             ) {
                                 this.$refs.featured.scrollLeft = 0;
                             } else {
                                 this.$refs.featured.scrollLeft +=
-                                    (this.$refs.featured.children[0].offsetWidth + 16) / 2 + 2;
+                                    (this.$refs.featured.children[0].offsetWidth + 16) /
+                                    2 + 2;
                             }
                         },
                     },
@@ -81,12 +79,14 @@
                                 if (!this.$root.matches(':hover')) {
                                     if (
                                         this.$el.scrollLeft ==
-                                        this.$el.scrollWidth - this.$el.offsetWidth - 16
+                                        this.$el.scrollWidth - this.$el
+                                        .offsetWidth - 16
                                     ) {
                                         this.$el.scrollLeft = 0;
                                     } else {
                                         this.$el.scrollLeft +=
-                                            (this.$el.children[0].offsetWidth + 16) / 2 + 2;
+                                            (this.$el.children[0].offsetWidth +
+                                                16) / 2 + 2;
                                     }
                                 }
                             }, 5000);

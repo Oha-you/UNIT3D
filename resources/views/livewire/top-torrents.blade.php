@@ -33,11 +33,7 @@
         <table class="data-table">
             <tbody>
                 @foreach ($torrents as $torrent)
-                    <x-torrent.row
-                        :$torrent
-                        :meta="$torrent->meta"
-                        :personalFreeleech="$personal_freeleech"
-                    />
+                    <x-torrent.row :$torrent :meta="$torrent->meta" :personalFreeleech="$personal_freeleech" />
                 @endforeach
             </tbody>
         </table>

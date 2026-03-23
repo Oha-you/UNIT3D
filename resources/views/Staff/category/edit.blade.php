@@ -27,46 +27,28 @@
             {{ __('common.edit') }} {{ __('torrent.category') }}: {{ $category->name }}
         </h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
+            <form class="form" method="POST"
                 action="{{ route('staff.categories.update', ['category' => $category]) }}"
-                enctype="multipart/form-data"
-            >
+                enctype="multipart/form-data">
                 @method('PATCH')
                 @csrf
                 <p class="form__group">
-                    <input
-                        id="name"
-                        class="form__text"
-                        type="text"
-                        name="name"
-                        value="{{ $category->name }}"
-                    />
+                    <input id="name" class="form__text" type="text" name="name"
+                        value="{{ $category->name }}" />
                     <label class="form__label form__label--floating" for="name">
                         {{ __('common.name') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="position"
-                        class="form__text"
-                        type="text"
-                        name="position"
-                        value="{{ $category->position }}"
-                    />
+                    <input id="position" class="form__text" type="text" name="position"
+                        value="{{ $category->position }}" />
                     <label class="form__label form__label--floating" for="position" for="position">
                         {{ __('common.position') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="position"
-                        class="form__text"
-                        type="text"
-                        name="icon"
-                        value="{{ $category->icon }}"
-                    />
+                    <input id="position" class="form__text" type="text" name="icon"
+                        value="{{ $category->icon }}" />
                     <label class="form__label form__label--floating" for="icon">
                         {{ __('common.icon') }} (FontAwesome)
                     </label>
@@ -82,11 +64,7 @@
                 </p>
                 <p class="form__group">
                     <select name="meta" id="meta" class="form__select" required>
-                        <option
-                            class="form__option"
-                            value="movie"
-                            @selected($category->movie_meta)
-                        >
+                        <option class="form__option" value="movie" @selected($category->movie_meta)>
                             Movie metadata
                         </option>
                         <option class="form__option" value="tv" @selected($category->tv_meta)>
@@ -95,11 +73,7 @@
                         <option class="form__option" value="game" @selected($category->game_meta)>
                             Game metadata
                         </option>
-                        <option
-                            class="form__option"
-                            value="music"
-                            @selected($category->music_meta)
-                        >
+                        <option class="form__option" value="music" @selected($category->music_meta)>
                             Music metadata
                         </option>
                         <option class="form__option" value="no" @selected($category->no_meta)>

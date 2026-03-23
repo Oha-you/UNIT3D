@@ -4,14 +4,8 @@
         <div class="panel__actions">
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="name"
-                        class="form__text"
-                        type="search"
-                        autocomplete="off"
-                        wire:model.live="name"
-                        placeholder=" "
-                    />
+                    <input id="name" class="form__text" type="search" autocomplete="off"
+                        wire:model.live="name" placeholder=" " />
                     <label class="form__label form__label--floating" for="name">
                         {{ __('torrent.title') }}
                     </label>
@@ -19,16 +13,9 @@
             </div>
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        type="text"
-                        name="year"
-                        id="year"
-                        class="form__text"
-                        inputmode="numeric"
-                        pattern="[0-9]*"
-                        wire:model.live="year"
-                        placeholder=" "
-                    />
+                    <input type="text" name="year" id="year" class="form__text"
+                        inputmode="numeric" pattern="[0-9]*" wire:model.live="year"
+                        placeholder=" " />
                     <label class="form__label form__label--floating" for="year">
                         {{ __('common.year') }}
                     </label>
@@ -45,7 +32,9 @@
                 </th>
                 <th wire:click="sortBy('requests_count')" role="columnheader button">
                     {{ __('request.requests') }}
-                    @include('livewire.includes._sort-icon', ['field' => 'requests_count'])
+                    @include('livewire.includes._sort-icon', [
+                        'field' => 'requests_count',
+                    ])
                 </th>
                 @foreach ($types as $type)
                     <th>{{ $type->name }}</th>
@@ -60,16 +49,14 @@
                             {{ $media->title }} ({{ $media->release_date?->format('Y') }})
                         @else
                             <a
-                                href="{{ route('torrents.similar', ['category_id' => $media->torrents_min_category_id, 'tmdb' => $media->id]) }}"
-                            >
+                                href="{{ route('torrents.similar', ['category_id' => $media->torrents_min_category_id, 'tmdb' => $media->id]) }}">
                                 {{ $media->title }} ({{ $media->release_date?->format('Y') }})
                             </a>
                         @endif
                     </td>
                     <td>
                         <a
-                            href="{{ route('requests.index', ['categories' => [1], 'tmdbId' => $media->id, 'unfilled' => 1]) }}"
-                        >
+                            href="{{ route('requests.index', ['categories' => [1], 'tmdbId' => $media->id, 'unfilled' => 1]) }}">
                             {{ $media->requests_count }}
                         </a>
                     </td>
@@ -80,8 +67,7 @@
                                     color: #f05555 !important;
                                     background: rgba(107, 6, 6, 0.58) !important;
                                     font-weight: bold;
-                                "
-                            >
+                                ">
                                 Missing
                             </td>
                         @else
@@ -90,8 +76,7 @@
                                     color: #55b160 !important;
                                     background: rgba(1, 70, 10, 0.53) !important;
                                     font-weight: bold;
-                                "
-                            >
+                                ">
                                 {{ $media->torrents->where('type_id', '=', $type->id)->implode('resolution.name', ' | ') }}
                             </td>
                         @endif

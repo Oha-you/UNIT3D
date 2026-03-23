@@ -1,10 +1,6 @@
 @if ($paginator->hasPages())
-    <nav
-        class="pagination"
-        role="navigation"
-        aria-label="Pagination navigation"
-        x-data="pagination"
-    >
+    <nav class="pagination" role="navigation" aria-label="Pagination navigation"
+        x-data="pagination">
         <ul class="pagination__items">
             @if ($paginator->onFirstPage())
                 <li class="pagination__previous pagination__previous--disabled">
@@ -12,13 +8,8 @@
                 </li>
             @else
                 <li class="pagination__previous">
-                    <a
-                        class="pagination__previous"
-                        href="{{ $paginator->previousPageUrl() }}"
-                        wire:click.prevent="previousPage"
-                        x-bind="newPage"
-                        rel="prev"
-                    >
+                    <a class="pagination__previous" href="{{ $paginator->previousPageUrl() }}"
+                        wire:click.prevent="previousPage" x-bind="newPage" rel="prev">
                         &lsaquo; {{ __('common.previous') }}
                     </a>
                 </li>
@@ -29,13 +20,9 @@
                         <li class="pagination__current">1</li>
                     @else
                         <li>
-                            <a
-                                class="pagination__link"
-                                href="{{ $paginator->url(1) }}"
+                            <a class="pagination__link" href="{{ $paginator->url(1) }}"
                                 wire:click.prevent="gotoPage(1, '{{ $paginator->getPageName() }}')"
-                                x-bind="newPage"
-                                rel="prev"
-                            >
+                                x-bind="newPage" rel="prev">
                                 1
                             </a>
                         </li>
@@ -43,12 +30,9 @@
                     @if ($paginator->currentPage() - 3 > 2)
                         @if ($paginator->currentPage() - 4 === 2)
                             <li>
-                                <a
-                                    class="pagination__link"
-                                    href="{{ $paginator->url(2) }}"
+                                <a class="pagination__link" href="{{ $paginator->url(2) }}"
                                     wire:click.prevent="gotoPage(2, '{{ $paginator->getPageName() }}')"
-                                    x-bind="newPage"
-                                >
+                                    x-bind="newPage">
                                     2
                                 </a>
                             </li>
@@ -63,12 +47,9 @@
                                 <li class="pagination__current">{{ $page }}</li>
                             @else
                                 <li>
-                                    <a
-                                        class="pagination__link"
-                                        href="{{ $paginator->url($page) }}"
+                                    <a class="pagination__link" href="{{ $paginator->url($page) }}"
                                         wire:click.prevent="gotoPage({{ $page }}, '{{ $paginator->getPageName() }}')"
-                                        x-bind="newPage"
-                                    >
+                                        x-bind="newPage">
                                         {{ $page }}
                                     </a>
                                 </li>
@@ -78,12 +59,10 @@
                         @if ($paginator->currentPage() + 3 < $paginator->lastPage() - 1)
                             @if ($paginator->currentPage() + 4 === $paginator->lastPage() - 1)
                                 <li>
-                                    <a
-                                        class="pagination__link"
+                                    <a class="pagination__link"
                                         href="{{ $paginator->url($paginator->currentPage() + 4) }}"
                                         wire:click.prevent="gotoPage({{ $paginator->currentPage() + 4 }}, '{{ $paginator->getPageName() }}')"
-                                        x-bind="newPage"
-                                    >
+                                        x-bind="newPage">
                                         {{ $paginator->currentPage() + 4 }}
                                     </a>
                                 </li>
@@ -94,13 +73,10 @@
 
                         @if ($paginator->hasMorePages())
                             <li>
-                                <a
-                                    class="pagination__link"
+                                <a class="pagination__link"
                                     href="{{ $paginator->url($paginator->lastPage()) }}"
                                     wire:click.prevent="gotoPage({{ $paginator->lastPage() }}, '{{ $paginator->getPageName() }}')"
-                                    x-bind="newPage"
-                                    rel="next"
-                                >
+                                    x-bind="newPage" rel="next">
                                     {{ $paginator->lastPage() }}
                                 </a>
                             </li>
@@ -113,12 +89,9 @@
                                 <li class="pagination__current">{{ $page }}</li>
                             @else
                                 <li>
-                                    <a
-                                        class="pagination__link"
-                                        href="{{ $paginator->url($page) }}"
+                                    <a class="pagination__link" href="{{ $paginator->url($page) }}"
                                         wire:click.prevent="gotoPage({{ $page }}, '{{ $paginator->getPageName() }}')"
-                                        x-bind="newPage"
-                                    >
+                                        x-bind="newPage">
                                         {{ $page }}
                                     </a>
                                 </li>
@@ -127,13 +100,10 @@
 
                         @if ($paginator->hasMorePages())
                             <li>
-                                <a
-                                    class="pagination__link"
+                                <a class="pagination__link"
                                     href="{{ $paginator->url($paginator->currentPage() + 1) }}"
                                     wire:click.prevent="gotoPage({{ $paginator->currentPage() + 1 }}, '{{ $paginator->getPageName() }}')"
-                                    x-bind="newPage"
-                                    rel="next"
-                                >
+                                    x-bind="newPage" rel="next">
                                     {{ $paginator->currentPage() + 1 }}
                                 </a>
                             </li>
@@ -144,13 +114,8 @@
 
             @if ($paginator->hasMorePages())
                 <li class="pagination__next">
-                    <a
-                        class="pagination__next"
-                        href="{{ $paginator->nextPageUrl() }}"
-                        wire:click.prevent="nextPage"
-                        x-bind="newPage"
-                        rel="next"
-                    >
+                    <a class="pagination__next" href="{{ $paginator->nextPageUrl() }}"
+                        wire:click.prevent="nextPage" x-bind="newPage" rel="next">
                         {{ __('common.next') }} &rsaquo;
                     </a>
                 </li>
@@ -167,11 +132,10 @@
                     newPage: {
                         ['x-on:click']() {
                             window.scroll({
-                                top:
-                                    (
-                                        this.$el.closest('.panelV2') ||
-                                        document.querySelector('.panelV2')
-                                    ).offsetTop - 80,
+                                top: (
+                                    this.$el.closest('.panelV2') ||
+                                    document.querySelector('.panelV2')
+                                ).offsetTop - 80,
                             });
                         },
                     },

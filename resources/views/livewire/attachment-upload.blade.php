@@ -4,13 +4,8 @@
         <div class="panel__actions">
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="attachment"
-                        class="form__file"
-                        type="file"
-                        wire:model.live="attachment"
-                        style="display: none"
-                    />
+                    <input id="attachment" class="form__file" type="file"
+                        wire:model.live="attachment" style="display: none" />
                     <label class="form__button form__button--text" for="attachment">
                         {{ __('common.add') }}
                     </label>
@@ -35,8 +30,7 @@
                                 <li class="data-table__action">
                                     <form
                                         action="{{ route('tickets.attachment.download', ['ticket' => $ticket, 'attachment' => $attachment]) }}"
-                                        method="POST"
-                                    >
+                                        method="POST">
                                         @csrf
                                         <button class="form__button form__button--text">
                                             {{ __('ticket.download') }}

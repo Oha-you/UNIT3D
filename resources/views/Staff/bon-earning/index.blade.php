@@ -17,10 +17,8 @@
             <h2 class="panel__heading">{{ __('bon.bon') }} {{ __('bon.exchange') }}</h2>
             <div class="panel__actions">
                 <div class="panel__action">
-                    <a
-                        href="{{ route('staff.bon_earnings.create') }}"
-                        class="form__button form__button--text"
-                    >
+                    <a href="{{ route('staff.bon_earnings.create') }}"
+                        class="form__button form__button--text">
                         {{ __('common.add') }}
                         {{ trans_choice('common.a-an-art', true) }}
                         {{ __('bon.earning') }}
@@ -46,8 +44,7 @@
                         <tr>
                             <td>
                                 <a
-                                    href="{{ route('staff.bon_earnings.edit', ['bonEarning' => $bonEarning]) }}"
-                                >
+                                    href="{{ route('staff.bon_earnings.edit', ['bonEarning' => $bonEarning]) }}">
                                     {{ $bonEarning->name }}
                                 </a>
                             </td>
@@ -56,44 +53,44 @@
                                 @switch($bonEarning->variable)
                                     @case('1')
                                         1 (Constant)
+                                    @break
 
-                                        @break
                                     @case('age')
                                         {{ __('torrent.age') }}
+                                    @break
 
-                                        @break
                                     @case('size')
                                         {{ __('torrent.size') }}
+                                    @break
 
-                                        @break
                                     @case('seeders')
                                         {{ __('torrent.seeders') }}
+                                    @break
 
-                                        @break
                                     @case('leechers')
                                         {{ __('torrent.leechers') }}
+                                    @break
 
-                                        @break
                                     @case('times_completed')
                                         {{ __('torrent.completed-times') }}
+                                    @break
 
-                                        @break
                                     @case('internal')
                                         {{ __('common.internal') }}
+                                    @break
 
-                                        @break
                                     @case('personal_release')
                                         {{ __('torrent.personal-release') }}
+                                    @break
 
-                                        @break
                                     @case('seedtime')
                                         {{ __('torrent.seedtime') }}
+                                    @break
 
-                                        @break
                                     @case('connectable')
                                         Connectable
+                                    @break
 
-                                        @break
                                     @default
                                         {{ __('common.unknown') }}
                                 @endswitch
@@ -102,12 +99,12 @@
                                 @switch($bonEarning->operation)
                                     @case('append')
                                         Append
+                                    @break
 
-                                        @break
                                     @case('multiply')
                                         Multiply
+                                    @break
 
-                                        @break
                                     @default
                                         {{ __('common.unknown') }}
                                 @endswitch
@@ -120,15 +117,14 @@
                                     @forelse ($bonEarning->conditions as $condition)
                                         <li>
                                             {{ $condition->operand1 }} {{ $condition->operator }}
-                                            {{
-                                                match ($condition->operand1) {
-                                                    'age' => \App\Helpers\StringHelper::timeElapsed($condition->operand2),
-                                                    'size' => \App\Helpers\StringHelper::formatBytes($condition->operand2),
-                                                    'seedtime' => \App\Helpers\StringHelper::timeElapsed($condition->operand2),
-                                                    'type_id' => \App\Models\Type::query()->find($condition->operand2)?->name ?? __('common.unknown'),
-                                                    default => preg_replace('/(\.\d+?)0+$/', '$1', $condition->operand2),
-                                                }
-                                            }}
+                                            {{ match ($condition->operand1) {
+                                                'age' => \App\Helpers\StringHelper::timeElapsed($condition->operand2),
+                                                'size' => \App\Helpers\StringHelper::formatBytes($condition->operand2),
+                                                'seedtime' => \App\Helpers\StringHelper::timeElapsed($condition->operand2),
+                                                'type_id' => \App\Models\Type::query()->find($condition->operand2)?->name ??
+                                                    __('common.unknown'),
+                                                default => preg_replace('/(\.\d+?)0+$/', '$1', $condition->operand2),
+                                            } }}
                                         </li>
                                     @empty
                                         <li>No conditions</li>
@@ -138,19 +134,15 @@
                             <td>
                                 <menu class="data-table__actions">
                                     <li class="data-table__action">
-                                        <a
-                                            class="form__button form__button--text"
-                                            href="{{ route('staff.bon_earnings.edit', ['bonEarning' => $bonEarning]) }}"
-                                        >
+                                        <a class="form__button form__button--text"
+                                            href="{{ route('staff.bon_earnings.edit', ['bonEarning' => $bonEarning]) }}">
                                             {{ __('common.edit') }}
                                         </a>
                                     </li>
                                     <li class="data-table__action">
                                         <form
                                             action="{{ route('staff.bon_earnings.destroy', ['bonEarning' => $bonEarning]) }}"
-                                            method="POST"
-                                            x-data
-                                        >
+                                            method="POST" x-data>
                                             @csrf
                                             @method('DELETE')
                                             <button
@@ -167,8 +159,7 @@
                                                         }
                                                     })
                                                 "
-                                                class="form__button form__button--text"
-                                            >
+                                                class="form__button form__button--text">
                                                 {{ __('common.delete') }}
                                             </button>
                                         </form>

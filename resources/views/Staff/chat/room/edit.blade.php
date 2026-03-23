@@ -27,22 +27,13 @@
             {{ __('common.edit') }} {{ __('common.chat-room') }}: {{ $chatroom->name }}
         </h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
+            <form class="form" method="POST"
                 action="{{ route('staff.chatrooms.update', ['chatroom' => $chatroom]) }}"
-                enctype="multipart/form-data"
-            >
+                enctype="multipart/form-data">
                 @csrf
                 <p class="form__group">
-                    <input
-                        id="name"
-                        class="form__text"
-                        name="name"
-                        required
-                        type="text"
-                        value="{{ $chatroom->name }}"
-                    />
+                    <input id="name" class="form__text" name="name" required type="text"
+                        value="{{ $chatroom->name }}" />
                     <label class="form__label form__label--floating" for="name">
                         {{ __('common.name') }}
                     </label>

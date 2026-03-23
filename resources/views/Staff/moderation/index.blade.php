@@ -38,10 +38,8 @@
                     @forelse ($pending as $torrent)
                         <tr>
                             <td>
-                                <time
-                                    datetime="{{ $torrent->created_at }}"
-                                    title="{{ $torrent->created_at }}"
-                                >
+                                <time datetime="{{ $torrent->created_at }}"
+                                    title="{{ $torrent->created_at }}">
                                     {{ $torrent->created_at->diffForHumans() }}
                                 </time>
                             </td>
@@ -51,10 +49,8 @@
                                 </a>
                             </td>
                             <td>
-                                <i
-                                    class="{{ $torrent->category->icon }} category__icon"
-                                    data-original-title="{{ $torrent->category->name }} torrent"
-                                ></i>
+                                <i class="{{ $torrent->category->icon }} category__icon"
+                                    data-original-title="{{ $torrent->category->name }} torrent"></i>
                             </td>
                             <td>{{ $torrent->type->name }}</td>
                             <td>{{ $torrent->resolution->name ?? 'No res' }}</td>
@@ -65,31 +61,28 @@
                             <td>
                                 <menu class="data-table__actions">
                                     <li class="data-table__action">
-                                        <form
-                                            method="POST"
-                                            action="{{ route('staff.moderation.update', ['id' => $torrent->id]) }}"
-                                        >
+                                        <form method="POST"
+                                            action="{{ route('staff.moderation.update', ['id' => $torrent->id]) }}">
                                             @csrf
-                                            <input
-                                                type="hidden"
-                                                name="old_status"
-                                                value="{{ $torrent->status }}"
-                                            />
-                                            <input
-                                                type="hidden"
-                                                name="status"
-                                                value="{{ \App\Enums\ModerationStatus::APPROVED }}"
-                                            />
+                                            <input type="hidden" name="old_status"
+                                                value="{{ $torrent->status }}" />
+                                            <input type="hidden" name="status"
+                                                value="{{ \App\Enums\ModerationStatus::APPROVED }}" />
                                             <button class="form__button form__button--filled">
                                                 <i
-                                                    class="{{ config('other.font-awesome') }} fa-thumbs-up"
-                                                ></i>
+                                                    class="{{ config('other.font-awesome') }} fa-thumbs-up"></i>
                                                 {{ __('common.moderation-approve') }}
                                             </button>
                                         </form>
                                     </li>
-                                    @include('Staff.moderation.partials._postpone-dialog', ['torrent' => $torrent])
-                                    @include('Staff.moderation.partials._reject-dialog', ['torrent' => $torrent])
+                                    @include(
+                                        'Staff.moderation.partials._postpone-dialog',
+                                        ['torrent' => $torrent]
+                                    )
+                                    @include(
+                                        'Staff.moderation.partials._reject-dialog',
+                                        ['torrent' => $torrent]
+                                    )
                                 </menu>
                             </td>
                         </tr>
@@ -123,10 +116,8 @@
                     @forelse ($postponed as $torrent)
                         <tr>
                             <td>
-                                <time
-                                    datetime="{{ $torrent->moderated_at }}"
-                                    title="{{ $torrent->moderated_at }}"
-                                >
+                                <time datetime="{{ $torrent->moderated_at }}"
+                                    title="{{ $torrent->moderated_at }}">
                                     {{ $torrent->moderated_at->diffForHumans() }}
                                 </time>
                             </td>
@@ -136,10 +127,8 @@
                                 </a>
                             </td>
                             <td>
-                                <i
-                                    class="{{ $torrent->category->icon }} category__icon"
-                                    title="{{ $torrent->category->name }} torrent"
-                                ></i>
+                                <i class="{{ $torrent->category->icon }} category__icon"
+                                    title="{{ $torrent->category->name }} torrent"></i>
                             </td>
                             <td>{{ $torrent->type->name }}</td>
                             <td>{{ $torrent->resolution->name ?? 'No res' }}</td>
@@ -153,41 +142,32 @@
                             <td>
                                 <menu class="data-table__actions">
                                     <li class="data-table__action">
-                                        <form
-                                            method="POST"
-                                            action="{{ route('staff.moderation.update', ['id' => $torrent->id]) }}"
-                                        >
+                                        <form method="POST"
+                                            action="{{ route('staff.moderation.update', ['id' => $torrent->id]) }}">
                                             @csrf
-                                            <input
-                                                type="hidden"
-                                                name="old_status"
-                                                value="{{ $torrent->status }}"
-                                            />
-                                            <input
-                                                type="hidden"
-                                                name="status"
-                                                value="{{ \App\Enums\ModerationStatus::APPROVED }}"
-                                            />
+                                            <input type="hidden" name="old_status"
+                                                value="{{ $torrent->status }}" />
+                                            <input type="hidden" name="status"
+                                                value="{{ \App\Enums\ModerationStatus::APPROVED }}" />
                                             <button class="form__button form__button--filled">
                                                 <i
-                                                    class="{{ config('other.font-awesome') }} fa-thumbs-up"
-                                                ></i>
+                                                    class="{{ config('other.font-awesome') }} fa-thumbs-up"></i>
                                                 {{ __('common.moderation-approve') }}
                                             </button>
                                         </form>
                                     </li>
                                     <li class="data-table__action">
-                                        <a
-                                            href="{{ route('torrents.edit', ['id' => $torrent->id]) }}"
-                                            class="form__button form__button--filled"
-                                        >
+                                        <a href="{{ route('torrents.edit', ['id' => $torrent->id]) }}"
+                                            class="form__button form__button--filled">
                                             <i
-                                                class="{{ config('other.font-awesome') }} fa-pencil"
-                                            ></i>
+                                                class="{{ config('other.font-awesome') }} fa-pencil"></i>
                                             {{ __('common.edit') }}
                                         </a>
                                     </li>
-                                    @include('Staff.moderation.partials._delete-dialog', ['torrent' => $torrent])
+                                    @include(
+                                        'Staff.moderation.partials._delete-dialog',
+                                        ['torrent' => $torrent]
+                                    )
                                 </menu>
                             </td>
                         </tr>
@@ -221,10 +201,8 @@
                     @forelse ($rejected as $torrent)
                         <tr>
                             <td>
-                                <time
-                                    datetime="{{ $torrent->moderated_at }}"
-                                    title="{{ $torrent->moderated_at }}"
-                                >
+                                <time datetime="{{ $torrent->moderated_at }}"
+                                    title="{{ $torrent->moderated_at }}">
                                     {{ $torrent->moderated_at->diffForHumans() }}
                                 </time>
                             </td>
@@ -234,10 +212,8 @@
                                 </a>
                             </td>
                             <td>
-                                <i
-                                    class="{{ $torrent->category->icon }} category__icon"
-                                    title="{{ $torrent->category->name }} torrent"
-                                ></i>
+                                <i class="{{ $torrent->category->icon }} category__icon"
+                                    title="{{ $torrent->category->name }} torrent"></i>
                             </td>
                             <td>{{ $torrent->type->name }}</td>
                             <td>{{ $torrent->resolution->name ?? 'No res' }}</td>
@@ -251,42 +227,36 @@
                             <td>
                                 <menu class="data-table__actions">
                                     <li class="data-table__action">
-                                        <form
-                                            method="POST"
-                                            action="{{ route('staff.moderation.update', ['id' => $torrent->id]) }}"
-                                        >
+                                        <form method="POST"
+                                            action="{{ route('staff.moderation.update', ['id' => $torrent->id]) }}">
                                             @csrf
-                                            <input
-                                                type="hidden"
-                                                name="old_status"
-                                                value="{{ $torrent->status }}"
-                                            />
-                                            <input
-                                                type="hidden"
-                                                name="status"
-                                                value="{{ \App\Enums\ModerationStatus::APPROVED }}"
-                                            />
+                                            <input type="hidden" name="old_status"
+                                                value="{{ $torrent->status }}" />
+                                            <input type="hidden" name="status"
+                                                value="{{ \App\Enums\ModerationStatus::APPROVED }}" />
                                             <button class="form__button form__button--filled">
                                                 <i
-                                                    class="{{ config('other.font-awesome') }} fa-thumbs-up"
-                                                ></i>
+                                                    class="{{ config('other.font-awesome') }} fa-thumbs-up"></i>
                                                 {{ __('common.moderation-approve') }}
                                             </button>
                                         </form>
                                     </li>
-                                    @include('Staff.moderation.partials._postpone-dialog', ['torrent' => $torrent])
+                                    @include(
+                                        'Staff.moderation.partials._postpone-dialog',
+                                        ['torrent' => $torrent]
+                                    )
                                     <li class="data-table__action">
-                                        <a
-                                            href="{{ route('torrents.edit', ['id' => $torrent->id]) }}"
-                                            class="form__button form__button--filled"
-                                        >
+                                        <a href="{{ route('torrents.edit', ['id' => $torrent->id]) }}"
+                                            class="form__button form__button--filled">
                                             <i
-                                                class="{{ config('other.font-awesome') }} fa-pencil"
-                                            ></i>
+                                                class="{{ config('other.font-awesome') }} fa-pencil"></i>
                                             {{ __('common.edit') }}
                                         </a>
                                     </li>
-                                    @include('Staff.moderation.partials._delete-dialog', ['torrent' => $torrent])
+                                    @include(
+                                        'Staff.moderation.partials._delete-dialog',
+                                        ['torrent' => $torrent]
+                                    )
                                 </menu>
                             </td>
                         </tr>

@@ -2,10 +2,7 @@
 
 @section('breadcrumbs')
     <li class="breadcrumbV2">
-        <a
-            href="{{ route('users.conversations.index', ['user' => $user]) }}"
-            class="breadcrumb__link"
-        >
+        <a href="{{ route('users.conversations.index', ['user' => $user]) }}" class="breadcrumb__link">
             {{ __('pm.messages') }}
         </a>
     </li>
@@ -20,23 +17,13 @@
     <section class="panelV2">
         <h2 class="panel__heading">{{ __('pm.new') }}</h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
-                action="{{ route('users.conversations.store', ['user' => $user]) }}"
-            >
+            <form class="form" method="POST"
+                action="{{ route('users.conversations.store', ['user' => $user]) }}">
                 @csrf
                 <p class="form__group">
-                    <input
-                        id="receiver_username"
-                        class="form__text"
-                        name="receiver_username"
-                        required
-                        @if ($username !== null)
-                            readonly
-                            value="{{ $username }}"
-                        @endif
-                    />
+                    <input id="receiver_username" class="form__text" name="receiver_username" required
+                        @if ($username !== null) readonly
+                            value="{{ $username }}" @endif />
                     <label for="receiver_username" class="form__label form__label--floating">
                         {{ __('common.username') }}
                     </label>

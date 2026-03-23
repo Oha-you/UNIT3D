@@ -6,10 +6,8 @@
         </h2>
         <div class="panel__actions">
             <div class="panel__action">
-                <a
-                    href="{{ route('subtitles.create', ['torrent_id' => $torrent->id]) }}"
-                    class="form__button form__button--text"
-                >
+                <a href="{{ route('subtitles.create', ['torrent_id' => $torrent->id]) }}"
+                    class="form__button form__button--text">
                     {{ __('common.add') }} {{ __('common.subtitle') }}
                 </a>
             </div>
@@ -38,10 +36,8 @@
                         <td>{{ $subtitle->getSize() }}</td>
                         <td>{{ $subtitle->downloads }}</td>
                         <td>
-                            <time
-                                datetime="{{ $subtitle->created_at }}"
-                                title="{{ $subtitle->created_at }}"
-                            >
+                            <time datetime="{{ $subtitle->created_at }}"
+                                title="{{ $subtitle->created_at }}">
                                 {{ $subtitle->created_at->diffForHumans() }}
                             </time>
                         </td>
@@ -51,22 +47,18 @@
                         <td>
                             <menu class="data-table__actions">
                                 <li class="data-table__action">
-                                    <a
-                                        href="{{ route('subtitles.download', ['subtitle' => $subtitle]) }}"
+                                    <a href="{{ route('subtitles.download', ['subtitle' => $subtitle]) }}"
                                         class="form__button form__button--text"
-                                        title="{{ __('common.download') }}"
-                                    >
+                                        title="{{ __('common.download') }}">
                                         {{ __('common.download') }}
                                     </a>
                                 </li>
                                 @if (auth()->user()->group->is_modo || auth()->id() == $subtitle->user_id)
                                     <li class="data-table__action">
                                         <span x-data="dialog">
-                                            <button
-                                                class="form__button form__button--text"
+                                            <button class="form__button form__button--text"
                                                 title="{{ __('common.edit') }}"
-                                                x-bind="showDialog"
-                                            >
+                                                x-bind="showDialog">
                                                 {{ __('common.edit') }}
                                             </button>
                                             <dialog class="dialog" x-bind="dialogElement">
@@ -74,38 +66,27 @@
                                                     {{ __('common.edit') }}
                                                     {{ __('common.subtitle') }}
                                                 </h4>
-                                                <form
-                                                    class="dialog__form"
-                                                    method="POST"
+                                                <form class="dialog__form" method="POST"
                                                     action="{{ route('subtitles.update', ['subtitle' => $subtitle]) }}"
-                                                    x-bind="dialogForm"
-                                                >
+                                                    x-bind="dialogForm">
                                                     @csrf
                                                     @method('PATCH')
-                                                    <input
-                                                        id="torrent_id"
-                                                        name="torrent_id"
+                                                    <input id="torrent_id" name="torrent_id"
                                                         type="hidden"
-                                                        value="{{ $torrent->id }}"
-                                                    />
+                                                        value="{{ $torrent->id }}" />
                                                     <p class="form__group">
-                                                        <select
-                                                            class="form__select"
-                                                            id="language_id"
-                                                            name="language_id"
-                                                            required
-                                                        >
+                                                        <select class="form__select"
+                                                            id="language_id" name="language_id"
+                                                            required>
                                                             <option
                                                                 value="{{ $subtitle->language_id }}"
-                                                                selected
-                                                            >
+                                                                selected>
                                                                 {{ $subtitle->language->name }}
                                                                 ({{ __('torrent.current') }})
                                                             </option>
                                                             @foreach (App\Models\MediaLanguage::query()->orderBy('name')->get() as $media_language)
                                                                 <option
-                                                                    value="{{ $media_language->id }}"
-                                                                >
+                                                                    value="{{ $media_language->id }}">
                                                                     {{ $media_language->name }}
                                                                     ({{ $media_language->code }})
                                                                 </option>
@@ -113,56 +94,39 @@
                                                         </select>
                                                         <label
                                                             class="form__label form__label--floating"
-                                                            for="language_id"
-                                                        >
+                                                            for="language_id">
                                                             {{ __('common.language') }}
                                                         </label>
                                                     </p>
                                                     <p class="form__group">
-                                                        <input
-                                                            id="note"
-                                                            class="form__text"
-                                                            name="note"
-                                                            type="text"
+                                                        <input id="note" class="form__text"
+                                                            name="note" type="text"
                                                             value="{{ $subtitle->note }}"
-                                                            required
-                                                        />
+                                                            required />
                                                         <label
                                                             class="form__label form__label--floating"
-                                                            for="note"
-                                                        >
+                                                            for="note">
                                                             {{ __('subtitle.note') }}
                                                         </label>
                                                     </p>
                                                     <p class="form__group">
-                                                        <input
-                                                            type="hidden"
-                                                            name="anon"
-                                                            value="0"
-                                                        />
-                                                        <input
-                                                            id="anon"
-                                                            class="form__checkbox"
-                                                            name="anon"
-                                                            type="checkbox"
+                                                        <input type="hidden" name="anon"
+                                                            value="0" />
+                                                        <input id="anon" class="form__checkbox"
+                                                            name="anon" type="checkbox"
                                                             value="1"
-                                                            @checked($subtitle->anon)
-                                                        />
+                                                            @checked($subtitle->anon) />
                                                         <label class="form__label" for="anon">
                                                             {{ __('common.anonymous') }}?
                                                         </label>
                                                     </p>
                                                     <p class="form__group">
                                                         <button
-                                                            class="form__button form__button--filled"
-                                                        >
+                                                            class="form__button form__button--filled">
                                                             {{ __('common.save') }}
                                                         </button>
-                                                        <button
-                                                            formmethod="dialog"
-                                                            formnovalidate
-                                                            class="form__button form__button--outlined"
-                                                        >
+                                                        <button formmethod="dialog" formnovalidate
+                                                            class="form__button form__button--outlined">
                                                             {{ __('common.cancel') }}
                                                         </button>
                                                     </p>
@@ -171,25 +135,16 @@
                                         </span>
                                     </li>
                                     <li class="data-table__action">
-                                        <form
-                                            method="POST"
+                                        <form method="POST"
                                             action="{{ route('subtitles.destroy', ['subtitle' => $subtitle]) }}"
-                                            x-data="confirmation"
-                                            style="display: inline"
-                                        >
+                                            x-data="confirmation" style="display: inline">
                                             @csrf
                                             @method('DELETE')
-                                            <input
-                                                id="torrent_id"
-                                                name="torrent_id"
-                                                type="hidden"
-                                                value="{{ $torrent->id }}"
-                                            />
-                                            <button
-                                                x-on:click.prevent="confirmAction"
+                                            <input id="torrent_id" name="torrent_id" type="hidden"
+                                                value="{{ $torrent->id }}" />
+                                            <button x-on:click.prevent="confirmAction"
                                                 data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete this subtitle: ' . $subtitle->language->name . '?') }}"
-                                                class="form__button form__button--text"
-                                            >
+                                                class="form__button form__button--text">
                                                 {{ __('common.delete') }}
                                             </button>
                                         </form>

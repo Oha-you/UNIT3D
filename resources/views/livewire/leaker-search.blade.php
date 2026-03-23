@@ -5,14 +5,8 @@
             <div class="panel__actions">
                 <div class="panel__action">
                     <div class="form__group">
-                        <input
-                            id="torrent"
-                            wire:model.live.debounce.1500ms="torrentIds"
-                            class="form__text"
-                            type="search"
-                            autocomplete="off"
-                            placeholder=" "
-                        />
+                        <input id="torrent" wire:model.live.debounce.1500ms="torrentIds"
+                            class="form__text" type="search" autocomplete="off" placeholder=" " />
                         <label class="form__label form__label--floating" for="torrent">
                             Torrent IDs (comma-separated)
                         </label>
@@ -20,16 +14,9 @@
                 </div>
                 <div class="panel__action">
                     <div class="form__group">
-                        <input
-                            id="torrent"
-                            wire:model.live.debounce.500ms="minutesLeakedWithin"
-                            class="form__text"
-                            type="search"
-                            inputmode="numeric"
-                            pattern="[0-9]*"
-                            autocomplete="off"
-                            placeholder=" "
-                        />
+                        <input id="torrent" wire:model.live.debounce.500ms="minutesLeakedWithin"
+                            class="form__text" type="search" inputmode="numeric" pattern="[0-9]*"
+                            autocomplete="off" placeholder=" " />
                         <label class="form__label form__label--floating" for="torrent">
                             Minutes leaked within
                         </label>
@@ -37,12 +24,8 @@
                 </div>
                 <div class="panel__action">
                     <div class="form__group">
-                        <select
-                            id="quantity"
-                            class="form__select"
-                            wire:model.live="perPage"
-                            required
-                        >
+                        <select id="quantity" class="form__select" wire:model.live="perPage"
+                            required>
                             <option>25</option>
                             <option>50</option>
                             <option>100</option>
@@ -65,7 +48,9 @@
                         </th>
                         <th wire:click="sortBy('leak_count')" role="columnheader button">
                             Torrents matched
-                            @include('livewire.includes._sort-icon', ['field' => 'leak_count'])
+                            @include('livewire.includes._sort-icon', [
+                                'field' => 'leak_count',
+                            ])
                         </th>
                         <th>User agents</th>
                         <th>IPs</th>

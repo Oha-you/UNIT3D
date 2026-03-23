@@ -1,10 +1,8 @@
 <div x-cloak x-show="metaPopup" class="meta__poster-popup">
     <div class="meta__poster-popup-card">
         <div class="meta__poster-popup-backdrop">
-            <img
-                src="{{ isset($meta->backdrop) ? tmdb_image('back_mid', $meta->backdrop) : (isset($meta->poster) ? tmdb_image('poster_mid', $meta->poster) : 'https://via.placeholder.com/500x280') }}"
-                alt="{{ $meta->title ?? ($meta->name ?? 'No title') }}"
-            />
+            <img src="{{ isset($meta->backdrop) ? tmdb_image('back_mid', $meta->backdrop) : (isset($meta->poster) ? tmdb_image('poster_mid', $meta->poster) : 'https://via.placeholder.com/500x280') }}"
+                alt="{{ $meta->title ?? ($meta->name ?? 'No title') }}" />
             <div class="meta__poster-popup-backdrop-overlay"></div>
         </div>
         <div class="meta__poster-popup-content">

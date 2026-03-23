@@ -41,11 +41,8 @@
                         @forelse ($followings as $following)
                             <tr>
                                 <td>
-                                    <img
-                                        src="{{ $following->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $following]) }}"
-                                        alt=""
-                                        class="user-search__avatar"
-                                    />
+                                    <img src="{{ $following->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $following]) }}"
+                                        alt="" class="user-search__avatar" />
                                 </td>
                                 <td>
                                     <x-user-tag :anon="false" :user="$following" />
@@ -55,10 +52,8 @@
                                     <td>
                                         <menu class="data-table__actions">
                                             <li class="data-table__action">
-                                                <form
-                                                    method="POST"
-                                                    action="{{ route('users.followers.destroy', ['user' => $following]) }}"
-                                                >
+                                                <form method="POST"
+                                                    action="{{ route('users.followers.destroy', ['user' => $following]) }}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="form__button form__button--text">

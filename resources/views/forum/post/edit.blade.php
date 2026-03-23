@@ -18,10 +18,7 @@
         </a>
     </li>
     <li class="breadcrumbV2">
-        <a
-            href="{{ route('forums.categories.show', ['id' => $category->id]) }}"
-            class="breadcrumb__link"
-        >
+        <a href="{{ route('forums.categories.show', ['id' => $category->id]) }}" class="breadcrumb__link">
             {{ $category->name }}
         </a>
     </li>
@@ -53,11 +50,8 @@
             {{ $forum->name }}
         </h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
-                action="{{ route('posts.update', ['id' => $post->id]) }}"
-            >
+            <form class="form" method="POST"
+                action="{{ route('posts.update', ['id' => $post->id]) }}">
                 @csrf
                 @method('PATCH')
                 @livewire('bbcode-input', ['name' => 'content', 'label' => __('forum.post'), 'content' => $post->content])

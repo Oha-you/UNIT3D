@@ -39,10 +39,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>
-                                <x-user-tag
-                                    :user="$user"
-                                    :anon="$user->privacy?->private_profile"
-                                />
+                                <x-user-tag :user="$user" :anon="$user->privacy?->private_profile" />
                             </td>
                             <td>
                                 {{ $user->messages_count }}

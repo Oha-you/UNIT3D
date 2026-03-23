@@ -14,10 +14,7 @@
         </a>
     </li>
     <li class="breadcrumbV2">
-        <a
-            href="{{ route('users.general_settings.edit', ['user' => $user]) }}"
-            class="breadcrumb__link"
-        >
+        <a href="{{ route('users.general_settings.edit', ['user' => $user]) }}" class="breadcrumb__link">
             {{ __('user.settings') }}
         </a>
     </li>
@@ -50,31 +47,25 @@
                         <tr>
                             <td>{{ $apikey->content }}</td>
                             <td>
-                                <time
-                                    datetime="{{ $apikey->created_at }}"
-                                    title="{{ $apikey->created_at }}"
-                                >
+                                <time datetime="{{ $apikey->created_at }}"
+                                    title="{{ $apikey->created_at }}">
                                     {{ $apikey->created_at }}
                                 </time>
                             </td>
                             <td>
-                                <time
-                                    datetime="{{ $apikey->deleted_at }}"
-                                    title="{{ $apikey->deleted_at }}"
-                                >
+                                <time datetime="{{ $apikey->deleted_at }}"
+                                    title="{{ $apikey->deleted_at }}">
                                     {{ $apikey->deleted_at ?? 'Currently in use' }}
                                 </time>
                             </td>
                             <td>
                                 @if ($loop->first)
                                     <i
-                                        class="{{ config('other.font-awesome') }} fa-check text-green"
-                                    ></i>
+                                        class="{{ config('other.font-awesome') }} fa-check text-green"></i>
                                     {{ __('common.active') }}
                                 @else
                                     <i
-                                        class="{{ config('other.font-awesome') }} fa-times text-red"
-                                    ></i>
+                                        class="{{ config('other.font-awesome') }} fa-times text-red"></i>
                                     {{ __('stat.disabled') }}
                                 @endif
                             </td>
@@ -94,11 +85,8 @@
     <section class="panelV2">
         <h2 class="panel__heading">{{ __('user.reset-api-token') }}</h2>
         <div class="panel__body">
-            <form
-                class="form"
-                action="{{ route('users.apikeys.update', ['user' => $user]) }}"
-                method="POST"
-            >
+            <form class="form" action="{{ route('users.apikeys.update', ['user' => $user]) }}"
+                method="POST">
                 @csrf
                 @method('PATCH')
                 <p>{{ __('user.reset-api-help') }}.</p>

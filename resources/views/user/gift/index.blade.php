@@ -32,10 +32,8 @@
             <h2 class="panel__heading">{{ __('bon.gifts') }}</h2>
             <div class="panel__actions">
                 <div class="panel__action">
-                    <a
-                        class="form__button form__button--text"
-                        href="{{ route('users.gifts.create', ['user' => $user]) }}"
-                    >
+                    <a class="form__button form__button--text"
+                        href="{{ route('users.gifts.create', ['user' => $user]) }}">
                         {{ __('bon.send-gift') }}
                     </a>
                 </div>
@@ -72,10 +70,8 @@
                             <td>{{ $gift->bon }}</td>
                             <td>{{ $gift->message }}</td>
                             <td>
-                                <time
-                                    datetime="{{ $gift->created_at }}"
-                                    title="{{ $gift->created_at }}"
-                                >
+                                <time datetime="{{ $gift->created_at }}"
+                                    title="{{ $gift->created_at }}">
                                     {{ $gift->created_at->format('Y-m-d') }}
                                 </time>
                             </td>

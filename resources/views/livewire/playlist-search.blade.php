@@ -4,14 +4,8 @@
         <div class="panel__actions">
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="name"
-                        class="form__text"
-                        placeholder=" "
-                        type="search"
-                        autocomplete="off"
-                        wire:model.live.debounce.250ms="name"
-                    />
+                    <input id="name" class="form__text" placeholder=" " type="search"
+                        autocomplete="off" wire:model.live.debounce.250ms="name" />
                     <label class="form__label form__label--floating" for="name">
                         {{ __('torrent.search-by-name') }}
                     </label>
@@ -19,14 +13,8 @@
             </div>
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="username"
-                        class="form__text"
-                        placeholder=" "
-                        type="search"
-                        autocomplete="off"
-                        wire:model.live.debounce.250ms="username"
-                    />
+                    <input id="username" class="form__text" placeholder=" " type="search"
+                        autocomplete="off" wire:model.live.debounce.250ms="username" />
                     <label class="form__label form__label--floating" for="username">
                         {{ __('common.username') }}
                     </label>
@@ -34,12 +22,8 @@
             </div>
             <div class="panel__action">
                 <div class="form__group">
-                    <select
-                        id="playlist_category_id"
-                        class="form__select"
-                        wire:model.live.debounce.250ms="playlistCategoryId"
-                        required
-                    >
+                    <select id="playlist_category_id" class="form__select"
+                        wire:model.live.debounce.250ms="playlistCategoryId" required>
                         <option selected value="__any">Any</option>
                         @foreach ($playlistCategories as $playlistCategory)
                             <option class="form__option" value="{{ $playlistCategory->id }}">

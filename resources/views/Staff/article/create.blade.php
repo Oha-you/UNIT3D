@@ -26,12 +26,8 @@
     <section class="panelV2">
         <h2 class="panel__heading">{{ __('common.add') }} {{ __('common.article') }}</h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
-                enctype="multipart/form-data"
-                action="{{ route('staff.articles.store') }}"
-            >
+            <form class="form" method="POST" enctype="multipart/form-data"
+                action="{{ route('staff.articles.store') }}">
                 @csrf
                 <p class="form__group">
                     <input type="text" name="title" id="title" class="form__text" required />
@@ -43,7 +39,7 @@
                     <label for="image" class="form__label">{{ __('common.image') }}</label>
                     <input class="form__file" type="file" name="image" id="image" />
                 </p>
-                @livewire('bbcode-input', ['name' => 'content', 'label' => __('content'), 'required' => true ])
+                @livewire('bbcode-input', ['name' => 'content', 'label' => __('content'), 'required' => true])
                 <p class="form__group">
                     <button class="form__button form__button--filled">
                         {{ __('common.submit') }}

@@ -6,11 +6,8 @@
         </h2>
         <div class="panel__actions">
             <div class="panel__action">
-                <button
-                    class="form__button form__button--text"
-                    x-data="description"
-                    x-on:click.stop="copy"
-                >
+                <button class="form__button form__button--text" x-data="description"
+                    x-on:click.stop="copy">
                     Copy
                 </button>
             </div>
@@ -25,7 +22,8 @@
                 copy() {
                     text = document.createElement('textarea');
                     text.innerHTML = decodeURIComponent(
-                        escape(atob('{{ base64_encode($torrent->description) }}')),
+                        escape(atob(
+                            '{{ base64_encode($torrent->description) }}')),
                     );
                     navigator.clipboard.writeText(text.value);
                     Swal.fire({

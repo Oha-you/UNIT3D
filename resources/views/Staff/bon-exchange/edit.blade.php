@@ -26,54 +26,29 @@
             {{ __('bon.bon') }} {{ __('bon.exchange') }}
         </h2>
         <div class="panel__body">
-            <form
-                name="upload"
-                class="upload-form form"
-                id="upload-form"
-                method="POST"
-                action="{{ route('staff.bon_exchanges.update', ['bonExchange' => $bonExchange->id]) }}"
-            >
+            <form name="upload" class="upload-form form" id="upload-form" method="POST"
+                action="{{ route('staff.bon_exchanges.update', ['bonExchange' => $bonExchange->id]) }}">
                 @csrf
                 @method('patch')
                 <p class="form__group">
-                    <input
-                        type="text"
-                        name="description"
-                        id="description"
-                        class="form__text"
-                        value="{{ $bonExchange->description }}"
-                        required
-                    />
+                    <input type="text" name="description" id="description" class="form__text"
+                        value="{{ $bonExchange->description }}" required />
                     <label class="form__label form__label--floating" for="description">
                         {{ __('common.name') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        type="text"
-                        name="value"
-                        id="value"
-                        class="form__text"
-                        inputmode="numeric"
-                        pattern="[0-9]*"
-                        value="{{ $bonExchange->value }}"
-                        required
-                    />
+                    <input type="text" name="value" id="value" class="form__text"
+                        inputmode="numeric" pattern="[0-9]*" value="{{ $bonExchange->value }}"
+                        required />
                     <label class="form__label form__label--floating" for="value">
                         {{ __('value') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        type="text"
-                        name="cost"
-                        id="cost"
-                        class="form__text"
-                        inputmode="numeric"
-                        pattern="[0-9]*"
-                        value="{{ $bonExchange->cost }}"
-                        required
-                    />
+                    <input type="text" name="cost" id="cost" class="form__text"
+                        inputmode="numeric" pattern="[0-9]*" value="{{ $bonExchange->cost }}"
+                        required />
                     <label class="form__label form__label--floating" for="cost">
                         {{ __('bon.points') }}
                     </label>
@@ -81,32 +56,17 @@
                 <p class="form__group">
                     <select name="type" id="type" class="form__select" required>
                         <option hidden selected disabled value=""></option>
-                        <option
-                            class="form__option"
-                            value="upload"
-                            @selected($bonExchange->upload)
-                        >
+                        <option class="form__option" value="upload" @selected($bonExchange->upload)>
                             {{ __('common.add') }} {{ __('common.upload') }}
                         </option>
-                        <option
-                            class="form__option"
-                            value="download"
-                            @selected($bonExchange->download)
-                        >
+                        <option class="form__option" value="download" @selected($bonExchange->download)>
                             {{ __('common.remove') }} {{ __('common.download') }}
                         </option>
-                        <option
-                            class="form__option"
-                            value="personal_freeleech"
-                            @selected($bonExchange->personal_freeleech)
-                        >
+                        <option class="form__option" value="personal_freeleech"
+                            @selected($bonExchange->personal_freeleech)>
                             {{ __('torrent.personal-freeleech') }}
                         </option>
-                        <option
-                            class="form__option"
-                            value="invite"
-                            @selected($bonExchange->invite)
-                        >
+                        <option class="form__option" value="invite" @selected($bonExchange->invite)>
                             {{ __('user.invites') }}
                         </option>
                     </select>

@@ -28,10 +28,8 @@
             <ul class="mediahub-card__list">
                 @foreach ($genres as $genre)
                     <li class="mediahub-card__list-item">
-                        <a
-                            href="{{ route('torrents.index', ['view' => 'group', 'genreIds' => [$genre->id]]) }}"
-                            class="mediahub-card"
-                        >
+                        <a href="{{ route('torrents.index', ['view' => 'group', 'genreIds' => [$genre->id]]) }}"
+                            class="mediahub-card">
                             <h2 class="mediahub-card__heading">{{ $genre->name }}</h2>
                             <h3 class="mediahub-card__subheading">
                                 <i class="{{ config('other.font-awesome') }} fa-tv-retro"></i>

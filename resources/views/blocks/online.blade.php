@@ -7,16 +7,12 @@
         <ul style="column-width: 200px; column-gap: 1rem; list-style-type: none; padding: 0">
             @foreach ($users as $user)
                 <li>
-                    <x-user-tag
-                        :user="$user"
-                        :anon="$user->privacy?->hidden || ! $user->isVisible($user, 'other', 'show_online')"
-                    >
+                    <x-user-tag :user="$user" :anon="$user->privacy?->hidden ||
+                        !$user->isVisible($user, 'other', 'show_online')">
                         @if ($user->warnings_count > 0)
                             <x-slot:appended-icons>
-                                <i
-                                    class="{{ config('other.font-awesome') }} fa-exclamation-circle text-orange"
-                                    title="{{ __('common.active-warning') }} ({{ $user->warnings_count }})"
-                                ></i>
+                                <i class="{{ config('other.font-awesome') }} fa-exclamation-circle text-orange"
+                                    title="{{ __('common.active-warning') }} ({{ $user->warnings_count }})"></i>
                             </x-slot>
                         @endif
                     </x-user-tag>
@@ -27,11 +23,8 @@
         <ul style="column-width: 200px; column-gap: 1rem; list-style-type: none; padding: 0">
             @foreach ($groups as $group)
                 <span class="user-tag" style="padding: 4px 8px; display: block">
-                    <span
-                        class="user-tag__link {{ $group->icon }}"
-                        style="color: {{ $group->color }}"
-                        title="{{ $group->name }}"
-                    >
+                    <span class="user-tag__link {{ $group->icon }}"
+                        style="color: {{ $group->color }}" title="{{ $group->name }}">
                         {{ $group->name }}
                     </span>
                 </span>

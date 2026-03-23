@@ -9,21 +9,12 @@
                     </button>
                     <dialog class="dialog" x-bind="dialogElement">
                         <h3 class="dialog__heading">Unban user: {{ $user->username }}</h3>
-                        <form
-                            class="dialog__form"
-                            method="POST"
-                            action="{{ route('staff.unbans.store') }}"
-                            x-bind="dialogForm"
-                        >
+                        <form class="dialog__form" method="POST"
+                            action="{{ route('staff.unbans.store') }}" x-bind="dialogForm">
                             @csrf
                             <input type="hidden" name="owned_by" value="{{ $user->id }}" />
                             <p class="form__group">
-                                <textarea
-                                    id="unban_reason"
-                                    class="form__textarea"
-                                    name="unban_reason"
-                                    required
-                                ></textarea>
+                                <textarea id="unban_reason" class="form__textarea" name="unban_reason" required></textarea>
                                 <label class="form__label form__label--floating" for="unban_reason">
                                     Reason
                                 </label>
@@ -32,7 +23,8 @@
                                 </span>
                             </p>
                             <p class="form__group">
-                                <select id="group_id" class="form__select" name="group_id" required>
+                                <select id="group_id" class="form__select" name="group_id"
+                                    required>
                                     <option value="{{ $user->group->id }}">
                                         {{ $user->group->name }} (Default)
                                     </option>
@@ -50,11 +42,8 @@
                                 <button class="form__button form__button--filled">
                                     {{ __('user.unban') }}
                                 </button>
-                                <button
-                                    formmethod="dialog"
-                                    formnovalidate
-                                    class="form__button form__button--outlined"
-                                >
+                                <button formmethod="dialog" formnovalidate
+                                    class="form__button form__button--outlined">
                                     {{ __('common.cancel') }}
                                 </button>
                             </p>
@@ -66,20 +55,11 @@
                     </button>
                     <dialog class="dialog" x-bind="dialogElement">
                         <h3 class="dialog__heading">Ban user: {{ $user->username }}</h3>
-                        <form
-                            class="dialog__form"
-                            method="POST"
-                            action="{{ route('staff.bans.store') }}"
-                            x-bind="dialogForm"
-                        >
+                        <form class="dialog__form" method="POST"
+                            action="{{ route('staff.bans.store') }}" x-bind="dialogForm">
                             @csrf
                             <p class="form__group">
-                                <textarea
-                                    id="ban_reason"
-                                    class="form__textarea"
-                                    name="ban_reason"
-                                    required
-                                ></textarea>
+                                <textarea id="ban_reason" class="form__textarea" name="ban_reason" required></textarea>
                                 <label class="form__label form__label--floating" for="ban_reason">
                                     Reason
                                 </label>
@@ -92,11 +72,8 @@
                                 <button class="form__button form__button--filled">
                                     {{ __('user.ban') }}
                                 </button>
-                                <button
-                                    formmethod="dialog"
-                                    formnovalidate
-                                    class="form__button form__button--outlined"
-                                >
+                                <button formmethod="dialog" formnovalidate
+                                    class="form__button form__button--outlined">
                                     {{ __('common.cancel') }}
                                 </button>
                             </p>
@@ -130,18 +107,14 @@
                         <td>{{ $ban->ban_reason }}</td>
                         <td>{{ $ban->unban_reason }}</td>
                         <td>
-                            <time
-                                datetime="{{ $ban->created_at }}"
-                                title="{{ $ban->created_at }}"
-                            >
+                            <time datetime="{{ $ban->created_at }}"
+                                title="{{ $ban->created_at }}">
                                 {{ $ban->created_at }}
                             </time>
                         </td>
                         <td>
-                            <time
-                                datetime="{{ $ban->removed_at }}"
-                                title="{{ $ban->removed_at }}"
-                            >
+                            <time datetime="{{ $ban->removed_at }}"
+                                title="{{ $ban->removed_at }}">
                                 {{ $ban->removed_at }}
                             </time>
                         </td>

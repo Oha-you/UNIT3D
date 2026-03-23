@@ -4,14 +4,8 @@
         <div class="panel__actions">
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="username"
-                        class="form__text"
-                        type="search"
-                        autocomplete="off"
-                        wire:model.live="username"
-                        placeholder=" "
-                    />
+                    <input id="username" class="form__text" type="search" autocomplete="off"
+                        wire:model.live="username" placeholder=" " />
                     <label class="form__label form__label--floating" for="username">Username</label>
                 </div>
             </div>
@@ -23,19 +17,14 @@
                             <option value="{{ $modelName }}">{{ $modelName }}</option>
                         @endforeach
                     </select>
-                    <label class="form__label form__label--floating" for="model">Model name</label>
+                    <label class="form__label form__label--floating" for="model">Model
+                        name</label>
                 </div>
             </div>
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="modelId"
-                        class="form__text"
-                        type="search"
-                        autocomplete="off"
-                        wire:model.live="modelId"
-                        placeholder=" "
-                    />
+                    <input id="modelId" class="form__text" type="search" autocomplete="off"
+                        wire:model.live="modelId" placeholder=" " />
                     <label class="form__label form__label--floating" for="modelId">Model ID</label>
                 </div>
             </div>
@@ -52,14 +41,8 @@
             </div>
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="record"
-                        class="form__text"
-                        type="search"
-                        autocomplete="off"
-                        wire:model.live="record"
-                        placeholder=" "
-                    />
+                    <input id="record" class="form__text" type="search" autocomplete="off"
+                        wire:model.live="record" placeholder=" " />
                     <label class="form__label form__label--floating" for="record">Record</label>
                 </div>
             </div>
@@ -97,8 +80,7 @@
                         <td>{{ $audit->id }}</td>
                         <td>
                             <span
-                                class="@if($audit->action === 'create') text-green @elseif($audit->action === 'update') text-yellow @elseif($audit->action === 'delete') text-red @endif"
-                            >
+                                class="@if ($audit->action === 'create') text-green @elseif($audit->action === 'update') text-yellow @elseif($audit->action === 'delete') text-red @endif">
                                 {{ strtoupper($audit->action) }}
                             </span>
                         </td>
@@ -117,8 +99,7 @@
                                             word-wrap: break-word;
                                             word-break: break-word;
                                             overflow-wrap: break-word;
-                                        "
-                                    >
+                                        ">
                                         {{ $key }}:
                                         {{ json_encode($value['old'], JSON_THROW_ON_ERROR) }}
                                         &rarr;
@@ -128,28 +109,22 @@
                             </ul>
                         </td>
                         <td>
-                            <time
-                                datetime="{{ $audit->created_at }}"
-                                title="{{ $audit->created_at }}"
-                            >
+                            <time datetime="{{ $audit->created_at }}"
+                                title="{{ $audit->created_at }}">
                                 {{ $audit->created_at->diffForHumans() }}
                             </time>
                         </td>
                         <td>
                             <menu class="data-table__actions">
                                 <li class="data-table__action">
-                                    <form
-                                        method="POST"
+                                    <form method="POST"
                                         action="{{ route('staff.audits.destroy', ['audit' => $audit]) }}"
-                                        x-data="confirmation"
-                                    >
+                                        x-data="confirmation">
                                         @csrf
                                         @method('DELETE')
-                                        <button
-                                            x-on:click.prevent="confirmAction"
+                                        <button x-on:click.prevent="confirmAction"
                                             data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete this audit log entry?') }}"
-                                            class="form__button form__button--text"
-                                        >
+                                            class="form__button form__button--text">
                                             {{ __('common.delete') }}
                                         </button>
                                     </form>

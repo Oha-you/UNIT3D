@@ -58,18 +58,14 @@
                                         style="
                                             background-image: url(/img/sparkels.gif);
                                             width: auto;
-                                        "
-                                    >
+                                        ">
                                         Sparkle effect on username
                                     </li>
                                     <li>
                                         Donor star by username
                                         @if ($package->donor_value === null)
-                                            <i
-                                                id="lifeline"
-                                                class="fal fa-star"
-                                                title="Lifetime donor"
-                                            ></i>
+                                            <i id="lifeline" class="fal fa-star"
+                                                title="Lifetime donor"></i>
                                         @else
                                             <i class="fal fa-star text-gold" title="Donor"></i>
                                         @endif
@@ -100,8 +96,7 @@
                                 <p class="form__group form__group--horizontal">
                                     <button
                                         class="form__button form__button--filled form__button--centered"
-                                        x-on:click.stop="$refs.dialog{{ $package->id }}.showModal()"
-                                    >
+                                        x-on:click.stop="$refs.dialog{{ $package->id }}.showModal()">
                                         <i class="fas fa-handshake"></i>
                                         Donate
                                     </button>
@@ -116,12 +111,8 @@
         @foreach ($packages as $package)
             <dialog class="dialog" x-ref="dialog{{ $package->id }}">
                 <h4 class="dialog__heading">Donate $ {{ $package->cost }} USD</h4>
-                <form
-                    class="dialog__form"
-                    method="POST"
-                    action="{{ route('donations.store') }}"
-                    x-on:click.outside="$refs.dialog{{ $package->id }}.close()"
-                >
+                <form class="dialog__form" method="POST" action="{{ route('donations.store') }}"
+                    x-on:click.outside="$refs.dialog{{ $package->id }}.close()">
                     @csrf
                     <span class="text-success text-center">
                         To make a donation you must complete the following steps:
@@ -129,17 +120,11 @@
                     <div class="form__group--horizontal">
                         @foreach ($gateways->sortBy('position') as $gateway)
                             <p class="form__group">
-                                <input
-                                    class="form__text"
-                                    type="text"
-                                    disabled
+                                <input class="form__text" type="text" disabled
                                     value="{{ $gateway->address }}"
-                                    id="{{ 'gateway-' . $gateway->id }}"
-                                />
-                                <label
-                                    for="{{ 'gateway-' . $gateway->id }}"
-                                    class="form__label form__label--floating"
-                                >
+                                    id="{{ 'gateway-' . $gateway->id }}" />
+                                <label for="{{ 'gateway-' . $gateway->id }}"
+                                    class="form__label form__label--floating">
                                     {{ $gateway->name }}
                                 </label>
                             </p>
@@ -156,25 +141,15 @@
                     </div>
                     <div class="form__group--horizontal">
                         <p class="form__group">
-                            <input
-                                class="form__text"
-                                type="text"
-                                disabled
-                                value="{{ $package->cost }}"
-                                id="package-cost"
-                            />
+                            <input class="form__text" type="text" disabled
+                                value="{{ $package->cost }}" id="package-cost" />
                             <label for="package-cost" class="form__label form__label--floating">
                                 Cost
                             </label>
                         </p>
                         <p class="form__group">
-                            <input
-                                class="form__text"
-                                type="text"
-                                value=""
-                                id="proof"
-                                name="transaction"
-                            />
+                            <input class="form__text" type="text" value="" id="proof"
+                                name="transaction" />
                             <label for="proof" class="form__label form__label--floating">
                                 Tx hash, Receipt number, Etc
                             </label>
@@ -186,11 +161,8 @@
                     <p class="form__group">
                         <input type="hidden" name="package_id" value="{{ $package->id }}" />
                         <button class="form__button form__button--filled">Donate</button>
-                        <button
-                            formmethod="dialog"
-                            formnovalidate
-                            class="form__button form__button--outlined"
-                        >
+                        <button formmethod="dialog" formnovalidate
+                            class="form__button form__button--outlined">
                             {{ __('common.cancel') }}
                         </button>
                     </p>

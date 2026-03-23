@@ -38,10 +38,8 @@
         </a>
     </li>
     <li class="nav-tab--active">
-        <a
-            class="nav-tab--active__link"
-            href="{{ route('torrents.external_tracker', ['id' => $id]) }}"
-        >
+        <a class="nav-tab--active__link"
+            href="{{ route('torrents.external_tracker', ['id' => $id]) }}">
             External tracker
         </a>
     </li>
@@ -93,28 +91,26 @@
                                         @if ($torrent === null)
                                             <x-user-tag :user="$user" :anon="true" />
                                         @else
-                                            <x-user-tag
-                                                :user="$user"
-                                                :anon="
-                                                    $user->privacy?->hidden
-                                                    || $user->privacy?->show_peer === 0
-                                                    || ($user->id == $torrent->user->id && $torrent->anon == 1)
-                                                "
-                                            />
+                                            <x-user-tag :user="$user" :anon="$user->privacy?->hidden ||
+                                                $user->privacy?->show_peer === 0 ||
+                                                ($user->id == $torrent->user->id &&
+                                                    $torrent->anon == 1)" />
                                         @endif
                                     @else
-                                            User not found
+                                        User not found
                                     @endif
                                 </td>
                                 <td>
-                                    {{ implode('', array_map(fn ($char) => ctype_print($char) ? $char : '\x' . bin2hex($char), str_split($peer['peer_id']))) }}
+                                    {{ implode('', array_map(fn($char) => ctype_print($char) ? $char : '\x' . bin2hex($char), str_split($peer['peer_id']))) }}
                                 </td>
                                 <td>
                                     @if ($torrent === null)
                                         Torrent size not available
                                     @else
                                         @php
-                                            $progress = (100 * ($peer['downloaded'] % $torrent->size)) / $torrent->size;
+                                            $progress =
+                                                (100 * ($peer['downloaded'] % $torrent->size)) /
+                                                $torrent->size;
                                         @endphp
 
                                         @if (0 < $progress && $progress < 1)
@@ -145,7 +141,9 @@
                                 @endif
                                 <td>
                                     @php
-                                        $updatedAt = \Illuminate\Support\Carbon::createFromTimestampUTC($peer['updated_at']);
+                                        $updatedAt = \Illuminate\Support\Carbon::createFromTimestampUTC(
+                                            $peer['updated_at'],
+                                        );
                                     @endphp
 
                                     <time datetime="{{ $updatedAt }}" title="{{ $updatedAt }}">
@@ -153,8 +151,7 @@
                                     </time>
                                 </td>
                                 <td
-                                    class="{{ $peer['is_active'] ? ($peer['is_seeder'] ? 'text-green' : 'text-red') : 'text-orange' }}"
-                                >
+                                    class="{{ $peer['is_active'] ? ($peer['is_seeder'] ? 'text-green' : 'text-red') : 'text-orange' }}">
                                     @if ($peer['is_active'])
                                         @if ($peer['is_seeder'])
                                             {{ __('torrent.seeder') }}
@@ -162,7 +159,7 @@
                                             {{ __('torrent.leecher') }}
                                         @endif
                                     @else
-                                            Inactive
+                                        Inactive
                                     @endif
                                 </td>
                                 <td class="{{ $peer['is_visible'] ? 'text-green' : 'text-red' }}">

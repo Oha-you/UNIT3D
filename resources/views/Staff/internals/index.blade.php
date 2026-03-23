@@ -16,10 +16,8 @@
         <header class="panel__header">
             <h2 class="panel__heading">Internal groups</h2>
             <div class="panel__actions">
-                <a
-                    href="{{ route('staff.internals.create') }}"
-                    class="panel__action form__button form__button--text"
-                >
+                <a href="{{ route('staff.internals.create') }}"
+                    class="panel__action form__button form__button--text">
                     {{ __('common.add') }}
                 </a>
             </div>
@@ -41,8 +39,7 @@
                             <td>{{ $internalGroup->id }}</td>
                             <td>
                                 <a
-                                    href="{{ route('staff.internals.edit', ['internal' => $internalGroup]) }}"
-                                >
+                                    href="{{ route('staff.internals.edit', ['internal' => $internalGroup]) }}">
                                     {{ $internalGroup->name }}
                                 </a>
                             </td>
@@ -51,26 +48,20 @@
                             <td>
                                 <menu class="data-table__actions">
                                     <li class="data-table__action">
-                                        <a
-                                            href="{{ route('staff.internals.edit', ['internal' => $internalGroup]) }}"
-                                            class="form__button form__button--text"
-                                        >
+                                        <a href="{{ route('staff.internals.edit', ['internal' => $internalGroup]) }}"
+                                            class="form__button form__button--text">
                                             {{ __('common.edit') }}
                                         </a>
                                     </li>
                                     <li class="data-table__action">
-                                        <form
-                                            method="POST"
+                                        <form method="POST"
                                             action="{{ route('staff.internals.destroy', ['internal' => $internalGroup]) }}"
-                                            x-data="confirmation"
-                                        >
+                                            x-data="confirmation">
                                             @csrf
                                             @method('DELETE')
-                                            <button
-                                                x-on:click.prevent="confirmAction"
+                                            <button x-on:click.prevent="confirmAction"
                                                 data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete this internal group: ' . $internalGroup->name . '?') }}"
-                                                class="form__button form__button--text"
-                                            >
+                                                class="form__button form__button--text">
                                                 {{ __('common.delete') }}
                                             </button>
                                         </form>

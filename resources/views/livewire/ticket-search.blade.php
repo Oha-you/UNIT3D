@@ -16,14 +16,8 @@
             </div>
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="search"
-                        class="form__text"
-                        type="search"
-                        autocomplete="off"
-                        wire:model.live="search"
-                        placeholder=" "
-                    />
+                    <input id="search" class="form__text" type="search" autocomplete="off"
+                        wire:model.live="search" placeholder=" " />
                     <label class="form__label form__label--floating" for="search">
                         {{ __('ticket.subject') }}
                     </label>
@@ -32,12 +26,8 @@
             @if (auth()->user()->group->is_modo)
                 <div class="panel__action">
                     <div class="form__group">
-                        <input
-                            id="show"
-                            class="form__checkbox"
-                            type="checkbox"
-                            wire:model.live="show"
-                        />
+                        <input id="show" class="form__checkbox" type="checkbox"
+                            wire:model.live="show" />
                         <label class="form__label" for="show">My assigned tickets</label>
                     </div>
                 </div>
@@ -64,31 +54,45 @@
                     </th>
                     <th wire:click="sortBy('subject')" role="columnheader button">
                         {{ __('ticket.subject') }}
-                        @include('livewire.includes._sort-icon', ['field' => 'subject'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'subject',
+                        ])
                     </th>
                     <th wire:click="sortBy('priority_id')" role="columnheader button">
                         {{ __('ticket.priority') }}
-                        @include('livewire.includes._sort-icon', ['field' => 'priority_id'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'priority_id',
+                        ])
                     </th>
                     <th wire:click="sortBy('user_id')" role="columnheader button">
                         {{ __('common.username') }}
-                        @include('livewire.includes._sort-icon', ['field' => 'user_id'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'user_id',
+                        ])
                     </th>
                     <th wire:click="sortBy('staff_id')" role="columnheader button">
                         {{ __('ticket.assigned-staff') }}
-                        @include('livewire.includes._sort-icon', ['field' => 'staff_id'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'staff_id',
+                        ])
                     </th>
                     <th wire:click="sortBy('created_at')" role="columnheader button">
                         {{ __('ticket.created') }}
-                        @include('livewire.includes._sort-icon', ['field' => 'created_at'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'created_at',
+                        ])
                     </th>
                     <th wire:click="sortBy('updated_at')" role="columnheader button">
                         {{ __('torrent.updated') }}
-                        @include('livewire.includes._sort-icon', ['field' => 'updated_at'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'updated_at',
+                        ])
                     </th>
                     <th wire:click="sortBy('closed_at')" role="columnheader button">
                         {{ __('ticket.closed') }}
-                        @include('livewire.includes._sort-icon', ['field' => 'closed_at'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'closed_at',
+                        ])
                     </th>
                     <th>{{ __('common.action') }}</th>
                 </tr>
@@ -101,21 +105,18 @@
                             <a href="{{ route('tickets.show', ['ticket' => $ticket]) }}">
                                 {{ $ticket->subject }}
                             </a>
-                            @if ((auth()->user()->group->is_modo &&
-                                (($ticket->staff_id === auth()->id() && $ticket->staff_read === false) ||
-                                    ($ticket->staff_id === null && $ticket->closed_at === null))) ||
-                                ($ticket->user_id === auth()->id() && $ticket->user_read === false))
-                                <i
-                                    style="color: #0dffff; vertical-align: 1px"
-                                    class="{{ config('other.font-awesome') }} fa-circle fa-xs"
-                                ></i>
+                            @if (
+                                (auth()->user()->group->is_modo &&
+                                    (($ticket->staff_id === auth()->id() && $ticket->staff_read === false) ||
+                                        ($ticket->staff_id === null && $ticket->closed_at === null))) ||
+                                    ($ticket->user_id === auth()->id() && $ticket->user_read === false))
+                                <i style="color: #0dffff; vertical-align: 1px"
+                                    class="{{ config('other.font-awesome') }} fa-circle fa-xs"></i>
                             @endif
                         </td>
                         <td>
-                            <i
-                                class="{{ config('other.font-awesome') }} {{ $ticket->priority->icon }}"
-                                style="color: {{ $ticket->priority->color }}"
-                            ></i>
+                            <i class="{{ config('other.font-awesome') }} {{ $ticket->priority->icon }}"
+                                style="color: {{ $ticket->priority->color }}"></i>
                             {{ $ticket->priority->name }}
                         </td>
                         <td>
@@ -129,36 +130,28 @@
                             @endif
                         </td>
                         <td>
-                            <time
-                                datetime="{{ $ticket->created_at }}"
-                                title="{{ $ticket->created_at }}"
-                            >
+                            <time datetime="{{ $ticket->created_at }}"
+                                title="{{ $ticket->created_at }}">
                                 {{ $ticket->created_at->diffForHumans() }}
                             </time>
                         </td>
                         <td>
-                            <time
-                                datetime="{{ $ticket->updated_at }}"
-                                title="{{ $ticket->updated_at }}"
-                            >
+                            <time datetime="{{ $ticket->updated_at }}"
+                                title="{{ $ticket->updated_at }}">
                                 {{ $ticket->updated_at->diffForHumans() }}
                             </time>
                         </td>
                         <td>
-                            <time
-                                datetime="{{ $ticket->closed_at }}"
-                                title="{{ $ticket->closed_at }}"
-                            >
+                            <time datetime="{{ $ticket->closed_at }}"
+                                title="{{ $ticket->closed_at }}">
                                 {{ $ticket->closed_at?->diffForHumans() ?? 'N/A' }}
                             </time>
                         </td>
                         <td>
                             <menu class="data-table__actions">
                                 <li class="data-table__action">
-                                    <form
-                                        method="POST"
-                                        action="{{ route('tickets.close', ['ticket' => $ticket]) }}"
-                                    >
+                                    <form method="POST"
+                                        action="{{ route('tickets.close', ['ticket' => $ticket]) }}">
                                         @csrf
                                         <button class="form__button form__button--text">
                                             {{ __('ticket.close') }}

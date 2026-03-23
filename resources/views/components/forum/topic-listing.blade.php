@@ -1,29 +1,22 @@
-@props([
-    'topic',
-])
+@props(['topic'])
 
-<article
-    @class([
-        'topic-listing',
-        'topic-listing--read' => $topic->reads->first()?->last_read_post_id === $topic->last_post_id,
-        'topic-listing--unread' => $topic->reads->first()?->last_read_post_id !== $topic->last_post_id,
-    ])
-    class="topic-listing"
->
+<article @class([
+    'topic-listing',
+    'topic-listing--read' =>
+        $topic->reads->first()?->last_read_post_id === $topic->last_post_id,
+    'topic-listing--unread' =>
+        $topic->reads->first()?->last_read_post_id !== $topic->last_post_id,
+]) class="topic-listing">
     <header class="topic-listing__header">
         <h2 class="topic-listing__heading">
             @if ($topic->reads->isEmpty())
-                <a
-                    class="topic-listing__link"
-                    href="{{ route('topics.show', ['id' => $topic->id]) }}"
-                >
+                <a class="topic-listing__link"
+                    href="{{ route('topics.show', ['id' => $topic->id]) }}">
                     {{ $topic->name }}
                 </a>
             @else
-                <a
-                    class="topic-listing__link"
-                    href="{{ route('topics.permalink', ['topicId' => $topic->id, 'postId' => $topic->reads->first()?->last_read_post_id ?? 0]) }}"
-                >
+                <a class="topic-listing__link"
+                    href="{{ route('topics.permalink', ['topicId' => $topic->id, 'postId' => $topic->reads->first()?->last_read_post_id ?? 0]) }}">
                     {{ $topic->name }}
                 </a>
             @endif
@@ -67,15 +60,10 @@
                     </a>
                 @endif
             </address>
-            <time
-                class="topic-listing__created-datetime"
-                datetime="{{ $topic->created_at }}"
-                title="{{ $topic->created_at }}"
-            >
-                <a
-                    class="topic-listing__created-link"
-                    href="{{ route('topics.show', ['id' => $topic->id]) }}"
-                >
+            <time class="topic-listing__created-datetime" datetime="{{ $topic->created_at }}"
+                title="{{ $topic->created_at }}">
+                <a class="topic-listing__created-link"
+                    href="{{ route('topics.show', ['id' => $topic->id]) }}">
                     {{ $topic->created_at?->diffForHumans() ?? __('common.unknown') }}
                 </a>
             </time>
@@ -116,23 +104,16 @@
             @if ($topic->latestPoster === null)
                 {{ __('common.unknown') }}
             @else
-                <a
-                    class="topic-listing__latest-author-link"
-                    href="{{ route('users.show', ['user' => $topic->latestPoster]) }}"
-                >
+                <a class="topic-listing__latest-author-link"
+                    href="{{ route('users.show', ['user' => $topic->latestPoster]) }}">
                     {{ $topic->latestPoster->username }}
                 </a>
             @endif
         </address>
-        <time
-            class="topic-listing__latest-datetime"
-            datetime="{{ $topic->last_post_created_at }}"
-            title="{{ $topic->last_post_created_at }}"
-        >
-            <a
-                class="topic-listing__latest-post-link"
-                href="{{ route('topics.latestPermalink', ['id' => $topic->id]) }}"
-            >
+        <time class="topic-listing__latest-datetime" datetime="{{ $topic->last_post_created_at }}"
+            title="{{ $topic->last_post_created_at }}">
+            <a class="topic-listing__latest-post-link"
+                href="{{ route('topics.latestPermalink', ['id' => $topic->id]) }}">
                 {{ $topic->last_post_created_at?->diffForHumans() ?? __('common.unknown') }}
             </a>
         </time>

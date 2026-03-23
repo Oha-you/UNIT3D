@@ -26,53 +26,26 @@
             {{ __('bon.bon') }} {{ __('bon.exchange') }}
         </h2>
         <div class="panel__body">
-            <form
-                name="upload"
-                class="upload-form form"
-                id="upload-form"
-                method="POST"
-                action="{{ route('staff.bon_exchanges.store') }}"
-            >
+            <form name="upload" class="upload-form form" id="upload-form" method="POST"
+                action="{{ route('staff.bon_exchanges.store') }}">
                 @csrf
                 <p class="form__group">
-                    <input
-                        type="text"
-                        name="description"
-                        id="description"
-                        class="form__text"
-                        value="{{ old('description') }}"
-                        required
-                    />
+                    <input type="text" name="description" id="description" class="form__text"
+                        value="{{ old('description') }}" required />
                     <label class="form__label form__label--floating" for="description">
                         {{ __('common.name') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        type="text"
-                        name="value"
-                        id="value"
-                        class="form__text"
-                        inputmode="numeric"
-                        pattern="[0-9]*"
-                        value="{{ old('value') }}"
-                        required
-                    />
+                    <input type="text" name="value" id="value" class="form__text"
+                        inputmode="numeric" pattern="[0-9]*" value="{{ old('value') }}" required />
                     <label class="form__label form__label--floating" for="value">
                         {{ __('value') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        type="text"
-                        name="cost"
-                        id="cost"
-                        class="form__text"
-                        inputmode="numeric"
-                        pattern="[0-9]*"
-                        value="{{ old('cost') }}"
-                        required
-                    />
+                    <input type="text" name="cost" id="cost" class="form__text"
+                        inputmode="numeric" pattern="[0-9]*" value="{{ old('cost') }}" required />
                     <label class="form__label form__label--floating" for="cost">
                         {{ __('bon.points') }}
                     </label>

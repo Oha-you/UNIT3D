@@ -20,10 +20,8 @@
                 {{ __('common.media-languages') }} {{ __('staff.media-languages-desc') }}
             </h2>
             <div class="panel__actions">
-                <a
-                    class="panel__action form__button form__button--text"
-                    href="{{ route('staff.media_languages.create') }}"
-                >
+                <a class="panel__action form__button form__button--text"
+                    href="{{ route('staff.media_languages.create') }}">
                     {{ __('common.add') }}
                 </a>
             </div>
@@ -42,8 +40,7 @@
                         <tr>
                             <td>
                                 <a
-                                    href="{{ route('staff.media_languages.edit', ['mediaLanguage' => $media_language]) }}"
-                                >
+                                    href="{{ route('staff.media_languages.edit', ['mediaLanguage' => $media_language]) }}">
                                     {{ $media_language->name }}
                                 </a>
                             </td>
@@ -51,26 +48,20 @@
                             <td>
                                 <menu class="data-table__actions">
                                     <li class="data-table__action">
-                                        <a
-                                            class="form__button form__button--text"
-                                            href="{{ route('staff.media_languages.edit', ['mediaLanguage' => $media_language]) }}"
-                                        >
+                                        <a class="form__button form__button--text"
+                                            href="{{ route('staff.media_languages.edit', ['mediaLanguage' => $media_language]) }}">
                                             {{ __('common.edit') }}
                                         </a>
                                     </li>
                                     <li class="data-table__action">
-                                        <form
-                                            method="POST"
+                                        <form method="POST"
                                             action="{{ route('staff.media_languages.destroy', ['mediaLanguage' => $media_language]) }}"
-                                            x-data="confirmation"
-                                        >
+                                            x-data="confirmation">
                                             @csrf
                                             @method('DELETE')
-                                            <button
-                                                x-on:click.prevent="confirmAction"
+                                            <button x-on:click.prevent="confirmAction"
                                                 data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete this media language: ' . $media_language->name . '?') }}"
-                                                class="form__button form__button--text"
-                                            >
+                                                class="form__button form__button--text">
                                                 {{ __('common.delete') }}
                                             </button>
                                         </form>

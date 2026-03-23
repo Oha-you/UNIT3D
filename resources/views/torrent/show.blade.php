@@ -7,10 +7,7 @@
 @endsection
 
 @section('meta')
-    <meta
-        name="description"
-        content="{{ __('torrent.meta-desc', ['name' => $torrent->name]) }}!"
-    />
+    <meta name="description" content="{{ __('torrent.meta-desc', ['name' => $torrent->name]) }}!" />
 @endsection
 
 @section('breadcrumbs')
@@ -29,21 +26,32 @@
 @section('main')
     @switch(true)
         @case($torrent->category->movie_meta)
-            @include('torrent.partials.movie-meta', ['category' => $torrent->category, 'meta' => $torrent->movie, 'tmdb' => $torrent->tmdb_movie_id])
+            @include('torrent.partials.movie-meta', [
+                'category' => $torrent->category,
+                'meta' => $torrent->movie,
+                'tmdb' => $torrent->tmdb_movie_id,
+            ])
+        @break
 
-            @break
         @case($torrent->category->tv_meta)
-            @include('torrent.partials.tv-meta', ['category' => $torrent->category, 'meta' => $torrent->tv, 'tmdb' => $torrent->tmdb_tv_id])
+            @include('torrent.partials.tv-meta', [
+                'category' => $torrent->category,
+                'meta' => $torrent->tv,
+                'tmdb' => $torrent->tmdb_tv_id,
+            ])
+        @break
 
-            @break
         @case($torrent->category->game_meta)
-            @include('torrent.partials.game-meta', ['category' => $torrent->category, 'meta' => $torrent->game, 'igdb' => $torrent->igdb])
+            @include('torrent.partials.game-meta', [
+                'category' => $torrent->category,
+                'meta' => $torrent->game,
+                'igdb' => $torrent->igdb,
+            ])
+        @break
 
-            @break
         @default
             @include('torrent.partials.no-meta', ['category' => $torrent->category])
-
-            @break
+        @break
     @endswitch
     <h1 class="torrent__name">
         {{ $torrent->name }}
@@ -52,7 +60,10 @@
     @include('torrent.partials.buttons')
 
     {{-- Tools block --}}
-    @if (auth()->user()->internals()->exists() ||auth()->user()->group->is_editor ||auth()->user()->group->is_modo ||(auth()->id() === $torrent->user_id && $canEdit))
+    @if (auth()->user()->internals()->exists() ||
+            auth()->user()->group->is_editor ||
+            auth()->user()->group->is_modo ||
+            (auth()->id() === $torrent->user_id && $canEdit))
         @include('torrent.partials.tools')
     @endif
 
@@ -82,7 +93,9 @@
     @endif
 
     {{-- Extra meta block --}}
-    @include('torrent.partials.extra-meta', ['meta' => $torrent->movie ?? $torrent->tv ?? $torrent->game ?? null])
+    @include('torrent.partials.extra-meta', [
+        'meta' => $torrent->movie ?? ($torrent->tv ?? ($torrent->game ?? null)),
+    ])
 
     {{-- Comments block --}}
     @if ($torrent->status === \App\Enums\ModerationStatus::APPROVED)

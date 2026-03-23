@@ -30,7 +30,7 @@
             <div class="panel__body">{{ __('user.invites-disabled-desc') }}</div>
         </section>
     @endsection
-@elseif (! ($user->can_invite ?? $user->group->can_invite))
+@elseif (!($user->can_invite ?? $user->group->can_invite))
     @section('main')
         <section class="panelV2">
             <h2 class="panel__heading">{{ __('user.invites-banned') }}</h2>
@@ -42,43 +42,25 @@
         <section class="panelV2">
             <h2 class="panel__heading">{{ __('user.invite-friend') }}</h2>
             <div class="panel__body">
-                <form
-                    class="form"
-                    action="{{ route('users.invites.store', ['user' => $user]) }}"
-                    method="post"
-                >
+                <form class="form" action="{{ route('users.invites.store', ['user' => $user]) }}"
+                    method="post">
                     @csrf
                     <p class="form__group">
-                        <input
-                            id="email"
-                            class="form__text"
-                            type="email"
-                            name="email"
-                            placeholder=" "
-                        />
+                        <input id="email" class="form__text" type="email" name="email"
+                            placeholder=" " />
                         <label class="form__label form__label--floating" for="email">
                             {{ __('common.email') }}
                         </label>
                     </p>
                     <p class="form__group">
-                        <textarea
-                            id="message"
-                            class="form__textarea"
-                            name="message"
-                            required
-                        ></textarea>
+                        <textarea id="message" class="form__textarea" name="message" required></textarea>
                         <label class="form__label form__label--floating" for="message">
                             {{ __('common.message') }}
                         </label>
                     </p>
                     @if ($user->group->is_modo)
                         <p class="form__group">
-                            <textarea
-                                id="internal_note"
-                                class="form__textarea"
-                                name="internal_note"
-                                placeholder=" "
-                            ></textarea>
+                            <textarea id="internal_note" class="form__textarea" name="internal_note" placeholder=" "></textarea>
                             <label class="form__label form__label--floating" for="internal_note">
                                 {{ __('ticket.staff-notes') }}
                             </label>

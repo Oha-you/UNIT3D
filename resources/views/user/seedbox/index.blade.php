@@ -36,12 +36,9 @@
                         <h3 class="dialog__heading">
                             {{ __('user.add-seedbox') }}
                         </h3>
-                        <form
-                            class="dialog__form"
-                            method="POST"
+                        <form class="dialog__form" method="POST"
                             action="{{ route('users.seedboxes.store', ['user' => $user]) }}"
-                            x-bind="dialogForm"
-                        >
+                            x-bind="dialogForm">
                             @csrf
                             <p class="form__group">
                                 <input id="name" class="form__text" name="name" required />
@@ -50,15 +47,9 @@
                                 </label>
                             </p>
                             <p class="form__group">
-                                <input
-                                    id="ip"
-                                    class="form__text"
-                                    name="ip"
-                                    required
-                                    minlength="7"
-                                    maxlength="15"
-                                    pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$"
-                                />
+                                <input id="ip" class="form__text" name="ip" required
+                                    minlength="7" maxlength="15"
+                                    pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$" />
                                 <label for="ip" class="form__label form__label--floating">
                                     {{ __('user.client-ip-address') }}
                                 </label>
@@ -67,11 +58,8 @@
                                 <button class="form__button form__button--filled">
                                     {{ __('common.submit') }}
                                 </button>
-                                <button
-                                    formmethod="dialog"
-                                    formnovalidate
-                                    class="form__button form__button--outlined"
-                                >
+                                <button formmethod="dialog" formnovalidate
+                                    class="form__button form__button--outlined">
                                     {{ __('common.cancel') }}
                                 </button>
                             </p>
@@ -93,28 +81,22 @@
                         <td>{{ $seedbox->name }}</td>
                         <td>{{ $seedbox->ip }}</td>
                         <td>
-                            <time
-                                datetime="{{ $seedbox->created_at }}"
-                                title="{{ $seedbox->created_at }}"
-                            >
+                            <time datetime="{{ $seedbox->created_at }}"
+                                title="{{ $seedbox->created_at }}">
                                 {{ $seedbox->created_at->diffForHumans() }}
                             </time>
                         </td>
                         <td>
                             <menu class="data-table__actions">
                                 <li class="data-table__action">
-                                    <form
-                                        method="POST"
+                                    <form method="POST"
                                         action="{{ route('users.seedboxes.destroy', ['user' => $user, 'seedbox' => $seedbox]) }}"
-                                        x-data="confirmation"
-                                    >
+                                        x-data="confirmation">
                                         @csrf
                                         @method('DELETE')
-                                        <button
-                                            x-on:click.prevent="confirmAction"
+                                        <button x-on:click.prevent="confirmAction"
                                             data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete this seedbox: ' . $seedbox->name . '?') }}"
-                                            class="form__button form__button--text"
-                                        >
+                                            class="form__button form__button--text">
                                             {{ __('common.delete') }}
                                         </button>
                                     </form>

@@ -25,11 +25,8 @@
 @section('sidebar')
     <section class="panelV2">
         <h2 class="panel__heading">{{ $person->name }}</h2>
-        <img
-            src="{{ isset($person->still) ? tmdb_image('cast_big', $person->still) : 'https://via.placeholder.com/300x450' }}"
-            alt=""
-            style="max-width: 100%"
-        />
+        <img src="{{ isset($person->still) ? tmdb_image('cast_big', $person->still) : 'https://via.placeholder.com/300x450' }}"
+            alt="" style="max-width: 100%" />
         <dl class="key-value">
             <div class="key-value__group">
                 <dt>{{ __('mediahub.born') }}</dt>

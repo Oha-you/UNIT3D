@@ -20,12 +20,8 @@
     <section class="panelV2">
         <h2 class="panel__heading">{{ __('common.add') }} internal group</h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
-                action="{{ route('staff.internals.store') }}"
-                enctype="multipart/form-data"
-            >
+            <form class="form" method="POST" action="{{ route('staff.internals.store') }}"
+                enctype="multipart/form-data">
                 @csrf
                 <p class="form__group">
                     <input id="name" class="form__text" name="name" required type="text" />
@@ -34,25 +30,13 @@
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="icon"
-                        class="form__text"
-                        name="icon"
-                        required
-                        type="text"
-                        value="fa-magic"
-                    />
+                    <input id="icon" class="form__text" name="icon" required type="text"
+                        value="fa-magic" />
                     <label class="form__label form__label--floating" for="icon">Icon</label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="effect"
-                        class="form__text"
-                        name="effect"
-                        required
-                        type="text"
-                        value="none"
-                    />
+                    <input id="effect" class="form__text" name="effect" required type="text"
+                        value="none" />
                     <label class="form__label form__label--floating" for="effect">Effect</label>
                 </p>
                 <p class="form__group">

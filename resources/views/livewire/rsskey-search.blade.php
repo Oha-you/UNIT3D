@@ -4,14 +4,8 @@
         <div class="panel__actions">
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="rsskey"
-                        class="form__text"
-                        type="search"
-                        autocomplete="off"
-                        wire:model.live="rsskey"
-                        placeholder=" "
-                    />
+                    <input id="rsskey" class="form__text" type="search" autocomplete="off"
+                        wire:model.live="rsskey" placeholder=" " />
                     <label class="form__label form__label--floating" for="rsskey">
                         {{ __('user.rsskey') }}
                     </label>
@@ -19,14 +13,8 @@
             </div>
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="username"
-                        class="form__text"
-                        type="search"
-                        autocomplete="off"
-                        wire:model.live="username"
-                        placeholder=" "
-                    />
+                    <input id="username" class="form__text" type="search" autocomplete="off"
+                        wire:model.live="username" placeholder=" " />
                     <label class="form__label form__label--floating" for="username">
                         {{ __('common.username') }}
                     </label>
@@ -52,19 +40,27 @@
                 <tr>
                     <th wire:click="sortBy('user_id')" role="columnheader button">
                         {{ __('common.username') }}
-                        @include('livewire.includes._sort-icon', ['field' => 'user_id'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'user_id',
+                        ])
                     </th>
                     <th wire:click="sortBy('content')" role="columnheader button">
                         {{ __('user.rsskey') }}
-                        @include('livewire.includes._sort-icon', ['field' => 'content'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'content',
+                        ])
                     </th>
                     <th wire:click="sortBy('created_at')" role="columnheader button">
                         {{ __('common.created_at') }}
-                        @include('livewire.includes._sort-icon', ['field' => 'created_at'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'created_at',
+                        ])
                     </th>
                     <th wire:click="sortBy('deleted_at')" role="columnheader button">
                         {{ __('user.deleted-on') }}
-                        @include('livewire.includes._sort-icon', ['field' => 'deleted_at'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'deleted_at',
+                        ])
                     </th>
                 </tr>
                 @forelse ($rsskeys as $rsskey)
@@ -74,18 +70,14 @@
                         </td>
                         <td>{{ $rsskey->content }}</td>
                         <td>
-                            <time
-                                datetime="{{ $rsskey->created_at }}"
-                                title="{{ $rsskey->created_at }}"
-                            >
+                            <time datetime="{{ $rsskey->created_at }}"
+                                title="{{ $rsskey->created_at }}">
                                 {{ $rsskey->created_at }}
                             </time>
                         </td>
                         <td>
-                            <time
-                                datetime="{{ $rsskey->deleted_at }}"
-                                title="{{ $rsskey->deleted_at }}"
-                            >
+                            <time datetime="{{ $rsskey->deleted_at }}"
+                                title="{{ $rsskey->deleted_at }}">
                                 {{ $rsskey->deleted_at ?? 'Currently in use' }}
                             </time>
                         </td>

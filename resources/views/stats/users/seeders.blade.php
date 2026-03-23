@@ -38,10 +38,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>
-                                <x-user-tag
-                                    :user="$user->user"
-                                    :anon="$user->user->privacy?->private_profile"
-                                />
+                                <x-user-tag :user="$user->user" :anon="$user->user->privacy?->private_profile" />
                             </td>
                             <td>{{ $user->value }}</td>
                         </tr>

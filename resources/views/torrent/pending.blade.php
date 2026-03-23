@@ -47,14 +47,14 @@
                                         <span class="torrent--pending">
                                             {{ __('torrent.pending') }}
                                         </span>
+                                    @break
 
-                                        @break
                                     @case(\App\Enums\ModerationStatus::POSTPONED)
                                         <span class="torrent--postponed">
                                             {{ __('torrent.postponed') }}
                                         </span>
+                                    @break
 
-                                        @break
                                     @default
                                         <span class="torrent--rejected">
                                             {{ __('common.unknown') }}

@@ -28,22 +28,16 @@
     <section class="panelV2">
         <h2 class="panel__heading">General {{ __('user.settings') }}</h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
+            <form class="form" method="POST"
                 action="{{ route('users.general_settings.update', ['user' => $user]) }}"
-                enctype="multipart/form-data"
-            >
+                enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <p class="form__group">
                     <select id="locale" class="form__select" name="locale" required>
                         @foreach (App\Helpers\Language::allowed() as $code => $name)
-                            <option
-                                class="form__option"
-                                value="{{ $code }}"
-                                @selected($user->settings->locale === $code)
-                            >
+                            <option class="form__option" value="{{ $code }}"
+                                @selected($user->settings->locale === $code)>
                                 {{ $name }}
                             </option>
                         @endforeach
@@ -54,144 +48,69 @@
                     <legend class="form__legend">Style</legend>
                     <p class="form__group">
                         <select id="style" class="form__select" name="style" required>
-                            <option
-                                class="form__option"
-                                value="0"
-                                @selected($user->settings->style === 0)
-                            >
+                            <option class="form__option" value="0" @selected($user->settings->style === 0)>
                                 Light
                             </option>
-                            <option
-                                class="form__option"
-                                value="1"
-                                @selected($user->settings->style === 1)
-                            >
+                            <option class="form__option" value="1" @selected($user->settings->style === 1)>
                                 Galactic
                             </option>
-                            <option
-                                class="form__option"
-                                value="2"
-                                @selected($user->settings->style === 2)
-                            >
+                            <option class="form__option" value="2" @selected($user->settings->style === 2)>
                                 Dark blue
                             </option>
-                            <option
-                                class="form__option"
-                                value="3"
-                                @selected($user->settings->style === 3)
-                            >
+                            <option class="form__option" value="3" @selected($user->settings->style === 3)>
                                 Dark green
                             </option>
-                            <option
-                                class="form__option"
-                                value="4"
-                                @selected($user->settings->style === 4)
-                            >
+                            <option class="form__option" value="4" @selected($user->settings->style === 4)>
                                 Dark pink
                             </option>
-                            <option
-                                class="form__option"
-                                value="5"
-                                @selected($user->settings->style === 5)
-                            >
+                            <option class="form__option" value="5" @selected($user->settings->style === 5)>
                                 Dark purple
                             </option>
-                            <option
-                                class="form__option"
-                                value="6"
-                                @selected($user->settings->style === 6)
-                            >
+                            <option class="form__option" value="6" @selected($user->settings->style === 6)>
                                 Dark red
                             </option>
-                            <option
-                                class="form__option"
-                                value="7"
-                                @selected($user->settings->style === 7)
-                            >
+                            <option class="form__option" value="7" @selected($user->settings->style === 7)>
                                 Dark teal
                             </option>
-                            <option
-                                class="form__option"
-                                value="8"
-                                @selected($user->settings->style === 8)
-                            >
+                            <option class="form__option" value="8" @selected($user->settings->style === 8)>
                                 Dark yellow
                             </option>
-                            <option
-                                class="form__option"
-                                value="9"
-                                @selected($user->settings->style === 9)
-                            >
+                            <option class="form__option" value="9" @selected($user->settings->style === 9)>
                                 Cosmic void
                             </option>
-                            <option
-                                class="form__option"
-                                value="10"
-                                @selected($user->settings->style === 10)
-                            >
+                            <option class="form__option" value="10" @selected($user->settings->style === 10)>
                                 Nord
                             </option>
-                            <option
-                                class="form__option"
-                                value="11"
-                                @selected($user->settings->style === 11)
-                            >
+                            <option class="form__option" value="11" @selected($user->settings->style === 11)>
                                 Revel (Desktop only)
                             </option>
-                            <option
-                                class="form__option"
-                                value="12"
-                                @selected($user->settings->style === 12)
-                            >
+                            <option class="form__option" value="12" @selected($user->settings->style === 12)>
                                 Material design 3 light
                             </option>
-                            <option
-                                class="form__option"
-                                value="13"
-                                @selected($user->settings->style === 13)
-                            >
+                            <option class="form__option" value="13" @selected($user->settings->style === 13)>
                                 Material design 3 dark
                             </option>
-                            <option
-                                class="form__option"
-                                value="15"
-                                @selected($user->settings->style === 15)
-                            >
+                            <option class="form__option" value="15" @selected($user->settings->style === 15)>
                                 Material design 3 navy
                             </option>
 
-                            <option
-                                class="form__option"
-                                value="14"
-                                @selected($user->settings->style === 14)
-                            >
+                            <option class="form__option" value="14" @selected($user->settings->style === 14)>
                                 Material design 3 amoled
                             </option>
                         </select>
                         <label class="form__label form__label--floating" for="style">Theme</label>
                     </p>
                     <p class="form__group">
-                        <input
-                            id="custom_css"
-                            class="form__text"
-                            name="custom_css"
-                            placeholder=" "
-                            type="url"
-                            value="{{ $user->settings->custom_css }}"
-                        />
+                        <input id="custom_css" class="form__text" name="custom_css" placeholder=" "
+                            type="url" value="{{ $user->settings->custom_css }}" />
                         <label class="form__label form__label--floating" for="custom_css">
                             External CSS stylesheet (stacks on top of above theme)
                         </label>
                     </p>
                     <p class="form__group">
-                        <input
-                            id="standalone_css"
-                            class="form__text"
-                            name="standalone_css"
-                            placeholder=" "
-                            type="url"
-                            value="{{ $user->settings->standalone_css }}"
-                        />
+                        <input id="standalone_css" class="form__text" name="standalone_css"
+                            placeholder=" " type="url"
+                            value="{{ $user->settings->standalone_css }}" />
                         <label class="form__label form__label--floating" for="standalone_css">
                             Standalone CSS stylesheet (no site theme used)
                         </label>
@@ -202,13 +121,8 @@
                     <p class="form__group">
                         <label class="form__label">
                             <input type="hidden" name="censor" value="0" />
-                            <input
-                                class="form__checkbox"
-                                type="checkbox"
-                                name="censor"
-                                value="1"
-                                @checked($user->settings->censor)
-                            />
+                            <input class="form__checkbox" type="checkbox" name="censor" value="1"
+                                @checked($user->settings->censor) />
                             Language censor chat
                         </label>
                     </p>
@@ -220,185 +134,129 @@
                         <p class="form__group">
                             <label class="form__label">
                                 <input type="hidden" name="news_block_visible" value="0" />
-                                <input
-                                    class="form__checkbox"
-                                    type="checkbox"
-                                    name="news_block_visible"
-                                    value="1"
-                                    @checked($user->settings->news_block_visible)
-                                />
+                                <input class="form__checkbox" type="checkbox" name="news_block_visible"
+                                    value="1" @checked($user->settings->news_block_visible) />
                                 {{ __('user.homepage-block-news-visible') }}
                             </label>
                         </p>
                         <p class="form__group">
                             <label class="form__label">
                                 <input type="hidden" name="chat_block_visible" value="0" />
-                                <input
-                                    class="form__checkbox"
-                                    type="checkbox"
-                                    name="chat_block_visible"
-                                    value="1"
-                                    @checked($user->settings->chat_block_visible)
-                                />
+                                <input class="form__checkbox" type="checkbox"
+                                    name="chat_block_visible" value="1"
+                                    @checked($user->settings->chat_block_visible) />
                                 {{ __('user.homepage-block-chat-visible') }}
                             </label>
                         </p>
                         <p class="form__group">
                             <label class="form__label">
                                 <input type="hidden" name="featured_block_visible" value="0" />
-                                <input
-                                    class="form__checkbox"
-                                    type="checkbox"
-                                    name="featured_block_visible"
-                                    value="1"
-                                    @checked($user->settings->featured_block_visible)
-                                />
+                                <input class="form__checkbox" type="checkbox"
+                                    name="featured_block_visible" value="1"
+                                    @checked($user->settings->featured_block_visible) />
                                 {{ __('user.homepage-block-featured-visible') }}
                             </label>
                         </p>
                         <p class="form__group">
                             <label class="form__label">
-                                <input type="hidden" name="random_media_block_visible" value="0" />
-                                <input
-                                    class="form__checkbox"
-                                    type="checkbox"
-                                    name="random_media_block_visible"
-                                    value="1"
-                                    @checked($user->settings->random_media_block_visible)
-                                />
+                                <input type="hidden" name="random_media_block_visible"
+                                    value="0" />
+                                <input class="form__checkbox" type="checkbox"
+                                    name="random_media_block_visible" value="1"
+                                    @checked($user->settings->random_media_block_visible) />
                                 {{ __('user.homepage-block-random-media-visible') }}
                             </label>
                         </p>
                         <p class="form__group">
                             <label class="form__label">
                                 <input type="hidden" name="poll_block_visible" value="0" />
-                                <input
-                                    class="form__checkbox"
-                                    type="checkbox"
-                                    name="poll_block_visible"
-                                    value="1"
-                                    @checked($user->settings->poll_block_visible)
-                                />
+                                <input class="form__checkbox" type="checkbox"
+                                    name="poll_block_visible" value="1"
+                                    @checked($user->settings->poll_block_visible) />
                                 {{ __('user.homepage-block-poll-visible') }}
                             </label>
                         </p>
                         <p class="form__group">
                             <label class="form__label">
-                                <input type="hidden" name="top_torrents_block_visible" value="0" />
-                                <input
-                                    class="form__checkbox"
-                                    type="checkbox"
-                                    name="top_torrents_block_visible"
-                                    value="1"
-                                    @checked($user->settings->top_torrents_block_visible)
-                                />
+                                <input type="hidden" name="top_torrents_block_visible"
+                                    value="0" />
+                                <input class="form__checkbox" type="checkbox"
+                                    name="top_torrents_block_visible" value="1"
+                                    @checked($user->settings->top_torrents_block_visible) />
                                 {{ __('user.homepage-block-top-torrents-visible') }}
                             </label>
                         </p>
                         <p class="form__group">
                             <label class="form__label">
-                                <input type="hidden" name="top_users_block_visible" value="0" />
-                                <input
-                                    class="form__checkbox"
-                                    type="checkbox"
-                                    name="top_users_block_visible"
-                                    value="1"
-                                    @checked($user->settings->top_users_block_visible)
-                                />
+                                <input type="hidden" name="top_users_block_visible"
+                                    value="0" />
+                                <input class="form__checkbox" type="checkbox"
+                                    name="top_users_block_visible" value="1"
+                                    @checked($user->settings->top_users_block_visible) />
                                 {{ __('user.homepage-block-top-users-visible') }}
                             </label>
                         </p>
                         <p class="form__group">
                             <label class="form__label">
-                                <input type="hidden" name="latest_topics_block_visible" value="0" />
-                                <input
-                                    class="form__checkbox"
-                                    type="checkbox"
-                                    name="latest_topics_block_visible"
-                                    value="1"
-                                    @checked($user->settings->latest_topics_block_visible)
-                                />
+                                <input type="hidden" name="latest_topics_block_visible"
+                                    value="0" />
+                                <input class="form__checkbox" type="checkbox"
+                                    name="latest_topics_block_visible" value="1"
+                                    @checked($user->settings->latest_topics_block_visible) />
                                 {{ __('user.homepage-block-latest-topics-visible') }}
                             </label>
                         </p>
                         <p class="form__group">
                             <label class="form__label">
-                                <input type="hidden" name="latest_posts_block_visible" value="0" />
-                                <input
-                                    class="form__checkbox"
-                                    type="checkbox"
-                                    name="latest_posts_block_visible"
-                                    value="1"
-                                    @checked($user->settings->latest_posts_block_visible)
-                                />
+                                <input type="hidden" name="latest_posts_block_visible"
+                                    value="0" />
+                                <input class="form__checkbox" type="checkbox"
+                                    name="latest_posts_block_visible" value="1"
+                                    @checked($user->settings->latest_posts_block_visible) />
                                 {{ __('user.homepage-block-latest-posts-visible') }}
                             </label>
                         </p>
                         <p class="form__group">
                             <label class="form__label">
-                                <input
-                                    type="hidden"
-                                    name="latest_comments_block_visible"
-                                    value="0"
-                                />
-                                <input
-                                    class="form__checkbox"
-                                    type="checkbox"
-                                    name="latest_comments_block_visible"
-                                    value="1"
-                                    @checked($user->settings->latest_comments_block_visible)
-                                />
+                                <input type="hidden" name="latest_comments_block_visible"
+                                    value="0" />
+                                <input class="form__checkbox" type="checkbox"
+                                    name="latest_comments_block_visible" value="1"
+                                    @checked($user->settings->latest_comments_block_visible) />
                                 {{ __('user.homepage-block-latest-comments-visible') }}
                             </label>
                         </p>
                         <p class="form__group">
                             <label class="form__label">
                                 <input type="hidden" name="online_block_visible" value="0" />
-                                <input
-                                    class="form__checkbox"
-                                    type="checkbox"
-                                    name="online_block_visible"
-                                    value="1"
-                                    @checked($user->settings->online_block_visible)
-                                />
+                                <input class="form__checkbox" type="checkbox"
+                                    name="online_block_visible" value="1"
+                                    @checked($user->settings->online_block_visible) />
                                 {{ __('user.homepage-block-online-visible') }}
                             </label>
                         </p>
                     </fieldset>
                     <fieldset class="form__fieldset">
                         <legend class="form__legend">Block order</legend>
-                        <ul
-                            x-data="generalSettings"
-                            class="order__list"
+                        <ul x-data="generalSettings" class="order__list"
                             style="
                                 padding-inline-start: 0;
                                 margin-block-start: 0;
                                 margin-block-end: 0;
-                            "
-                        >
+                            ">
                             <template x-for="(block, index) in blocks" :key="block.key">
-                                <li
-                                    class="order__item"
-                                    x-bind:data-block="block.key"
-                                    x-bind:data-index="index"
-                                    draggable="true"
-                                    x-bind="listItem"
+                                <li class="order__item" x-bind:data-block="block.key"
+                                    x-bind:data-index="index" draggable="true" x-bind="listItem"
                                     style="
                                         cursor: move;
                                         user-select: none;
                                         padding: 4px 0;
                                         list-style: none;
-                                    "
-                                >
-                                    <i
-                                        class="{{ config('other.font-awesome') }} fa-arrows-alt"
-                                    ></i>
+                                    ">
+                                    <i class="{{ config('other.font-awesome') }} fa-arrows-alt"></i>
                                     <span x-text="block.label"></span>
-                                    <input
-                                        type="hidden"
-                                        :name="block.key + '_block_position'"
-                                        :value="block.position"
-                                    />
+                                    <input type="hidden" :name="block.key + '_block_position'"
+                                        :value="block.position" />
                                 </li>
                             </template>
                         </ul>
@@ -408,38 +266,18 @@
                 <fieldset class="form form__fieldset">
                     <legend class="form__legend">Torrent</legend>
                     <p class="form__group">
-                        <select
-                            id="torrent_layout"
-                            class="form__select"
-                            name="torrent_layout"
-                            required
-                        >
-                            <option
-                                class="form__option"
-                                value="0"
-                                @selected($user->settings->torrent_layout === 0)
-                            >
+                        <select id="torrent_layout" class="form__select" name="torrent_layout"
+                            required>
+                            <option class="form__option" value="0" @selected($user->settings->torrent_layout === 0)>
                                 Torrent list
                             </option>
-                            <option
-                                class="form__option"
-                                value="1"
-                                @selected($user->settings->torrent_layout === 1)
-                            >
+                            <option class="form__option" value="1" @selected($user->settings->torrent_layout === 1)>
                                 Torrent cards
                             </option>
-                            <option
-                                class="form__option"
-                                value="2"
-                                @selected($user->settings->torrent_layout === 2)
-                            >
+                            <option class="form__option" value="2" @selected($user->settings->torrent_layout === 2)>
                                 Torrent groupings
                             </option>
-                            <option
-                                class="form__option"
-                                value="3"
-                                @selected($user->settings->torrent_layout === 3)
-                            >
+                            <option class="form__option" value="3" @selected($user->settings->torrent_layout === 3)>
                                 Torrent posters
                             </option>
                         </select>
@@ -448,24 +286,14 @@
                         </label>
                     </p>
                     <p class="form__group">
-                        <select
-                            id="torrent_sort_field"
-                            class="form__select"
-                            name="torrent_sort_field"
-                            required
-                        >
-                            <option
-                                class="form__option"
-                                value="bumped_at"
-                                @selected($user->settings->torrent_sort_field === 'bumped_at')
-                            >
+                        <select id="torrent_sort_field" class="form__select"
+                            name="torrent_sort_field" required>
+                            <option class="form__option" value="bumped_at"
+                                @selected($user->settings->torrent_sort_field === 'bumped_at')>
                                 Most recently bumped
                             </option>
-                            <option
-                                class="form__option"
-                                value="created_at"
-                                @selected($user->settings->torrent_sort_field === 'created_at')
-                            >
+                            <option class="form__option" value="created_at"
+                                @selected($user->settings->torrent_sort_field === 'created_at')>
                                 Most recently uploaded
                             </option>
                         </select>
@@ -477,56 +305,37 @@
                         <p class="form__group">
                             <label class="form__label">
                                 <input type="hidden" name="show_poster" value="0" />
-                                <input
-                                    class="form__checkbox"
-                                    type="checkbox"
-                                    name="show_poster"
-                                    value="1"
-                                    @checked($user->settings->show_poster)
-                                />
+                                <input class="form__checkbox" type="checkbox" name="show_poster"
+                                    value="1" @checked($user->settings->show_poster) />
                                 Show posters on torrent list view
                             </label>
                         </p>
                         <p class="form__group">
                             <label class="form__label">
-                                <input type="hidden" name="torrent_search_autofocus" value="0" />
-                                <input
-                                    class="form__checkbox"
-                                    type="checkbox"
-                                    name="torrent_search_autofocus"
-                                    value="1"
-                                    @checked($user->settings->torrent_search_autofocus)
-                                />
+                                <input type="hidden" name="torrent_search_autofocus"
+                                    value="0" />
+                                <input class="form__checkbox" type="checkbox"
+                                    name="torrent_search_autofocus" value="1"
+                                    @checked($user->settings->torrent_search_autofocus) />
                                 Autofocus torrent search on page load
                             </label>
                         </p>
                         <p class="form__group">
                             <label class="form__label">
-                                <input
-                                    type="hidden"
-                                    name="unbookmark_torrents_on_completion"
-                                    value="0"
-                                />
-                                <input
-                                    class="form__checkbox"
-                                    type="checkbox"
-                                    name="unbookmark_torrents_on_completion"
-                                    value="1"
-                                    @checked($user->settings->unbookmark_torrents_on_completion)
-                                />
+                                <input type="hidden" name="unbookmark_torrents_on_completion"
+                                    value="0" />
+                                <input class="form__checkbox" type="checkbox"
+                                    name="unbookmark_torrents_on_completion" value="1"
+                                    @checked($user->settings->unbookmark_torrents_on_completion) />
                                 Automatically unbookmark torrents upon completion
                             </label>
                         </p>
                         <p class="form__group">
                             <label class="form__label">
                                 <input type="hidden" name="show_adult_content" value="0" />
-                                <input
-                                    class="form__checkbox"
-                                    type="checkbox"
-                                    name="show_adult_content"
-                                    value="1"
-                                    @checked($user->settings->show_adult_content)
-                                />
+                                <input class="form__checkbox" type="checkbox"
+                                    name="show_adult_content" value="1"
+                                    @checked($user->settings->show_adult_content) />
                                 {{ __('user.show-adult-content') }}
                             </label>
                         </p>
@@ -534,32 +343,18 @@
                     <p class="form__group">
                         <label class="form__label">
                             <input type="hidden" name="auto_freeleech_apply" value="0" />
-                            <input
-                                class="form__checkbox"
-                                type="checkbox"
-                                name="auto_freeleech_apply"
-                                value="1"
-                                @checked($user->settings->auto_freeleech_apply)
-                            />
+                            <input class="form__checkbox" type="checkbox" name="auto_freeleech_apply"
+                                value="1" @checked($user->settings->auto_freeleech_apply) />
                             Automatically apply freeleech tokens when applicable
                         </label>
                     </p>
                     <p class="form__group">
-                        <input
-                            id="auto_freeleech_min_tokens"
-                            class="form__text"
-                            inputmode="numeric"
-                            name="auto_freeleech_min_tokens"
-                            pattern="[0-9]*"
-                            placeholder=" "
-                            type="text"
-                            required
-                            value="{{ $user->settings->auto_freeleech_min_tokens }}"
-                        />
-                        <label
-                            class="form__label form__label--floating"
-                            for="auto_freeleech_min_tokens"
-                        >
+                        <input id="auto_freeleech_min_tokens" class="form__text" inputmode="numeric"
+                            name="auto_freeleech_min_tokens" pattern="[0-9]*" placeholder=" "
+                            type="text" required
+                            value="{{ $user->settings->auto_freeleech_min_tokens }}" />
+                        <label class="form__label form__label--floating"
+                            for="auto_freeleech_min_tokens">
                             Minimum tokens to keep when auto-applying freeleech
                         </label>
                     </p>
@@ -575,32 +370,31 @@
         <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
             document.addEventListener('alpine:init', () => {
                 Alpine.data('generalSettings', () => ({
-                    blocks: {{
-                        Js::from(
-                            array_map(
-                                fn ($item) => [
-                                    'key' => $item[0],
-                                    'label' => $item[1],
-                                    'position' => (int) $user->settings->{$item[0] . '_block_position'},
-                                ],
-                                [
-                                    ['news', __('blocks.check-news')],
-                                    ['chat', __('blocks.chatbox')],
-                                    ['featured', __('blocks.featured-torrents')],
-                                    ['random_media', 'Random media'],
-                                    ['poll', 'Polls'],
-                                    ['top_torrents', __('blocks.top-torrents')],
-                                    ['top_users', 'Top users'],
-                                    ['latest_topics', __('blocks.latest-topics')],
-                                    ['latest_posts', __('blocks.latest-posts')],
-                                    ['latest_comments', __('blocks.latest-comments')],
-                                    ['online', 'Online users'],
-                                ]
-                            )
-                        )
-                    }}.sort(
-                        (a, b) => a.position - b.position,
-                    ),
+                    blocks: {{ Js::from(
+                        array_map(
+                            fn($item) => [
+                                'key' => $item[0],
+                                'label' => $item[1],
+                                'position' => (int) $user->settings->{$item[0] . '_block_position'},
+                            ],
+                            [
+                                ['news', __('blocks.check-news')],
+                                ['chat', __('blocks.chatbox')],
+                                ['featured', __('blocks.featured-torrents')],
+                                ['random_media', 'Random media'],
+                                ['poll', 'Polls'],
+                                ['top_torrents', __('blocks.top-torrents')],
+                                ['top_users', 'Top users'],
+                                ['latest_topics', __('blocks.latest-topics')],
+                                ['latest_posts', __('blocks.latest-posts')],
+                                ['latest_comments', __('blocks.latest-comments')],
+                                ['online', 'Online users'],
+                            ],
+                        ),
+                    ) }}
+                        .sort(
+                            (a, b) => a.position - b.position,
+                        ),
                     dragging: null,
                     dragOver: null,
                     move(from, to) {

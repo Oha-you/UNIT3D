@@ -4,25 +4,15 @@
         <div class="panel__actions">
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="show"
-                        class="form__checkbox"
-                        type="checkbox"
-                        wire:model.live="show"
-                    />
+                    <input id="show" class="form__checkbox" type="checkbox"
+                        wire:model.live="show" />
                     <label class="form__label" for="show">Show soft deletes</label>
                 </div>
             </div>
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="receiver"
-                        class="form__text"
-                        type="search"
-                        autocomplete="off"
-                        wire:model.live="receiver"
-                        placeholder=" "
-                    />
+                    <input id="receiver" class="form__text" type="search" autocomplete="off"
+                        wire:model.live="receiver" placeholder=" " />
                     <label class="form__label form__label--floating" for="receiver">
                         {{ __('common.user') }} {{ __('common.username') }}
                     </label>
@@ -30,13 +20,8 @@
             </div>
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="sender"
-                        class="form__text"
-                        type="text"
-                        wire:model.live="sender"
-                        placeholder=" "
-                    />
+                    <input id="sender" class="form__text" type="text" wire:model.live="sender"
+                        placeholder=" " />
                     <label class="form__label form__label--floating" for="sender">
                         {{ __('common.staff') }} {{ __('common.username') }}
                     </label>
@@ -44,13 +29,8 @@
             </div>
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="torrent"
-                        class="form__text"
-                        type="text"
-                        wire:model.live="torrent"
-                        placeholder=" "
-                    />
+                    <input id="torrent" class="form__text" type="text"
+                        wire:model.live="torrent" placeholder=" " />
                     <label class="form__label form__label--floating" for="torrent">
                         {{ __('torrent.torrent') }} {{ __('common.name') }}
                     </label>
@@ -58,13 +38,8 @@
             </div>
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="reason"
-                        class="form__text"
-                        type="text"
-                        wire:model.live="reason"
-                        placeholder=" "
-                    />
+                    <input id="reason" class="form__text" type="text" wire:model.live="reason"
+                        placeholder=" " />
                     <label class="form__label form__label--floating" for="reason">
                         {{ __('common.reason') }}
                     </label>
@@ -125,9 +100,7 @@
                     </td>
                     <td>
                         @isset($warning->torrent)
-                            <a
-                                href="{{ route('torrents.show', ['id' => $warning->torrent->id]) }}"
-                            >
+                            <a href="{{ route('torrents.show', ['id' => $warning->torrent->id]) }}">
                                 {{ $warning->torrent->name }}
                             </a>
                         @else
@@ -136,18 +109,14 @@
                     </td>
                     <td>{{ $warning->reason }}</td>
                     <td>
-                        <time
-                            datetime="{{ $warning->created_at }}"
-                            title="{{ $warning->created_at }}"
-                        >
+                        <time datetime="{{ $warning->created_at }}"
+                            title="{{ $warning->created_at }}">
                             {{ $warning->created_at }}
                         </time>
                     </td>
                     <td>
-                        <time
-                            datetime="{{ $warning->expires_on }}"
-                            title="{{ $warning->expires_on }}"
-                        >
+                        <time datetime="{{ $warning->expires_on }}"
+                            title="{{ $warning->expires_on }}">
                             {{ $warning->expires_on }}
                         </time>
                     </td>

@@ -56,33 +56,27 @@
                             </td>
                             <td>{{ $bot->position }}</td>
                             <td>
-                                <img
-                                    class="chat-bots__icon"
+                                <img class="chat-bots__icon"
                                     src="/vendor/joypixels/png/64/{{ $bot->emoji }}.png"
-                                    alt="emoji"
-                                />
+                                    alt="emoji" />
                             </td>
                             <td>{{ $bot->command }}</td>
                             <td>
                                 @if ($bot->active)
                                     <i
-                                        class="{{ config('other.font-awesome') }} fa-check text-green"
-                                    ></i>
+                                        class="{{ config('other.font-awesome') }} fa-check text-green"></i>
                                 @else
                                     <i
-                                        class="{{ config('other.font-awesome') }} fa-times text-red"
-                                    ></i>
+                                        class="{{ config('other.font-awesome') }} fa-times text-red"></i>
                                 @endif
                             </td>
                             <td>
                                 <div class="data-table__actions">
-                                    @if (! $bot->is_systembot)
+                                    @if (!$bot->is_systembot)
                                         @if ($bot->active)
                                             <li class="data-table__action">
-                                                <form
-                                                    method="POST"
-                                                    action="{{ route('staff.bots.disable', ['bot' => $bot]) }}"
-                                                >
+                                                <form method="POST"
+                                                    action="{{ route('staff.bots.disable', ['bot' => $bot]) }}">
                                                     @csrf
                                                     <button class="form__button form__button--text">
                                                         {{ __('common.disable') }}
@@ -91,10 +85,8 @@
                                             </li>
                                         @else
                                             <li class="data-table__action">
-                                                <form
-                                                    method="POST"
-                                                    action="{{ route('staff.bots.enable', ['bot' => $bot]) }}"
-                                                >
+                                                <form method="POST"
+                                                    action="{{ route('staff.bots.enable', ['bot' => $bot]) }}">
                                                     @csrf
                                                     <button class="form__button form__button--text">
                                                         {{ __('common.enable') }}
@@ -105,22 +97,18 @@
                                     @endif
 
                                     <li class="data-table__action">
-                                        <a
-                                            class="form__button form__button--text"
-                                            href="{{ route('staff.bots.edit', ['bot' => $bot]) }}"
-                                        >
+                                        <a class="form__button form__button--text"
+                                            href="{{ route('staff.bots.edit', ['bot' => $bot]) }}">
                                             {{ __('common.edit') }}
                                         </a>
                                     </li>
                                     <li class="data-table__action">
-                                        <form
-                                            class="data-table__action"
+                                        <form class="data-table__action"
                                             action="{{ route('staff.bots.destroy', ['bot' => $bot]) }}"
-                                            method="POST"
-                                        >
+                                            method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            @if (! $bot->is_protected)
+                                            @if (!$bot->is_protected)
                                                 <button class="form__button form__button--text">
                                                     {{ __('common.delete') }}
                                                 </button>

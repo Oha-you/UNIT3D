@@ -9,10 +9,8 @@
 @endsection
 
 @section('meta')
-    <meta
-        name="description"
-        content="{{ __('common.similar') }} - {{ $meta->title ?? $meta->name }} ({{ substr($meta->release_date ?? $meta->first_air_date, 0, 4) }})"
-    />
+    <meta name="description"
+        content="{{ __('common.similar') }} - {{ $meta->title ?? $meta->name }} ({{ substr($meta->release_date ?? $meta->first_air_date, 0, 4) }})" />
 @endsection
 
 @section('breadcrumbs')
@@ -33,20 +31,19 @@
     @switch(true)
         @case($category->movie_meta)
             @include('torrent.partials.movie-meta')
+        @break
 
-            @break
         @case($category->tv_meta)
             @include('torrent.partials.tv-meta')
+        @break
 
-            @break
         @case($category->game_meta)
             @include('torrent.partials.game-meta')
+        @break
 
-            @break
         @default
             @include('torrent.partials.no-meta')
-
-            @break
+        @break
     @endswitch
     @livewire('similar-torrent', ['category' => $category, 'tmdbId' => $tmdb, 'igdbId' => $igdb, 'work' => $meta])
     <livewire:comments :model="$meta" :category="$category" />

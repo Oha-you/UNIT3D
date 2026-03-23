@@ -29,37 +29,21 @@
             {{ $ticketCategory->name }}
         </h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
-                action="{{ route('staff.ticket_categories.update', ['ticketCategory' => $ticketCategory]) }}"
-            >
+            <form class="form" method="POST"
+                action="{{ route('staff.ticket_categories.update', ['ticketCategory' => $ticketCategory]) }}">
                 @method('PATCH')
                 @csrf
                 <p class="form__group">
-                    <input
-                        id="name"
-                        class="form__text"
-                        name="name"
-                        required
-                        type="text"
-                        value="{{ $ticketCategory->name }}"
-                    />
+                    <input id="name" class="form__text" name="name" required type="text"
+                        value="{{ $ticketCategory->name }}" />
                     <label class="form__label form__label--floating" for="name">
                         {{ __('common.name') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="position"
-                        class="form__text"
-                        inputmode="numeric"
-                        name="position"
-                        pattern="[0-9]+"
-                        required
-                        type="text"
-                        value="{{ $ticketCategory->position }}"
-                    />
+                    <input id="position" class="form__text" inputmode="numeric" name="position"
+                        pattern="[0-9]+" required type="text"
+                        value="{{ $ticketCategory->position }}" />
                     <label class="form__label form__label--floating" for="position">
                         {{ __('common.position') }}
                     </label>

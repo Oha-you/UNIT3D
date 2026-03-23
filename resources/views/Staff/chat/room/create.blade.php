@@ -26,12 +26,8 @@
             {{ __('common.chat-room') }}
         </h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
-                action="{{ route('staff.chatrooms.store') }}"
-                enctype="multipart/form-data"
-            >
+            <form class="form" method="POST" action="{{ route('staff.chatrooms.store') }}"
+                enctype="multipart/form-data">
                 @csrf
                 <p class="form__group">
                     <input type="text" class="form__text" name="name" id="name" required />

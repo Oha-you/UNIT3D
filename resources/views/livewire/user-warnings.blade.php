@@ -11,31 +11,19 @@
                         <h3 class="dialog__heading">Warn user: {{ $user->username }}</h3>
                         <form class="dialog__form" x-bind="dialogForm">
                             <p class="form__group">
-                                <textarea
-                                    id="warn_reason"
-                                    class="form__textarea"
-                                    name="message"
-                                    maxlength="255"
-                                    required
-                                    wire:model="message"
-                                ></textarea>
+                                <textarea id="warn_reason" class="form__textarea" name="message" maxlength="255" required
+                                    wire:model="message"></textarea>
                                 <label class="form__label form__label--floating" for="warn_reason">
                                     Reason
                                 </label>
                             </p>
                             <p class="form__group">
-                                <button
-                                    class="form__button form__button--filled"
-                                    wire:click="store"
-                                    x-bind="submitDialogForm"
-                                >
+                                <button class="form__button form__button--filled" wire:click="store"
+                                    x-bind="submitDialogForm">
                                     {{ __('common.save') }}
                                 </button>
-                                <button
-                                    formmethod="dialog"
-                                    formnovalidate
-                                    class="form__button form__button--outlined"
-                                >
+                                <button formmethod="dialog" formnovalidate
+                                    class="form__button form__button--outlined">
                                     {{ __('common.cancel') }}
                                 </button>
                             </p>
@@ -44,21 +32,17 @@
                 </div>
                 <form class="panel__action">
                     @csrf
-                    <button
-                        x-on:click.prevent="massDestroy"
+                    <button x-on:click.prevent="massDestroy"
                         data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete all warnings?') }}"
-                        class="form__button form__button--text"
-                    >
+                        class="form__button form__button--text">
                         {{ __('user.delete-all') }}
                     </button>
                 </form>
                 <form class="panel__action">
                     @csrf
-                    <button
-                        x-on:click.prevent="massDeactivate"
+                    <button x-on:click.prevent="massDeactivate"
                         data-b64-deletion-message="{{ base64_encode('Are you sure you want to deactivate all warnings?') }}"
-                        class="form__button form__button--text"
-                    >
+                        class="form__button form__button--text">
                         {{ __('user.deactivate-all') }}
                     </button>
                 </form>
@@ -80,12 +64,16 @@
                 <tr>
                     <th wire:click="sortBy('warned_by')" role="columnheader button">
                         {{ __('user.warned-by') }}
-                        @include('livewire.includes._sort-icon', ['field' => 'warned_by'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'warned_by',
+                        ])
                     </th>
                     @if ($warningTab !== 'manual')
                         <th wire:click="sortBy('torrent')" role="columnheader button">
                             {{ __('torrent.torrent') }}
-                            @include('livewire.includes._sort-icon', ['field' => 'torrent'])
+                            @include('livewire.includes._sort-icon', [
+                                'field' => 'torrent',
+                            ])
                         </th>
                     @endif
 
@@ -95,11 +83,15 @@
                     </th>
                     <th wire:click="sortBy('created_at')" role="columnheader button">
                         {{ __('user.created-on') }}
-                        @include('livewire.includes._sort-icon', ['field' => 'created_at'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'created_at',
+                        ])
                     </th>
                     <th wire:click="sortBy('expires_on')" role="columnheader button">
                         {{ __('user.expires-on') }}
-                        @include('livewire.includes._sort-icon', ['field' => 'expires_on'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'expires_on',
+                        ])
                     </th>
                     <th wire:click="sortBy('active')" role="columnheader button">
                         {{ __('user.active') }}
@@ -118,8 +110,7 @@
                             <td>
                                 @isset($warning->torrent)
                                     <a
-                                        href="{{ route('torrents.show', ['id' => $warning->torrent->id]) }}"
-                                    >
+                                        href="{{ route('torrents.show', ['id' => $warning->torrent->id]) }}">
                                         {{ $warning->torrent->name }}
                                     </a>
                                 @else
@@ -130,30 +121,24 @@
 
                         <td>{{ $warning->reason }}</td>
                         <td>
-                            <time
-                                datetime="{{ $warning->created_at }}"
-                                title="{{ $warning->created_at }}"
-                            >
+                            <time datetime="{{ $warning->created_at }}"
+                                title="{{ $warning->created_at }}">
                                 {{ $warning->created_at }}
                             </time>
                         </td>
                         <td>
-                            <time
-                                datetime="{{ $warning->expires_on }}"
-                                title="{{ $warning->expires_on }}"
-                            >
+                            <time datetime="{{ $warning->expires_on }}"
+                                title="{{ $warning->expires_on }}">
                                 {{ $warning->expires_on }}
                             </time>
                         </td>
                         <td>
                             @if ($warning->active)
                                 <i
-                                    class="{{ config('other.font-awesome') }} fa-check text-green"
-                                ></i>
+                                    class="{{ config('other.font-awesome') }} fa-check text-green"></i>
                             @else
                                 <i
-                                    class="{{ config('other.font-awesome') }} fa-times text-red"
-                                ></i>
+                                    class="{{ config('other.font-awesome') }} fa-times text-red"></i>
                             @endif
                         </td>
                         @if (auth()->user()->group->is_modo)
@@ -164,11 +149,9 @@
                                             <form>
                                                 @csrf
                                                 @method('PATCH')
-                                                <button
-                                                    x-on:click.prevent="restoreWarning"
+                                                <button x-on:click.prevent="restoreWarning"
                                                     data-b64-deletion-message="{{ base64_encode('Are you sure you want to restore this warning: ' . $warning->reason . '?') }}"
-                                                    class="form__button form__button--text"
-                                                >
+                                                    class="form__button form__button--text">
                                                     {{ __('user.restore') }}
                                                 </button>
                                             </form>
@@ -182,8 +165,7 @@
                                                         <button
                                                             x-on:click.prevent="deactivateWarning"
                                                             data-b64-deletion-message="{{ base64_encode('Are you sure you want to deactivate this warning: ' . $warning->reason . '?') }}"
-                                                            class="form__button form__button--text"
-                                                        >
+                                                            class="form__button form__button--text">
                                                             {{ __('user.deactivate') }}
                                                         </button>
                                                     </form>
@@ -195,8 +177,7 @@
                                                         <button
                                                             x-on:click.prevent="reactivateWarning"
                                                             data-b64-deletion-message="{{ base64_encode('Are you sure you want to reactivate this warning: ' . $warning->reason . '?') }}"
-                                                            class="form__button form__button--text"
-                                                        >
+                                                            class="form__button form__button--text">
                                                             {{ __('user.reactivate') }}
                                                         </button>
                                                     </form>
@@ -207,11 +188,9 @@
                                         <li class="data-table__action">
                                             <form>
                                                 @csrf
-                                                <button
-                                                    x-on:click.prevent="destroyWarning"
+                                                <button x-on:click.prevent="destroyWarning"
                                                     data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete this warning: ' . $warning->reason . '?') }}"
-                                                    class="form__button form__button--text"
-                                                >
+                                                    class="form__button form__button--text">
                                                     {{ __('common.delete') }}
                                                 </button>
                                             </form>
@@ -224,8 +203,7 @@
                 @empty
                     <tr>
                         <td
-                            colspan="{{ 6 + (int) ($warningTab !== 'manual') + (int) auth()->user()->group->is_modo }}"
-                        >
+                            colspan="{{ 6 + (int) ($warningTab !== 'manual') + (int) auth()->user()->group->is_modo }}">
                             {{ __('user.no-warning') }}
                         </td>
                     </tr>
@@ -244,16 +222,20 @@
                     this.confirmAction(() => this.$wire.massDeactivate());
                 },
                 destroyWarning() {
-                    this.confirmAction(() => this.$wire.destroy(this.$root.dataset.warningId));
+                    this.confirmAction(() => this.$wire.destroy(this.$root.dataset
+                        .warningId));
                 },
                 reactivateWarning() {
-                    this.confirmAction(() => this.$wire.reactivate(this.$root.dataset.warningId));
+                    this.confirmAction(() => this.$wire.reactivate(this.$root
+                        .dataset.warningId));
                 },
                 deactivateWarning() {
-                    this.confirmAction(() => this.$wire.deactivate(this.$root.dataset.warningId));
+                    this.confirmAction(() => this.$wire.deactivate(this.$root
+                        .dataset.warningId));
                 },
                 restoreWarning() {
-                    this.confirmAction(() => this.$wire.restore(this.$root.dataset.warningId));
+                    this.confirmAction(() => this.$wire.restore(this.$root.dataset
+                        .warningId));
                 },
                 confirmAction(onConfirm) {
                     Swal.fire({

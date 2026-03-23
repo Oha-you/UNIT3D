@@ -27,8 +27,7 @@
 
                             @if ($prize = $userPrizes->get($i)?->first())
                                 <i
-                                    class="events__prize-icon events__prize-icon--today-claimed fad {{ $giveaway->icon }}"
-                                ></i>
+                                    class="events__prize-icon events__prize-icon--today-claimed fad {{ $giveaway->icon }}"></i>
                                 @if ($prize->bon > 0 || $prize->fl_tokens > 0)
                                     <ul class="events__prize-winnings-list">
                                         @if ($prize->bon > 0)
@@ -59,29 +58,22 @@
                             @else
                                 @if (now()->isBefore($date))
                                     <i
-                                        class="events__prize-icon events__prize-icon--future fad {{ $giveaway->icon }}"
-                                    ></i>
+                                        class="events__prize-icon events__prize-icon--future fad {{ $giveaway->icon }}"></i>
                                     <i class="events__prize-message">Check back later!</i>
                                 @elseif (now()->isAfter($date->addDay(1)))
                                     <i
-                                        class="events__prize-icon events__prize-icon--past fad {{ $giveaway->icon }}"
-                                    ></i>
+                                        class="events__prize-icon events__prize-icon--past fad {{ $giveaway->icon }}"></i>
                                     <i class="events__prize-message">{{ __('common.expired') }}</i>
                                 @else
                                     <i
-                                        class="events__prize-icon events__prize-icon--today-unclaimed fad {{ $giveaway->icon }} fa-beat-fade"
-                                    ></i>
-                                    <form
-                                        class="form"
+                                        class="events__prize-icon events__prize-icon--today-unclaimed fad {{ $giveaway->icon }} fa-beat-fade"></i>
+                                    <form class="form"
                                         action="{{ route('giveaways.claims.store', ['giveaway' => $giveaway]) }}"
-                                        method="POST"
-                                        style="display: contents"
-                                    >
+                                        method="POST" style="display: contents">
                                         @csrf
                                         <p class="form__group form__group--short-horizontal">
                                             <button
-                                                class="form__button form__button--text form__button--centered"
-                                            >
+                                                class="form__button form__button--text form__button--centered">
                                                 {{ __('request.claim') }}
                                             </button>
                                         </p>

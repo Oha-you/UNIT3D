@@ -38,11 +38,8 @@
                         @forelse ($followers as $follower)
                             <tr>
                                 <td>
-                                    <img
-                                        src="{{ $follower->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $follower]) }}"
-                                        alt=""
-                                        class="user-search__avatar"
-                                    />
+                                    <img src="{{ $follower->image === null ? url('img/profile.png') : route('authenticated_images.user_avatar', ['user' => $follower]) }}"
+                                        alt="" class="user-search__avatar" />
                                 </td>
                                 <td>
                                     <x-user-tag :anon="false" :user="$follower" />

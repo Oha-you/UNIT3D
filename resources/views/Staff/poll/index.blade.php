@@ -44,10 +44,8 @@
                                 </a>
                             </td>
                             <td>
-                                <time
-                                    datetime="{{ $poll->created_at }}"
-                                    title="{{ $poll->created_at }}"
-                                >
+                                <time datetime="{{ $poll->created_at }}"
+                                    title="{{ $poll->created_at }}">
                                     {{ date('d M Y', $poll->created_at->getTimestamp()) }}
                                 </time>
                             </td>
@@ -61,34 +59,26 @@
                             <td>
                                 <menu class="data-table__actions">
                                     <li class="data-table__action">
-                                        <a
-                                            href="{{ route('polls.show', ['poll' => $poll]) }}"
-                                            class="form__button form__button--text"
-                                        >
+                                        <a href="{{ route('polls.show', ['poll' => $poll]) }}"
+                                            class="form__button form__button--text">
                                             {{ __('common.view') }}
                                         </a>
                                     </li>
                                     <li class="data-table__action">
-                                        <a
-                                            href="{{ route('staff.polls.edit', ['poll' => $poll]) }}"
-                                            class="form__button form__button--text"
-                                        >
+                                        <a href="{{ route('staff.polls.edit', ['poll' => $poll]) }}"
+                                            class="form__button form__button--text">
                                             {{ __('common.edit') }}
                                         </a>
                                     </li>
                                     <li class="data-table__action">
                                         <form
                                             action="{{ route('staff.polls.destroy', ['poll' => $poll]) }}"
-                                            method="POST"
-                                            x-data="confirmation"
-                                        >
+                                            method="POST" x-data="confirmation">
                                             @csrf
                                             @method('DELETE')
-                                            <button
-                                                x-on:click.prevent="confirmAction"
+                                            <button x-on:click.prevent="confirmAction"
                                                 data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete this poll: ' . $poll->title . '?') }}"
-                                                class="form__button form__button--text"
-                                            >
+                                                class="form__button form__button--text">
                                                 {{ __('common.delete') }}
                                             </button>
                                         </form>

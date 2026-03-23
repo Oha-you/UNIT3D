@@ -4,14 +4,8 @@
         <div class="panel__actions">
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="name"
-                        class="form__text"
-                        placeholder=" "
-                        type="search"
-                        autocomplete="off"
-                        wire:model.live.debounce.250ms="search"
-                    />
+                    <input id="name" class="form__text" placeholder=" " type="search"
+                        autocomplete="off" wire:model.live.debounce.250ms="search" />
                     <label class="form__label form__label--floating" for="name">
                         {{ __('torrent.search-by-name') }}
                     </label>
@@ -24,17 +18,13 @@
         <ul class="mediahub-card__list">
             @forelse ($networks as $network)
                 <li class="mediahub-card__list-item">
-                    <a
-                        href="{{ route('torrents.index', ['view' => 'group', 'networkId' => $network->id]) }}"
-                        class="mediahub-card"
-                    >
+                    <a href="{{ route('torrents.index', ['view' => 'group', 'networkId' => $network->id]) }}"
+                        class="mediahub-card">
                         <h2 class="mediahub-card__heading">
                             @isset($network->logo)
-                                <img
-                                    class="mediahub-card__image"
+                                <img class="mediahub-card__image"
                                     src="{{ tmdb_image('logo_mid', $network->logo) }}"
-                                    alt="{{ $network->name }}"
-                                />
+                                    alt="{{ $network->name }}" />
                             @else
                                 {{ $network->name }}
                             @endisset

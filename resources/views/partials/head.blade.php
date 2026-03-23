@@ -1,6 +1,6 @@
 <meta charset="UTF-8" />
 @section('title')
-<title>{{ config('other.title') }} - {{ config('other.subTitle') }}</title>
+    <title>{{ config('other.title') }} - {{ config('other.subTitle') }}</title>
 @show
 
 <meta name="description" content="{{ config('other.meta_description') }}" />
@@ -20,76 +20,75 @@
     @switch(auth()->user()->settings->style)
         @case(0)
             @vite('resources/sass/themes/_light.scss')
+        @break
 
-            @break
         @case(1)
             @vite('resources/sass/themes/_galactic.scss')
+        @break
 
-            @break
         @case(2)
             @vite('resources/sass/themes/_galactic.scss')
             @vite('resources/sass/themes/_dark-blue.scss')
+        @break
 
-            @break
         @case(3)
             @vite('resources/sass/themes/_galactic.scss')
             @vite('resources/sass/themes/_dark-green.scss')
+        @break
 
-            @break
         @case(4)
             @vite('resources/sass/themes/_galactic.scss')
             @vite('resources/sass/themes/_dark-pink.scss')
+        @break
 
-            @break
         @case(5)
             @vite('resources/sass/themes/_galactic.scss')
             @vite('resources/sass/themes/_dark-purple.scss')
+        @break
 
-            @break
         @case(6)
             @vite('resources/sass/themes/_galactic.scss')
             @vite('resources/sass/themes/_dark-red.scss')
+        @break
 
-            @break
         @case(7)
             @vite('resources/sass/themes/_galactic.scss')
             @vite('resources/sass/themes/_dark-teal.scss')
+        @break
 
-            @break
         @case(8)
             @vite('resources/sass/themes/_galactic.scss')
             @vite('resources/sass/themes/_dark-yellow.scss')
+        @break
 
-            @break
         @case(9)
             @vite('resources/sass/themes/_galactic.scss')
             @vite('resources/sass/themes/_cosmic-void.scss')
+        @break
 
-            @break
         @case(10)
             @vite('resources/sass/themes/_nord.scss')
+        @break
 
-            @break
         @case(11)
             @vite('resources/sass/themes/_revel.scss')
+        @break
 
-            @break
         @case(12)
             @vite('resources/sass/themes/_material-design-v3-light.scss')
+        @break
 
-            @break
         @case(13)
             @vite('resources/sass/themes/_material-design-v3-dark.scss')
+        @break
 
-            @break
         @case(14)
             @vite('resources/sass/themes/_material-design-v3-amoled.scss')
+        @break
 
-            @break
         @case(15)
             @vite('resources/sass/themes/_material-design-v3-navy.scss')
-
-            @break
+        @break
     @endswitch
 
     @if (isset(auth()->user()->settings->custom_css))

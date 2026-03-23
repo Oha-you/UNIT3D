@@ -39,10 +39,8 @@
     </li>
     @if (config('announce.external_tracker.is_enabled') && auth()->user()->group->is_modo)
         <li class="nav-tabV2">
-            <a
-                class="nav-tab__link"
-                href="{{ route('torrents.external_tracker', ['id' => $torrent]) }}"
-            >
+            <a class="nav-tab__link"
+                href="{{ route('torrents.external_tracker', ['id' => $torrent]) }}">
                 External tracker
             </a>
         </li>
@@ -89,14 +87,10 @@
                     @foreach ($histories as $history)
                         <tr>
                             <td>
-                                <x-user-tag
-                                    :user="$history->user"
-                                    :anon="
-                                        $history->user->privacy?->hidden
-                                        || $history->user->privacy?->show_peer === 0
-                                        || ($history->user->id == $torrent->user->id && $torrent->anon == 1)
-                                    "
-                                />
+                                <x-user-tag :user="$history->user" :anon="$history->user->privacy?->hidden ||
+                                    $history->user->privacy?->show_peer === 0 ||
+                                    ($history->user->id == $torrent->user->id &&
+                                        $torrent->anon == 1)" />
                             </td>
 
                             @if (auth()->user()->group->is_modo || auth()->id() === $history->user_id)
@@ -119,10 +113,8 @@
                             <td>
                                 <span class="text-green">
                                     {{ App\Helpers\StringHelper::formatBytes($history->actual_uploaded, 2) }}
-                                    <span
-                                        class="text-blue"
-                                        title="{{ __('torrent.credited') }} {{ strtolower(__('common.upload')) }}"
-                                    >
+                                    <span class="text-blue"
+                                        title="{{ __('torrent.credited') }} {{ strtolower(__('common.upload')) }}">
                                         ({{ App\Helpers\StringHelper::formatBytes($history->uploaded, 2) }})
                                     </span>
                                 </span>
@@ -130,43 +122,33 @@
                             <td>
                                 <span class="text-red">
                                     {{ App\Helpers\StringHelper::formatBytes($history->actual_downloaded, 2) }}
-                                    <span
-                                        class="text-orange"
-                                        title="{{ __('torrent.credited') }} {{ strtolower(__('common.download')) }}"
-                                    >
+                                    <span class="text-orange"
+                                        title="{{ __('torrent.credited') }} {{ strtolower(__('common.download')) }}">
                                         ({{ App\Helpers\StringHelper::formatBytes($history->downloaded, 2) }})
                                     </span>
                                 </span>
                             </td>
                             <td>
-                                <span
-                                    class="text-info"
-                                    title="{{ __('torrent.refunded') }} {{ strtolower(__('common.download')) }}"
-                                >
+                                <span class="text-info"
+                                    title="{{ __('torrent.refunded') }} {{ strtolower(__('common.download')) }}">
                                     ({{ App\Helpers\StringHelper::formatBytes($history->refunded_download, 2) }})
                                 </span>
                             </td>
                             <td>
-                                <time
-                                    datetime="{{ $history->created_at }}"
-                                    title="{{ $history->created_at }}"
-                                >
+                                <time datetime="{{ $history->created_at }}"
+                                    title="{{ $history->created_at }}">
                                     {{ $history->created_at ? $history->created_at->diffForHumans() : 'N/A' }}
                                 </time>
                             </td>
                             <td>
-                                <time
-                                    datetime="{{ $history->updated_at }}"
-                                    title="{{ $history->updated_at }}"
-                                >
+                                <time datetime="{{ $history->updated_at }}"
+                                    title="{{ $history->updated_at }}">
                                     {{ $history->updated_at ? $history->updated_at->diffForHumans() : 'N/A' }}
                                 </time>
                             </td>
                             <td>
-                                <time
-                                    datetime="{{ $history->completed_at }}"
-                                    title="{{ $history->completed_at }}"
-                                >
+                                <time datetime="{{ $history->completed_at }}"
+                                    title="{{ $history->completed_at }}">
                                     {{ $history->completed_at ? $history->completed_at->diffForHumans() : 'N/A' }}
                                 </time>
                             </td>

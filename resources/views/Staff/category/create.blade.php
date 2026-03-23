@@ -26,33 +26,26 @@
             {{ __('torrent.category') }}
         </h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
-                action="{{ route('staff.categories.store') }}"
-                enctype="multipart/form-data"
-            >
+            <form class="form" method="POST" action="{{ route('staff.categories.store') }}"
+                enctype="multipart/form-data">
                 @csrf
                 <p class="form__group">
-                    <input id="name" class="form__text" type="text" name="name" placeholder=" " />
+                    <input id="name" class="form__text" type="text" name="name"
+                        placeholder=" " />
                     <label class="form__label form__label--floating" for="name">
                         {{ __('common.name') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="position"
-                        class="form__text"
-                        type="text"
-                        name="position"
-                        placeholder=" "
-                    />
+                    <input id="position" class="form__text" type="text" name="position"
+                        placeholder=" " />
                     <label class="form__label form__label--floating" for="position">
                         {{ __('common.position') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input id="icon" class="form__text" type="text" name="icon" placeholder=" " />
+                    <input id="icon" class="form__text" type="text" name="icon"
+                        placeholder=" " />
                     <label class="form__label form__label--floating" for="icon">
                         {{ __('common.icon') }} (FontAwesome)
                     </label>

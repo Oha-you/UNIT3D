@@ -22,10 +22,8 @@
         <div class="panel__body">
             <ul class="mediahub-card__list">
                 <li class="mediahub-card__list-item">
-                    <a
-                        href="{{ route('torrents.index', ['view' => 'group', 'categoryIds' => $tvCategoryIds]) }}"
-                        class="mediahub-card"
-                    >
+                    <a href="{{ route('torrents.index', ['view' => 'group', 'categoryIds' => $tvCategoryIds]) }}"
+                        class="mediahub-card">
                         <h2 class="mediahub-card__heading">{{ __('mediahub.shows') }} hub</h2>
                         <h3 class="mediahub-card__subheading">
                             {{ $tv }} {{ __('mediahub.shows') }}
@@ -33,10 +31,8 @@
                     </a>
                 </li>
                 <li class="mediahub-card__list-item">
-                    <a
-                        href="{{ route('torrents.index', ['view' => 'group', 'categoryIds' => $movieCategoryIds]) }}"
-                        class="mediahub-card"
-                    >
+                    <a href="{{ route('torrents.index', ['view' => 'group', 'categoryIds' => $movieCategoryIds]) }}"
+                        class="mediahub-card">
                         <h2 class="mediahub-card__heading">{{ __('mediahub.movies') }} hub</h2>
                         <h3 class="mediahub-card__subheading">
                             {{ $movies }} {{ __('mediahub.movies') }}

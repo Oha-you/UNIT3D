@@ -22,22 +22,13 @@
                     </button>
                     <dialog class="dialog" x-bind="dialogElement">
                         <h3 class="dialog__heading">{{ __('common.add') }}</h3>
-                        <form
-                            class="dialog__form"
-                            method="POST"
+                        <form class="dialog__form" method="POST"
                             action="{{ route('staff.whitelisted_image_urls.store') }}"
-                            x-bind="dialogForm"
-                        >
+                            x-bind="dialogForm">
                             @csrf
                             <p class="form__group">
-                                <input
-                                    id="pattern"
-                                    class="form__text"
-                                    name="pattern"
-                                    placeholder=" "
-                                    required
-                                    type="text"
-                                />
+                                <input id="pattern" class="form__text" name="pattern" placeholder=" "
+                                    required type="text" />
                                 <label class="form__label form__label--floating" for="pattern">
                                     URL pattern
                                 </label>
@@ -46,11 +37,8 @@
                                 <button class="form__button form__button--filled">
                                     {{ __('common.add') }}
                                 </button>
-                                <button
-                                    formmethod="dialog"
-                                    formnovalidate
-                                    class="form__button form__button--outlined"
-                                >
+                                <button formmethod="dialog" formnovalidate
+                                    class="form__button form__button--outlined">
                                     {{ __('common.cancel') }}
                                 </button>
                             </p>
@@ -78,70 +66,49 @@
                                 {{ str_replace(['**', '*'], ['my.evil.example/evil', '_evil_'], $whitelistedImageUrl->pattern) }}
                             </td>
                             <td>
-                                <time
-                                    datetime="{{ $whitelistedImageUrl->created_at }}"
-                                    title="{{ $whitelistedImageUrl->created_at }}"
-                                >
+                                <time datetime="{{ $whitelistedImageUrl->created_at }}"
+                                    title="{{ $whitelistedImageUrl->created_at }}">
                                     {{ $whitelistedImageUrl->created_at }}
                                 </time>
                             </td>
                             <td>
-                                <time
-                                    datetime="{{ $whitelistedImageUrl->updated_at }}"
-                                    title="{{ $whitelistedImageUrl->updated_at }}"
-                                >
+                                <time datetime="{{ $whitelistedImageUrl->updated_at }}"
+                                    title="{{ $whitelistedImageUrl->updated_at }}">
                                     {{ $whitelistedImageUrl->updated_at }}
                                 </time>
                             </td>
                             <td>
                                 <menu class="data-table__actions">
                                     <li class="data-table__action" x-data="dialog">
-                                        <button
-                                            class="form__button form__button--text"
-                                            x-bind="showDialog"
-                                        >
+                                        <button class="form__button form__button--text"
+                                            x-bind="showDialog">
                                             {{ __('common.edit') }}
                                         </button>
                                         <dialog class="dialog" x-bind="dialogElement">
                                             <h3 class="dialog__heading">
                                                 {{ __('common.edit') }}
                                             </h3>
-                                            <form
-                                                class="dialog__form"
-                                                method="POST"
+                                            <form class="dialog__form" method="POST"
                                                 action="{{ route('staff.whitelisted_image_urls.update', ['whitelistedImageUrl' => $whitelistedImageUrl]) }}"
-                                                x-bind="dialogForm"
-                                            >
+                                                x-bind="dialogForm">
                                                 @csrf
                                                 @method('PATCH')
                                                 <p class="form__group">
-                                                    <input
-                                                        id="pattern"
-                                                        class="form__text"
-                                                        name="pattern"
-                                                        placeholder=" "
-                                                        required
+                                                    <input id="pattern" class="form__text"
+                                                        name="pattern" placeholder=" " required
                                                         type="text"
-                                                        value="{{ $whitelistedImageUrl->pattern }}"
-                                                    />
-                                                    <label
-                                                        class="form__label form__label--floating"
-                                                        for="pattern"
-                                                    >
+                                                        value="{{ $whitelistedImageUrl->pattern }}" />
+                                                    <label class="form__label form__label--floating"
+                                                        for="pattern">
                                                         URL pattern
                                                     </label>
                                                 </p>
                                                 <p class="form__group">
-                                                    <button
-                                                        class="form__button form__button--filled"
-                                                    >
+                                                    <button class="form__button form__button--filled">
                                                         {{ __('common.edit') }}
                                                     </button>
-                                                    <button
-                                                        formmethod="dialog"
-                                                        formnovalidate
-                                                        class="form__button form__button--outlined"
-                                                    >
+                                                    <button formmethod="dialog" formnovalidate
+                                                        class="form__button form__button--outlined">
                                                         {{ __('common.cancel') }}
                                                     </button>
                                                 </p>
@@ -151,16 +118,12 @@
                                     <li class="data-table__action">
                                         <form
                                             action="{{ route('staff.whitelisted_image_urls.destroy', ['whitelistedImageUrl' => $whitelistedImageUrl]) }}"
-                                            method="POST"
-                                            x-data="confirmation"
-                                        >
+                                            method="POST" x-data="confirmation">
                                             @csrf
                                             @method('DELETE')
-                                            <button
-                                                x-on:click.prevent="confirmAction"
+                                            <button x-on:click.prevent="confirmAction"
                                                 class="form__button form__button--text"
-                                                data-b64-deletion-message="{{ base64_encode('Are you sure you want to remove this whitelisted image url: ' . $whitelistedImageUrl->pattern . '?') }}"
-                                            >
+                                                data-b64-deletion-message="{{ base64_encode('Are you sure you want to remove this whitelisted image url: ' . $whitelistedImageUrl->pattern . '?') }}">
                                                 {{ __('common.delete') }}
                                             </button>
                                         </form>

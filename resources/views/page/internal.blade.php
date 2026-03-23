@@ -18,14 +18,11 @@
             </h2>
             <div class="panel__body user-card-wrapper">
                 @foreach ($internal->users as $user)
-                    <a
-                        href="{{ route('users.show', ['user' => $user]) }}"
-                        class="user-card"
+                    <a href="{{ route('users.show', ['user' => $user]) }}" class="user-card"
                         style="
                             background-color: {{ $user->group->color }};
                             background-image: {{ $internal->effect }};
-                        "
-                    >
+                        ">
                         <h3 class="user-card__username">
                             {{ $user->username }}
                         </h3>

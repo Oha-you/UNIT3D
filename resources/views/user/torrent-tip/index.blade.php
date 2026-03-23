@@ -54,10 +54,7 @@
                                 @if ($tip->torrent === null)
                                     Torrent deleted
                                 @else
-                                    <x-user-tag
-                                        :user="$tip->recipient"
-                                        :anon="$tip->torrent->anon"
-                                    />
+                                    <x-user-tag :user="$tip->recipient" :anon="$tip->torrent->anon" />
                                 @endif
                             </td>
                             <td>{{ $tip->bon }}</td>
@@ -66,17 +63,14 @@
                                     Torrent deleted
                                 @else
                                     <a
-                                        href="{{ route('torrents.show', ['id' => $tip->torrent->id]) }}"
-                                    >
+                                        href="{{ route('torrents.show', ['id' => $tip->torrent->id]) }}">
                                         {{ $tip->torrent->name }}
                                     </a>
                                 @endif
                             </td>
                             <td>
-                                <time
-                                    datetime="{{ $tip->created_at }}"
-                                    title="{{ $tip->created_at }}"
-                                >
+                                <time datetime="{{ $tip->created_at }}"
+                                    title="{{ $tip->created_at }}">
                                     {{ $tip->created_at->format('Y-m-d') }}
                                 </time>
                             </td>

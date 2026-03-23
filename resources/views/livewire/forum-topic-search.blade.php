@@ -26,10 +26,8 @@
                 @if ($permission?->start_topic == true)
                     <div class="form">
                         <p class="form__group form__group--horizontal">
-                            <a
-                                href="{{ route('topics.create', ['id' => $forum->id]) }}"
-                                class="form__button form__button--filled form__button--centered"
-                            >
+                            <a href="{{ route('topics.create', ['id' => $forum->id]) }}"
+                                class="form__button form__button--filled form__button--centered">
                                 {{ __('forum.create-new-topic') }}
                             </a>
                         </p>
@@ -42,23 +40,19 @@
                         <p class="form__group form__group--horizontal">
                             <input type="hidden" name="forum_id" value="{{ $forum->id }}" />
                             <button
-                                class="form__button form__button--filled form__button--centered"
-                            >
+                                class="form__button form__button--filled form__button--centered">
                                 {{ __('forum.subscribe') }}
                             </button>
                         </p>
                     </form>
                 @else
-                    <form
-                        class="form"
+                    <form class="form"
                         action="{{ route('subscriptions.destroy', ['subscription' => $subscription]) }}"
-                        method="POST"
-                    >
+                        method="POST">
                         @csrf
                         <p class="form__group form__group--horizontal">
                             <button
-                                class="form__button form__button--filled form__button--centered"
-                            >
+                                class="form__button form__button--filled form__button--centered">
                                 {{ __('forum.unsubscribe') }}
                             </button>
                         </p>
@@ -70,10 +64,8 @@
                     <input type="hidden" name="catchup_type" value="forum" />
                     <input type="hidden" name="forum_id" value="{{ $forum->id }}" />
                     <p class="form__group form__group--horizontal">
-                        <button
-                            class="form__button form__button--filled form__button--centered"
-                            title="Mark all topics in this forum as read"
-                        >
+                        <button class="form__button form__button--filled form__button--centered"
+                            title="Mark all topics in this forum as read">
                             Mark all read
                         </button>
                     </p>
@@ -85,34 +77,26 @@
             <div class="panel__body">
                 <form class="form" x-data x-on:submit.prevent>
                     <p class="form__group">
-                        <input
-                            id="search"
-                            class="form__text"
-                            type="search"
-                            autocomplete="off"
-                            wire:model.live="search"
-                            placeholder=" "
-                        />
+                        <input id="search" class="form__text" type="search" autocomplete="off"
+                            wire:model.live="search" placeholder=" " />
                         <label for="search" class="form__label form__label--floating">
                             {{ __('common.search') }}
                         </label>
                     </p>
                     <p class="form__group">
-                        <select id="read" class="form__select" name="read" wire:model.live="read">
+                        <select id="read" class="form__select" name="read"
+                            wire:model.live="read">
                             <option value="" selected default>Any</option>
                             <option value="some">With unread posts</option>
                             <option value="none">Newly added</option>
                             <option value="all">Fully read</option>
                         </select>
-                        <label class="form__label form__label--floating" for="read">Activity</label>
+                        <label class="form__label form__label--floating"
+                            for="read">Activity</label>
                     </p>
                     <p class="form__group">
-                        <select
-                            id="sorting"
-                            class="form__select"
-                            name="sorting"
-                            wire:model.live="label"
-                        >
+                        <select id="sorting" class="form__select" name="sorting"
+                            wire:model.live="label">
                             <option value="" selected default>Any</option>
                             <option value="approved">
                                 {{ __('forum.approved') }}
@@ -141,13 +125,8 @@
                         </label>
                     </p>
                     <p class="form__group">
-                        <select
-                            id="sorting"
-                            class="form__select"
-                            name="sorting"
-                            required
-                            wire:model.live="sortField"
-                        >
+                        <select id="sorting" class="form__select" name="sorting" required
+                            wire:model.live="sortField">
                             <option value="last_post_created_at">
                                 {{ __('forum.updated-at') }}
                             </option>
@@ -160,13 +139,8 @@
                         </label>
                     </p>
                     <p class="form__group">
-                        <select
-                            id="direction"
-                            class="form__select"
-                            name="direction"
-                            required
-                            wire:model.live="sortDirection"
-                        >
+                        <select id="direction" class="form__select" name="direction" required
+                            wire:model.live="sortDirection">
                             <option value="desc">
                                 {{ __('common.descending') }}
                             </option>
@@ -179,12 +153,8 @@
                         </label>
                     </p>
                     <p class="form__group">
-                        <select
-                            id="direction"
-                            class="form__select"
-                            name="direction"
-                            wire:model.live="state"
-                        >
+                        <select id="direction" class="form__select" name="direction"
+                            wire:model.live="state">
                             <option value="" selected default>Any</option>
                             <option value="open">
                                 {{ __('forum.open') }}
@@ -198,12 +168,8 @@
                         </label>
                     </p>
                     <p class="form__group">
-                        <select
-                            id="direction"
-                            class="form__select"
-                            name="direction"
-                            wire:model.live="subscribed"
-                        >
+                        <select id="direction" class="form__select" name="direction"
+                            wire:model.live="subscribed">
                             <option value="" selected default>Any</option>
                             <option value="include">
                                 {{ __('forum.subscribed') }}

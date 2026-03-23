@@ -5,14 +5,8 @@
             <div class="panel__actions">
                 <div class="panel__action">
                     <div class="form__group">
-                        <input
-                            id="torrent"
-                            type="search"
-                            autocomplete="off"
-                            wire:model.live="torrentId"
-                            class="form__text"
-                            placeholder=" "
-                        />
+                        <input id="torrent" type="search" autocomplete="off"
+                            wire:model.live="torrentId" class="form__text" placeholder=" " />
                         <label class="form__label form__label--floating" for="torrent">
                             Torrent ID
                         </label>
@@ -20,25 +14,16 @@
                 </div>
                 <div class="panel__action">
                     <div class="form__group">
-                        <input
-                            id="user"
-                            type="search"
-                            autocomplete="off"
-                            wire:model.live="userId"
-                            class="form__text"
-                            placeholder=" "
-                        />
-                        <label class="form__label form__label--floating" for="user">User ID</label>
+                        <input id="user" type="search" autocomplete="off"
+                            wire:model.live="userId" class="form__text" placeholder=" " />
+                        <label class="form__label form__label--floating" for="user">User
+                            ID</label>
                     </div>
                 </div>
                 <div class="panel__action">
                     <div class="form__group">
-                        <select
-                            id="quantity"
-                            class="form__select"
-                            wire:model.live="perPage"
-                            required
-                        >
+                        <select id="quantity" class="form__select" wire:model.live="perPage"
+                            required>
                             <option>25</option>
                             <option>50</option>
                             <option>100</option>
@@ -61,51 +46,75 @@
                         </th>
                         <th wire:click="sortBy('user_id')" role="columnheader button">
                             User ID
-                            @include('livewire.includes._sort-icon', ['field' => 'user_id'])
+                            @include('livewire.includes._sort-icon', [
+                                'field' => 'user_id',
+                            ])
                         </th>
                         <th wire:click="sortBy('torrent_id')" role="columnheader button">
                             Torrent ID
-                            @include('livewire.includes._sort-icon', ['field' => 'torrent_id'])
+                            @include('livewire.includes._sort-icon', [
+                                'field' => 'torrent_id',
+                            ])
                         </th>
                         <th wire:click="sortBy('uploaded')" role="columnheader button">
                             {{ __('torrent.uploaded') }}
-                            @include('livewire.includes._sort-icon', ['field' => 'uploaded'])
+                            @include('livewire.includes._sort-icon', [
+                                'field' => 'uploaded',
+                            ])
                         </th>
                         <th wire:click="sortBy('downloaded')" role="columnheader button">
                             {{ __('torrent.downloaded') }}
-                            @include('livewire.includes._sort-icon', ['field' => 'downloaded'])
+                            @include('livewire.includes._sort-icon', [
+                                'field' => 'downloaded',
+                            ])
                         </th>
                         <th wire:click="sortBy('left')" role="columnheader button">
                             {{ __('torrent.left') }}
-                            @include('livewire.includes._sort-icon', ['field' => 'left'])
+                            @include('livewire.includes._sort-icon', [
+                                'field' => 'left',
+                            ])
                         </th>
                         <th wire:click="sortBy('corrupt')" role="columnheader button">
                             Corrupt
-                            @include('livewire.includes._sort-icon', ['field' => 'corrupt'])
+                            @include('livewire.includes._sort-icon', [
+                                'field' => 'corrupt',
+                            ])
                         </th>
                         <th wire:click="sortBy('peer_id')" role="columnheader button">
                             Peer ID
-                            @include('livewire.includes._sort-icon', ['field' => 'peer_id'])
+                            @include('livewire.includes._sort-icon', [
+                                'field' => 'peer_id',
+                            ])
                         </th>
                         <th wire:click="sortBy('port')" role="columnheader button">
                             {{ __('common.port') }}
-                            @include('livewire.includes._sort-icon', ['field' => 'port'])
+                            @include('livewire.includes._sort-icon', [
+                                'field' => 'port',
+                            ])
                         </th>
                         <th wire:click="sortBy('numwant')" role="columnheader button">
                             Numwant
-                            @include('livewire.includes._sort-icon', ['field' => 'numwant'])
+                            @include('livewire.includes._sort-icon', [
+                                'field' => 'numwant',
+                            ])
                         </th>
                         <th wire:click="sortBy('event')" role="columnheader button">
                             Event
-                            @include('livewire.includes._sort-icon', ['field' => 'event'])
+                            @include('livewire.includes._sort-icon', [
+                                'field' => 'event',
+                            ])
                         </th>
                         <th wire:click="sortBy('key')" role="columnheader button">
                             Key
-                            @include('livewire.includes._sort-icon', ['field' => 'key'])
+                            @include('livewire.includes._sort-icon', [
+                                'field' => 'key',
+                            ])
                         </th>
                         <th wire:click="sortBy('created_at')" role="columnheader button">
                             {{ __('common.created_at') }}
-                            @include('livewire.includes._sort-icon', ['field' => 'created_at'])
+                            @include('livewire.includes._sort-icon', [
+                                'field' => 'created_at',
+                            ])
                         </th>
                     </tr>
                 </thead>

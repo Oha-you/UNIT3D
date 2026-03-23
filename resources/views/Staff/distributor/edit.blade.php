@@ -27,22 +27,13 @@
             {{ __('common.edit') }} torrent distributor: {{ $distributor->name }}
         </h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
-                action="{{ route('staff.distributors.update', ['distributor' => $distributor]) }}"
-            >
+            <form class="form" method="POST"
+                action="{{ route('staff.distributors.update', ['distributor' => $distributor]) }}">
                 @method('PATCH')
                 @csrf
                 <p class="form__group">
-                    <input
-                        id="name"
-                        class="form__text"
-                        name="name"
-                        required
-                        type="text"
-                        value="{{ $distributor->name }}"
-                    />
+                    <input id="name" class="form__text" name="name" required type="text"
+                        value="{{ $distributor->name }}" />
                     <label class="form__label form__label--floating" for="name">
                         {{ __('common.name') }}
                     </label>

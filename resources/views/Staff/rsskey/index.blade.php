@@ -8,10 +8,7 @@
 @endsection
 
 @section('meta')
-    <meta
-        name="description"
-        content="{{ __('user.rsskeys') }} - {{ __('staff.staff-dashboard') }}"
-    />
+    <meta name="description" content="{{ __('user.rsskeys') }} - {{ __('staff.staff-dashboard') }}" />
 @endsection
 
 @section('breadcrumbs')

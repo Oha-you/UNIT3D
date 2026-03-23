@@ -21,21 +21,39 @@
     @if ($user->can_request ?? $user->group->can_request)
         @switch(true)
             @case($torrentRequest->category->movie_meta)
-                @include('torrent.partials.movie-meta', ['torrent' => $torrentRequest, 'category' => $torrentRequest->category, 'meta' => $torrentRequest->movie, 'tmdb' => $torrentRequest->tmdb_movie_id])
+                @include('torrent.partials.movie-meta', [
+                    'torrent' => $torrentRequest,
+                    'category' => $torrentRequest->category,
+                    'meta' => $torrentRequest->movie,
+                    'tmdb' => $torrentRequest->tmdb_movie_id,
+                ])
+            @break
 
-                @break
             @case($torrentRequest->category->tv_meta)
-                @include('torrent.partials.tv-meta', ['torrent' => $torrentRequest, 'category' => $torrentRequest->category, 'meta' => $torrentRequest->tv, 'tmdb' => $torrentRequest->tmdb_tv_id])
+                @include('torrent.partials.tv-meta', [
+                    'torrent' => $torrentRequest,
+                    'category' => $torrentRequest->category,
+                    'meta' => $torrentRequest->tv,
+                    'tmdb' => $torrentRequest->tmdb_tv_id,
+                ])
+            @break
 
-                @break
             @case($torrentRequest->category->game_meta)
-                @include('torrent.partials.game-meta', ['torrent' => $torrentRequest, 'category' => $torrentRequest->category, 'meta' => $torrentRequest->game, 'igdb' => $torrentRequest->igdb])
+                @include('torrent.partials.game-meta', [
+                    'torrent' => $torrentRequest,
+                    'category' => $torrentRequest->category,
+                    'meta' => $torrentRequest->game,
+                    'igdb' => $torrentRequest->igdb,
+                ])
+            @break
 
-                @break
             @default
-                @include('torrent.partials.no-meta', ['torrent' => $torrentRequest, 'category' => $torrentRequest->category, 'meta' => null])
-
-                @break
+                @include('torrent.partials.no-meta', [
+                    'torrent' => $torrentRequest,
+                    'category' => $torrentRequest->category,
+                    'meta' => null,
+                ])
+            @break
         @endswitch
         <menu class="torrent__buttons form__group--short-horizontal">
             @includeWhen($torrentRequest->torrent === null, 'requests.partials.vote')
@@ -43,37 +61,49 @@
             @switch(true)
                 {{-- Claimed --}}
                 @case($torrentRequest->claim !== null && $torrentRequest->torrent === null)
-                    @includeWhen($user->group->is_modo || $torrentRequest->claim->user->is($user), 'requests.partials.unclaim')
-                    @includeWhen($user->group->is_modo || $torrentRequest->claim->user->is($user), 'requests.partials.fulfill')
+                    @includeWhen(
+                        $user->group->is_modo || $torrentRequest->claim->user->is($user),
+                        'requests.partials.unclaim')
+                    @includeWhen(
+                        $user->group->is_modo || $torrentRequest->claim->user->is($user),
+                        'requests.partials.fulfill')
                     @include('requests.partials.report')
-                    @includeWhen($user->group->is_modo || $torrentRequest->user->is($user), 'requests.partials.edit')
-                    @includeWhen($user->group->is_modo || $torrentRequest->user->is($user), 'requests.partials.delete')
+                    @includeWhen(
+                        $user->group->is_modo || $torrentRequest->user->is($user),
+                        'requests.partials.edit')
+                    @includeWhen(
+                        $user->group->is_modo || $torrentRequest->user->is($user),
+                        'requests.partials.delete')
+                @break
 
-                    @break
-                    {{-- Pending --}}
+                {{-- Pending --}}
                 @case($torrentRequest->torrent_id !== null && $torrentRequest->approved_when === null)
                     @include('requests.partials.report')
                     @includeWhen($user->group->is_modo, 'requests.partials.edit')
                     @includeWhen($user->group->is_modo, 'requests.partials.delete')
+                @break
 
-                    @break
-                    {{-- Unfilled --}}
+                {{-- Unfilled --}}
                 @case($torrentRequest->torrent === null)
                     @include('requests.partials.claim')
                     @include('requests.partials.fulfill')
                     @include('requests.partials.report')
-                    @includeWhen($user->group->is_modo || $torrentRequest->user->is($user), 'requests.partials.edit')
-                    @includeWhen($user->group->is_modo || $torrentRequest->user->is($user), 'requests.partials.delete')
+                    @includeWhen(
+                        $user->group->is_modo || $torrentRequest->user->is($user),
+                        'requests.partials.edit')
+                    @includeWhen(
+                        $user->group->is_modo || $torrentRequest->user->is($user),
+                        'requests.partials.delete')
+                @break
 
-                    @break
-                    {{-- Filled --}}
+                {{-- Filled --}}
+
                 @default
                     @include('requests.partials.report')
                     @includeWhen($user->group->is_modo, 'requests.partials.reset')
                     @includeWhen($user->group->is_modo, 'requests.partials.edit')
                     @includeWhen($user->group->is_modo, 'requests.partials.delete')
-
-                    @break
+                @break
             @endswitch
         </menu>
         <ul class="request__tags">
@@ -124,10 +154,8 @@
                 <x-user-tag :user="$torrentRequest->user" :anon="$torrentRequest->anon" />
             </li>
             <li class="request__created-at">
-                <time
-                    datetime="{{ $torrentRequest->created_at }}"
-                    title="{{ $torrentRequest->created_at }}"
-                >
+                <time datetime="{{ $torrentRequest->created_at }}"
+                    title="{{ $torrentRequest->created_at }}">
                     {{ $torrentRequest->created_at->diffForHumans() }}
                 </time>
             </li>
@@ -137,23 +165,22 @@
                         @case($torrentRequest->claim !== null && $torrentRequest->torrent === null)
                             <i class="fas fa-circle text-blue"></i>
                             {{ __('request.claimed') }}
+                        @break
 
-                            @break
                         @case($torrentRequest->torrent !== null && $torrentRequest->approved_when === null)
                             <i class="fas fa-circle text-purple"></i>
                             {{ __('request.pending') }}
+                        @break
 
-                            @break
                         @case($torrentRequest->torrent === null)
                             <i class="fas fa-circle text-red"></i>
                             {{ __('request.unfilled') }}
+                        @break
 
-                            @break
                         @default
                             <i class="fas fa-circle text-green"></i>
                             {{ __('request.filled') }}
-
-                            @break
+                        @break
                     @endswitch
                 </span>
             </li>
@@ -175,19 +202,14 @@
                     <div class="key-value__group">
                         <dt>{{ __('request.claimed') }} by</dt>
                         <dd>
-                            <x-user-tag
-                                :user="$torrentRequest->claim->user"
-                                :anon="$torrentRequest->claim->anon"
-                            />
+                            <x-user-tag :user="$torrentRequest->claim->user" :anon="$torrentRequest->claim->anon" />
                         </dd>
                     </div>
                     <div class="key-value__group">
                         <dt>{{ __('request.claimed') }} at</dt>
                         <dd>
-                            <time
-                                datetime="{{ $torrentRequest->claim->created_at }}"
-                                title="{{ $torrentRequest->claim->created_at }}"
-                            >
+                            <time datetime="{{ $torrentRequest->claim->created_at }}"
+                                title="{{ $torrentRequest->claim->created_at }}">
                                 {{ $torrentRequest->claim->created_at->diffForHumans() }}
                             </time>
                         </dd>
@@ -203,19 +225,14 @@
                     <div class="key-value__group">
                         <dt>{{ __('request.filled') }} by</dt>
                         <dd>
-                            <x-user-tag
-                                :user="$torrentRequest->filler"
-                                :anon="$torrentRequest->filled_anon"
-                            />
+                            <x-user-tag :user="$torrentRequest->filler" :anon="$torrentRequest->filled_anon" />
                         </dd>
                     </div>
                     <div class="key-value__group">
                         <dt>{{ __('request.filled') }} at</dt>
                         <dd>
-                            <time
-                                datetime="{{ $torrentRequest->filled_when }}"
-                                title="{{ $torrentRequest->filled_when }}"
-                            >
+                            <time datetime="{{ $torrentRequest->filled_when }}"
+                                title="{{ $torrentRequest->filled_when }}">
                                 {{ $torrentRequest->filled_when->diffForHumans() }}
                             </time>
                         </dd>
@@ -227,39 +244,34 @@
                                 Filled torrent has been deleted
                             @else
                                 <a
-                                    href="{{ route('torrents.show', ['id' => $torrentRequest->torrent->id]) }}"
-                                >
+                                    href="{{ route('torrents.show', ['id' => $torrentRequest->torrent->id]) }}">
                                     {{ $torrentRequest->torrent->name }}
                                 </a>
                             @endif
                         </dd>
                     </div>
                 </dl>
-                @if ($torrentRequest->approved_when === null && ($torrentRequest->user_id == $user->id || $user->group->is_modo))
+                @if (
+                    $torrentRequest->approved_when === null &&
+                        ($torrentRequest->user_id == $user->id || $user->group->is_modo))
                     <div class="panel__body">
                         <div class="form__group">
-                            <form
-                                method="POST"
+                            <form method="POST"
                                 action="{{ route('requests.approved_fills.store', ['torrentRequest' => $torrentRequest]) }}"
-                                style="display: contents"
-                            >
+                                style="display: contents">
                                 @csrf
                                 <button
-                                    class="form__button form__button--filled form__button--centered"
-                                >
+                                    class="form__button form__button--filled form__button--centered">
                                     {{ __('request.approve') }}
                                 </button>
                             </form>
-                            <form
-                                method="POST"
+                            <form method="POST"
                                 action="{{ route('requests.fills.destroy', ['torrentRequest' => $torrentRequest]) }}"
-                                style="display: contents"
-                            >
+                                style="display: contents">
                                 @csrf
                                 @method('DELETE')
                                 <button
-                                    class="form__button form__button--filled form__button--centered"
-                                >
+                                    class="form__button form__button--filled form__button--centered">
                                     {{ __('request.reject') }}
                                 </button>
                             </form>
@@ -274,15 +286,12 @@
                 <h2 class="panel__heading">{{ __('request.voters') }}</h2>
                 @if ($torrentRequest->bounties->count() > 10)
                     <div x-show="isToggledOff">
-                        <i
-                            class="{{ config('other.font-awesome') }} fa-plus-circle fa-pull-right"
-                        ></i>
+                        <i class="{{ config('other.font-awesome') }} fa-plus-circle fa-pull-right"></i>
                         Show more
                     </div>
                     <div x-show="isToggledOn" x-cloak>
                         <i
-                            class="{{ config('other.font-awesome') }} fa-minus-circle fa-pull-right"
-                        ></i>
+                            class="{{ config('other.font-awesome') }} fa-minus-circle fa-pull-right"></i>
                         Show less
                     </div>
                 @endif
@@ -299,16 +308,14 @@
                     </thead>
                     <tbody>
                         @foreach ($torrentRequest->bounties as $bounty)
-                            <tr @if($loop->iteration > 10) x-show="isToggledOn" x-cloak @endif>
+                            <tr @if ($loop->iteration > 10) x-show="isToggledOn" x-cloak @endif>
                                 <td>
                                     <x-user-tag :user="$bounty->user" :anon="$bounty->anon" />
                                 </td>
                                 <td>{{ $bounty->seedbonus }}</td>
                                 <td>
-                                    <time
-                                        datetime="{{ $bounty->created_at }}"
-                                        title="{{ $bounty->created_at }}"
-                                    >
+                                    <time datetime="{{ $bounty->created_at }}"
+                                        title="{{ $bounty->created_at }}">
                                         {{ $bounty->created_at->diffForHumans() }}
                                     </time>
                                 </td>
@@ -316,10 +323,8 @@
                                     <menu class="data-table__actions">
                                         @if ($bounty->user_id == auth()->id() || auth()->user()->group->is_modo)
                                             <li class="data-table__action" x-data="dialog">
-                                                <button
-                                                    class="form__button form__button--text"
-                                                    x-bind="showDialog"
-                                                >
+                                                <button class="form__button form__button--text"
+                                                    x-bind="showDialog">
                                                     {{ __('common.edit') }}
                                                 </button>
                                                 <dialog class="dialog" x-bind="dialogElement">
@@ -327,46 +332,30 @@
                                                         {{ __('common.edit') }}
                                                         {{ __('request.vote') }}
                                                     </h4>
-                                                    <form
-                                                        class="dialog__form"
-                                                        method="POST"
+                                                    <form class="dialog__form" method="POST"
                                                         action="{{ route('requests.bounties.update', ['torrentRequest' => $torrentRequest, 'torrentRequestBounty' => $bounty]) }}"
-                                                        x-bind="dialogForm"
-                                                    >
+                                                        x-bind="dialogForm">
                                                         @csrf
                                                         @method('PATCH')
                                                         <p class="form__group">
-                                                            <input
-                                                                type="hidden"
-                                                                name="anon"
-                                                                value="0"
-                                                            />
-                                                            <input
-                                                                id="anon_{{ $bounty->id }}"
-                                                                class="form__checkbox"
-                                                                name="anon"
-                                                                type="checkbox"
-                                                                value="1"
-                                                                @checked($bounty->anon)
-                                                            />
-                                                            <label
-                                                                class="form__label"
-                                                                for="anon_{{ $bounty->id }}"
-                                                            >
+                                                            <input type="hidden" name="anon"
+                                                                value="0" />
+                                                            <input id="anon_{{ $bounty->id }}"
+                                                                class="form__checkbox" name="anon"
+                                                                type="checkbox" value="1"
+                                                                @checked($bounty->anon) />
+                                                            <label class="form__label"
+                                                                for="anon_{{ $bounty->id }}">
                                                                 {{ __('common.anonymous') }}?
                                                             </label>
                                                         </p>
                                                         <p class="form__group">
                                                             <button
-                                                                class="form__button form__button--filled"
-                                                            >
+                                                                class="form__button form__button--filled">
                                                                 {{ __('common.edit') }}
                                                             </button>
-                                                            <button
-                                                                formmethod="dialog"
-                                                                formnovalidate
-                                                                class="form__button form__button--outlined"
-                                                            >
+                                                            <button formmethod="dialog" formnovalidate
+                                                                class="form__button form__button--outlined">
                                                                 {{ __('common.cancel') }}
                                                             </button>
                                                         </p>

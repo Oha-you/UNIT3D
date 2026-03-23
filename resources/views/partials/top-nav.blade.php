@@ -105,7 +105,7 @@
                         {{ __('common.news') }}
                     </a>
                 </li>
-                @if (! empty(config('unit3d.chat-link-url')))
+                @if (!empty(config('unit3d.chat-link-url')))
                     <li>
                         <a href="{{ config('unit3d.chat-link-url') }}">
                             <i class="{{ config('unit3d.chat-link-icon') }}"></i>
@@ -165,7 +165,9 @@
             <a tabindex="0">
                 <div class="top-nav--left__container">
                     {{ __('common.other') }}
-                    @if ($giveaways->contains(fn ($giveaway) => ! $giveaway->claimed_prizes_exists && $giveaway->ends_at->endOfDay()->isFuture()))
+                    @if (
+                        $giveaways->contains(fn($giveaway) => !$giveaway->claimed_prizes_exists &&
+                                $giveaway->ends_at->endOfDay()->isFuture()))
                         <x-animation.notification />
                     @endif
                 </div>
@@ -176,7 +178,7 @@
                         <a href="{{ route('giveaways.show', ['giveaway' => $giveaway]) }}">
                             <i class="{{ config('other.font-awesome') }} fa-calendar-star"></i>
                             {{ $giveaway->name }}
-                            @if (! $giveaway->claimed_prizes_exists && $giveaway->ends_at->endOfDay()->isFuture())
+                            @if (!$giveaway->claimed_prizes_exists && $giveaway->ends_at->endOfDay()->isFuture())
                                 <x-animation.notification />
                             @endif
                         </a>
@@ -186,11 +188,9 @@
                 @foreach ($uploadContests as $uploadContest)
                     <li>
                         <a
-                            href="{{ route('upload_contests.show', ['uploadContest' => $uploadContest]) }}"
-                        >
+                            href="{{ route('upload_contests.show', ['uploadContest' => $uploadContest]) }}">
                             <i
-                                class="{{ config('other.font-awesome') }} {{ $uploadContest->icon }}"
-                            ></i>
+                                class="{{ config('other.font-awesome') }} {{ $uploadContest->icon }}"></i>
                             {{ $uploadContest->name }}
                         </a>
                     </li>
@@ -232,26 +232,20 @@
             <li class="top-nav__dropdown">
                 <a tabindex="0" title="{{ $donationPercentage }}% filled">
                     <div class="top-nav--left__container">
-                        <span
-                            class="{{ $donationPercentage < 100 ? 'fa-fade' : '' }}"
-                            style="color: lightcoral"
-                        >
+                        <span class="{{ $donationPercentage < 100 ? 'fa-fade' : '' }}"
+                            style="color: lightcoral">
                             Donate
                         </span>
                         <div class="progress" style="background-color: slategray">
-                            <div
-                                class="progress-bar"
-                                role="progressbar"
+                            <div class="progress-bar" role="progressbar"
                                 style="
                                     width: {{ $donationPercentage }}%;
                                     background-color: slategray;
                                     border-bottom: 2px solid lightcoral !important;
                                     max-width: 100%;
                                 "
-                                aria-valuenow="{{ $donationPercentage }}"
-                                aria-valuemin="0"
-                                aria-valuemax="{{ config('donation.monthly_goal') }}"
-                            ></div>
+                                aria-valuenow="{{ $donationPercentage }}" aria-valuemin="0"
+                                aria-valuemax="{{ config('donation.monthly_goal') }}"></div>
                         </div>
                     </div>
                 </a>
@@ -263,10 +257,8 @@
                         </a>
                     </li>
                     <li>
-                        <a
-                            href="https://hdinnovations.github.io/HDInnovations/donate.html"
-                            target="_blank"
-                        >
+                        <a href="https://hdinnovations.github.io/HDInnovations/donate.html"
+                            target="_blank">
                             <i class="fas fa-handshake"></i>
                             Support UNIT3D
                         </a>
@@ -285,8 +277,7 @@
             </li>
             <li class="ratio-bar__downloaded" title="{{ __('common.download') }}">
                 <a
-                    href="{{ route('users.history.index', ['user' => auth()->user(), 'downloaded' => 'include']) }}"
-                >
+                    href="{{ route('users.history.index', ['user' => auth()->user(), 'downloaded' => 'include']) }}">
                     <i class="{{ config('other.font-awesome') }} fa-arrow-down"></i>
                     {{ $user->formatted_downloaded }}
                 </a>
@@ -300,8 +291,7 @@
             </li>
             <li class="ratio-bar__leeching" title="{{ __('torrent.leeching') }}">
                 <a
-                    href="{{ route('users.peers.index', ['user' => auth()->user(), 'seeding' => 'exclude']) }}"
-                >
+                    href="{{ route('users.peers.index', ['user' => auth()->user(), 'seeding' => 'exclude']) }}">
                     <i class="{{ config('other.font-awesome') }} fa-download"></i>
                     {{ $leechCount }}
                 </a>
@@ -331,35 +321,27 @@
                 </a>
             </li>
         </ul>
-        <a
-            class="top-nav__username--highresolution"
-            href="{{ route('users.show', ['user' => auth()->user()]) }}"
-        >
-            <span
-                class="text-bold"
+        <a class="top-nav__username--highresolution"
+            href="{{ route('users.show', ['user' => auth()->user()]) }}">
+            <span class="text-bold"
                 style="
                     color: {{ auth()->user()->group->color }};
                     background-image: {{ auth()->user()->group->effect }};
-                "
-            >
+                ">
                 <i class="{{ auth()->user()->group->icon }}"></i>
                 {{ $user->username }}
                 @if ($hasActiveWarning)
-                    <i
-                        class="{{ config('other.font-awesome') }} fa-exclamation-circle text-orange"
-                        title="{{ __('common.active-warning') }}"
-                    ></i>
+                    <i class="{{ config('other.font-awesome') }} fa-exclamation-circle text-orange"
+                        title="{{ __('common.active-warning') }}"></i>
                 @endif
             </span>
         </a>
         <ul class="top-nav__icon-bar" x-bind:class="expanded && 'mobile'">
             @if ($user->group->is_modo)
                 <li>
-                    <a
-                        class="top-nav--right__icon-link"
+                    <a class="top-nav--right__icon-link"
                         href="{{ route('staff.dashboard.index') }}"
-                        title="{{ __('staff.staff-dashboard') }}"
-                    >
+                        title="{{ __('staff.staff-dashboard') }}">
                         <i class="{{ config('other.font-awesome') }} fa-cogs"></i>
                         @if ($hasUnresolvedReport)
                             <x-animation.notification />
@@ -370,11 +352,9 @@
 
             @if ($user->group->is_torrent_modo)
                 <li>
-                    <a
-                        class="top-nav--right__icon-link"
+                    <a class="top-nav--right__icon-link"
                         href="{{ route('staff.moderation.index') }}"
-                        title="{{ __('staff.torrent-moderation') }}"
-                    >
+                        title="{{ __('staff.torrent-moderation') }}">
                         <i class="{{ config('other.font-awesome') }} fa-tasks"></i>
 
                         @if ($hasUnmoderatedTorrent)
@@ -385,11 +365,9 @@
             @endif
 
             <li>
-                <a
-                    class="top-nav--right__icon-link"
+                <a class="top-nav--right__icon-link"
                     href="{{ route('users.conversations.index', ['user' => auth()->user()]) }}"
-                    title="{{ __('pm.inbox') }}"
-                >
+                    title="{{ __('pm.inbox') }}">
                     <i class="{{ config('other.font-awesome') }} fa-envelope"></i>
                     @if ($hasUnreadPm)
                         <x-animation.notification />
@@ -397,11 +375,9 @@
                 </a>
             </li>
             <li>
-                <a
-                    class="top-nav--right__icon-link"
+                <a class="top-nav--right__icon-link"
                     href="{{ route('users.notifications.index', ['user' => auth()->user()]) }}"
-                    title="{{ __('user.notifications') }}"
-                >
+                    title="{{ __('user.notifications') }}">
                     <i class="{{ config('other.font-awesome') }} fa-bell"></i>
                     @if ($hasUnreadNotification)
                         <x-animation.notification />
@@ -409,55 +385,37 @@
                 </a>
             </li>
             <li class="top-nav__dropdown">
-                <a
-                    class="top-nav__dropdown--nontouch"
-                    href="{{ route('users.show', ['user' => auth()->user()]) }}"
-                >
-                    <img
-                        src="{{ $user->image ? route('authenticated_images.user_avatar', ['user' => $user]) : url('img/profile.png') }}"
-                        alt="{{ __('user.my-profile') }}"
-                        class="top-nav__profile-image"
-                    />
+                <a class="top-nav__dropdown--nontouch"
+                    href="{{ route('users.show', ['user' => auth()->user()]) }}">
+                    <img src="{{ $user->image ? route('authenticated_images.user_avatar', ['user' => $user]) : url('img/profile.png') }}"
+                        alt="{{ __('user.my-profile') }}" class="top-nav__profile-image" />
                     @if (auth()->user()->privacy?->private_profile)
-                        <i
-                            class="{{ config('other.font-awesome') }} fa-ghost top-nav__profile-image-private-icon"
-                            title="{{ __('user.profile-is-private') }}"
-                        ></i>
+                        <i class="{{ config('other.font-awesome') }} fa-ghost top-nav__profile-image-private-icon"
+                            title="{{ __('user.profile-is-private') }}"></i>
                     @endif
                 </a>
                 <a class="top-nav__dropdown--touch" tabindex="0">
-                    <img
-                        src="{{ $user->image ? route('authenticated_images.user_avatar', ['user' => $user]) : url('img/profile.png') }}"
-                        alt="{{ __('user.my-profile') }}"
-                        class="top-nav__profile-image"
-                    />
+                    <img src="{{ $user->image ? route('authenticated_images.user_avatar', ['user' => $user]) : url('img/profile.png') }}"
+                        alt="{{ __('user.my-profile') }}" class="top-nav__profile-image" />
                     @if (auth()->user()->privacy?->private_profile)
-                        <i
-                            class="{{ config('other.font-awesome') }} fa-ghost top-nav__profile-image-private-icon"
-                            title="{{ __('user.profile-is-private') }}"
-                        ></i>
+                        <i class="{{ config('other.font-awesome') }} fa-ghost top-nav__profile-image-private-icon"
+                            title="{{ __('user.profile-is-private') }}"></i>
                     @endif
                 </a>
                 <ul>
                     <li>
-                        <a
-                            class="top-nav__username"
-                            href="{{ route('users.show', ['user' => auth()->user()]) }}"
-                        >
-                            <span
-                                class="text-bold"
+                        <a class="top-nav__username"
+                            href="{{ route('users.show', ['user' => auth()->user()]) }}">
+                            <span class="text-bold"
                                 style="
                                     color: {{ auth()->user()->group->color }};
                                     background-image: {{ auth()->user()->group->effect }};
-                                "
-                            >
+                                ">
                                 <i class="{{ auth()->user()->group->icon }}"></i>
                                 {{ $user->username }}
                                 @if ($hasActiveWarning)
-                                    <i
-                                        class="{{ config('other.font-awesome') }} fa-exclamation-circle text-orange"
-                                        title="{{ __('common.active-warning') }}"
-                                    ></i>
+                                    <i class="{{ config('other.font-awesome') }} fa-exclamation-circle text-orange"
+                                        title="{{ __('common.active-warning') }}"></i>
                                 @endif
                             </span>
                         </a>
@@ -469,32 +427,29 @@
                         </a>
                     </li>
                     <li>
-                        <a
-                            class="top-nav--right__link"
-                            href="{{ route('users.general_settings.edit', ['user' => auth()->user()]) }}"
-                        >
+                        <a class="top-nav--right__link"
+                            href="{{ route('users.general_settings.edit', ['user' => auth()->user()]) }}">
                             <i class="{{ config('other.font-awesome') }} fa-cogs"></i>
                             {{ __('user.my-settings') }}
                         </a>
                     </li>
                     <li>
                         <a
-                            href="{{ route('users.privacy_settings.edit', ['user' => auth()->user()]) }}"
-                        >
+                            href="{{ route('users.privacy_settings.edit', ['user' => auth()->user()]) }}">
                             <i class="{{ config('other.font-awesome') }} fa-eye"></i>
                             {{ __('user.my-privacy') }}
                         </a>
                     </li>
                     <li>
                         <a
-                            href="{{ route('users.achievements.index', ['user' => auth()->user()]) }}"
-                        >
+                            href="{{ route('users.achievements.index', ['user' => auth()->user()]) }}">
                             <i class="{{ config('other.font-awesome') }} fa-trophy-alt"></i>
                             {{ __('user.my-achievements') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('users.torrents.index', ['user' => auth()->user()]) }}">
+                        <a
+                            href="{{ route('users.torrents.index', ['user' => auth()->user()]) }}">
                             <i class="{{ config('other.font-awesome') }} fa-upload"></i>
                             {{ __('user.my-uploads') }}
 
@@ -505,8 +460,7 @@
                     </li>
                     <li>
                         <a
-                            href="{{ route('users.history.index', ['user' => auth()->user(), 'downloaded' => 'include']) }}"
-                        >
+                            href="{{ route('users.history.index', ['user' => auth()->user(), 'downloaded' => 'include']) }}">
                             <i class="{{ config('other.font-awesome') }} fa-download"></i>
                             {{ __('user.my-downloads') }}
 
@@ -517,22 +471,21 @@
                     </li>
                     <li>
                         <a
-                            href="{{ route('requests.index', ['requestor' => auth()->user()->username]) }}"
-                        >
+                            href="{{ route('requests.index', ['requestor' => auth()->user()->username]) }}">
                             <i class="{{ config('other.font-awesome') }} fa-question"></i>
                             {{ __('user.my-requested') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('users.bookmarks.index', ['user' => auth()->user()]) }}">
+                        <a
+                            href="{{ route('users.bookmarks.index', ['user' => auth()->user()]) }}">
                             <i class="{{ config('other.font-awesome') }} fa-bookmark"></i>
                             {{ __('user.my-bookmarks') }}
                         </a>
                     </li>
                     <li>
                         <a
-                            href="{{ route('playlists.index', ['username' => auth()->user()->username]) }}"
-                        >
+                            href="{{ route('playlists.index', ['username' => auth()->user()->username]) }}">
                             <i class="{{ config('other.font-awesome') }} fa-list-ol"></i>
                             {{ __('user.my-playlists') }}
                         </a>
@@ -556,9 +509,7 @@
             </li>
         </ul>
     </div>
-    <button
-        class="top-nav__toggle {{ \config('other.font-awesome') }}"
+    <button class="top-nav__toggle {{ \config('other.font-awesome') }}"
         x-bind:class="expanded ? 'fa-times mobile' : 'fa-bars'"
-        x-on:click="expanded = !expanded"
-    ></button>
+        x-on:click="expanded = !expanded"></button>
 </nav>

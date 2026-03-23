@@ -20,11 +20,8 @@
             <h2 class="panel__heading">Edit: {{ $gateway->name }}</h2>
         </header>
         <div class="data-table-wrapper">
-            <form
-                role="form"
-                method="POST"
-                action="{{ route('staff.gateways.update', ['gateway' => $gateway]) }}"
-            >
+            <form role="form" method="POST"
+                action="{{ route('staff.gateways.update', ['gateway' => $gateway]) }}">
                 @csrf
                 @method('PATCH')
                 <table class="data-table">
@@ -40,39 +37,21 @@
                     <tbody>
                         <tr>
                             <td>
-                                <input
-                                    type="text"
-                                    name="position"
-                                    value="{{ $gateway->position }}"
-                                    class="form__text"
-                                />
+                                <input type="text" name="position" value="{{ $gateway->position }}"
+                                    class="form__text" />
                             </td>
                             <td>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    value="{{ $gateway->name }}"
-                                    class="form__text"
-                                />
+                                <input type="text" name="name" value="{{ $gateway->name }}"
+                                    class="form__text" />
                             </td>
                             <td>
-                                <input
-                                    type="text"
-                                    name="address"
-                                    value="{{ $gateway->address }}"
-                                    class="form__text"
-                                />
+                                <input type="text" name="address" value="{{ $gateway->address }}"
+                                    class="form__text" />
                             </td>
                             <td>
                                 <input name="is_active" type="hidden" value="0" />
-                                <input
-                                    id="is_active"
-                                    class="form__checkbox"
-                                    name="is_active"
-                                    type="checkbox"
-                                    value="1"
-                                    @checked($gateway->is_active)
-                                />
+                                <input id="is_active" class="form__checkbox" name="is_active"
+                                    type="checkbox" value="1" @checked($gateway->is_active) />
                             </td>
                         </tr>
                     </tbody>

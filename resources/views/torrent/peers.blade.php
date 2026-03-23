@@ -37,10 +37,8 @@
     </li>
     @if (config('announce.external_tracker.is_enabled') && auth()->user()->group->is_modo)
         <li class="nav-tabV2">
-            <a
-                class="nav-tab__link"
-                href="{{ route('torrents.external_tracker', ['id' => $torrent]) }}"
-            >
+            <a class="nav-tab__link"
+                href="{{ route('torrents.external_tracker', ['id' => $torrent]) }}">
                 External tracker
             </a>
         </li>
@@ -78,14 +76,9 @@
                     @foreach ($peers as $peer)
                         <tr>
                             <td>
-                                <x-user-tag
-                                    :user="$peer->user"
-                                    :anon="
-                                        $peer->user->privacy?->hidden
-                                        || $peer->user->privacy?->show_peer === 0
-                                        || ($peer->user->id == $torrent->user->id && $torrent->anon == 1)
-                                    "
-                                />
+                                <x-user-tag :user="$peer->user" :anon="$peer->user->privacy?->hidden ||
+                                    $peer->user->privacy?->show_peer === 0 ||
+                                    ($peer->user->id == $torrent->user->id && $torrent->anon == 1)" />
                             </td>
                             <td>{{ $peer->progress }}%</td>
                             <td class="text-green">
@@ -109,8 +102,24 @@
                                     $connectable = false;
                                     if (config('announce.external_tracker.is_enabled')) {
                                         $connectable = $peer->connectable;
-                                    } elseif (cache()->has('peers:connectable:' . $peer->ip . '-' . $peer->port . '-' . $peer->agent)) {
-                                        $connectable = cache()->get('peers:connectable:' . $peer->ip . '-' . $peer->port . '-' . $peer->agent);
+                                    } elseif (
+                                        cache()->has(
+                                            'peers:connectable:' .
+                                                $peer->ip .
+                                                '-' .
+                                                $peer->port .
+                                                '-' .
+                                                $peer->agent,
+                                        )
+                                    ) {
+                                        $connectable = cache()->get(
+                                            'peers:connectable:' .
+                                                $peer->ip .
+                                                '-' .
+                                                $peer->port .
+                                                '-' .
+                                                $peer->agent,
+                                        );
                                     }
                                 @endphp
 
@@ -120,24 +129,19 @@
                             @endif
 
                             <td>
-                                <time
-                                    datetime="{{ $peer->created_at }}"
-                                    title="{{ $peer->created_at }}"
-                                >
+                                <time datetime="{{ $peer->created_at }}"
+                                    title="{{ $peer->created_at }}">
                                     {{ $peer->created_at ? $peer->created_at->diffForHumans() : 'N/A' }}
                                 </time>
                             </td>
                             <td>
-                                <time
-                                    datetime="{{ $peer->updated_at }}"
-                                    title="{{ $peer->updated_at }}"
-                                >
+                                <time datetime="{{ $peer->updated_at }}"
+                                    title="{{ $peer->updated_at }}">
                                     {{ $peer->updated_at ? $peer->updated_at->diffForHumans() : 'N/A' }}
                                 </time>
                             </td>
                             <td
-                                class="{{ $peer->active ? ($peer->seeder ? 'text-green' : 'text-red') : 'text-orange' }}"
-                            >
+                                class="{{ $peer->active ? ($peer->seeder ? 'text-green' : 'text-red') : 'text-orange' }}">
                                 @if ($peer->active)
                                     @if ($peer->seeder)
                                         {{ __('torrent.seeder') }}
@@ -145,7 +149,7 @@
                                         {{ __('torrent.leecher') }}
                                     @endif
                                 @else
-                                        Inactive
+                                    Inactive
                                 @endif
                             </td>
                             <td class="{{ $peer->visible ? 'text-green' : 'text-red' }}">

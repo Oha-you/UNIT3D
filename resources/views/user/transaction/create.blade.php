@@ -44,24 +44,22 @@
                                     <button disabled class="form__button form__button--filled">
                                         {{ __('bon.activated') }}!
                                     </button>
-                                @elseif ($item->upload && config('other.bon.max-buffer-to-buy-upload') !== null && $user->uploaded - $user->downloaded > config('other.bon.max-buffer-to-buy-upload'))
+                                @elseif (
+                                    $item->upload &&
+                                        config('other.bon.max-buffer-to-buy-upload') !== null &&
+                                        $user->uploaded - $user->downloaded > config('other.bon.max-buffer-to-buy-upload'))
                                     <button disabled class="form__button form__button--filled">
                                         Too much buffer!
                                     </button>
                                 @else
-                                    <form
-                                        method="POST"
-                                        action="{{ route('users.transactions.store', ['user' => $user]) }}"
-                                    >
+                                    <form method="POST"
+                                        action="{{ route('users.transactions.store', ['user' => $user]) }}">
                                         @csrf
                                         <button class="form__button form__button--filled">
                                             {{ __('bon.exchange') }}
                                         </button>
-                                        <input
-                                            type="hidden"
-                                            name="exchange"
-                                            value="{{ $item->id }}"
-                                        />
+                                        <input type="hidden" name="exchange"
+                                            value="{{ $item->id }}" />
                                     </form>
                                 @endif
                             </td>

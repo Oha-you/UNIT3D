@@ -31,22 +31,12 @@
             {{ __('common.edit') }} {{ __('common.article') }}: {{ $article->title }}
         </h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
-                enctype="multipart/form-data"
-                action="{{ route('staff.articles.update', ['article' => $article]) }}"
-            >
+            <form class="form" method="POST" enctype="multipart/form-data"
+                action="{{ route('staff.articles.update', ['article' => $article]) }}">
                 @csrf
                 <p class="form__group">
-                    <input
-                        type="text"
-                        name="title"
-                        id="title"
-                        class="form__text"
-                        value="{{ $article->title }}"
-                        required
-                    />
+                    <input type="text" name="title" id="title" class="form__text"
+                        value="{{ $article->title }}" required />
                     <label class="form__label form__label--floating" for="title">
                         {{ __('common.title') }}
                     </label>
@@ -55,7 +45,7 @@
                     <label for="image" class="form__label">{{ __('common.image') }}</label>
                     <input class="form__file" type="file" name="image" id="image" />
                 </p>
-                @livewire('bbcode-input', ['name' => 'content', 'label' => __('content'), 'required' => true, 'content' => $article->content ])
+                @livewire('bbcode-input', ['name' => 'content', 'label' => __('content'), 'required' => true, 'content' => $article->content])
                 <p class="form__group">
                     <button class="form__button form__button--filled">
                         {{ __('common.save') }}

@@ -34,41 +34,21 @@
                     <tbody>
                         <tr>
                             <td>
-                                <input
-                                    type="number"
-                                    name="position"
-                                    value=""
-                                    placeholder="0"
-                                    class="form__text"
-                                />
+                                <input type="number" name="position" value="" placeholder="0"
+                                    class="form__text" />
                             </td>
                             <td>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    value=""
-                                    placeholder="Name"
-                                    class="form__text"
-                                />
+                                <input type="text" name="name" value="" placeholder="Name"
+                                    class="form__text" />
                             </td>
                             <td>
-                                <input
-                                    type="text"
-                                    name="address"
-                                    value=""
-                                    placeholder="Address"
-                                    class="form__text"
-                                />
+                                <input type="text" name="address" value=""
+                                    placeholder="Address" class="form__text" />
                             </td>
                             <td>
                                 <input name="is_active" type="hidden" value="0" />
-                                <input
-                                    id="is_active"
-                                    class="form__checkbox"
-                                    name="is_active"
-                                    type="checkbox"
-                                    value="1"
-                                />
+                                <input id="is_active" class="form__checkbox" name="is_active"
+                                    type="checkbox" value="1" />
                             </td>
                         </tr>
                     </tbody>

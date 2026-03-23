@@ -26,19 +26,13 @@
         <header class="panel__header">
             <h2 class="panel__heading">Cheated torrents</h2>
             <div class="panel__actions">
-                <form
-                    class="panel__action"
-                    action="{{ route('staff.cheated_torrents.massDestroy') }}"
-                    method="POST"
-                    x-data="confirmation"
-                >
+                <form class="panel__action" action="{{ route('staff.cheated_torrents.massDestroy') }}"
+                    method="POST" x-data="confirmation">
                     @csrf
                     @method('DELETE')
-                    <button
-                        x-on:click.prevent="confirmAction"
+                    <button x-on:click.prevent="confirmAction"
                         data-b64-deletion-message="{{ base64_encode('Are you sure you want to reset all torrent balances? This will allow you to start tracking cheated torrents from scratch, but you will no longer have data for previous cheated torrents.') }}"
-                        class="form__button form__button--text"
-                    >
+                        class="form__button form__button--text">
                         Reset all torrent balances
                     </button>
                 </form>
@@ -74,26 +68,20 @@
                                 </a>
                             </td>
                             <td>
-                                <a
-                                    class="torrent__seeder-count"
-                                    href="{{ route('peers', ['id' => $torrent->id]) }}"
-                                >
+                                <a class="torrent__seeder-count"
+                                    href="{{ route('peers', ['id' => $torrent->id]) }}">
                                     {{ $torrent->seeders }}
                                 </a>
                             </td>
                             <td>
-                                <a
-                                    class="torrent__leecher-count"
-                                    href="{{ route('peers', ['id' => $torrent->id]) }}"
-                                >
+                                <a class="torrent__leecher-count"
+                                    href="{{ route('peers', ['id' => $torrent->id]) }}">
                                     {{ $torrent->leechers }}
                                 </a>
                             </td>
                             <td>
-                                <a
-                                    class="torrent__times-completed-count"
-                                    href="{{ route('history', ['id' => $torrent->id]) }}"
-                                >
+                                <a class="torrent__times-completed-count"
+                                    href="{{ route('history', ['id' => $torrent->id]) }}">
                                     {{ $torrent->times_completed }}
                                 </a>
                             </td>
@@ -105,10 +93,8 @@
                             </td>
                             <td>{{ \round($torrent->times_cheated, 3) }}</td>
                             <td>
-                                <time
-                                    datetime="{{ $torrent->created_at }}"
-                                    title="{{ $torrent->created_at }}"
-                                >
+                                <time datetime="{{ $torrent->created_at }}"
+                                    title="{{ $torrent->created_at }}">
                                     {{ $torrent->created_at ?? 'N/A' }}
                                 </time>
                             </td>
@@ -117,8 +103,7 @@
                                     <li class="data-table__action">
                                         <form
                                             action="{{ route('staff.cheated_torrents.destroy', ['cheatedTorrent' => $torrent]) }}"
-                                            method="POST"
-                                        >
+                                            method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button class="form__button form__button--text">

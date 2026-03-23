@@ -28,10 +28,8 @@
                     @method('PUT')
                     <input type="hidden" name="catchup_type" value="all" />
                     <p class="form__group form__group--horizontal">
-                        <button
-                            class="form__button form__button--filled form__button--centered"
-                            title="Mark all topics as read"
-                        >
+                        <button class="form__button form__button--filled form__button--centered"
+                            title="Mark all topics as read">
                             Mark all read
                         </button>
                     </p>
@@ -43,25 +41,15 @@
             <div class="panel__body">
                 <form class="form" x-data x-on:submit.prevent>
                     <p class="form__group">
-                        <input
-                            id="search"
-                            class="form__text"
-                            type="search"
-                            autocomplete="off"
-                            wire:model.live="search"
-                            placeholder=" "
-                        />
+                        <input id="search" class="form__text" type="search" autocomplete="off"
+                            wire:model.live="search" placeholder=" " />
                         <label for="search" class="form__label form__label--floating">
                             {{ __('common.search') }}
                         </label>
                     </p>
                     <p class="form__group">
-                        <select
-                            name="category"
-                            id="category"
-                            class="form__select"
-                            wire:model.live="forumId"
-                        >
+                        <select name="category" id="category" class="form__select"
+                            wire:model.live="forumId">
                             <option value="">Any</option>
 
                             @foreach ($forumCategories as $category)
@@ -79,21 +67,19 @@
                         </label>
                     </p>
                     <p class="form__group">
-                        <select id="read" class="form__select" name="read" wire:model.live="read">
+                        <select id="read" class="form__select" name="read"
+                            wire:model.live="read">
                             <option value="" selected default>Any</option>
                             <option value="some">With unread posts</option>
                             <option value="none">Newly added</option>
                             <option value="all">Fully read</option>
                         </select>
-                        <label class="form__label form__label--floating" for="read">Activity</label>
+                        <label class="form__label form__label--floating"
+                            for="read">Activity</label>
                     </p>
                     <p class="form__group">
-                        <select
-                            id="sorting"
-                            class="form__select"
-                            name="sorting"
-                            wire:model.live="label"
-                        >
+                        <select id="sorting" class="form__select" name="sorting"
+                            wire:model.live="label">
                             <option value="" selected default>Any</option>
                             <option value="approved">
                                 {{ __('forum.approved') }}
@@ -122,13 +108,8 @@
                         </label>
                     </p>
                     <p class="form__group">
-                        <select
-                            id="sorting"
-                            class="form__select"
-                            name="sorting"
-                            required
-                            wire:model.live="sortField"
-                        >
+                        <select id="sorting" class="form__select" name="sorting" required
+                            wire:model.live="sortField">
                             <option value="last_post_created_at">
                                 {{ __('forum.updated-at') }}
                             </option>
@@ -141,13 +122,8 @@
                         </label>
                     </p>
                     <p class="form__group">
-                        <select
-                            id="direction"
-                            class="form__select"
-                            name="direction"
-                            required
-                            wire:model.live="sortDirection"
-                        >
+                        <select id="direction" class="form__select" name="direction" required
+                            wire:model.live="sortDirection">
                             <option value="desc">
                                 {{ __('common.descending') }}
                             </option>
@@ -160,12 +136,8 @@
                         </label>
                     </p>
                     <p class="form__group">
-                        <select
-                            id="direction"
-                            class="form__select"
-                            name="direction"
-                            wire:model.live="state"
-                        >
+                        <select id="direction" class="form__select" name="direction"
+                            wire:model.live="state">
                             <option value="" selected default>Any</option>
                             <option value="open">
                                 {{ __('forum.open') }}
@@ -179,12 +151,8 @@
                         </label>
                     </p>
                     <p class="form__group">
-                        <select
-                            id="direction"
-                            class="form__select"
-                            name="direction"
-                            wire:model.live="subscribed"
-                        >
+                        <select id="direction" class="form__select" name="direction"
+                            wire:model.live="subscribed">
                             <option value="" selected default>Any</option>
                             <option value="include">
                                 {{ __('forum.subscribed') }}

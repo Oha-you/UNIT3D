@@ -27,116 +27,115 @@
                             @switch($siteTheme->total_style)
                                 @case('0')
                                     Light theme
+                                @break
 
-                                    @break
                                 @case('1')
                                     Galactic theme
+                                @break
 
-                                    @break
                                 @case('2')
                                     Dark blue theme
+                                @break
 
-                                    @break
                                 @case('3')
                                     Dark green theme
+                                @break
 
-                                    @break
                                 @case('4')
                                     Dark pink theme
+                                @break
 
-                                    @break
                                 @case('5')
                                     Dark purple theme
+                                @break
 
-                                    @break
                                 @case('6')
                                     Dark red theme
+                                @break
 
-                                    @break
                                 @case('7')
                                     Dark teal theme
+                                @break
 
-                                    @break
                                 @case('8')
                                     Dark yellow theme
+                                @break
 
-                                    @break
                                 @case('9')
                                     Cosmic void theme
+                                @break
 
-                                    @break
                                 @case('10')
                                     Nord theme
+                                @break
 
-                                    @break
                                 @case('11')
                                     Revel theme
+                                @break
 
-                                    @break
                                 @case('12')
                                     Material design 3 light theme
+                                @break
 
-                                    @break
                                 @case('13')
                                     Material design 3 dark theme
+                                @break
 
-                                    @break
                                 @case('14')
                                     Material design 3 amoled theme
+                                @break
 
-                                    @break
                                 @case('15')
                                     Material design 3 navy theme
-
-                                    @break
+                                @break
                             @endswitch
                         </td>
                         <td>Used by {{ $siteTheme->value }} users</td>
                     </tr>
-                @empty
-                    <tr>
-                        <td colspan="3">None used</td>
-                    </tr>
-                @endforelse
-            </table>
-        </div>
-    </section>
+                    @empty
+                        <tr>
+                            <td colspan="3">None used</td>
+                        </tr>
+                    @endforelse
+                </table>
+            </div>
+        </section>
 
-    <section class="panelV2">
-        <h2 class="panel__heading">External CSS stylesheets (stacks on top of above site theme)</h2>
-        <div class="data-table-wrapper">
-            <table class="data-table">
-                @forelse ($customThemes as $customTheme)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $customTheme->custom_css }}</td>
-                        <td>Used by {{ $customTheme->value }} users</td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="3">None used</td>
-                    </tr>
-                @endforelse
-            </table>
-        </div>
-    </section>
+        <section class="panelV2">
+            <h2 class="panel__heading">External CSS stylesheets (stacks on top of above site theme)</h2>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    @forelse ($customThemes as $customTheme)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $customTheme->custom_css }}</td>
+                            <td>Used by {{ $customTheme->value }} users</td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="3">None used</td>
+                        </tr>
+                    @endforelse
+                </table>
+            </div>
+        </section>
 
-    <section class="panelV2">
-        <h2 class="panel__heading">Standalone CSS stylesheets (no site theme used)</h2>
-        <div class="data-table-wrapper">
-            <table class="data-table">
-                @forelse ($standaloneThemes as $standaloneTheme)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $standaloneTheme->standalone_css }}</td>
-                        <td>Used by {{ $standaloneTheme->value }} users</td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="3">None used</td>
-                    </tr>
-                @endforelse
-            </table>
-        </div>
-    </section>
-@endsection
+        <section class="panelV2">
+            <h2 class="panel__heading">Standalone CSS stylesheets (no site theme used)</h2>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    @forelse ($standaloneThemes as $standaloneTheme)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $standaloneTheme->standalone_css }}</td>
+                            <td>Used by {{ $standaloneTheme->value }} users</td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="3">None used</td>
+                        </tr>
+                    @endforelse
+                </table>
+            </div>
+        </section>
+    @endsection

@@ -12,14 +12,11 @@
             <h2 class="panel__heading">{{ $group->name }}</h2>
             <div class="panel__body user-card-wrapper">
                 @foreach ($group->users as $user)
-                    <a
-                        href="{{ route('users.show', ['user' => $user]) }}"
-                        class="user-card"
+                    <a href="{{ route('users.show', ['user' => $user]) }}" class="user-card"
                         style="
                             background-color: {{ $user->group->color }};
                             background-image: {{ $group->effect }};
-                        "
-                    >
+                        ">
                         <h3 class="user-card__username">
                             {{ $user->username }}
                         </h3>
@@ -42,10 +39,8 @@
         <div class="panel__body">Please contact staff via the helpdesk for account support.</div>
         <div class="panel__body">
             <p class="form__group form__group--horizontal">
-                <a
-                    class="form__button form__button--filled form__button--centered"
-                    href="{{ route('tickets.index') }}"
-                >
+                <a class="form__button form__button--filled form__button--centered"
+                    href="{{ route('tickets.index') }}">
                     Open helpdesk
                 </a>
             </p>

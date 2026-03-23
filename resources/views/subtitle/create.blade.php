@@ -23,13 +23,8 @@
     <section class="panelV2">
         <h2 class="panel__heading">{{ __('common.upload') }} {{ __('common.subtitle') }}</h2>
         <div class="panel__body">
-            <form
-                id="form_upload_subtitle"
-                class="form"
-                action="{{ route('subtitles.store') }}"
-                enctype="multipart/form-data"
-                method="POST"
-            >
+            <form id="form_upload_subtitle" class="form" action="{{ route('subtitles.store') }}"
+                enctype="multipart/form-data" method="POST">
                 @csrf
                 <input name="torrent_id" type="hidden" value="{{ $torrent->id }}" />
                 <p class="form__group">
@@ -37,23 +32,14 @@
                         {{ __('subtitle.subtitle-file') }}
                         ({{ __('subtitle.subtitle-file-types') }})
                     </label>
-                    <input
-                        id="subtitle_file"
-                        class="form__file"
-                        accept=".srt,.ass,.sup,.zip"
-                        name="subtitle_file"
-                        required
-                        type="file"
-                    />
+                    <input id="subtitle_file" class="form__file" accept=".srt,.ass,.sup,.zip"
+                        name="subtitle_file" required type="file" />
                 </p>
                 <p class="form__group">
                     <select id="language_id" class="form__select" name="language_id" required>
                         <option hidden disabled selected value=""></option>
                         @foreach ($media_languages as $media_language)
-                            <option
-                                value="{{ $media_language->id }}"
-                                @selected(old('media_language') == $media_language->id)
-                            >
+                            <option value="{{ $media_language->id }}" @selected(old('media_language') == $media_language->id)>
                                 {{ $media_language->name }}
                             </option>
                         @endforeach
@@ -63,28 +49,16 @@
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        type="text"
-                        name="note"
-                        id="note"
-                        class="form__text"
-                        placeholder=" "
-                        required
-                    />
+                    <input type="text" name="note" id="note" class="form__text"
+                        placeholder=" " required />
                     <label class="form__label form__label--floating" for="note">
                         {{ __('subtitle.note') }} ({{ __('subtitle.note-help') }})
                     </label>
                 </p>
                 <p class="form__group">
                     <input type="hidden" name="anon" value="0" />
-                    <input
-                        id="anon"
-                        class="form__checkbox"
-                        name="anon"
-                        type="checkbox"
-                        value="1"
-                        @checked(old('anon'))
-                    />
+                    <input id="anon" class="form__checkbox" name="anon" type="checkbox"
+                        value="1" @checked(old('anon')) />
                     <label class="form__label" for="anon">{{ __('common.anonymous') }}?</label>
                 </p>
                 <p class="form__group">
@@ -101,10 +75,8 @@
     <section class="panelV2">
         <h2 class="panel__heading">{{ __('torrent.torrent') }}</h2>
         <div class="panel__body">
-            <a
-                href="{{ route('torrents.show', ['id' => $torrent->id]) }}"
-                title="{{ $torrent->name }}"
-            >
+            <a href="{{ route('torrents.show', ['id' => $torrent->id]) }}"
+                title="{{ $torrent->name }}">
                 {{ $torrent->name }}
             </a>
         </div>

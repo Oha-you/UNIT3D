@@ -4,14 +4,8 @@
         <div class="panel__actions">
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="search"
-                        class="form__text"
-                        type="search"
-                        autocomplete="off"
-                        wire:model.live="search"
-                        placeholder=" "
-                    />
+                    <input id="search" class="form__text" type="search" autocomplete="off"
+                        wire:model.live="search" placeholder=" " />
                     <label for="search" class="form__label form__label--floating">
                         {{ __('common.search') }}
                     </label>

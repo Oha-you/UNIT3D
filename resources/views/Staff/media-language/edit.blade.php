@@ -25,35 +25,20 @@
     <section class="panelV2">
         <h2 class="panel__heading">{{ __('common.edit') }} {{ __('common.media-language') }}</h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
-                action="{{ route('staff.media_languages.update', ['mediaLanguage' => $media_language]) }}"
-            >
+            <form class="form" method="POST"
+                action="{{ route('staff.media_languages.update', ['mediaLanguage' => $media_language]) }}">
                 @csrf
                 @method('PATCH')
                 <p class="form__group">
-                    <input
-                        id="name"
-                        class="form__text"
-                        name="name"
-                        required
-                        type="text"
-                        value="{{ $media_language->name }}"
-                    />
+                    <input id="name" class="form__text" name="name" required type="text"
+                        value="{{ $media_language->name }}" />
                     <label class="form__label form__label--floating" for="name">
                         {{ __('common.name') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="code"
-                        class="form__text"
-                        name="code"
-                        required
-                        type="text"
-                        value="{{ $media_language->code }}"
-                    />
+                    <input id="code" class="form__text" name="code" required type="text"
+                        value="{{ $media_language->code }}" />
                     <label class="form__label form__label--floating" for="code">
                         {{ __('common.code') }}
                     </label>

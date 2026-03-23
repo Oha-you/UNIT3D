@@ -16,11 +16,8 @@
             <li>
                 <ul class="comparison__row">
                     @foreach ($row as $url)
-                        <li
-                            class="comparison__image-container"
-                            data-index="{{ $loop->iteration }}"
-                            x-bind="container"
-                        >
+                        <li class="comparison__image-container" data-index="{{ $loop->iteration }}"
+                            x-bind="container">
                             <figure class="comparison__figure">
                                 @if ($loop->parent->first)
                                     <figcaption class="comparison__figcaption">
@@ -28,13 +25,9 @@
                                     </figcaption>
                                 @endif
 
-                                <img
-                                    class="comparison__image"
-                                    src="{!! $url !!}"
-                                    loading="lazy"
-                                    data-index="{{ $loop->iteration }}"
-                                    x-bind="image"
-                                />
+                                <img class="comparison__image" src="{!! $url !!}"
+                                    loading="lazy" data-index="{{ $loop->iteration }}"
+                                    x-bind="image" />
                             </figure>
                         </li>
                     @endforeach
@@ -71,7 +64,8 @@
                             this.$event.stopPropagation();
                             this.$el.scrollBy(
                                 0,
-                                this.$el.getElementsByTagName('li')[0].offsetHeight,
+                                this.$el.getElementsByTagName('li')[0]
+                                .offsetHeight,
                             );
                         }
                     },
@@ -81,7 +75,8 @@
                             this.$event.stopPropagation();
                             this.$el.scrollBy(
                                 0,
-                                -1 * this.$el.getElementsByTagName('li')[0].offsetHeight,
+                                -1 * this.$el.getElementsByTagName('li')[0]
+                                .offsetHeight,
                             );
                         }
                     },
@@ -98,7 +93,8 @@
                         if (this.show) {
                             this.$event.preventDefault();
                             this.$event.stopPropagation();
-                            this.column = this.column == 1 ? this.columnCount : this.column - 1;
+                            this.column = this.column == 1 ? this.columnCount : this
+                                .column - 1;
                             console.log(this.column);
                         }
                     },
@@ -106,18 +102,21 @@
                         if (this.show) {
                             this.$event.preventDefault();
                             this.$event.stopPropagation();
-                            this.column = this.column == this.columnCount ? 1 : this.column + 1;
+                            this.column = this.column == this.columnCount ? 1 : this
+                                .column + 1;
                         }
                     },
                     ['x-on:mousemove.window']() {
                         this.column = Math.ceil(
-                            (this.$event.clientX * this.columnCount) / window.innerWidth,
+                            (this.$event.clientX * this.columnCount) / window
+                            .innerWidth,
                         );
                     },
                 },
                 image: {
                     ['x-bind:class']() {
-                        return this.column != this.$el.dataset.index && 'comparison__image--hidden';
+                        return this.column != this.$el.dataset.index &&
+                            'comparison__image--hidden';
                     },
                 },
                 container: {

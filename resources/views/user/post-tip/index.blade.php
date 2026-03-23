@@ -61,17 +61,14 @@
                             <td>
                                 @if ($tip->post !== null)
                                     <a
-                                        href="{{ route('topics.permalink', ['topicId' => $tip->post->topic_id, 'postId' => $tip->post_id]) }}"
-                                    >
+                                        href="{{ route('topics.permalink', ['topicId' => $tip->post->topic_id, 'postId' => $tip->post_id]) }}">
                                         {{ $tip->post->topic->name }}
                                     </a>
                                 @endif
                             </td>
                             <td>
-                                <time
-                                    datetime="{{ $tip->created_at }}"
-                                    title="{{ $tip->created_at }}"
-                                >
+                                <time datetime="{{ $tip->created_at }}"
+                                    title="{{ $tip->created_at }}">
                                     {{ $tip->created_at->format('Y-m-d') }}
                                 </time>
                             </td>

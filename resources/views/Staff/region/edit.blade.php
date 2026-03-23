@@ -26,37 +26,20 @@
             {{ $region->name . ' (' . __('regions.' . $region->name) . ')' }}
         </h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
-                action="{{ route('staff.regions.update', ['region' => $region]) }}"
-            >
+            <form class="form" method="POST"
+                action="{{ route('staff.regions.update', ['region' => $region]) }}">
                 @method('PATCH')
                 @csrf
                 <p class="form__group">
-                    <input
-                        id="name"
-                        class="form__text"
-                        name="name"
-                        required
-                        type="text"
-                        value="{{ $region->name }}"
-                    />
+                    <input id="name" class="form__text" name="name" required type="text"
+                        value="{{ $region->name }}" />
                     <label class="form__label form__label--floating" for="name">
                         {{ __('common.name') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="position"
-                        class="form__text"
-                        inputmode="numeric"
-                        name="position"
-                        pattern="[0-9]*"
-                        required
-                        type="text"
-                        value="{{ $region->position }}"
-                    />
+                    <input id="position" class="form__text" inputmode="numeric" name="position"
+                        pattern="[0-9]*" required type="text" value="{{ $region->position }}" />
                     <label class="form__label form__label--floating" for="position">
                         {{ __('common.position') }}
                     </label>

@@ -78,10 +78,8 @@
             <div class="key-value__group">
                 <dt>{{ __('common.created_at') }}</dt>
                 <dd>
-                    <time
-                        datetime="{{ $application->created_at }}"
-                        title="{{ $application->created_at }}"
-                    >
+                    <time datetime="{{ $application->created_at }}"
+                        title="{{ $application->created_at }}">
                         {{ $application->created_at->diffForHumans() }}
                     </time>
                 </dd>
@@ -92,16 +90,16 @@
                     @switch($application->status)
                         @case(\App\Enums\ModerationStatus::PENDING)
                             <span class="application--pending">Pending</span>
+                        @break
 
-                            @break
                         @case(\App\Enums\ModerationStatus::APPROVED)
                             <span class="application--approved">Approved</span>
+                        @break
 
-                            @break
                         @case(\App\Enums\ModerationStatus::REJECTED)
                             <span class="application--rejected">Rejected</span>
+                        @break
 
-                            @break
                         @default
                             <span class="application--unknown">Unknown</span>
                     @endswitch
@@ -120,10 +118,8 @@
             <div class="panel__body">
                 <div x-data="dialog">
                     <p class="form__group form__group--horizontal">
-                        <button
-                            class="form__button form__button--filled form__button--centered"
-                            x-bind="showDialog"
-                        >
+                        <button class="form__button form__button--filled form__button--centered"
+                            x-bind="showDialog">
                             <i class="{{ config('other.font-awesome') }} fa-check"></i>
                             {{ __('request.approve') }}
                         </button>
@@ -134,28 +130,16 @@
                             {{ __('common.this') }}
                             {{ __('staff.application') }}
                         </h3>
-                        <form
-                            class="dialog__form"
-                            method="POST"
+                        <form class="dialog__form" method="POST"
                             action="{{ route('staff.applications.approve', ['id' => $application->id]) }}"
-                            x-bind="dialogForm"
-                        >
+                            x-bind="dialogForm">
                             @csrf
-                            <input
-                                id="email"
-                                name="email"
-                                type="hidden"
-                                value="{{ $application->email }}"
-                            />
+                            <input id="email" name="email" type="hidden"
+                                value="{{ $application->email }}" />
                             <p class="form__group">
-                                <textarea
-                                    id="approve"
-                                    class="form__textarea"
-                                    name="approve"
-                                    placeholder=" "
-                                >
-Application approved!</textarea
-                                >
+                                <textarea id="approve" class="form__textarea" name="approve"
+                                    placeholder=" ">
+    Application approved!</textarea>
                                 <label class="form__label form__label--floating" for="approve">
                                     Invitation message
                                 </label>
@@ -164,11 +148,8 @@ Application approved!</textarea
                                 <button class="form__button form__button--filled">
                                     {{ __('request.approve') }}
                                 </button>
-                                <button
-                                    formmethod="dialog"
-                                    formnovalidate
-                                    class="form__button form__button--outlined"
-                                >
+                                <button formmethod="dialog" formnovalidate
+                                    class="form__button form__button--outlined">
                                     {{ __('common.cancel') }}
                                 </button>
                             </p>
@@ -177,10 +158,8 @@ Application approved!</textarea
                 </div>
                 <div x-data="dialog">
                     <p class="form__group form__group--horizontal">
-                        <button
-                            class="form__button form__button--filled form__button--centered"
-                            x-bind="showDialog"
-                        >
+                        <button class="form__button form__button--filled form__button--centered"
+                            x-bind="showDialog">
                             <i class="{{ config('other.font-awesome') }} fa-times"></i>
                             {{ __('request.reject') }}
                         </button>
@@ -191,23 +170,15 @@ Application approved!</textarea
                             {{ __('common.this') }}
                             {{ __('staff.application') }}
                         </h3>
-                        <form
-                            class="dialog__form"
-                            method="POST"
+                        <form class="dialog__form" method="POST"
                             action="{{ route('staff.applications.reject', ['id' => $application->id]) }}"
-                            x-bind="dialogForm"
-                        >
+                            x-bind="dialogForm">
                             @csrf
-                            <input
-                                id="email"
-                                name="email"
-                                type="hidden"
-                                value="{{ $application->email }}"
-                            />
+                            <input id="email" name="email" type="hidden"
+                                value="{{ $application->email }}" />
                             <p class="form__group">
                                 <textarea id="message" class="form__textarea" name="deny" required>
-Insufficient proofs.</textarea
-                                >
+    Insufficient proofs.</textarea>
                                 <label class="form__label form__label--floating" for="message">
                                     Rejection message
                                 </label>
@@ -216,11 +187,8 @@ Insufficient proofs.</textarea
                                 <button class="form__button form__button--filled">
                                     {{ __('request.reject') }}
                                 </button>
-                                <button
-                                    formmethod="dialog"
-                                    formnovalidate
-                                    class="form__button form__button--outlined"
-                                >
+                                <button formmethod="dialog" formnovalidate
+                                    class="form__button form__button--outlined">
                                     {{ __('common.cancel') }}
                                 </button>
                             </p>

@@ -56,34 +56,24 @@
                             <td style="max-width: 80ch; word-wrap: break-word; white-space: normal">
                                 {{ $donation->transaction }}
                             </td>
-                            <td
-                                class="{{ $donation->package->trashed() ? 'text-danger' : '' }}"
-                                title="{{ $donation->package->trashed() ? 'Package has been deleted' : '' }}"
-                            >
+                            <td class="{{ $donation->package->trashed() ? 'text-danger' : '' }}"
+                                title="{{ $donation->package->trashed() ? 'Package has been deleted' : '' }}">
                                 $ {{ $donation->package->cost }}
                             </td>
-                            <td
-                                class="{{ $donation->package->trashed() ? 'text-danger' : '' }}"
-                                title="{{ $donation->package->trashed() ? 'Package has been deleted' : '' }}"
-                            >
+                            <td class="{{ $donation->package->trashed() ? 'text-danger' : '' }}"
+                                title="{{ $donation->package->trashed() ? 'Package has been deleted' : '' }}">
                                 {{ App\Helpers\StringHelper::formatBytes($donation->package->upload_value ?? 0) }}
                             </td>
-                            <td
-                                class="{{ $donation->package->trashed() ? 'text-danger' : '' }}"
-                                title="{{ $donation->package->trashed() ? 'Package has been deleted' : '' }}"
-                            >
+                            <td class="{{ $donation->package->trashed() ? 'text-danger' : '' }}"
+                                title="{{ $donation->package->trashed() ? 'Package has been deleted' : '' }}">
                                 {{ $donation->package->invite_value ?? 0 }}
                             </td>
-                            <td
-                                class="{{ $donation->package->trashed() ? 'text-danger' : '' }}"
-                                title="{{ $donation->package->trashed() ? 'Package has been deleted' : '' }}"
-                            >
+                            <td class="{{ $donation->package->trashed() ? 'text-danger' : '' }}"
+                                title="{{ $donation->package->trashed() ? 'Package has been deleted' : '' }}">
                                 {{ $donation->package->bonus_value ?? 0 }}
                             </td>
-                            <td
-                                class="{{ $donation->package->trashed() ? 'text-danger' : '' }}"
-                                title="{{ $donation->package->trashed() ? 'Package has been deleted' : '' }}"
-                            >
+                            <td class="{{ $donation->package->trashed() ? 'text-danger' : '' }}"
+                                title="{{ $donation->package->trashed() ? 'Package has been deleted' : '' }}">
                                 @if ($donation->package->donor_value === null)
                                     Lifetime
                                 @else
@@ -106,15 +96,11 @@
                                         <li class="data-table__action">
                                             <form
                                                 action="{{ route('staff.donations.update', ['donation' => $donation]) }}"
-                                                method="POST"
-                                                x-data="confirmation"
-                                            >
+                                                method="POST" x-data="confirmation">
                                                 @csrf
-                                                <button
-                                                    x-on:click.prevent="confirmAction"
+                                                <button x-on:click.prevent="confirmAction"
                                                     data-b64-deletion-message="{{ base64_encode('Are you sure you want to approve this donation: ' . $donation->id . '?') }}"
-                                                    class="form__button form__button--filled"
-                                                >
+                                                    class="form__button form__button--filled">
                                                     Approve
                                                 </button>
                                             </form>
@@ -123,15 +109,11 @@
                                         <li class="data-table__action">
                                             <form
                                                 action="{{ route('staff.donations.destroy', ['donation' => $donation]) }}"
-                                                method="POST"
-                                                x-data="confirmation"
-                                            >
+                                                method="POST" x-data="confirmation">
                                                 @csrf
-                                                <button
-                                                    x-on:click.prevent="confirmAction"
+                                                <button x-on:click.prevent="confirmAction"
                                                     data-b64-deletion-message="{{ base64_encode('Are you sure you want to reject this donation: ' . $donation->id . '?') }}"
-                                                    class="form__button form__button--filled"
-                                                >
+                                                    class="form__button form__button--filled">
                                                     Reject
                                                 </button>
                                             </form>
@@ -151,7 +133,7 @@
 @section('scripts')
     @vite('resources/js/vendor/chart.js')
     <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const dailyDonations = {{ Js::from($dailyDonations) }};
             const monthlyDonations = {{ Js::from($monthlyDonations) }};
 
@@ -161,56 +143,66 @@
                 type: 'line',
                 data: {
                     labels: dailyDonations.map((donation) => donation.date),
-                    datasets: [
-                        {
-                            label: 'Daily donations',
-                            data: dailyDonations.map((donation) => donation.total),
-                            backgroundColor: getComputedStyle(
-                                document.documentElement,
-                            ).getPropertyValue('--donation-chart-daily-bg'),
-                            borderColor: getComputedStyle(
-                                document.documentElement,
-                            ).getPropertyValue('--donation-chart-daily-border'),
-                            borderWidth: 1,
-                            fill: false,
-                        },
-                    ],
+                    datasets: [{
+                        label: 'Daily donations',
+                        data: dailyDonations.map((donation) => donation.total),
+                        backgroundColor: getComputedStyle(
+                            document.documentElement,
+                        ).getPropertyValue('--donation-chart-daily-bg'),
+                        borderColor: getComputedStyle(
+                            document.documentElement,
+                        ).getPropertyValue('--donation-chart-daily-border'),
+                        borderWidth: 1,
+                        fill: false,
+                    }, ],
                 },
                 options: {
                     scales: {
-                        x: { type: 'time', time: { unit: 'day' } },
-                        y: { beginAtZero: true },
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'day'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true
+                        },
                     },
                 },
             });
 
             // Monthly donations chart
-            const monthlyCtx = document.getElementById('monthlyDonationsChart').getContext('2d');
+            const monthlyCtx = document.getElementById('monthlyDonationsChart').getContext(
+            '2d');
             new Chart(monthlyCtx, {
                 type: 'line',
                 data: {
                     labels: monthlyDonations.map(
                         (donation) => `${donation.year}-${donation.month}`,
                     ),
-                    datasets: [
-                        {
-                            label: 'Monthly donations',
-                            data: monthlyDonations.map((donation) => donation.total),
-                            backgroundColor: getComputedStyle(
-                                document.documentElement,
-                            ).getPropertyValue('--donation-chart-monthly-bg'),
-                            borderColor: getComputedStyle(
-                                document.documentElement,
-                            ).getPropertyValue('--donation-chart-monthly-border'),
-                            borderWidth: 1,
-                            fill: false,
-                        },
-                    ],
+                    datasets: [{
+                        label: 'Monthly donations',
+                        data: monthlyDonations.map((donation) => donation
+                            .total),
+                        backgroundColor: getComputedStyle(
+                            document.documentElement,
+                        ).getPropertyValue('--donation-chart-monthly-bg'),
+                        borderColor: getComputedStyle(
+                            document.documentElement,
+                        ).getPropertyValue(
+                            '--donation-chart-monthly-border'),
+                        borderWidth: 1,
+                        fill: false,
+                    }, ],
                 },
                 options: {
                     scales: {
-                        x: { type: 'category' },
-                        y: { beginAtZero: true },
+                        x: {
+                            type: 'category'
+                        },
+                        y: {
+                            beginAtZero: true
+                        },
                     },
                 },
             });

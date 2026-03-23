@@ -39,29 +39,21 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>
-                                <a
-                                    href="{{ route('requests.show', ['torrentRequest' => $request]) }}"
-                                >
+                                <a href="{{ route('requests.show', ['torrentRequest' => $request]) }}">
                                     {{ $request->name }}
                                 </a>
                             </td>
                             <td>{{ $request->bounty }}</td>
                             <td>
                                 @if ($request->torrent_id === null)
-                                    <i
-                                        class="{{ config('other.font-awesome') }} fa-times-circle text-danger"
-                                        title="{{ __('stat.request-not-fulfilled') }}"
-                                    ></i>
+                                    <i class="{{ config('other.font-awesome') }} fa-times-circle text-danger"
+                                        title="{{ __('stat.request-not-fulfilled') }}"></i>
                                 @elseif ($request->torrent_id !== null && $request->approved_when === null)
-                                    <i
-                                        class="{{ config('other.font-awesome') }} fa-question-circle text-info"
-                                        title="{{ __('stat.request-pending-aproval') }}"
-                                    ></i>
+                                    <i class="{{ config('other.font-awesome') }} fa-question-circle text-info"
+                                        title="{{ __('stat.request-pending-aproval') }}"></i>
                                 @else
-                                    <i
-                                        class="{{ config('other.font-awesome') }} fa-check-circle text-success"
-                                        title="{{ __('stat.request-fulfilled') }}"
-                                    ></i>
+                                    <i class="{{ config('other.font-awesome') }} fa-check-circle text-success"
+                                        title="{{ __('stat.request-fulfilled') }}"></i>
                                 @endif
                             </td>
                         </tr>

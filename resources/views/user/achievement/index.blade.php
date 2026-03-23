@@ -28,50 +28,36 @@
         <section class="panelV2 achievements__unlocked">
             <h2 class="panel__heading">{{ __('user.unlocked-achievements') }}</h2>
             @foreach ($achievements->load('details') as $achievement)
-                <article
-                    class="achievement"
-                    title="{{ $achievement->points }}/{{ $achievement->details->points }}"
-                >
+                <article class="achievement"
+                    title="{{ $achievement->points }}/{{ $achievement->details->points }}">
                     <figure class="achievement__badge">
-                        <img
-                            src="/img/badges/{{ $achievement->details->name }}.png"
+                        <img src="/img/badges/{{ $achievement->details->name }}.png"
                             alt="{{ $achievement->details->name }}"
-                            title="{{ $achievement->details->name }}"
-                        />
+                            title="{{ $achievement->details->name }}" />
                         <figcaption class="achievement__description">
                             {{ $achievement->details->description }}
                         </figcaption>
                     </figure>
-                    <progress
-                        class="achievement__progress"
-                        max="{{ $achievement->details->points }}"
-                        value="{{ $achievement->points }}"
-                    ></progress>
+                    <progress class="achievement__progress" max="{{ $achievement->details->points }}"
+                        value="{{ $achievement->points }}"></progress>
                 </article>
             @endforeach
         </section>
         <section class="panelV2 achievements__pending">
             <h2 class="panel__heading">{{ __('user.pending-achievements') }}</h2>
             @foreach ($pending->load('details') as $achievement)
-                <article
-                    class="achievement"
-                    title="{{ $achievement->points }}/{{ $achievement->details->points }}"
-                >
+                <article class="achievement"
+                    title="{{ $achievement->points }}/{{ $achievement->details->points }}">
                     <figure class="achievement__badge">
-                        <img
-                            src="/img/badges/{{ $achievement->details->name }}.png"
+                        <img src="/img/badges/{{ $achievement->details->name }}.png"
                             alt="{{ $achievement->details->name }}"
-                            title="{{ $achievement->details->name }}"
-                        />
+                            title="{{ $achievement->details->name }}" />
                         <figcaption class="achievement__description">
                             {{ $achievement->details->description }}
                         </figcaption>
                     </figure>
-                    <progress
-                        class="achievement__progress"
-                        max="{{ $achievement->details->points }}"
-                        value="{{ $achievement->points }}"
-                    ></progress>
+                    <progress class="achievement__progress" max="{{ $achievement->details->points }}"
+                        value="{{ $achievement->points }}"></progress>
                 </article>
             @endforeach
         </section>

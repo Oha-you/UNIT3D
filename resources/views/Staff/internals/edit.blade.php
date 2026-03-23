@@ -25,46 +25,25 @@
             {{ __('common.edit') }} internal group: {{ $internal->name }}
         </h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
-                action="{{ route('staff.internals.update', ['internal' => $internal]) }}"
-            >
+            <form class="form" method="POST"
+                action="{{ route('staff.internals.update', ['internal' => $internal]) }}">
                 @csrf
                 @method('PATCH')
                 <p class="form__group">
-                    <input
-                        id="name"
-                        class="form__text"
-                        name="name"
-                        required
-                        type="text"
-                        value="{{ $internal->name }}"
-                    />
+                    <input id="name" class="form__text" name="name" required type="text"
+                        value="{{ $internal->name }}" />
                     <label class="form__label form__label--floating" for="name">
                         {{ __('common.name') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="icon"
-                        class="form__text"
-                        name="icon"
-                        required
-                        type="text"
-                        value="{{ $internal->icon }}"
-                    />
+                    <input id="icon" class="form__text" name="icon" required type="text"
+                        value="{{ $internal->icon }}" />
                     <label class="form__label form__label--floating" for="icon">Icon</label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="effect"
-                        class="form__text"
-                        name="effect"
-                        required
-                        type="text"
-                        value="{{ $internal->effect }}"
-                    />
+                    <input id="effect" class="form__text" name="effect" required type="text"
+                        value="{{ $internal->effect }}" />
                     <label class="form__label form__label--floating" for="effect">Effect</label>
                 </p>
                 <p class="form__group">
@@ -85,38 +64,21 @@
                     </button>
                     <dialog class="dialog" x-bind="dialogElement">
                         <h3 class="dialog__heading">Add user to {{ $internal->name }}</h3>
-                        <form
-                            class="dialog__form"
-                            method="POST"
-                            action="{{ route('staff.internal_users.store') }}"
-                            x-bind="dialogForm"
-                        >
+                        <form class="dialog__form" method="POST"
+                            action="{{ route('staff.internal_users.store') }}" x-bind="dialogForm">
                             @csrf
                             <input type="hidden" name="internal_id" value="{{ $internal->id }}" />
                             <p class="form__group">
-                                <input
-                                    id="username"
-                                    class="form__text"
-                                    name="username"
-                                    placeholder=" "
-                                    required
-                                    type="text"
-                                />
+                                <input id="username" class="form__text" name="username" placeholder=" "
+                                    required type="text" />
                                 <label class="form__label form__label--floating" for="username">
                                     {{ __('common.username') }}
                                 </label>
                             </p>
                             <p class="form__group">
-                                <input
-                                    id="position"
-                                    class="form__text"
-                                    inputmode="numeric"
-                                    name="position"
-                                    pattern="[0-9]*"
-                                    placeholder=" "
-                                    required
-                                    type="text"
-                                />
+                                <input id="position" class="form__text" inputmode="numeric"
+                                    name="position" pattern="[0-9]*" placeholder=" " required
+                                    type="text" />
                                 <label class="form__label form__label--floating" for="position">
                                     {{ __('common.position') }}
                                 </label>
@@ -125,11 +87,8 @@
                                 <button class="form__button form__button--filled">
                                     {{ __('common.add') }}
                                 </button>
-                                <button
-                                    formmethod="dialog"
-                                    formnovalidate
-                                    class="form__button form__button--outlined"
-                                >
+                                <button formmethod="dialog" formnovalidate
+                                    class="form__button form__button--outlined">
                                     {{ __('common.cancel') }}
                                 </button>
                             </p>
@@ -154,67 +113,44 @@
                                 <x-user-tag :user="$user" :anon="false" />
                             </td>
                             <td>
-                                <time
-                                    datetime="{{ $user->pivot->created_at }}"
-                                    title="{{ $user->pivot->created_at }}"
-                                >
+                                <time datetime="{{ $user->pivot->created_at }}"
+                                    title="{{ $user->pivot->created_at }}">
                                     {{ $user->pivot->created_at }}
                                 </time>
                             </td>
                             <td>
                                 <menu class="data-table__actions">
                                     <li class="data-table__action" x-data="dialog">
-                                        <button
-                                            class="form__button form__button--text"
-                                            x-bind="showDialog"
-                                        >
+                                        <button class="form__button form__button--text"
+                                            x-bind="showDialog">
                                             {{ __('common.edit') }}
                                         </button>
                                         <dialog class="dialog" x-bind="dialogElement">
                                             <h3 class="dialog__heading">Edit internal user</h3>
-                                            <form
-                                                class="dialog__form"
-                                                method="POST"
+                                            <form class="dialog__form" method="POST"
                                                 action="{{ route('staff.internal_users.update', ['internalUser' => $user->pivot->id]) }}"
-                                                x-bind="dialogForm"
-                                            >
+                                                x-bind="dialogForm">
                                                 @csrf
                                                 @method('PATCH')
-                                                <input
-                                                    type="hidden"
-                                                    name="internal_id"
-                                                    value="{{ $user->pivot->internal_id }}"
-                                                />
+                                                <input type="hidden" name="internal_id"
+                                                    value="{{ $user->pivot->internal_id }}" />
                                                 <p class="form__group">
-                                                    <input
-                                                        id="position"
-                                                        class="form__text"
-                                                        inputmode="numeric"
-                                                        name="position"
-                                                        pattern="[0-9]*"
-                                                        placeholder=" "
-                                                        required
+                                                    <input id="position" class="form__text"
+                                                        inputmode="numeric" name="position"
+                                                        pattern="[0-9]*" placeholder=" " required
                                                         type="text"
-                                                        value="{{ $user->pivot->position }}"
-                                                    />
-                                                    <label
-                                                        class="form__label form__label--floating"
-                                                        for="position"
-                                                    >
+                                                        value="{{ $user->pivot->position }}" />
+                                                    <label class="form__label form__label--floating"
+                                                        for="position">
                                                         {{ __('common.position') }}
                                                     </label>
                                                 </p>
                                                 <p class="form__group">
-                                                    <button
-                                                        class="form__button form__button--filled"
-                                                    >
+                                                    <button class="form__button form__button--filled">
                                                         {{ __('common.add') }}
                                                     </button>
-                                                    <button
-                                                        formmethod="dialog"
-                                                        formnovalidate
-                                                        class="form__button form__button--outlined"
-                                                    >
+                                                    <button formmethod="dialog" formnovalidate
+                                                        class="form__button form__button--outlined">
                                                         {{ __('common.cancel') }}
                                                     </button>
                                                 </p>
@@ -224,16 +160,12 @@
                                     <li class="data-table__action">
                                         <form
                                             action="{{ route('staff.internal_users.destroy', ['internalUser' => $user->pivot->id]) }}"
-                                            method="POST"
-                                            x-data="confirmation"
-                                        >
+                                            method="POST" x-data="confirmation">
                                             @csrf
                                             @method('DELETE')
-                                            <button
-                                                x-on:click.prevent="confirmAction"
+                                            <button x-on:click.prevent="confirmAction"
                                                 class="form__button form__button--text"
-                                                data-b64-deletion-message="{{ base64_encode('Are you sure you want to remove this user (' . $user->username . ') from this internal group (.' . $internal->name . '?') }}"
-                                            >
+                                                data-b64-deletion-message="{{ base64_encode('Are you sure you want to remove this user (' . $user->username . ') from this internal group (.' . $internal->name . '?') }}">
                                                 {{ __('common.delete') }}
                                             </button>
                                         </form>

@@ -15,10 +15,8 @@
         </a>
     </li>
     <li class="breadcrumbV2">
-        <a
-            href="{{ route('forums.categories.show', ['id' => $topic->forum->category->id]) }}"
-            class="breadcrumb__link"
-        >
+        <a href="{{ route('forums.categories.show', ['id' => $topic->forum->category->id]) }}"
+            class="breadcrumb__link">
             {{ $topic->forum->category->name }}
         </a>
     </li>
@@ -42,24 +40,13 @@
     <section class="panelV2">
         <h2 class="panel__heading">{{ __('forum.edit-topic') }}</h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
-                action="{{ route('topics.update', ['id' => $topic->id]) }}"
-            >
+            <form class="form" method="POST"
+                action="{{ route('topics.update', ['id' => $topic->id]) }}">
                 @csrf
                 @method('PATCH')
                 <p class="form__group">
-                    <input
-                        id="forum_name"
-                        class="form__text"
-                        maxlength="75"
-                        name="name"
-                        placeholder=" "
-                        required
-                        type="text"
-                        value="{{ $topic->name }}"
-                    />
+                    <input id="forum_name" class="form__text" maxlength="75" name="name"
+                        placeholder=" " required type="text" value="{{ $topic->name }}" />
                     <label class="form__label form__label--floating" for="forum_name">
                         {{ __('forum.topic-name') }}
                     </label>
@@ -69,10 +56,7 @@
                         @foreach ($categories as $name => $forums)
                             <optgroup label="{{ $name }}">
                                 @foreach ($forums as $forum)
-                                    <option
-                                        value="{{ $forum->id }}"
-                                        @selected($topic->forum_id === $forum->id)
-                                    >
+                                    <option value="{{ $forum->id }}" @selected($topic->forum_id === $forum->id)>
                                         {{ $forum->name }}
                                     </option>
                                 @endforeach
@@ -83,12 +67,8 @@
                         {{ __('forum.forum') }}
                     </label>
                 </p>
-                <button
-                    class="form__button form__button--filled"
-                    name="post"
-                    value="true"
-                    id="post"
-                >
+                <button class="form__button form__button--filled" name="post" value="true"
+                    id="post">
                     {{ __('forum.edit-topic') }}
                 </button>
             </form>

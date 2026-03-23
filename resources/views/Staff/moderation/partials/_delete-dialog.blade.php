@@ -7,16 +7,13 @@
         <h4 class="dialog__heading">
             {{ __('common.delete') }} {{ __('torrent.torrent') }}: {{ $torrent->name }}
         </h4>
-        <form
-            class="dialog__form"
-            method="POST"
-            action="{{ route('torrents.destroy', ['id' => $torrent->id]) }}"
-            x-bind="dialogForm"
-        >
+        <form class="dialog__form" method="POST"
+            action="{{ route('torrents.destroy', ['id' => $torrent->id]) }}" x-bind="dialogForm">
             @csrf
             @method('DELETE')
             <p class="form__group">
-                <input id="type" type="hidden" name="type" value="{{ __('torrent.torrent') }}" />
+                <input id="type" type="hidden" name="type"
+                    value="{{ __('torrent.torrent') }}" />
                 <input id="id" type="hidden" name="id" value="{{ $torrent->id }}" />
             </p>
             <p class="form__group">
@@ -29,11 +26,8 @@
                 <button class="form__button form__button--filled">
                     {{ __('common.delete') }}
                 </button>
-                <button
-                    formmethod="dialog"
-                    formnovalidate
-                    class="form__button form__button--outlined"
-                >
+                <button formmethod="dialog" formnovalidate
+                    class="form__button form__button--outlined">
                     {{ __('common.cancel') }}
                 </button>
             </p>

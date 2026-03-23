@@ -1,12 +1,5 @@
 <details style="margin-left: 20px">
-    <summary
-        @style([
-            'padding: 8px;',
-            'list-style-position: outside',
-            'cursor: pointer' => $node['type'] === 'directory',
-            'list-style-type: none' => $node['type'] === 'file',
-        ])
-    >
+    <summary @style(['padding: 8px;', 'list-style-position: outside', 'cursor: pointer' => $node['type'] === 'directory', 'list-style-type: none' => $node['type'] === 'file'])>
         <span class="file-tree__wrapper">
             @if ($node['type'] === 'file')
                 <i class="{{ config('other.font-awesome') }} fa-file file-tree__icon"></i>

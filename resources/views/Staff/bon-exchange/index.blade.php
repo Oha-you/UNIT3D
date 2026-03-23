@@ -44,41 +44,34 @@
                                 @switch(1)
                                     @case($bonExchange->upload)
                                         {{ __('common.add') }} {{ __('common.upload') }}
+                                    @break
 
-                                        @break
                                     @case($bonExchange->download)
                                         {{ __('common.remove') }} {{ __('common.download') }}
+                                    @break
 
-                                        @break
                                     @case($bonExchange->personal_freeleech)
                                         {{ __('torrent.personal-freeleech') }}
+                                    @break
 
-                                        @break
                                     @case($bonExchange->invite)
                                         {{ __('user.invites') }}
-
-                                        @break
+                                    @break
                                 @endswitch
                             </td>
                             <td>
-                                <form
-                                    x-data="confirmation"
+                                <form x-data="confirmation"
                                     action="{{ route('staff.bon_exchanges.destroy', ['bonExchange' => $bonExchange->id]) }}"
-                                    method="POST"
-                                >
+                                    method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <a
-                                        href="{{ route('staff.bon_exchanges.edit', ['bonExchange' => $bonExchange->id]) }}"
-                                        class="form__button form__button--filled"
-                                    >
+                                    <a href="{{ route('staff.bon_exchanges.edit', ['bonExchange' => $bonExchange->id]) }}"
+                                        class="form__button form__button--filled">
                                         {{ __('common.edit') }}
                                     </a>
-                                    <button
-                                        x-on:click.prevent="confirmAction"
+                                    <button x-on:click.prevent="confirmAction"
                                         data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete this bon exchange: ' . $bonExchange->description . '?') }}"
-                                        class="form__button form__button--filled"
-                                    >
+                                        class="form__button form__button--filled">
                                         {{ __('common.delete') }}
                                     </button>
                                 </form>

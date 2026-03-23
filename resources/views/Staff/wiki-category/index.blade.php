@@ -18,34 +18,25 @@
                 <h2 class="panel__heading">{{ $category->name }}</h2>
                 <div class="panel__actions">
                     <div class="panel__action">
-                        <a
-                            href="{{ route('staff.wikis.create', ['wikiCategoryId' => $category->id]) }}"
-                            class="form__button form__button--text"
-                        >
+                        <a href="{{ route('staff.wikis.create', ['wikiCategoryId' => $category->id]) }}"
+                            class="form__button form__button--text">
                             {{ __('common.add') }}
                         </a>
                     </div>
                     <div class="panel__action">
-                        <a
-                            href="{{ route('staff.wiki_categories.edit', ['wikiCategory' => $category]) }}"
-                            class="form__button form__button--text"
-                        >
+                        <a href="{{ route('staff.wiki_categories.edit', ['wikiCategory' => $category]) }}"
+                            class="form__button form__button--text">
                             {{ __('common.edit') }}
                         </a>
                     </div>
                     <form
                         action="{{ route('staff.wiki_categories.destroy', ['wikiCategory' => $category]) }}"
-                        method="POST"
-                        style="display: contents"
-                        x-data="confirmation"
-                    >
+                        method="POST" style="display: contents" x-data="confirmation">
                         @csrf
                         @method('DELETE')
-                        <button
-                            class="form__button form__button--text"
+                        <button class="form__button form__button--text"
                             x-on:click.prevent="confirmAction"
-                            data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete this wiki category (' . $category->name . ') and all wikis within?') }}"
-                        >
+                            data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete this wiki category (' . $category->name . ') and all wikis within?') }}">
                             {{ __('common.delete') }}
                         </button>
                     </form>
@@ -74,26 +65,20 @@
                                 <td>
                                     <menu class="data-table__actions">
                                         <li class="data-table__action">
-                                            <a
-                                                href="{{ route('staff.wikis.edit', ['wiki' => $wiki]) }}"
-                                                class="form__button form__button--text"
-                                            >
+                                            <a href="{{ route('staff.wikis.edit', ['wiki' => $wiki]) }}"
+                                                class="form__button form__button--text">
                                                 {{ __('common.edit') }}
                                             </a>
                                         </li>
                                         <li class="data-table__action">
                                             <form
                                                 action="{{ route('staff.wikis.destroy', ['wiki' => $wiki]) }}"
-                                                method="POST"
-                                                x-data="confirmation"
-                                            >
+                                                method="POST" x-data="confirmation">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button
-                                                    x-on:click.prevent="confirmAction"
+                                                <button x-on:click.prevent="confirmAction"
                                                     data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete this wiki: ' . $wiki->name . '?') }}"
-                                                    class="form__button form__button--text"
-                                                >
+                                                    class="form__button form__button--text">
                                                     {{ __('common.delete') }}
                                                 </button>
                                             </form>
@@ -118,18 +103,14 @@
         <h2 class="panel__heading">{{ __('common.actions') }}</h2>
         <div class="panel__body">
             <p class="form__group form__group--horizontal">
-                <a
-                    href="{{ route('staff.wiki_categories.create') }}"
-                    class="form__button form__button--filled form__button--centered"
-                >
+                <a href="{{ route('staff.wiki_categories.create') }}"
+                    class="form__button form__button--filled form__button--centered">
                     Create new category
                 </a>
             </p>
             <p class="form__group form__group--horizontal">
-                <a
-                    href="{{ route('staff.wikis.create') }}"
-                    class="form__button form__button--filled form__button--centered"
-                >
+                <a href="{{ route('staff.wikis.create') }}"
+                    class="form__button form__button--filled form__button--centered">
                     Create new wiki
                 </a>
             </p>

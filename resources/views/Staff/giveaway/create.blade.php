@@ -24,38 +24,21 @@
         <form class="dialog__form" method="POST" action="{{ route('staff.giveaways.store') }}">
             @csrf
             <p class="form__group">
-                <input
-                    id="name"
-                    class="form__text"
-                    type="text"
-                    autocomplete="off"
-                    name="name"
-                    required
-                />
+                <input id="name" class="form__text" type="text" autocomplete="off"
+                    name="name" required />
                 <label class="form__label form__label--floating" for="name">
                     {{ __('common.name') }}
                 </label>
             </p>
             <p class="form__group">
-                <textarea
-                    id="description"
-                    class="form__textarea"
-                    name="description"
-                    required
-                ></textarea>
+                <textarea id="description" class="form__textarea" name="description" required></textarea>
                 <label class="form__label form__label--floating" for="description">
                     {{ __('common.description') }}
                 </label>
             </p>
             <p class="form__group">
-                <input
-                    id="icon"
-                    class="form__text"
-                    type="text"
-                    autocomplete="off"
-                    name="icon"
-                    required
-                />
+                <input id="icon" class="form__text" type="text" autocomplete="off"
+                    name="icon" required />
                 <label class="form__label form__label--floating" for="icon">
                     {{ __('common.icon') }}
                 </label>
@@ -78,11 +61,7 @@
                 <button class="form__button form__button--filled" wire:click="store">
                     {{ __('common.save') }}
                 </button>
-                <button
-                    formmethod="dialog"
-                    formnovalidate
-                    class="form__button form__button--outlined"
-                >
+                <button formmethod="dialog" formnovalidate class="form__button form__button--outlined">
                     {{ __('common.cancel') }}
                 </button>
             </p>

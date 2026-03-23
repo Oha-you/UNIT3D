@@ -49,17 +49,10 @@
                     <div>
                         <label for="code" value="{{ __('Code') }}"></label>
 
-                        <input
-                            id="code"
-                            name="code"
-                            class="form__text"
-                            type="text"
-                            inputmode="numeric"
-                            autofocus
-                            autocomplete="one-time-code"
+                        <input id="code" name="code" class="form__text" type="text"
+                            inputmode="numeric" autofocus autocomplete="one-time-code"
                             wire:model.live="code"
-                            wire:keydown.enter="confirmTwoFactorAuthentication"
-                        />
+                            wire:keydown.enter="confirmTwoFactorAuthentication" />
 
                         @error('code')
                             <span class="text-danger">{{ $message }}</span>
@@ -76,8 +69,8 @@
                     {{-- format-ignore-start --}}
                     <pre>
                         @foreach (json_decode(decrypt($this->user->two_factor_recovery_codes), true) as $code)
-                            <div>{{ $code }}</div>
-                        @endforeach
+<div>{{ $code }}</div>
+@endforeach
                     </pre>
                     {{-- format-ignore-end --}}
                 </div>
@@ -85,26 +78,19 @@
         @endif
 
         <div>
-            @if (! $this->enabled)
-                <button
-                    class="form__button form__button--filled"
-                    wire:click="enableTwoFactorAuthentication"
-                    wire:loading.attr="disabled"
-                >
+            @if (!$this->enabled)
+                <button class="form__button form__button--filled"
+                    wire:click="enableTwoFactorAuthentication" wire:loading.attr="disabled">
                     {{ __('Enable') }}
                 </button>
             @else
                 @if ($showingRecoveryCodes)
-                    <button
-                        class="form__button form__button--filled"
-                        wire:click="regenerateRecoveryCodes"
-                    >
+                    <button class="form__button form__button--filled"
+                        wire:click="regenerateRecoveryCodes">
                         {{ __('Regenerate Recovery Codes') }}
                     </button>
                     @script
-                        <script
-                            nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}"
-                        >
+                        <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
                             Alpine.data('recovery_codes', () => ({
                                 copy() {
                                     navigator.clipboard.writeText(
@@ -127,45 +113,30 @@
                         </script>
                     @endscript
 
-                    <button
-                        class="form__button form__button--filled"
-                        x-data="recovery_codes"
-                        x-on:click.stop="copy"
-                    >
+                    <button class="form__button form__button--filled" x-data="recovery_codes"
+                        x-on:click.stop="copy">
                         {{ __('Copy Recovery Codes') }}
                     </button>
                 @elseif ($showingConfirmation)
-                    <button
-                        class="form__button form__button--filled"
-                        type="button"
-                        wire:click="confirmTwoFactorAuthentication"
-                        wire:loading.attr="disabled"
-                    >
+                    <button class="form__button form__button--filled" type="button"
+                        wire:click="confirmTwoFactorAuthentication" wire:loading.attr="disabled">
                         {{ __('Confirm') }}
                     </button>
                 @else
-                    <button
-                        class="form__button form__button--filled"
-                        wire:click="showRecoveryCodes"
-                    >
+                    <button class="form__button form__button--filled"
+                        wire:click="showRecoveryCodes">
                         {{ __('Show Recovery Codes') }}
                     </button>
                 @endif
 
                 @if ($showingConfirmation)
-                    <button
-                        class="form__button form__button--filled"
-                        wire:click="disableTwoFactorAuthentication"
-                        wire:loading.attr="disabled"
-                    >
+                    <button class="form__button form__button--filled"
+                        wire:click="disableTwoFactorAuthentication" wire:loading.attr="disabled">
                         {{ __('Cancel') }}
                     </button>
                 @else
-                    <button
-                        class="form__button form__button--filled"
-                        wire:click="disableTwoFactorAuthentication"
-                        wire:loading.attr="disabled"
-                    >
+                    <button class="form__button form__button--filled"
+                        wire:click="disableTwoFactorAuthentication" wire:loading.attr="disabled">
                         {{ __('Disable') }}
                     </button>
                 @endif

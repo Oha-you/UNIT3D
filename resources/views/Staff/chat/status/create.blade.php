@@ -26,12 +26,8 @@
             {{ __('staff.chat') }} {{ __('staff.status') }}
         </h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
-                action="{{ route('staff.statuses.store') }}"
-                enctype="multipart/form-data"
-            >
+            <form class="form" method="POST" action="{{ route('staff.statuses.store') }}"
+                enctype="multipart/form-data">
                 @csrf
                 @csrf
                 <p class="form__group">

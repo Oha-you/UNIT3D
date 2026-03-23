@@ -28,67 +28,40 @@
             <form class="form">
                 <div class="form__group--short-horizontal">
                     <div class="form__group">
-                        <input
-                            id="username"
-                            wire:model.live="username"
-                            class="form__text"
-                            placeholder=" "
-                        />
+                        <input id="username" wire:model.live="username" class="form__text"
+                            placeholder=" " />
                         <label class="form__label form__label--floating" for="username">
                             Username
                         </label>
                     </div>
                     <div class="form__group">
-                        <input
-                            id="torrentName"
-                            wire:model.live="torrentName"
-                            class="form__text"
-                            type="search"
-                            autocomplete="off"
-                            placeholder=" "
-                        />
+                        <input id="torrentName" wire:model.live="torrentName" class="form__text"
+                            type="search" autocomplete="off" placeholder=" " />
                         <label class="form__label form__label--floating" for="torrentName">
                             Torrent name
                         </label>
                     </div>
                     <div class="form__group">
-                        <input
-                            id="torrentDownloadType"
-                            wire:model.live="torrentDownloadType"
-                            class="form__text"
-                            placeholder=" "
-                        />
+                        <input id="torrentDownloadType" wire:model.live="torrentDownloadType"
+                            class="form__text" placeholder=" " />
                         <label class="form__label form__label--floating" for="torrentDownloadType">
                             Type
                         </label>
                     </div>
                     <div class="form__group">
-                        <input
-                            id="from"
-                            type="date"
-                            wire:model.live="from"
-                            class="form__text"
-                            placeholder=" "
-                        />
+                        <input id="from" type="date" wire:model.live="from"
+                            class="form__text" placeholder=" " />
                         <label class="form__label form__label--floating" for="from">From</label>
                     </div>
                     <div class="form__group">
-                        <input
-                            id="until"
-                            type="date"
-                            wire:model.live="until"
-                            class="form__text"
-                            placeholder=" "
-                        />
-                        <label class="form__label form__label--floating" for="until">Until</label>
+                        <input id="until" type="date" wire:model.live="until"
+                            class="form__text" placeholder=" " />
+                        <label class="form__label form__label--floating"
+                            for="until">Until</label>
                     </div>
                     <div class="form__group">
-                        <select
-                            id="groupBy"
-                            wire:model.live="groupBy"
-                            class="form__select"
-                            placeholder=" "
-                        >
+                        <select id="groupBy" wire:model.live="groupBy" class="form__select"
+                            placeholder=" ">
                             <option value="none">None</option>
                             <option value="user_id">User</option>
                         </select>
@@ -106,12 +79,8 @@
             <div class="panel__actions">
                 <div class="panel__action">
                     <div class="form__group">
-                        <select
-                            id="quantity"
-                            class="form__select"
-                            wire:model.live="perPage"
-                            required
-                        >
+                        <select id="quantity" class="form__select" wire:model.live="perPage"
+                            required>
                             <option>25</option>
                             <option>50</option>
                             <option>100</option>
@@ -132,35 +101,34 @@
                             <tr>
                                 <th wire:click="sortBy('user_id')" role="columnheader button">
                                     User
-                                    @include('livewire.includes._sort-icon', ['field' => 'user_id'])
+                                    @include('livewire.includes._sort-icon', [
+                                        'field' => 'user_id',
+                                    ])
                                 </th>
-                                <th
-                                    wire:click="sortBy('download_count')"
-                                    role="columnheader button"
-                                >
+                                <th wire:click="sortBy('download_count')" role="columnheader button">
                                     Download count
-                                    @include('livewire.includes._sort-icon', ['field' => 'download_count'])
+                                    @include('livewire.includes._sort-icon', [
+                                        'field' => 'download_count',
+                                    ])
                                 </th>
-                                <th
-                                    wire:click="sortBy('distinct_torrent_count')"
-                                    role="columnheader button"
-                                >
+                                <th wire:click="sortBy('distinct_torrent_count')"
+                                    role="columnheader button">
                                     Distinct torrent count
-                                    @include('livewire.includes._sort-icon', ['field' => 'distinct_torrent_count'])
+                                    @include('livewire.includes._sort-icon', [
+                                        'field' => 'distinct_torrent_count',
+                                    ])
                                 </th>
-                                <th
-                                    wire:click="sortBy('created_at_min')"
-                                    role="columnheader button"
-                                >
+                                <th wire:click="sortBy('created_at_min')" role="columnheader button">
                                     First downloaded At
-                                    @include('livewire.includes._sort-icon', ['field' => 'created_at_min'])
+                                    @include('livewire.includes._sort-icon', [
+                                        'field' => 'created_at_min',
+                                    ])
                                 </th>
-                                <th
-                                    wire:click="sortBy('created_at_max')"
-                                    role="columnheader button"
-                                >
+                                <th wire:click="sortBy('created_at_max')" role="columnheader button">
                                     Last downloaded At
-                                    @include('livewire.includes._sort-icon', ['field' => 'created_at_max'])
+                                    @include('livewire.includes._sort-icon', [
+                                        'field' => 'created_at_max',
+                                    ])
                                 </th>
                             </tr>
                         </thead>
@@ -168,26 +136,19 @@
                             @foreach ($torrentDownloads as $torrentDownload)
                                 <tr>
                                     <td>
-                                        <x-user-tag
-                                            :user="$torrentDownload->user"
-                                            :anon="false"
-                                        />
+                                        <x-user-tag :user="$torrentDownload->user" :anon="false" />
                                     </td>
                                     <td>{{ $torrentDownload->download_count }}</td>
                                     <td>{{ $torrentDownload->distinct_torrent_count }}</td>
                                     <td>
-                                        <time
-                                            datetime="{{ $torrentDownload->created_at_min }}"
-                                            title="{{ $torrentDownload->created_at_min }}"
-                                        >
+                                        <time datetime="{{ $torrentDownload->created_at_min }}"
+                                            title="{{ $torrentDownload->created_at_min }}">
                                             {{ $torrentDownload->created_at_min }}
                                         </time>
                                     </td>
                                     <td>
-                                        <time
-                                            datetime="{{ $torrentDownload->created_at_max }}"
-                                            title="{{ $torrentDownload->created_at_max }}"
-                                        >
+                                        <time datetime="{{ $torrentDownload->created_at_max }}"
+                                            title="{{ $torrentDownload->created_at_max }}">
                                             {{ $torrentDownload->created_at_max }}
                                         </time>
                                     </td>
@@ -195,35 +156,47 @@
                             @endforeach
                         </tbody>
                     </table>
+                @break
 
-                    @break
                 @default
                     <table class="data-table">
                         <thead>
                             <tr>
                                 <th wire:click="sortBy('id')" role="columnheader button">
                                     ID
-                                    @include('livewire.includes._sort-icon', ['field' => 'id'])
+                                    @include('livewire.includes._sort-icon', [
+                                        'field' => 'id',
+                                    ])
                                 </th>
                                 <th wire:click="sortBy('user_id')" role="columnheader button">
                                     User
-                                    @include('livewire.includes._sort-icon', ['field' => 'user_id'])
+                                    @include('livewire.includes._sort-icon', [
+                                        'field' => 'user_id',
+                                    ])
                                 </th>
                                 <th wire:click="sortBy('torrent_id')" role="columnheader button">
                                     Torrent ID
-                                    @include('livewire.includes._sort-icon', ['field' => 'torrent_id'])
+                                    @include('livewire.includes._sort-icon', [
+                                        'field' => 'torrent_id',
+                                    ])
                                 </th>
                                 <th wire:click="sortBy('torrent_id')" role="columnheader button">
                                     Torrent
-                                    @include('livewire.includes._sort-icon', ['field' => 'torrent_id'])
+                                    @include('livewire.includes._sort-icon', [
+                                        'field' => 'torrent_id',
+                                    ])
                                 </th>
                                 <th wire:click="sortBy('type')" role="columnheader button">
                                     Type
-                                    @include('livewire.includes._sort-icon', ['field' => 'type'])
+                                    @include('livewire.includes._sort-icon', [
+                                        'field' => 'type',
+                                    ])
                                 </th>
                                 <th wire:click="sortBy('created_at')" role="columnheader button">
                                     {{ __('common.created_at') }}
-                                    @include('livewire.includes._sort-icon', ['field' => 'created_at'])
+                                    @include('livewire.includes._sort-icon', [
+                                        'field' => 'created_at',
+                                    ])
                                 </th>
                             </tr>
                         </thead>
@@ -232,29 +205,23 @@
                                 <tr>
                                     <td>{{ $torrentDownload->id }}</td>
                                     <td>
-                                        <x-user-tag
-                                            :user="$torrentDownload->user"
-                                            :anon="false"
-                                        />
+                                        <x-user-tag :user="$torrentDownload->user" :anon="false" />
                                     </td>
                                     <td>{{ $torrentDownload->torrent?->id ?? 'Not found' }}</td>
                                     <td>
                                         @if ($torrentDownload->torrent !== null)
                                             <a
-                                                href="{{ route('torrents.show', ['id' => $torrentDownload->torrent->id]) }}"
-                                            >
+                                                href="{{ route('torrents.show', ['id' => $torrentDownload->torrent->id]) }}">
                                                 {{ $torrentDownload->torrent->name ?? 'Not found' }}
                                             </a>
                                         @else
-                                                Not found
+                                            Not found
                                         @endif
                                     </td>
                                     <td>{{ $torrentDownload->type }}</td>
                                     <td>
-                                        <time
-                                            datetime="{{ $torrentDownload->created_at }}"
-                                            title="{{ $torrentDownload->created_at }}"
-                                        >
+                                        <time datetime="{{ $torrentDownload->created_at }}"
+                                            title="{{ $torrentDownload->created_at }}">
                                             {{ $torrentDownload->created_at }}
                                         </time>
                                     </td>

@@ -28,41 +28,21 @@
             <form class="form" action="{{ route('contact.store') }}" method="POST">
                 @csrf
                 <p class="form__group">
-                    <input
-                        id="contact-name"
-                        class="form__text"
-                        name="contact-name"
-                        placeholder=" "
-                        required
-                        type="text"
-                        value="{{ auth()->user()->username }}"
-                    />
+                    <input id="contact-name" class="form__text" name="contact-name" placeholder=" "
+                        required type="text" value="{{ auth()->user()->username }}" />
                     <label class="form__label form__label--floating" for="contact-name">
                         {{ __('common.name') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="email"
-                        class="form__text"
-                        name="email"
-                        placeholder=" "
-                        required
-                        type="email"
-                        value="{{ auth()->user()->email }}"
-                    />
+                    <input id="email" class="form__text" name="email" placeholder=" " required
+                        type="email" value="{{ auth()->user()->email }}" />
                     <label class="form__label form__label--floating" for="email">
                         {{ __('common.email') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <textarea
-                        id="message"
-                        class="form__textarea"
-                        name="message"
-                        placeholder=" "
-                        required
-                    ></textarea>
+                    <textarea id="message" class="form__textarea" name="message" placeholder=" " required></textarea>
                     <label class="form__label form__label--floating" for="message">
                         {{ __('common.message') }}
                     </label>

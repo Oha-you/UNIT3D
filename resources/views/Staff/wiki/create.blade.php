@@ -34,21 +34,13 @@
                     </label>
                 </p>
                 <p class="form__group">
-                    <select
-                        id="category_id"
-                        name="category_id"
-                        class="form__select"
-                        x-data="{ selected: {{ $wikiCategoryId }} || '' }"
-                        x-model="selected"
+                    <select id="category_id" name="category_id" class="form__select"
+                        x-data="{ selected: {{ $wikiCategoryId }} || '' }" x-model="selected"
                         x-bind:class="selected === '' ? 'form__selected--default' : ''"
-                        required
-                    >
+                        required>
                         <option disabled hidden></option>
                         @foreach ($wikiCategories as $wikiCategory)
-                            <option
-                                value="{{ $wikiCategory->id }}"
-                                @selected($wikiCategory->id === $wikiCategoryId)
-                            >
+                            <option value="{{ $wikiCategory->id }}" @selected($wikiCategory->id === $wikiCategoryId)>
                                 {{ $wikiCategory->name }}
                             </option>
                         @endforeach

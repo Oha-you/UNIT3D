@@ -2,10 +2,7 @@
 
 @section('breadcrumbs')
     <li class="breadcrumbV2">
-        <a
-            href="{{ route('users.conversations.index', ['user' => $user]) }}"
-            class="breadcrumb__link"
-        >
+        <a href="{{ route('users.conversations.index', ['user' => $user]) }}" class="breadcrumb__link">
             {{ __('pm.messages') }}
         </a>
     </li>
@@ -25,10 +22,7 @@
                 </h2>
                 <div class="panel__actions">
                     <div class="panel__action">
-                        <time
-                            datetime="{{ $message->created_at }}"
-                            title="{{ $message->created_at }}"
-                        >
+                        <time datetime="{{ $message->created_at }}" title="{{ $message->created_at }}">
                             {{ $message->created_at?->diffForHumans() }}
                         </time>
                     </div>
@@ -44,13 +38,11 @@
     <section class="panelV2">
         <h2 class="panel__heading">{{ __('pm.reply') }}</h2>
         <div class="panel__body">
-            @if ($conversation->users->contains(fn ($user) => $user->id === \App\Models\User::SYSTEM_USER_ID))
+            @if ($conversation->users->contains(fn($user) => $user->id === \App\Models\User::SYSTEM_USER_ID))
                 You can not reply to the system user.
             @else
-                <form
-                    method="POST"
-                    action="{{ route('users.conversations.update', ['user' => $user, 'conversation' => $conversation]) }}"
-                >
+                <form method="POST"
+                    action="{{ route('users.conversations.update', ['user' => $user, 'conversation' => $conversation]) }}">
                     @csrf
                     @method('PATCH')
                     @livewire('bbcode-input', ['name' => 'message', 'label' => __('pm.reply'), 'required' => true])
@@ -83,8 +75,7 @@
         <div class="panel__body">
             <form
                 action="{{ route('users.conversations.destroy', ['user' => $user, 'conversation' => $conversation]) }}"
-                method="POST"
-            >
+                method="POST">
                 @csrf
                 @method('DELETE')
                 <p class="form__group form__group--horizontal">

@@ -45,9 +45,10 @@
 @endsection
 
 @section('javascripts')
-    @if (parse_url(request()->url(), PHP_URL_PATH) === parse_url(config('other.rules_url'), PHP_URL_PATH) && auth()->user()->read_rules == 0)
+    @if (parse_url(request()->url(), PHP_URL_PATH) ===
+            parse_url(config('other.rules_url'), PHP_URL_PATH) && auth()->user()->read_rules == 0)
         <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
-            confirmRules = function () {
+            confirmRules = function() {
                 let scrollHeight, totalHeight;
                 scrollHeight = document.body.scrollHeight;
                 totalHeight = Math.ceil(window.scrollY + window.innerHeight);

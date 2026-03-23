@@ -1,22 +1,15 @@
-<section
-    @class([
-        'panelV2',
-        'trending',
-        'trending--weekly' => in_array($this->interval, ['weekly', 'monthly']),
-    ])
->
+<section @class([
+    'panelV2',
+    'trending',
+    'trending--weekly' => in_array($this->interval, ['weekly', 'monthly']),
+])>
     <header class="panel__header">
         <h2 class="panel__heading">{{ __('common.trending') }}</h2>
         <div class="panel__actions">
             <div class="panel__action">
                 <div class="form__group">
-                    <select
-                        id="interval"
-                        class="form__select"
-                        type="date"
-                        name="interval"
-                        wire:model.live="interval"
-                    >
+                    <select id="interval" class="form__select" type="date" name="interval"
+                        wire:model.live="interval">
                         <option value="day">Past day</option>
                         <option value="week">Past week</option>
                         <option value="month">Past month</option>
@@ -33,38 +26,25 @@
             @if ($this->interval === 'custom')
                 <div class="panel__action">
                     <div class="form__group">
-                        <input
-                            id="from"
-                            class="form__text"
-                            name="from"
-                            type="date"
-                            wire:model.live="from"
-                        />
+                        <input id="from" class="form__text" name="from" type="date"
+                            wire:model.live="from" />
                         <label class="form__label form__label--floating" for="from">From</label>
                     </div>
                 </div>
                 <div class="panel__action">
                     <div class="form__group">
-                        <input
-                            id="until"
-                            class="form__text"
-                            name="until"
-                            type="date"
-                            wire:model.live="until"
-                        />
-                        <label class="form__label form__label--floating" for="until">Until</label>
+                        <input id="until" class="form__text" name="until" type="date"
+                            wire:model.live="until" />
+                        <label class="form__label form__label--floating"
+                            for="until">Until</label>
                     </div>
                 </div>
             @endif
 
             <div class="panel__action">
                 <div class="form__group">
-                    <select
-                        id="metaType"
-                        class="form__select"
-                        name="metaType"
-                        wire:model.live="metaType"
-                    >
+                    <select id="metaType" class="form__select" name="metaType"
+                        wire:model.live="metaType">
                         @foreach ($metaTypes as $name => $type)
                             <option value="{{ $type }}">{{ $name }}</option>
                         @endforeach
@@ -96,26 +76,17 @@
                                     <figure class="trending-poster">
                                         @switch($this->metaType)
                                             @case('movie_meta')
-                                                <x-movie.poster
-                                                    :movie="$ranking->movie"
-                                                    :categoryId="$ranking->category_id"
-                                                    :tmdb="$ranking->tmdb_movie_id"
-                                                />
+                                                <x-movie.poster :movie="$ranking->movie" :categoryId="$ranking->category_id"
+                                                    :tmdb="$ranking->tmdb_movie_id" />
+                                            @break
 
-                                                @break
                                             @case('tv_meta')
-                                                <x-tv.poster
-                                                    :tv="$ranking->tv"
-                                                    :categoryId="$ranking->category_id"
-                                                    :tmdb="$ranking->tmdb_tv_id"
-                                                />
-
-                                                @break
+                                                <x-tv.poster :tv="$ranking->tv" :categoryId="$ranking->category_id"
+                                                    :tmdb="$ranking->tmdb_tv_id" />
+                                            @break
                                         @endswitch
-                                        <figcaption
-                                            class="trending-poster__download-count"
-                                            title="{{ __('torrent.completed-times') }}"
-                                        >
+                                        <figcaption class="trending-poster__download-count"
+                                            title="{{ __('torrent.completed-times') }}">
                                             {{ $ranking->download_count }}
                                         </figcaption>
                                     </figure>
@@ -148,26 +119,17 @@
                                     <figure class="trending-poster">
                                         @switch($this->metaType)
                                             @case('movie_meta')
-                                                <x-movie.poster
-                                                    :movie="$ranking->movie"
-                                                    :categoryId="$ranking->category_id"
-                                                    :tmdb="$ranking->tmdb_movie_id"
-                                                />
+                                                <x-movie.poster :movie="$ranking->movie" :categoryId="$ranking->category_id"
+                                                    :tmdb="$ranking->tmdb_movie_id" />
+                                            @break
 
-                                                @break
                                             @case('tv_meta')
-                                                <x-tv.poster
-                                                    :tv="$ranking->tv"
-                                                    :categoryId="$ranking->category_id"
-                                                    :tmdb="$ranking->tmdb_tv_id"
-                                                />
-
-                                                @break
+                                                <x-tv.poster :tv="$ranking->tv" :categoryId="$ranking->category_id"
+                                                    :tmdb="$ranking->tmdb_tv_id" />
+                                            @break
                                         @endswitch
-                                        <figcaption
-                                            class="trending-poster__download-count"
-                                            title="{{ __('torrent.completed-times') }}"
-                                        >
+                                        <figcaption class="trending-poster__download-count"
+                                            title="{{ __('torrent.completed-times') }}">
                                             {{ $ranking->download_count }}
                                         </figcaption>
                                     </figure>
@@ -198,26 +160,17 @@
                                     <figure class="trending-poster">
                                         @switch($this->metaType)
                                             @case('movie_meta')
-                                                <x-movie.poster
-                                                    :movie="$ranking->movie"
-                                                    :categoryId="$ranking->category_id"
-                                                    :tmdb="$ranking->tmdb_movie_id"
-                                                />
+                                                <x-movie.poster :movie="$ranking->movie" :categoryId="$ranking->category_id"
+                                                    :tmdb="$ranking->tmdb_movie_id" />
+                                            @break
 
-                                                @break
                                             @case('tv_meta')
-                                                <x-tv.poster
-                                                    :tv="$ranking->tv"
-                                                    :categoryId="$ranking->category_id"
-                                                    :tmdb="$ranking->tmdb_tv_id"
-                                                />
-
-                                                @break
+                                                <x-tv.poster :tv="$ranking->tv" :categoryId="$ranking->category_id"
+                                                    :tmdb="$ranking->tmdb_tv_id" />
+                                            @break
                                         @endswitch
-                                        <figcaption
-                                            class="trending-poster__download-count"
-                                            title="{{ __('torrent.completed-times') }}"
-                                        >
+                                        <figcaption class="trending-poster__download-count"
+                                            title="{{ __('torrent.completed-times') }}">
                                             {{ $ranking->download_count }}
                                         </figcaption>
                                     </figure>
@@ -236,39 +189,26 @@
                 @case('movie_meta')
                     @foreach ($works as $work)
                         <figure class="trending-poster">
-                            <x-movie.poster
-                                :movie="$work->movie"
-                                :categoryId="$work->category_id"
-                                :tmdb="$work->tmdb_movie_id"
-                            />
-                            <figcaption
-                                class="trending-poster__download-count"
-                                title="{{ __('torrent.completed-times') }}"
-                            >
+                            <x-movie.poster :movie="$work->movie" :categoryId="$work->category_id" :tmdb="$work->tmdb_movie_id" />
+                            <figcaption class="trending-poster__download-count"
+                                title="{{ __('torrent.completed-times') }}">
                                 {{ $work->download_count }}
                             </figcaption>
                         </figure>
                     @endforeach
+                @break
 
-                    @break
                 @case('tv_meta')
                     @foreach ($works as $work)
                         <figure class="trending-poster">
-                            <x-tv.poster
-                                :tv="$work->tv"
-                                :categoryId="$work->category_id"
-                                :tmdb="$work->tmdb_tv_id"
-                            />
-                            <figcaption
-                                class="trending-poster__download-count"
-                                title="{{ __('torrent.completed-times') }}"
-                            >
+                            <x-tv.poster :tv="$work->tv" :categoryId="$work->category_id" :tmdb="$work->tmdb_tv_id" />
+                            <figcaption class="trending-poster__download-count"
+                                title="{{ __('torrent.completed-times') }}">
                                 {{ $work->download_count }}
                             </figcaption>
                         </figure>
                     @endforeach
-
-                    @break
+                @break
             @endswitch
         </div>
     @endif

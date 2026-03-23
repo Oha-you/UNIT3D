@@ -27,22 +27,13 @@
             {{ __('common.edit') }} {{ __('staff.page') }}: {{ $page->name }}
         </h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
-                action="{{ route('staff.pages.update', ['page' => $page]) }}"
-            >
+            <form class="form" method="POST"
+                action="{{ route('staff.pages.update', ['page' => $page]) }}">
                 @csrf
                 @method('PATCH')
                 <p class="form__group">
-                    <input
-                        id="name"
-                        class="form__text"
-                        name="name"
-                        required
-                        type="text"
-                        value="{{ $page->name }}"
-                    />
+                    <input id="name" class="form__text" name="name" required type="text"
+                        value="{{ $page->name }}" />
                     <label class="form__label form__label--floating" for="name">
                         {{ __('common.name') }}
                     </label>

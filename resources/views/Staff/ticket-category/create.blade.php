@@ -35,15 +35,8 @@
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="position"
-                        class="form__text"
-                        inputmode="numeric"
-                        name="position"
-                        pattern="[0-9]+"
-                        required
-                        type="text"
-                    />
+                    <input id="position" class="form__text" inputmode="numeric" name="position"
+                        pattern="[0-9]+" required type="text" />
                     <label class="form__label form__label--floating" for="position">
                         {{ __('common.position') }}
                     </label>

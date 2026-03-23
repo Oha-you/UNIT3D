@@ -29,63 +29,35 @@
             {{ $ticketPriority->name }}
         </h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
-                action="{{ route('staff.ticket_priorities.update', ['ticketPriority' => $ticketPriority]) }}"
-            >
+            <form class="form" method="POST"
+                action="{{ route('staff.ticket_priorities.update', ['ticketPriority' => $ticketPriority]) }}">
                 @method('PATCH')
                 @csrf
                 <p class="form__group">
-                    <input
-                        id="name"
-                        class="form__text"
-                        name="name"
-                        required
-                        type="text"
-                        value="{{ $ticketPriority->name }}"
-                    />
+                    <input id="name" class="form__text" name="name" required type="text"
+                        value="{{ $ticketPriority->name }}" />
                     <label class="form__label form__label--floating" for="name">
                         {{ __('common.name') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="position"
-                        class="form__text"
-                        inputmode="numeric"
-                        name="position"
-                        pattern="[0-9]+"
-                        required
-                        type="text"
-                        value="{{ $ticketPriority->position }}"
-                    />
+                    <input id="position" class="form__text" inputmode="numeric" name="position"
+                        pattern="[0-9]+" required type="text"
+                        value="{{ $ticketPriority->position }}" />
                     <label class="form__label form__label--floating" for="position">
                         {{ __('common.position') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="color"
-                        class="form__text"
-                        name="color"
-                        required
-                        type="text"
-                        value="{{ $ticketPriority->color }}"
-                    />
+                    <input id="color" class="form__text" name="color" required type="text"
+                        value="{{ $ticketPriority->color }}" />
                     <label class="form__label form__label--floating" for="color">
                         {{ __('common.color') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="icon"
-                        class="form__text"
-                        name="icon"
-                        type="text"
-                        value="{{ $ticketPriority->icon }}"
-                        placeholder="fa-circle"
-                    />
+                    <input id="icon" class="form__text" name="icon" type="text"
+                        value="{{ $ticketPriority->icon }}" placeholder="fa-circle" />
                     <label class="form__label form__label--floating" for="icon">
                         {{ __('common.icon') }}
                     </label>

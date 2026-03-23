@@ -24,50 +24,27 @@
             {{ __('common.edit') }}
         </h2>
         <div class="panel__body">
-            <form
-                name="upload"
-                class="upload-form form"
-                id="upload-form"
-                method="POST"
-                action="{{ route('staff.blacklisted_clients.update', ['blacklistClient' => $client]) }}"
-            >
+            <form name="upload" class="upload-form form" id="upload-form" method="POST"
+                action="{{ route('staff.blacklisted_clients.update', ['blacklistClient' => $client]) }}">
                 @csrf
                 @method('patch')
                 <p class="form__group">
-                    <input
-                        id="name"
-                        class="form__text"
-                        name="name"
-                        required
-                        type="text"
-                        value="{{ $client->name }}"
-                    />
+                    <input id="name" class="form__text" name="name" required type="text"
+                        value="{{ $client->name }}" />
                     <label class="form__label form__label--floating" for="name">
                         {{ __('common.name') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="peer_id_prefix"
-                        class="form__text"
-                        name="peer_id_prefix"
-                        placeholder=" "
-                        type="text"
-                        value="{{ $client->peer_id_prefix }}"
-                    />
+                    <input id="peer_id_prefix" class="form__text" name="peer_id_prefix" placeholder=" "
+                        type="text" value="{{ $client->peer_id_prefix }}" />
                     <label class="form__label form__label--floating" for="peer_id_prefix">
                         Peer ID prefix
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="reason"
-                        class="form__text"
-                        name="reason"
-                        required
-                        type="text"
-                        value="{{ $client->reason }}"
-                    />
+                    <input id="reason" class="form__text" name="reason" required type="text"
+                        value="{{ $client->reason }}" />
                     <label class="form__label form__label--floating" for="reason">
                         {{ __('common.reason') }}
                     </label>

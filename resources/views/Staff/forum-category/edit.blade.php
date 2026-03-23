@@ -8,10 +8,8 @@
 @endsection
 
 @section('meta')
-    <meta
-        name="description"
-        content="{{ __('common.edit') }} forums - {{ __('staff.staff-dashboard') }}"
-    />
+    <meta name="description"
+        content="{{ __('common.edit') }} forums - {{ __('staff.staff-dashboard') }}" />
 @endsection
 
 @section('breadcrumbs')
@@ -39,44 +37,26 @@
     <section class="panelV2">
         <h2 class="panel__heading">{{ __('common.edit') }} {{ __('forum.forum') }}</h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
-                action="{{ route('staff.forum_categories.update', ['forumCategory' => $forumCategory]) }}"
-            >
+            <form class="form" method="POST"
+                action="{{ route('staff.forum_categories.update', ['forumCategory' => $forumCategory]) }}">
                 @csrf
                 @method('PATCH')
                 <p class="form__group">
-                    <input
-                        id="name"
-                        class="form__text"
-                        type="text"
-                        name="name"
-                        required
-                        value="{{ $forumCategory->name }}"
-                    />
+                    <input id="name" class="form__text" type="text" name="name" required
+                        value="{{ $forumCategory->name }}" />
                     <label class="form__label form__label--floating" for="name">Title</label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="position"
-                        class="form__text"
-                        inputmode="numeric"
-                        name="position"
-                        pattern="[0-9]*"
-                        placeholder=" "
-                        type="text"
-                        value="{{ $forumCategory->position }}"
-                        required
-                    />
+                    <input id="position" class="form__text" inputmode="numeric" name="position"
+                        pattern="[0-9]*" placeholder=" " type="text"
+                        value="{{ $forumCategory->position }}" required />
                     <label class="form__label form__label--floating" for="position">
                         {{ __('common.position') }}
                     </label>
                 </p>
                 <p class="form__group">
                     <textarea id="description" name="description" class="form__textarea" required>
-{{ $forumCategory->description }}</textarea
-                    >
+    {{ $forumCategory->description }}</textarea>
                     <label class="form__label form__label--floating" for="description">
                         Description
                     </label>

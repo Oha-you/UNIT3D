@@ -10,44 +10,26 @@
                     <h3 class="dialog__heading">Block IP Address</h3>
                     <form class="dialog__form" x-bind="dialogForm">
                         <p class="form__group">
-                            <input
-                                id="ipAddress"
-                                class="form__text"
-                                type="text"
-                                autocomplete="off"
-                                name="ipAddress"
-                                placeholder=" "
-                                wire:model="ipAddress"
-                            />
+                            <input id="ipAddress" class="form__text" type="text"
+                                autocomplete="off" name="ipAddress" placeholder=" "
+                                wire:model="ipAddress" />
                             <label class="form__label form__label--floating" for="ipAddress">
                                 Ip address
                             </label>
                         </p>
                         <p class="form__group">
-                            <textarea
-                                id="reason"
-                                class="form__textarea"
-                                name="reason"
-                                placeholder=" "
-                                wire:model="reason"
-                            ></textarea>
+                            <textarea id="reason" class="form__textarea" name="reason" placeholder=" " wire:model="reason"></textarea>
                             <label class="form__label form__label--floating" for="reason">
                                 Reason
                             </label>
                         </p>
                         <p class="form__group">
-                            <button
-                                class="form__button form__button--filled"
-                                wire:click="store"
-                                x-bind="submitDialogForm"
-                            >
+                            <button class="form__button form__button--filled" wire:click="store"
+                                x-bind="submitDialogForm">
                                 {{ __('common.save') }}
                             </button>
-                            <button
-                                formmethod="dialog"
-                                formnovalidate
-                                class="form__button form__button--outlined"
-                            >
+                            <button formmethod="dialog" formnovalidate
+                                class="form__button form__button--outlined">
                                 {{ __('common.cancel') }}
                             </button>
                         </p>
@@ -56,14 +38,8 @@
             </div>
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="ipSearch"
-                        class="form__text"
-                        type="search"
-                        autocomplete="off"
-                        wire:model.live="ipSearch"
-                        placeholder=" "
-                    />
+                    <input id="ipSearch" class="form__text" type="search" autocomplete="off"
+                        wire:model.live="ipSearch" placeholder=" " />
                     <label class="form__label form__label--floating" for="ipSearch">
                         {{ __('common.ip') }}
                     </label>
@@ -71,14 +47,8 @@
             </div>
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="reasonSearch"
-                        class="form__text"
-                        type="search"
-                        autocomplete="off"
-                        wire:model.live="reasonSearch"
-                        placeholder=" "
-                    />
+                    <input id="reasonSearch" class="form__text" type="search" autocomplete="off"
+                        wire:model.live="reasonSearch" placeholder=" " />
                     <label class="form__label form__label--floating" for="reasonSearch">
                         {{ __('common.reason') }}
                     </label>
@@ -119,18 +89,14 @@
                         <td>{{ $ipAddress->ip_address }}</td>
                         <td>{{ $ipAddress->reason }}</td>
                         <td>
-                            <time
-                                datetime="{{ $ipAddress->created_at }}"
-                                title="{{ $ipAddress->created_at }}"
-                            >
+                            <time datetime="{{ $ipAddress->created_at }}"
+                                title="{{ $ipAddress->created_at }}">
                                 {{ $ipAddress->created_at }}
                             </time>
                         </td>
                         <td>
-                            <time
-                                datetime="{{ $ipAddress->expires_at ?? 'Never' }}"
-                                title="{{ $ipAddress->expires_at }}"
-                            >
+                            <time datetime="{{ $ipAddress->expires_at ?? 'Never' }}"
+                                title="{{ $ipAddress->expires_at }}">
                                 {{ $ipAddress->expires_at ?? 'Never' }}
                             </time>
                         </td>
@@ -138,11 +104,9 @@
                             <menu class="data-table__actions">
                                 <li class="data-table__action">
                                     <form>
-                                        <button
-                                            x-on:click.prevent="destroy"
+                                        <button x-on:click.prevent="destroy"
                                             data-b64-deletion-message="{{ base64_encode('Are you sure you want to delete this ip: ' . $ipAddress->ip_address . '?') }}"
-                                            class="form__button form__button--text"
-                                        >
+                                            class="form__button form__button--text">
                                             {{ __('common.delete') }}
                                         </button>
                                     </form>
@@ -171,7 +135,8 @@
                         showCancelButton: true,
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            this.$wire.destroy(this.$root.dataset.blockedIpId);
+                            this.$wire.destroy(this.$root.dataset
+                                .blockedIpId);
                         }
                     });
                 },

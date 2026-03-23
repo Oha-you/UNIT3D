@@ -3,17 +3,9 @@
         <search class="compact-search similar-torrents__filters" x-data="toggle">
             <div class="compact-search__visible-default">
                 <p class="form__group">
-                    <input
-                        id="name"
-                        wire:model.live="name"
-                        class="form__text"
-                        type="search"
-                        autocomplete="off"
-                        placeholder=" "
-                        @if (auth()->user()->settings->torrent_search_autofocus)
-                            autofocus
-                        @endif
-                    />
+                    <input id="name" wire:model.live="name" class="form__text" type="search"
+                        autocomplete="off" placeholder=" "
+                        @if (auth()->user()->settings->torrent_search_autofocus) autofocus @endif />
                     <label class="form__label form__label--floating" for="name">
                         {{ __('common.search') }}
                     </label>
@@ -25,53 +17,29 @@
             <form class="form" x-cloak x-show="isToggledOn">
                 <div class="form__group--short-horizontal">
                     <p class="form__group">
-                        <input
-                            id="description"
-                            wire:model.live="description"
-                            class="form__text"
-                            type="search"
-                            autocomplete="off"
-                            placeholder=" "
-                        />
+                        <input id="description" wire:model.live="description" class="form__text"
+                            type="search" autocomplete="off" placeholder=" " />
                         <label class="form__label form__label--floating" for="description">
                             {{ __('torrent.description') }}
                         </label>
                     </p>
                     <p class="form__group">
-                        <input
-                            id="mediainfo"
-                            wire:model.live="mediainfo"
-                            class="form__text"
-                            type="search"
-                            autocomplete="off"
-                            placeholder=" "
-                        />
+                        <input id="mediainfo" wire:model.live="mediainfo" class="form__text"
+                            type="search" autocomplete="off" placeholder=" " />
                         <label class="form__label form__label--floating" for="mediainfo">
                             {{ __('torrent.media-info') }}
                         </label>
                     </p>
                     <p class="form__group">
-                        <input
-                            id="keywords"
-                            wire:model.live="keywords"
-                            class="form__text"
-                            type="search"
-                            autocomplete="off"
-                            placeholder=" "
-                        />
+                        <input id="keywords" wire:model.live="keywords" class="form__text"
+                            type="search" autocomplete="off" placeholder=" " />
                         <label class="form__label form__label--floating" for="keywords">
                             {{ __('torrent.keywords') }}
                         </label>
                     </p>
                     <p class="form__group">
-                        <input
-                            id="uploader"
-                            wire:model.live="uploader"
-                            class="form__text"
-                            type="search"
-                            autocomplete="off"
-                            placeholder=" "
-                        />
+                        <input id="uploader" wire:model.live="uploader" class="form__text"
+                            type="search" autocomplete="off" placeholder=" " />
                         <label class="form__label form__label--floating" for="uploader">
                             {{ __('torrent.uploader') }}
                         </label>
@@ -80,27 +48,17 @@
                 <div class="form__group--short-horizontal">
                     <div class="form__group--short-horizontal">
                         <p class="form__group">
-                            <input
-                                id="episodeNumber"
-                                wire:model.live="episodeNumber"
-                                class="form__text"
-                                inputmode="numeric"
-                                pattern="[0-9]*"
-                                placeholder=" "
-                            />
+                            <input id="episodeNumber" wire:model.live="episodeNumber"
+                                class="form__text" inputmode="numeric" pattern="[0-9]*"
+                                placeholder=" " />
                             <label class="form__label form__label--floating" for="episodeNumber">
                                 {{ __('torrent.episode-number') }}
                             </label>
                         </p>
                         <p class="form__group">
-                            <input
-                                id="seasonNumber"
-                                wire:model.live="seasonNumber"
-                                class="form__text"
-                                inputmode="numeric"
-                                pattern="[0-9]*"
-                                placeholder=" "
-                            />
+                            <input id="seasonNumber" wire:model.live="seasonNumber"
+                                class="form__text" inputmode="numeric" pattern="[0-9]*"
+                                placeholder=" " />
                             <label class="form__label form__label--floating" for="seasonNumber">
                                 {{ __('torrent.season-number') }}
                             </label>
@@ -108,25 +66,15 @@
                     </div>
                     <div class="form__group--short-horizontal">
                         <p class="form__group">
-                            <input
-                                id="minSize"
-                                wire:model.live="minSize"
-                                class="form__text"
-                                inputmode="numeric"
-                                pattern="[0-9]*"
-                                placeholder=" "
-                            />
+                            <input id="minSize" wire:model.live="minSize" class="form__text"
+                                inputmode="numeric" pattern="[0-9]*" placeholder=" " />
                             <label class="form__label form__label--floating" for="minSize">
                                 Minimum size
                             </label>
                         </p>
                         <p class="form__group">
-                            <select
-                                id="minSizeMultiplier"
-                                wire:model.live="minSizeMultiplier"
-                                class="form__select"
-                                placeholder=" "
-                            >
+                            <select id="minSizeMultiplier" wire:model.live="minSizeMultiplier"
+                                class="form__select" placeholder=" ">
                                 <option value="1" selected>Bytes</option>
                                 <option value="1000">KB</option>
                                 <option value="1024">KiB</option>
@@ -137,35 +85,23 @@
                                 <option value="1000000000000">TB</option>
                                 <option value="1099511627776">TiB</option>
                             </select>
-                            <label
-                                class="form__label form__label--floating"
-                                for="minSizeMultiplier"
-                            >
+                            <label class="form__label form__label--floating"
+                                for="minSizeMultiplier">
                                 Unit
                             </label>
                         </p>
                     </div>
                     <div class="form__group--short-horizontal">
                         <p class="form__group">
-                            <input
-                                id="maxSize"
-                                wire:model.live="maxSize"
-                                class="form__text"
-                                inputmode="numeric"
-                                pattern="[0-9]*"
-                                placeholder=" "
-                            />
+                            <input id="maxSize" wire:model.live="maxSize" class="form__text"
+                                inputmode="numeric" pattern="[0-9]*" placeholder=" " />
                             <label class="form__label form__label--floating" for="maxSize">
                                 Maximum size
                             </label>
                         </p>
                         <p class="form__group">
-                            <select
-                                id="maxSizeMultiplier"
-                                wire:model.live="maxSizeMultiplier"
-                                class="form__select"
-                                placeholder=" "
-                            >
+                            <select id="maxSizeMultiplier" wire:model.live="maxSizeMultiplier"
+                                class="form__select" placeholder=" ">
                                 <option value="1" selected>Bytes</option>
                                 <option value="1000">KB</option>
                                 <option value="1024">KiB</option>
@@ -176,10 +112,8 @@
                                 <option value="1000000000000">TB</option>
                                 <option value="1099511627776">TiB</option>
                             </select>
-                            <label
-                                class="form__label form__label--floating"
-                                for="maxSizeMultiplier"
-                            >
+                            <label class="form__label form__label--floating"
+                                for="maxSizeMultiplier">
                                 Unit
                             </label>
                         </p>
@@ -187,14 +121,8 @@
                 </div>
                 <div class="form__group--short-horizontal">
                     <p class="form__group">
-                        <input
-                            id="playlistId"
-                            wire:model.live="playlistId"
-                            class="form__text"
-                            inputmode="numeric"
-                            pattern="[0-9]*"
-                            placeholder=" "
-                        />
+                        <input id="playlistId" wire:model.live="playlistId" class="form__text"
+                            inputmode="numeric" pattern="[0-9]*" placeholder=" " />
                         <label class="form__label form__label--floating" for="playlistId">
                             Playlist ID
                         </label>
@@ -208,12 +136,9 @@
                                 @foreach ($types as $type)
                                     <p class="form__group">
                                         <label class="form__label">
-                                            <input
-                                                class="form__checkbox"
-                                                type="checkbox"
+                                            <input class="form__checkbox" type="checkbox"
                                                 value="{{ $type->id }}"
-                                                wire:model.live="typeIds"
-                                            />
+                                                wire:model.live="typeIds" />
                                             {{ $type->name }}
                                         </label>
                                     </p>
@@ -230,12 +155,9 @@
                                 @foreach ($resolutions as $resolution)
                                     <p class="form__group">
                                         <label class="form__label">
-                                            <input
-                                                class="form__checkbox"
-                                                type="checkbox"
+                                            <input class="form__checkbox" type="checkbox"
                                                 value="{{ $resolution->id }}"
-                                                wire:model.live="resolutionIds"
-                                            />
+                                                wire:model.live="resolutionIds" />
                                             {{ $resolution->name }}
                                         </label>
                                     </p>
@@ -249,89 +171,57 @@
                             <div class="form__fieldset-checkbox-container">
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="0"
-                                            wire:model.live="free"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="0" wire:model.live="free" />
                                         0% Freeleech
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="25"
-                                            wire:model.live="free"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="25" wire:model.live="free" />
                                         25% Freeleech
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="50"
-                                            wire:model.live="free"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="50" wire:model.live="free" />
                                         50% Freeleech
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="75"
-                                            wire:model.live="free"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="75" wire:model.live="free" />
                                         75% Freeleech
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="100"
-                                            wire:model.live="free"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="100" wire:model.live="free" />
                                         100% Freeleech
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="1"
-                                            wire:model.live="doubleup"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="1" wire:model.live="doubleup" />
                                         Double upload
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="1"
-                                            wire:model.live="featured"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="1" wire:model.live="featured" />
                                         Featured
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="1"
-                                            wire:model.live="refundable"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="1" wire:model.live="refundable" />
                                         Refundable
                                     </label>
                                 </p>
@@ -344,67 +234,43 @@
                             <div class="form__fieldset-checkbox-container">
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="1"
-                                            wire:model.live="internal"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="1" wire:model.live="internal" />
                                         {{ __('torrent.internal') }}
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="1"
-                                            wire:model.live="personalRelease"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="1" wire:model.live="personalRelease" />
                                         {{ __('torrent.personal-release') }}
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="1"
-                                            wire:model.live="trumpable"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="1" wire:model.live="trumpable" />
                                         Trumpable
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="1"
-                                            wire:model.live="highspeed"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="1" wire:model.live="highspeed" />
                                         {{ __('common.high-speeds') }}
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="1"
-                                            wire:model.live="bookmarked"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="1" wire:model.live="bookmarked" />
                                         {{ __('common.bookmarked') }}
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="1"
-                                            wire:model.live="wished"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="1" wire:model.live="wished" />
                                         {{ __('common.wished') }}
                                     </label>
                                 </p>
@@ -417,45 +283,29 @@
                             <div class="form__fieldset-checkbox-container">
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="1"
-                                            wire:model.live="alive"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="1" wire:model.live="alive" />
                                         {{ __('torrent.alive') }}
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="1"
-                                            wire:model.live="dying"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="1" wire:model.live="dying" />
                                         Dying
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="1"
-                                            wire:model.live="dead"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="1" wire:model.live="dead" />
                                         Dead
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="1"
-                                            wire:model.live="graveyard"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="1" wire:model.live="graveyard" />
                                         {{ __('graveyard.graveyard') }}
                                     </label>
                                 </p>
@@ -468,56 +318,36 @@
                             <div class="form__fieldset-checkbox-container">
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="1"
-                                            wire:model.live="notDownloaded"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="1" wire:model.live="notDownloaded" />
                                         Not downloaded
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="1"
-                                            wire:model.live="downloaded"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="1" wire:model.live="downloaded" />
                                         Downloaded
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="1"
-                                            wire:model.live="seeding"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="1" wire:model.live="seeding" />
                                         Seeding
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="1"
-                                            wire:model.live="leeching"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="1" wire:model.live="leeching" />
                                         Leeching
                                     </label>
                                 </p>
                                 <p class="form__group">
                                     <label class="form__label">
-                                        <input
-                                            class="form__checkbox"
-                                            type="checkbox"
-                                            value="1"
-                                            wire:model.live="incomplete"
-                                        />
+                                        <input class="form__checkbox" type="checkbox"
+                                            value="1" wire:model.live="incomplete" />
                                         Incomplete
                                     </label>
                                 </p>
@@ -533,10 +363,8 @@
                 <div class="panel__actions">
                     @if ($checked && $user->group->is_modo)
                         <div class="panel__action">
-                            <button
-                                class="form__button form__button--filled"
-                                wire:click="alertConfirm()"
-                            >
+                            <button class="form__button form__button--filled"
+                                wire:click="alertConfirm()">
                                 Delete ({{ count($checked) }})
                             </button>
                         </div>
@@ -546,11 +374,8 @@
                         <div class="panel__action" title="{{ __('common.select') }}">
                             <label class="form__label">
                                 Select all
-                                <input
-                                    class="form__checkbox"
-                                    type="checkbox"
-                                    wire:model.live="selectPage"
-                                />
+                                <input class="form__checkbox" type="checkbox"
+                                    wire:model.live="selectPage" />
                             </label>
                         </div>
                     @endif
@@ -568,11 +393,8 @@
                 @if ($category->tv_meta)
                     <section>
                         @if (array_key_exists('Complete Pack', $similarTorrents))
-                            <details
-                                class="torrent-search--grouped__dropdown"
-                                open
-                                wire:ignore.self
-                            >
+                            <details class="torrent-search--grouped__dropdown" open
+                                wire:ignore.self>
                                 <summary x-bind="complete">Complete pack</summary>
                                 <table class="similar-torrents__torrents">
                                     <tbody>
@@ -580,25 +402,19 @@
                                             @foreach ($torrents as $torrent)
                                                 <tr>
                                                     @if ($loop->first)
-                                                        <th
-                                                            class="similar-torrents__type"
+                                                        <th class="similar-torrents__type"
                                                             scope="rowgroup"
-                                                            rowspan="{{ $loop->count }}"
-                                                        >
+                                                            rowspan="{{ $loop->count }}">
                                                             {{ $type }}
                                                         </th>
                                                     @endif
 
                                                     @if ($user->group->is_modo)
-                                                        <td
-                                                            class="similar-torrents__checkbox"
-                                                            x-on:click.self="$el.firstElementChild.click()"
-                                                        >
-                                                            <input
-                                                                type="checkbox"
+                                                        <td class="similar-torrents__checkbox"
+                                                            x-on:click.self="$el.firstElementChild.click()">
+                                                            <input type="checkbox"
                                                                 value="{{ $torrent->id }}"
-                                                                wire:model.live="checked"
-                                                            />
+                                                                wire:model.live="checked" />
                                                         </td>
                                                     @endif
 
@@ -612,22 +428,16 @@
                         @endif
 
                         @if (array_key_exists('Specials', $similarTorrents))
-                            <details
-                                class="torrent-search--grouped__dropdown"
-                                @if ($checked || (! array_key_exists('Complete Pack', $similarTorrents) && ! array_key_exists('Seasons', $similarTorrents)))
-                                    open
-                                @endif
-                                wire:ignore.self
-                            >
+                            <details class="torrent-search--grouped__dropdown"
+                                @if (
+                                    $checked ||
+                                        (!array_key_exists('Complete Pack', $similarTorrents) &&
+                                            !array_key_exists('Seasons', $similarTorrents))) open @endif wire:ignore.self>
                                 <summary x-bind="specials">Specials</summary>
                                 @foreach ($similarTorrents['Specials'] as $specialName => $special)
-                                    <details
-                                        class="torrent-search--grouped__dropdown"
-                                        @if ($checked || $loop->first)
-                                            open
-                                        @endif
-                                        wire:ignore.self
-                                    >
+                                    <details class="torrent-search--grouped__dropdown"
+                                        @if ($checked || $loop->first) open @endif
+                                        wire:ignore.self>
                                         <summary x-bind="special">{{ $specialName }}</summary>
                                         <table class="similar-torrents__torrents">
                                             @foreach ($special as $type => $torrents)
@@ -635,25 +445,19 @@
                                                     @foreach ($torrents as $torrent)
                                                         <tr>
                                                             @if ($loop->first)
-                                                                <th
-                                                                    class="similar-torrents__type"
+                                                                <th class="similar-torrents__type"
                                                                     scope="rowgroup"
-                                                                    rowspan="{{ $loop->count }}"
-                                                                >
+                                                                    rowspan="{{ $loop->count }}">
                                                                     {{ $type }}
                                                                 </th>
                                                             @endif
 
                                                             @if ($user->group->is_modo)
-                                                                <td
-                                                                    class="similar-torrents__checkbox"
-                                                                    x-on:click.self="$el.firstElementChild.click()"
-                                                                >
-                                                                    <input
-                                                                        type="checkbox"
+                                                                <td class="similar-torrents__checkbox"
+                                                                    x-on:click.self="$el.firstElementChild.click()">
+                                                                    <input type="checkbox"
                                                                         value="{{ $torrent->id }}"
-                                                                        wire:model.live="checked"
-                                                                    />
+                                                                        wire:model.live="checked" />
                                                                 </td>
                                                             @endif
 
@@ -669,40 +473,29 @@
                         @endif
 
                         @foreach ($similarTorrents['Seasons'] ?? [] as $seasonName => $season)
-                            <details
-                                class="torrent-search--grouped__dropdown"
-                                @if ($checked || $loop->first)
-                                    open
-                                @endif
-                                wire:ignore.self
-                            >
+                            <details class="torrent-search--grouped__dropdown"
+                                @if ($checked || $loop->first) open @endif wire:ignore.self>
                                 <summary x-bind="season">{{ $seasonName }}</summary>
-                                @if (array_key_exists('Season Pack', $season) && ! array_key_exists('Episodes', $season))
+                                @if (array_key_exists('Season Pack', $season) && !array_key_exists('Episodes', $season))
                                     <table class="similar-torrents__torrents">
                                         @foreach ($season['Season Pack'] as $type => $torrents)
                                             <tbody>
                                                 @foreach ($torrents as $torrent)
                                                     <tr>
                                                         @if ($loop->first)
-                                                            <th
-                                                                class="similar-torrents__type"
+                                                            <th class="similar-torrents__type"
                                                                 scope="rowgroup"
-                                                                rowspan="{{ $loop->count }}"
-                                                            >
+                                                                rowspan="{{ $loop->count }}">
                                                                 {{ $type }}
                                                             </th>
                                                         @endif
 
                                                         @if ($user->group->is_modo)
-                                                            <td
-                                                                class="similar-torrents__checkbox"
-                                                                x-on:click.self="$el.firstElementChild.click()"
-                                                            >
-                                                                <input
-                                                                    type="checkbox"
+                                                            <td class="similar-torrents__checkbox"
+                                                                x-on:click.self="$el.firstElementChild.click()">
+                                                                <input type="checkbox"
                                                                     value="{{ $torrent->id }}"
-                                                                    wire:model.live="checked"
-                                                                />
+                                                                    wire:model.live="checked" />
                                                             </td>
                                                         @endif
 
@@ -713,11 +506,8 @@
                                         @endforeach
                                     </table>
                                 @elseif (array_key_exists('Season Pack', $season))
-                                    <details
-                                        open
-                                        class="torrent-search--grouped__dropdown"
-                                        wire:ignore.self
-                                    >
+                                    <details open class="torrent-search--grouped__dropdown"
+                                        wire:ignore.self>
                                         <summary x-bind="pack">Season pack</summary>
                                         <table class="similar-torrents__torrents">
                                             @foreach ($season['Season Pack'] as $type => $torrents)
@@ -725,25 +515,19 @@
                                                     @foreach ($torrents as $torrent)
                                                         <tr>
                                                             @if ($loop->first)
-                                                                <th
-                                                                    class="similar-torrents__type"
+                                                                <th class="similar-torrents__type"
                                                                     scope="rowgroup"
-                                                                    rowspan="{{ $loop->count }}"
-                                                                >
+                                                                    rowspan="{{ $loop->count }}">
                                                                     {{ $type }}
                                                                 </th>
                                                             @endif
 
                                                             @if ($user->group->is_modo)
-                                                                <td
-                                                                    class="similar-torrents__checkbox"
-                                                                    x-on:click.self="$el.firstElementChild.click()"
-                                                                >
-                                                                    <input
-                                                                        type="checkbox"
+                                                                <td class="similar-torrents__checkbox"
+                                                                    x-on:click.self="$el.firstElementChild.click()">
+                                                                    <input type="checkbox"
                                                                         value="{{ $torrent->id }}"
-                                                                        wire:model.live="checked"
-                                                                    />
+                                                                        wire:model.live="checked" />
                                                                 </td>
                                                             @endif
 
@@ -757,13 +541,9 @@
                                 @endif
 
                                 @foreach ($season['Episodes'] ?? [] as $episodeName => $episode)
-                                    <details
-                                        class="torrent-search--grouped__dropdown"
-                                        @if ($checked || ($loop->first && ! array_key_exists('Season Pack', $season)))
-                                            open
-                                        @endif
-                                        wire:ignore.self
-                                    >
+                                    <details class="torrent-search--grouped__dropdown"
+                                        @if ($checked || ($loop->first && !array_key_exists('Season Pack', $season))) open @endif
+                                        wire:ignore.self>
                                         <summary x-bind="episode">{{ $episodeName }}</summary>
                                         <table class="similar-torrents__torrents">
                                             @foreach ($episode as $type => $torrents)
@@ -771,25 +551,19 @@
                                                     @foreach ($torrents as $torrent)
                                                         <tr>
                                                             @if ($loop->first)
-                                                                <th
-                                                                    class="similar-torrents__type"
+                                                                <th class="similar-torrents__type"
                                                                     scope="rowgroup"
-                                                                    rowspan="{{ $loop->count }}"
-                                                                >
+                                                                    rowspan="{{ $loop->count }}">
                                                                     {{ $type }}
                                                                 </th>
                                                             @endif
 
                                                             @if ($user->group->is_modo)
-                                                                <td
-                                                                    class="similar-torrents__checkbox"
-                                                                    x-on:click.self="$el.firstElementChild.click()"
-                                                                >
-                                                                    <input
-                                                                        type="checkbox"
+                                                                <td class="similar-torrents__checkbox"
+                                                                    x-on:click.self="$el.firstElementChild.click()">
+                                                                    <input type="checkbox"
                                                                         value="{{ $torrent->id }}"
-                                                                        wire:model.live="checked"
-                                                                    />
+                                                                        wire:model.live="checked" />
                                                                 </td>
                                                             @endif
 
@@ -812,15 +586,10 @@
                                     {{ __('torrent.type') }}
                                 </th>
                                 @if ($user->group->is_modo)
-                                    <th
-                                        class="similar-torrents__checkbox-header"
-                                        title="{{ __('common.select') }}"
-                                    >
-                                        <input
-                                            type="checkbox"
-                                            wire:model.live="selectPage"
-                                            style="vertical-align: middle"
-                                        />
+                                    <th class="similar-torrents__checkbox-header"
+                                        title="{{ __('common.select') }}">
+                                        <input type="checkbox" wire:model.live="selectPage"
+                                            style="vertical-align: middle" />
                                     </th>
                                 @endif
 
@@ -833,22 +602,16 @@
                                 <th class="similar-torrents__size-header">
                                     {{ __('torrent.size') }}
                                 </th>
-                                <th
-                                    class="similar-torrents__seeders-header"
-                                    title="{{ __('torrent.seeders') }}"
-                                >
+                                <th class="similar-torrents__seeders-header"
+                                    title="{{ __('torrent.seeders') }}">
                                     <i class="fas fa-arrow-alt-circle-up"></i>
                                 </th>
-                                <th
-                                    class="similar-torrents__leechers-header"
-                                    title="{{ __('torrent.leechers') }}"
-                                >
+                                <th class="similar-torrents__leechers-header"
+                                    title="{{ __('torrent.leechers') }}">
                                     <i class="fas fa-arrow-alt-circle-down"></i>
                                 </th>
-                                <th
-                                    class="similar-torrents__completed-header"
-                                    title="{{ __('torrent.completed') }}"
-                                >
+                                <th class="similar-torrents__completed-header"
+                                    title="{{ __('torrent.completed') }}">
                                     <i class="fas fa-check-circle"></i>
                                 </th>
                                 <th class="similar-torrents__age-header">
@@ -861,25 +624,18 @@
                                 @foreach ($torrents as $torrent)
                                     <tr>
                                         @if ($loop->first)
-                                            <th
-                                                class="similar-torrents__type"
-                                                scope="rowgroup"
-                                                rowspan="{{ $loop->count }}"
-                                            >
+                                            <th class="similar-torrents__type" scope="rowgroup"
+                                                rowspan="{{ $loop->count }}">
                                                 {{ $type }}
                                             </th>
                                         @endif
 
                                         @if ($user->group->is_modo)
-                                            <td
-                                                class="similar-torrents__checkbox"
-                                                x-on:click.self="$el.firstElementChild.click()"
-                                            >
-                                                <input
-                                                    type="checkbox"
+                                            <td class="similar-torrents__checkbox"
+                                                x-on:click.self="$el.firstElementChild.click()">
+                                                <input type="checkbox"
                                                     value="{{ $torrent->id }}"
-                                                    wire:model.live="checked"
-                                                />
+                                                    wire:model.live="checked" />
                                             </td>
                                         @endif
 
@@ -897,15 +653,10 @@
                                     {{ __('torrent.type') }}
                                 </th>
                                 @if ($user->group->is_modo)
-                                    <th
-                                        class="similar-torrents__checkbox-header"
-                                        title="{{ __('common.select') }}"
-                                    >
-                                        <input
-                                            type="checkbox"
-                                            wire:model.live="selectPage"
-                                            style="vertical-align: middle"
-                                        />
+                                    <th class="similar-torrents__checkbox-header"
+                                        title="{{ __('common.select') }}">
+                                        <input type="checkbox" wire:model.live="selectPage"
+                                            style="vertical-align: middle" />
                                     </th>
                                 @endif
 
@@ -918,22 +669,16 @@
                                 <th class="similar-torrents__size-header">
                                     {{ __('torrent.size') }}
                                 </th>
-                                <th
-                                    class="similar-torrents__seeders-header"
-                                    title="{{ __('torrent.seeders') }}"
-                                >
+                                <th class="similar-torrents__seeders-header"
+                                    title="{{ __('torrent.seeders') }}">
                                     <i class="fas fa-arrow-alt-circle-up"></i>
                                 </th>
-                                <th
-                                    class="similar-torrents__leechers-header"
-                                    title="{{ __('torrent.leechers') }}"
-                                >
+                                <th class="similar-torrents__leechers-header"
+                                    title="{{ __('torrent.leechers') }}">
                                     <i class="fas fa-arrow-alt-circle-down"></i>
                                 </th>
-                                <th
-                                    class="similar-torrents__completed-header"
-                                    title="{{ __('torrent.completed') }}"
-                                >
+                                <th class="similar-torrents__completed-header"
+                                    title="{{ __('torrent.completed') }}">
                                     <i class="fas fa-check-circle"></i>
                                 </th>
                                 <th class="similar-torrents__age-header">
@@ -946,25 +691,18 @@
                                 @foreach ($torrents as $torrent)
                                     <tr>
                                         @if ($loop->first)
-                                            <th
-                                                class="similar-torrents__type"
-                                                scope="rowgroup"
-                                                rowspan="{{ $loop->count }}"
-                                            >
+                                            <th class="similar-torrents__type" scope="rowgroup"
+                                                rowspan="{{ $loop->count }}">
                                                 {{ $type }}
                                             </th>
                                         @endif
 
                                         @if ($user->group->is_modo)
-                                            <td
-                                                class="similar-torrents__checkbox"
-                                                x-on:click.self="$el.firstElementChild.click()"
-                                            >
-                                                <input
-                                                    type="checkbox"
+                                            <td class="similar-torrents__checkbox"
+                                                x-on:click.self="$el.firstElementChild.click()">
+                                                <input type="checkbox"
                                                     value="{{ $torrent->id }}"
-                                                    wire:model.live="checked"
-                                                />
+                                                    wire:model.live="checked" />
                                             </td>
                                         @endif
 
@@ -986,32 +724,25 @@
                     <div class="panel__action">
                         <label class="form__label">
                             Hide filled requests
-                            <input
-                                class="form__checkbox"
-                                type="checkbox"
-                                wire:model.live="hideFilledRequests"
-                            />
+                            <input class="form__checkbox" type="checkbox"
+                                wire:model.live="hideFilledRequests" />
                         </label>
                     </div>
                     <div class="panel__action">
-                        <a
-                            href="{{
-                                route('requests.create', [
-                                    'category_id' => $category->id,
-                                    'title' => rawurlencode(
-                                        $category->movie_meta
-                                            ? ($work?->title ?? '') . ' ' . substr($work->release_date ?? '', 0, 4)
-                                            : ($work?->name ?? '') . ' ' . substr($work->first_air_date ?? '', 0, 4)
-                                    ),
-                                    'imdb' => $work?->imdb_id ?? '',
-                                    'tmdb_movie_id' => $category->movie_meta ? $tmdbId ?? '' : '',
-                                    'tmdb_tv_id' => $category->tv_meta ? $tmdbId ?? '' : '',
-                                    'tvdb' => $work->tvdb_id ?? '',
-                                    'igdb' => $igdb ?? '',
-                                ])
-                            }}"
-                            class="form__button form__button--text"
-                        >
+                        <a href="{{ route('requests.create', [
+                            'category_id' => $category->id,
+                            'title' => rawurlencode(
+                                $category->movie_meta
+                                    ? ($work?->title ?? '') . ' ' . substr($work->release_date ?? '', 0, 4)
+                                    : ($work?->name ?? '') . ' ' . substr($work->first_air_date ?? '', 0, 4),
+                            ),
+                            'imdb' => $work?->imdb_id ?? '',
+                            'tmdb_movie_id' => $category->movie_meta ? $tmdbId ?? '' : '',
+                            'tmdb_tv_id' => $category->tv_meta ? $tmdbId ?? '' : '',
+                            'tvdb' => $work->tvdb_id ?? '',
+                            'igdb' => $igdb ?? '',
+                        ]) }}"
+                            class="form__button form__button--text">
                             {{ __('request.add-request') }}
                         </a>
                     </div>
@@ -1024,8 +755,7 @@
                             <tr>
                                 <td>
                                     <a
-                                        href="{{ route('requests.show', ['torrentRequest' => $torrentRequest]) }}"
-                                    >
+                                        href="{{ route('requests.show', ['torrentRequest' => $torrentRequest]) }}">
                                         {{ $torrentRequest->name }}
                                     </a>
                                 </td>
@@ -1033,19 +763,14 @@
                                 <td>{{ $torrentRequest->type->name ?? 'Any' }}</td>
                                 <td>{{ $torrentRequest->resolution->name ?? 'Any' }}</td>
                                 <td>
-                                    <x-user-tag
-                                        :user="$torrentRequest->user"
-                                        :anon="$torrentRequest->anon"
-                                    />
+                                    <x-user-tag :user="$torrentRequest->user" :anon="$torrentRequest->anon" />
                                 </td>
                                 <td>{{ $torrentRequest->votes }}</td>
                                 <td>{{ $torrentRequest->comments_count }}</td>
                                 <td>{{ number_format($torrentRequest->bounty) }}</td>
                                 <td>
-                                    <time
-                                        datetime="{{ $torrentRequest->created_at }}"
-                                        title="{{ $torrentRequest->created_at }}"
-                                    >
+                                    <time datetime="{{ $torrentRequest->created_at }}"
+                                        title="{{ $torrentRequest->created_at }}">
                                         {{ $torrentRequest->created_at->diffForHumans() }}
                                     </time>
                                 </td>
@@ -1054,143 +779,143 @@
                                         @case($torrentRequest->claim_exists && $torrentRequest->torrent_id === null)
                                             <i class="fas fa-circle text-blue"></i>
                                             {{ __('request.claimed') }}
+                                        @break
 
-                                            @break
                                         @case($torrentRequest->torrent_id !== null && $torrentRequest->approved_when === null)
                                             <i class="fas fa-circle text-purple"></i>
                                             {{ __('request.pending') }}
+                                        @break
 
-                                            @break
                                         @case($torrentRequest->torrent_id === null)
                                             <i class="fas fa-circle text-red"></i>
                                             {{ __('request.unfilled') }}
+                                        @break
 
-                                            @break
                                         @default
                                             <i class="fas fa-circle text-green"></i>
                                             {{ __('request.filled') }}
-
-                                            @break
+                                        @break
                                     @endswitch
                                 </td>
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="10">{{ __('common.no-result') }}</td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
-            </div>
-        </section>
-        @if ($collectionMovies?->isNotEmpty())
-            <section class="panelV2">
-                <header class="panel__header">
-                    <h2 class="panel__heading">{{ __('mediahub.collection') }}</h2>
-                    <div class="panel__actions" x-data="posterRow">
-                        <div class="panel__action">
-                            <button class="form__standard-icon-button" x-bind="scrollLeft">
-                                <i class="{{ \config('other.font-awesome') }} fa-angle-left"></i>
-                            </button>
-                        </div>
-                        <div class="panel__action">
-                            <button class="form__standard-icon-button" x-bind="scrollRight">
-                                <i class="{{ \config('other.font-awesome') }} fa-angle-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </header>
-                <div class="panel__body collection__posters" x-ref="posters">
-                    @foreach ($collectionMovies as $collectionMovie)
-                        <x-movie.poster :movie="$collectionMovie" :categoryId="$category->id" />
-                    @endforeach
-                </div>
-            </section>
-        @endif
-
-        <livewire:also-downloaded-works :work="$work->withoutRelations()" />
-
-        @if ($playlistCategories->isNotEmpty())
-            <section class="panelV2">
-                <h2 class="panel__heading">{{ __('playlist.playlists') }}</h2>
-                <div class="data-table-wrapper">
-                    <table class="data-table">
-                        <thead>
-                            <th>{{ __('common.category') }}</th>
-                            <th>{{ __('common.name') }}</th>
-                            <th>{{ __('playlist.titles') }}</th>
-                            <th>{{ __('common.author') }}</th>
-                        </thead>
-                        <tbody>
-                            @foreach ($playlistCategories as $playlistCategory)
-                                @foreach ($playlistCategory->playlists as $playlist)
-                                    <tr>
-                                        @if ($loop->first)
-                                            <td rowspan="{{ $loop->count }}">
-                                                {{ $playlist->playlistCategory->name }}
-                                            </td>
-                                        @endif
-
-                                        <td>
-                                            <a
-                                                href="{{ route('playlists.show', ['playlist' => $playlist]) }}"
-                                            >
-                                                {{ $playlist->name }}
-                                            </a>
-                                        </td>
-                                        <td>{{ $playlist->torrents_count }}</td>
-                                        <td>
-                                            <x-user-tag :user="$playlist->user" :anon="false" />
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="10">{{ __('common.no-result') }}</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
             </section>
-        @endif
+            @if ($collectionMovies?->isNotEmpty())
+                <section class="panelV2">
+                    <header class="panel__header">
+                        <h2 class="panel__heading">{{ __('mediahub.collection') }}</h2>
+                        <div class="panel__actions" x-data="posterRow">
+                            <div class="panel__action">
+                                <button class="form__standard-icon-button" x-bind="scrollLeft">
+                                    <i class="{{ \config('other.font-awesome') }} fa-angle-left"></i>
+                                </button>
+                            </div>
+                            <div class="panel__action">
+                                <button class="form__standard-icon-button" x-bind="scrollRight">
+                                    <i class="{{ \config('other.font-awesome') }} fa-angle-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="panel__body collection__posters" x-ref="posters">
+                        @foreach ($collectionMovies as $collectionMovie)
+                            <x-movie.poster :movie="$collectionMovie" :categoryId="$category->id" />
+                        @endforeach
+                    </div>
+                </section>
+            @endif
+
+            <livewire:also-downloaded-works :work="$work->withoutRelations()" />
+
+            @if ($playlistCategories->isNotEmpty())
+                <section class="panelV2">
+                    <h2 class="panel__heading">{{ __('playlist.playlists') }}</h2>
+                    <div class="data-table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <th>{{ __('common.category') }}</th>
+                                <th>{{ __('common.name') }}</th>
+                                <th>{{ __('playlist.titles') }}</th>
+                                <th>{{ __('common.author') }}</th>
+                            </thead>
+                            <tbody>
+                                @foreach ($playlistCategories as $playlistCategory)
+                                    @foreach ($playlistCategory->playlists as $playlist)
+                                        <tr>
+                                            @if ($loop->first)
+                                                <td rowspan="{{ $loop->count }}">
+                                                    {{ $playlist->playlistCategory->name }}
+                                                </td>
+                                            @endif
+
+                                            <td>
+                                                <a
+                                                    href="{{ route('playlists.show', ['playlist' => $playlist]) }}">
+                                                    {{ $playlist->name }}
+                                                </a>
+                                            </td>
+                                            <td>{{ $playlist->torrents_count }}</td>
+                                            <td>
+                                                <x-user-tag :user="$playlist->user" :anon="false" />
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            @endif
+        </div>
     </div>
-</div>
 
-@section('javascripts')
-    @if ($user->group->is_modo)
-        <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
-            window.addEventListener('swal:modal', event => {
-              Swal.fire({
-                title: event.detail.message,
-                text: event.detail.text,
-                icon: event.detail.type,
-              })
-            })
+    @section('javascripts')
+        @if ($user->group->is_modo)
+            <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
+                window.addEventListener('swal:modal', event => {
+                    Swal.fire({
+                        title: event.detail.message,
+                        text: event.detail.text,
+                        icon: event.detail.type,
+                    })
+                })
 
-            window.addEventListener('swal:confirm', event => {
-              const { value: text } = Swal.fire({
-                input: 'textarea',
-                inputLabel: 'Delete reason',
-                inputPlaceholder: 'Type your reason here...',
-                inputAttributes: {
-                  'aria-label': 'Type your reason here'
-                },
-                inputValidator: (value) => {
-                  if (!value) {
-                    return 'You need to write something!'
-                  }
-                },
-                title: event.detail.message,
-                html: event.detail.body,
-                icon: event.detail.type,
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!',
-              }).then((result) => {
-                if (result.isConfirmed) {
-                @this.set('reason', result.value);
-                  Livewire.dispatch('destroy')
-                }
-              })
-            })
-        </script>
-    @endif
-@endsection
+                window.addEventListener('swal:confirm', event => {
+                    const {
+                        value: text
+                    } = Swal.fire({
+                        input: 'textarea',
+                        inputLabel: 'Delete reason',
+                        inputPlaceholder: 'Type your reason here...',
+                        inputAttributes: {
+                            'aria-label': 'Type your reason here'
+                        },
+                        inputValidator: (value) => {
+                            if (!value) {
+                                return 'You need to write something!'
+                            }
+                        },
+                        title: event.detail.message,
+                        html: event.detail.body,
+                        icon: event.detail.type,
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            @this.set('reason', result.value);
+                            Livewire.dispatch('destroy')
+                        }
+                    })
+                })
+            </script>
+        @endif
+    @endsection

@@ -7,10 +7,7 @@
         </a>
     </li>
     <li class="breadcrumbV2">
-        <a
-            href="{{ route('staff.automatic_torrent_freeleeches.index') }}"
-            class="breadcrumb__link"
-        >
+        <a href="{{ route('staff.automatic_torrent_freeleeches.index') }}" class="breadcrumb__link">
             Automatic torrent freeleeches
         </a>
     </li>
@@ -25,51 +22,27 @@
     <section class="panelV2">
         <h2 class="panel__heading">Add an automatic torrent freeleech</h2>
         <div class="panel__body">
-            <form
-                class="form"
-                method="POST"
-                action="{{ route('staff.automatic_torrent_freeleeches.store') }}"
-            >
+            <form class="form" method="POST"
+                action="{{ route('staff.automatic_torrent_freeleeches.store') }}">
                 @csrf
                 <p class="form__group">
-                    <input
-                        type="text"
-                        name="position"
-                        id="position"
-                        class="form__text"
-                        inputmode="numeric"
-                        pattern="[0-9]*"
-                        required
-                        value="{{ old('position') }}"
-                    />
+                    <input type="text" name="position" id="position" class="form__text"
+                        inputmode="numeric" pattern="[0-9]*" required value="{{ old('position') }}" />
                     <label class="form__label form__label--floating" for="position">
                         {{ __('common.position') }}
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        id="name_regex"
-                        class="form__text"
-                        name="name_regex"
-                        placeholder=" "
-                        type="text"
-                        value="{{ old('name_regex') }}"
-                    />
+                    <input id="name_regex" class="form__text" name="name_regex" placeholder=" "
+                        type="text" value="{{ old('name_regex') }}" />
                     <label class="form__label form__label--floating" for="name_regex">
                         Regex torrent name
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        type="text"
-                        name="size"
-                        id="size"
-                        class="form__text"
-                        inputmode="numeric"
-                        pattern="[0-9]*"
-                        placeholder=" "
-                        value="{{ old('size') }}"
-                    />
+                    <input type="text" name="size" id="size" class="form__text"
+                        inputmode="numeric" pattern="[0-9]*" placeholder=" "
+                        value="{{ old('size') }}" />
                     <label class="form__label form__label--floating" for="size">
                         Minimum torrent size (bytes)
                     </label>
@@ -78,11 +51,8 @@
                     <select id="category_id" name="category_id" class="form__select">
                         <option hidden selected disabled value="">Any</option>
                         @foreach ($categories as $category)
-                            <option
-                                class="form__option"
-                                value="{{ $category->id }}"
-                                @selected(old('category_id') == $category->id)
-                            >
+                            <option class="form__option" value="{{ $category->id }}"
+                                @selected(old('category_id') == $category->id)>
                                 {{ $category->name }}
                             </option>
                         @endforeach
@@ -95,10 +65,7 @@
                     <select id="type_id" name="type_id" class="form__select">
                         <option hidden disabled selected value="">Any</option>
                         @foreach ($types as $type)
-                            <option
-                                value="{{ $type->id }}"
-                                @selected(old('type_id') == $type->id)
-                            >
+                            <option value="{{ $type->id }}" @selected(old('type_id') == $type->id)>
                                 {{ $type->name }}
                             </option>
                         @endforeach
@@ -111,10 +78,7 @@
                     <select id="resolution_id" name="resolution_id" class="form__select">
                         <option hidden disabled selected value="">Any</option>
                         @foreach ($resolutions as $resolution)
-                            <option
-                                value="{{ $resolution->id }}"
-                                @selected(old('resolution_id') == $resolution->id)
-                            >
+                            <option value="{{ $resolution->id }}" @selected(old('resolution_id') == $resolution->id)>
                                 {{ $resolution->name }}
                             </option>
                         @endforeach
@@ -124,16 +88,9 @@
                     </label>
                 </p>
                 <p class="form__group">
-                    <input
-                        type="text"
-                        name="freeleech_percentage"
-                        id="freeleech_percentage"
-                        class="form__text"
-                        inputmode="numeric"
-                        pattern="[0-9]|[1-9][0-9]|100"
-                        required
-                        value="{{ old('freeleech_percentage') }}"
-                    />
+                    <input type="text" name="freeleech_percentage" id="freeleech_percentage"
+                        class="form__text" inputmode="numeric" pattern="[0-9]|[1-9][0-9]|100" required
+                        value="{{ old('freeleech_percentage') }}" />
                     <label class="form__label form__label--floating" for="freeleech_percentage">
                         Freeleech percentage
                     </label>

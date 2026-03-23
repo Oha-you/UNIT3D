@@ -30,8 +30,7 @@
                                     style="
                                         color: {{ $group->color }};
                                         background-image: {{ $group->effect }};
-                                    "
-                                >
+                                    ">
                                     <i class="{{ $group->icon }}"></i>
                                     {{ $group->name }}
                                 </span>
@@ -55,12 +54,10 @@
                                                 <td>
                                                     @if ($user->uploaded >= $group->min_uploaded ?? 0)
                                                         <i
-                                                            class="{{ config('other.font-awesome') }} fa-check text-green"
-                                                        ></i>
+                                                            class="{{ config('other.font-awesome') }} fa-check text-green"></i>
                                                     @else
                                                         <i
-                                                            class="{{ config('other.font-awesome') }} fa-x text-red"
-                                                        ></i>
+                                                            class="{{ config('other.font-awesome') }} fa-x text-red"></i>
                                                         |
                                                         {{ \App\Helpers\StringHelper::formatBytes($group->min_uploaded - $user->uploaded) }}
                                                     @endif
@@ -72,12 +69,10 @@
                                                 <td>
                                                     @if ($user->ratio >= $group->min_ratio ?? 0)
                                                         <i
-                                                            class="{{ config('other.font-awesome') }} fa-check text-green"
-                                                        ></i>
+                                                            class="{{ config('other.font-awesome') }} fa-check text-green"></i>
                                                     @else
                                                         <i
-                                                            class="{{ config('other.font-awesome') }} fa-x text-red"
-                                                        ></i>
+                                                            class="{{ config('other.font-awesome') }} fa-x text-red"></i>
                                                         | {{ $group->min_ratio - $user->ratio }}
                                                     @endif
                                                 </td>
@@ -94,12 +89,10 @@
                                                 <td>
                                                     @if ($user->created_at->addRealSeconds($group->min_age ?? 0)->isBefore($current))
                                                         <i
-                                                            class="{{ config('other.font-awesome') }} fa-check text-green"
-                                                        ></i>
+                                                            class="{{ config('other.font-awesome') }} fa-check text-green"></i>
                                                     @else
                                                         <i
-                                                            class="{{ config('other.font-awesome') }} fa-x text-red"
-                                                        ></i>
+                                                            class="{{ config('other.font-awesome') }} fa-x text-red"></i>
                                                         |
                                                         {{ \App\Helpers\StringHelper::timeElapsed($group->min_age - $user_account_age) }}
                                                     @endif
@@ -113,12 +106,10 @@
                                                 <td>
                                                     @if ($group->min_avg_seedtime <= $user_avg_seedtime)
                                                         <i
-                                                            class="{{ config('other.font-awesome') }} fa-check text-green"
-                                                        ></i>
+                                                            class="{{ config('other.font-awesome') }} fa-check text-green"></i>
                                                     @else
                                                         <i
-                                                            class="{{ config('other.font-awesome') }} fa-x text-red"
-                                                        ></i>
+                                                            class="{{ config('other.font-awesome') }} fa-x text-red"></i>
                                                         |
                                                         {{ \App\Helpers\StringHelper::timeElapsed($group->min_avg_seedtime - $user_avg_seedtime) }}
                                                     @endif
@@ -132,12 +123,10 @@
                                                 <td>
                                                     @if ($group->min_seedsize <= $user_seed_size)
                                                         <i
-                                                            class="{{ config('other.font-awesome') }} fa-check text-green"
-                                                        ></i>
+                                                            class="{{ config('other.font-awesome') }} fa-check text-green"></i>
                                                     @else
                                                         <i
-                                                            class="{{ config('other.font-awesome') }} fa-x text-red"
-                                                        ></i>
+                                                            class="{{ config('other.font-awesome') }} fa-x text-red"></i>
                                                         |
                                                         {{ \App\Helpers\StringHelper::formatBytes($group->min_seedsize - $user_seed_size) }}
                                                     @endif
@@ -151,12 +140,10 @@
                                                 <td>
                                                     @if ($group->min_uploads <= $user_uploads)
                                                         <i
-                                                            class="{{ config('other.font-awesome') }} fa-check text-green"
-                                                        ></i>
+                                                            class="{{ config('other.font-awesome') }} fa-check text-green"></i>
                                                     @else
                                                         <i
-                                                            class="{{ config('other.font-awesome') }} fa-x text-red"
-                                                        ></i>
+                                                            class="{{ config('other.font-awesome') }} fa-x text-red"></i>
                                                         |
                                                         {{ $group->min_uploads - $user_uploads }}
                                                     @endif
@@ -174,8 +161,7 @@
                                         <tr>
                                             <td>
                                                 <i
-                                                    class="{{ config('other.font-awesome') }} fa-arrow-down-short-wide text-blue"
-                                                ></i>
+                                                    class="{{ config('other.font-awesome') }} fa-arrow-down-short-wide text-blue"></i>
                                                 DL slots: {{ $group->download_slots ?? '∞' }}
                                             </td>
                                         </tr>
@@ -184,20 +170,22 @@
                                             <tr>
                                                 <td>
                                                     <i
-                                                        class="{{ config('other.font-awesome') }} fa-upload text-success"
-                                                    ></i>
+                                                        class="{{ config('other.font-awesome') }} fa-upload text-success"></i>
                                                     {{ __('common.upload') }}
                                                     {{ __('torrent.torrents') }}
                                                 </td>
                                             </tr>
                                         @endif
 
-                                        @if ($group->can_invite && (! config('other.invites_restriced') || (config('other.invites_restriced') && \in_array($group->name, config('other.invite_groups'), true))))
+                                        @if (
+                                            $group->can_invite &&
+                                                (!config('other.invites_restriced') ||
+                                                    (config('other.invites_restriced') &&
+                                                        \in_array($group->name, config('other.invite_groups'), true))))
                                             <tr>
                                                 <td>
                                                     <i
-                                                        class="{{ config('other.font-awesome') }} fa-paper-plane"
-                                                    ></i>
+                                                        class="{{ config('other.font-awesome') }} fa-paper-plane"></i>
                                                     {{ __('user.send-invite') }}
                                                 </td>
                                             </tr>
@@ -207,8 +195,7 @@
                                             <tr>
                                                 <td>
                                                     <i
-                                                        class="{{ config('other.font-awesome') }} fa-star text-gold"
-                                                    ></i>
+                                                        class="{{ config('other.font-awesome') }} fa-star text-gold"></i>
                                                     {{ __('torrent.freeleech') }}
                                                 </td>
                                             </tr>
@@ -218,8 +205,7 @@
                                             <tr>
                                                 <td>
                                                     <i
-                                                        class="fas fa-chevron-double-up torrent-icons__double-upload"
-                                                    ></i>
+                                                        class="fas fa-chevron-double-up torrent-icons__double-upload"></i>
                                                     {{ __('torrent.double-upload') }}
                                                 </td>
                                             </tr>
@@ -238,8 +224,7 @@
                                             <tr>
                                                 <td>
                                                     <i
-                                                        class="{{ config('other.font-awesome') }} fa-syringe"
-                                                    ></i>
+                                                        class="{{ config('other.font-awesome') }} fa-syringe"></i>
                                                     Immune to automated HnR warnings
                                                 </td>
                                             </tr>

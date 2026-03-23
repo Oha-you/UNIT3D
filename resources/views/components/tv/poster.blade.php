@@ -1,20 +1,11 @@
-@props([
-    'tv',
-    'categoryId',
-    'tmdb',
-])
+@props(['tv', 'categoryId', 'tmdb'])
 
 <article class="torrent-search--poster__result">
     <figure>
-        <a
-            href="{{ $tv?->id ?? $tmdb ? route('torrents.similar', ['category_id' => $categoryId, 'tmdb' => $tv?->id ?? $tmdb]) : '#' }}"
-            class="torrent-search--poster__poster"
-        >
-            <img
-                src="{{ isset($tv->poster) ? tmdb_image('poster_mid', $tv->poster) : 'https://via.placeholder.com/90x135' }}"
-                alt="{{ __('torrent.similar') }}"
-                loading="lazy"
-            />
+        <a href="{{ $tv?->id ?? $tmdb ? route('torrents.similar', ['category_id' => $categoryId, 'tmdb' => $tv?->id ?? $tmdb]) : '#' }}"
+            class="torrent-search--poster__poster">
+            <img src="{{ isset($tv->poster) ? tmdb_image('poster_mid', $tv->poster) : 'https://via.placeholder.com/90x135' }}"
+                alt="{{ __('torrent.similar') }}" loading="lazy" />
         </a>
         <figcaption class="torrent-search--poster__caption">
             <h2 class="torrent-search--poster__title">

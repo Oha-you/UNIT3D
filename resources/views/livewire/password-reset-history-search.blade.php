@@ -4,13 +4,8 @@
         <div class="panel__actions">
             <div class="panel__action">
                 <div class="form__group">
-                    <input
-                        id="username"
-                        class="form__text"
-                        type="text"
-                        wire:model.live="username"
-                        placeholder=" "
-                    />
+                    <input id="username" class="form__text" type="text" wire:model.live="username"
+                        placeholder=" " />
                     <label class="form__label form__label--floating" for="username">
                         {{ __('common.username') }}
                     </label>
@@ -36,11 +31,15 @@
                 <tr>
                     <th wire:click="sortBy('user_id')" role="columnheader button">
                         {{ __('common.username') }}
-                        @include('livewire.includes._sort-icon', ['field' => 'user_id'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'user_id',
+                        ])
                     </th>
                     <th wire:click="sortBy('created_at')" role="columnheader button">
                         {{ __('common.created_at') }}
-                        @include('livewire.includes._sort-icon', ['field' => 'created_at'])
+                        @include('livewire.includes._sort-icon', [
+                            'field' => 'created_at',
+                        ])
                     </th>
                 </tr>
                 @forelse ($passwordResetHistories as $passwordResetHistory)
@@ -49,10 +48,8 @@
                             <x-user-tag :user="$passwordResetHistory->user" :anon="false" />
                         </td>
                         <td>
-                            <time
-                                datetime="{{ $passwordResetHistory->created_at }}"
-                                title="{{ $passwordResetHistory->created_at }}"
-                            >
+                            <time datetime="{{ $passwordResetHistory->created_at }}"
+                                title="{{ $passwordResetHistory->created_at }}">
                                 {{ $passwordResetHistory->created_at }}
                             </time>
                         </td>

@@ -34,10 +34,8 @@
                         <tbody x-data="toggle">
                             <tr x-on:click="toggle" style="cursor: pointer">
                                 <td style="width: 50%">
-                                    <a
-                                        href="{{ route('staff.peers.index', ['agent' => $prefix]) }}"
-                                        x-on:click.stop
-                                    >
+                                    <a href="{{ route('staff.peers.index', ['agent' => $prefix]) }}"
+                                        x-on:click.stop>
                                         {{ $prefix }}
                                     </a>
                                 </td>
@@ -50,8 +48,7 @@
                                 <tr x-cloak x-show="isToggledOn">
                                     <td style="padding: 0 0 0 24px; width: 50%">
                                         <a
-                                            href="{{ route('staff.peers.index', ['agent' => $agent]) }}"
-                                        >
+                                            href="{{ route('staff.peers.index', ['agent' => $agent]) }}">
                                             {{ $agent }}
                                         </a>
                                     </td>

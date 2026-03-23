@@ -16,10 +16,8 @@
         <header class="panel__header">
             <h2 class="panel__heading">Torrent distributors</h2>
             <div class="panel__actions">
-                <a
-                    href="{{ route('staff.distributors.create') }}"
-                    class="panel__action form__button form__button--text"
-                >
+                <a href="{{ route('staff.distributors.create') }}"
+                    class="panel__action form__button form__button--text">
                     {{ __('common.add') }}
                 </a>
             </div>
@@ -37,26 +35,21 @@
                         <tr>
                             <td>
                                 <a
-                                    href="{{ route('staff.distributors.edit', ['distributor' => $distributor]) }}"
-                                >
+                                    href="{{ route('staff.distributors.edit', ['distributor' => $distributor]) }}">
                                     {{ $distributor->name }}
                                 </a>
                             </td>
                             <td>
                                 <menu class="data-table__actions">
                                     <li class="data-table__action">
-                                        <a
-                                            href="{{ route('staff.distributors.edit', ['distributor' => $distributor]) }}"
-                                            class="form__button form__button--text"
-                                        >
+                                        <a href="{{ route('staff.distributors.edit', ['distributor' => $distributor]) }}"
+                                            class="form__button form__button--text">
                                             {{ __('common.edit') }}
                                         </a>
                                     </li>
                                     <li class="data-table__action">
-                                        <a
-                                            href="{{ route('staff.distributors.delete', ['distributor' => $distributor]) }}"
-                                            class="form__button form__button--text"
-                                        >
+                                        <a href="{{ route('staff.distributors.delete', ['distributor' => $distributor]) }}"
+                                            class="form__button form__button--text">
                                             {{ __('common.delete') }}
                                         </a>
                                     </li>

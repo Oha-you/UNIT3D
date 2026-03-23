@@ -9,31 +9,45 @@
                             <th class="category__icon"></th>
                             <th wire:click="sortBy('title')" role="columnheader button">
                                 {{ __('torrent.torrent') }}
-                                @include('livewire.includes._sort-icon', ['field' => 'title'])
+                                @include('livewire.includes._sort-icon', [
+                                    'field' => 'title',
+                                ])
                             </th>
                             <th wire:click="sortBy('language_id')" role="columnheader button">
                                 {{ __('common.language') }}
-                                @include('livewire.includes._sort-icon', ['field' => 'language_id'])
+                                @include('livewire.includes._sort-icon', [
+                                    'field' => 'language_id',
+                                ])
                             </th>
                             <th wire:click="sortBy('extension')" role="columnheader button">
                                 {{ __('subtitle.extension') }}
-                                @include('livewire.includes._sort-icon', ['field' => 'extension'])
+                                @include('livewire.includes._sort-icon', [
+                                    'field' => 'extension',
+                                ])
                             </th>
                             <th wire:click="sortBy('file_size')" role="columnheader button">
                                 {{ __('subtitle.size') }}
-                                @include('livewire.includes._sort-icon', ['field' => 'file_size'])
+                                @include('livewire.includes._sort-icon', [
+                                    'field' => 'file_size',
+                                ])
                             </th>
                             <th wire:click="sortBy('downloads')" role="columnheader button">
                                 {{ __('subtitle.downloads') }}
-                                @include('livewire.includes._sort-icon', ['field' => 'downloads'])
+                                @include('livewire.includes._sort-icon', [
+                                    'field' => 'downloads',
+                                ])
                             </th>
                             <th wire:click="sortBy('created_at')" role="columnheader button">
                                 {{ __('subtitle.uploaded') }}
-                                @include('livewire.includes._sort-icon', ['field' => 'created_at'])
+                                @include('livewire.includes._sort-icon', [
+                                    'field' => 'created_at',
+                                ])
                             </th>
                             <th wire:click="sortBy('user_id')" role="columnheader button">
                                 {{ __('subtitle.uploader') }}
-                                @include('livewire.includes._sort-icon', ['field' => 'user_id'])
+                                @include('livewire.includes._sort-icon', [
+                                    'field' => 'user_id',
+                                ])
                             </th>
                             <th>{{ __('common.actions') }}</th>
                         </tr>
@@ -43,40 +57,31 @@
                             <tr>
                                 <td>
                                     @if ($subtitle->torrent->category->image === null)
-                                        <i
-                                            class="{{ $subtitle->torrent->category->icon }} category__icon"
-                                            title="{{ $subtitle->torrent->category->name }} {{ strtolower(__('torrent.torrent')) }}"
-                                        ></i>
+                                        <i class="{{ $subtitle->torrent->category->icon }} category__icon"
+                                            title="{{ $subtitle->torrent->category->name }} {{ strtolower(__('torrent.torrent')) }}"></i>
                                     @else
-                                        <img
-                                            src="{{ route('authenticated_images.category_image', ['category' => $subtitle->torrent->category]) }}"
+                                        <img src="{{ route('authenticated_images.category_image', ['category' => $subtitle->torrent->category]) }}"
                                             title="{{ $subtitle->torrent->category->name }} {{ strtolower(__('torrent.torrent')) }}"
-                                            alt="{{ $subtitle->torrent->category->name }}"
-                                        />
+                                            alt="{{ $subtitle->torrent->category->name }}" />
                                     @endif
                                 </td>
                                 <td>
                                     <a
-                                        href="{{ route('torrents.show', ['id' => $subtitle->torrent->id]) }}"
-                                    >
+                                        href="{{ route('torrents.show', ['id' => $subtitle->torrent->id]) }}">
                                         {{ $subtitle->torrent->name }}
                                     </a>
                                 </td>
                                 <td>
                                     {{ $subtitle->language->name }}
-                                    <i
-                                        class="{{ config('other.font-awesome') }} fa-closed-captioning"
-                                        title="{{ $subtitle->note }}"
-                                    ></i>
+                                    <i class="{{ config('other.font-awesome') }} fa-closed-captioning"
+                                        title="{{ $subtitle->note }}"></i>
                                 </td>
                                 <td>{{ $subtitle->extension }}</td>
                                 <td>{{ $subtitle->getSize() }}</td>
                                 <td>{{ $subtitle->downloads }}</td>
                                 <td>
-                                    <time
-                                        datetime="{{ $subtitle->created_at }}"
-                                        title="{{ $subtitle->created_at }}"
-                                    >
+                                    <time datetime="{{ $subtitle->created_at }}"
+                                        title="{{ $subtitle->created_at }}">
                                         {{ $subtitle->created_at->diffForHumans() }}
                                     </time>
                                 </td>
@@ -86,10 +91,8 @@
                                 <td>
                                     <menu class="data-table__actions">
                                         <li class="data-table__action">
-                                            <a
-                                                class="form__button form__button--text"
-                                                href="{{ route('subtitles.download', ['subtitle' => $subtitle]) }}"
-                                            >
+                                            <a class="form__button form__button--text"
+                                                href="{{ route('subtitles.download', ['subtitle' => $subtitle]) }}">
                                                 {{ __('common.download') }}
                                             </a>
                                         </li>
@@ -109,27 +112,16 @@
             <div class="panel__body">
                 <form class="form">
                     <p class="form__group">
-                        <input
-                            id="search"
-                            wire:model.live="search"
-                            type="search"
-                            class="form__text"
-                            autocomplete="off"
-                            placeholder=" "
-                        />
+                        <input id="search" wire:model.live="search" type="search"
+                            class="form__text" autocomplete="off" placeholder=" " />
                         <label for="search" class="form__label form__label--floating">
                             {{ __('torrent.name') }}
                         </label>
                     </p>
                     <p class="form__group">
-                        <select
-                            id="language_id"
-                            class="form__select"
-                            wire:model.live="language"
-                            x-data="{ language: '' }"
-                            x-model="language"
-                            x-bind:class="language === '' ? 'form__select--default' : ''"
-                        >
+                        <select id="language_id" class="form__select" wire:model.live="language"
+                            x-data="{ language: '' }" x-model="language"
+                            x-bind:class="language === '' ? 'form__select--default' : ''">
                             <option hidden disabled selected value=""></option>
                             @foreach (App\Models\MediaLanguage::query()->orderBy('name')->get() as $media_language)
                                 <option class="form__option" value="{{ $media_language->id }}">
@@ -148,12 +140,9 @@
                                 @foreach (App\Models\Category::query()->orderBy('position')->get() as $category)
                                     <p class="form__group">
                                         <label class="form__label">
-                                            <input
-                                                class="form__checkbox"
-                                                type="checkbox"
+                                            <input class="form__checkbox" type="checkbox"
                                                 value="{{ $category->id }}"
-                                                wire:model.live="categories"
-                                            />
+                                                wire:model.live="categories" />
                                             {{ $category->name }}
                                         </label>
                                     </p>
@@ -162,25 +151,15 @@
                         </fieldset>
                     </div>
                     <p class="form__group">
-                        <input
-                            id="username"
-                            wire:model.live="username"
-                            class="form__text"
-                            type="search"
-                            autocomplete="off"
-                            placeholder=" "
-                        />
+                        <input id="username" wire:model.live="username" class="form__text"
+                            type="search" autocomplete="off" placeholder=" " />
                         <label for="username" class="form__label form__label--floating">
                             {{ __('subtitle.uploader') }}
                         </label>
                     </p>
                     <p class="form__group">
-                        <select
-                            id="quantity"
-                            class="form__select"
-                            wire:model.live="perPage"
-                            required
-                        >
+                        <select id="quantity" class="form__select" wire:model.live="perPage"
+                            required>
                             <option>25</option>
                             <option>50</option>
                             <option>100</option>
