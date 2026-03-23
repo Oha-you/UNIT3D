@@ -255,12 +255,15 @@
     </li>
     @if ($torrent->status === \App\Enums\ModerationStatus::APPROVED)
         <li class="form__group form__group--short-horizontal">
-            @livewire('bookmark-button', [
-            'torrent' => $torrent,
-            'isBookmarked' => $torrent->bookmarks_exists,
-            'user' => auth()->user(),
-            'bookmarksCount' => $torrent->bookmarks_count ?? 0,
-        ])
+            @livewire(
+                'bookmark-button',
+                [
+                    'torrent' => $torrent,
+                    'isBookmarked' => $torrent->bookmarks_exists,
+                    'user' => auth()->user(),
+                    'bookmarksCount' => $torrent->bookmarks_count ?? 0,
+                ]
+            )
         </li>
     @endif
 
@@ -310,11 +313,13 @@
         </li>
     @endif
 
-    @if ($torrent->status === \App\Enums\ModerationStatus::APPROVED &&
-    $torrent->seeders <= 2 &&
-    $torrent->history->first() !== null &&
-    ! $torrent->history->first()->seeder &&
-    $torrent->history->first()->active)
+    @if (
+
+        $torrent->status === \App\Enums\ModerationStatus::APPROVED &&
+        $torrent->seeders <= 2 &&
+        $torrent->history->first() !== null &&
+        ! $torrent->history->first()->seeder &&
+        $torrent->history->first()->active    )
         <li class="form__group form__group--short-horizontal">
             <form
                 action="{{ route('reseed', ['id' => $torrent->id]) }}"

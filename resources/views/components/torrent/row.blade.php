@@ -7,7 +7,8 @@
 <tr
     @class([
         'torrent-search--list__row' => auth()->user()->settings->show_poster,
-        'torrent-search--list__no-poster-row' => ! auth()->user()->settings->show_poster,
+        'torrent-search--list__no-poster-row' => ! auth()->user()->settings
+            ->show_poster,
         'torrent-search--list__sticky-row' => $torrent->sticky,
     ])
     data-torrent-id="{{ $torrent->id }}"
@@ -99,8 +100,11 @@
                         loading="lazy"
                         @style([
                             'height: 32px',
-                            'padding-top: 1px' => $torrent->category->movie_meta || $torrent->category->tv_meta,
-                            'padding-top: 12px' => ! ($torrent->category->movie_meta || $torrent->category->tv_meta),
+                            'padding-top: 1px' =>
+                                $torrent->category->movie_meta || $torrent->category->tv_meta,
+                            'padding-top: 12px' => ! (
+                                $torrent->category->movie_meta || $torrent->category->tv_meta
+                            ),
                         ])
                     />
                 @else
@@ -108,8 +112,11 @@
                         class="{{ $torrent->category->icon }} category__icon"
                         @style([
                             'font-size: 24px',
-                            'padding-top: 1px' => $torrent->category->movie_meta || $torrent->category->tv_meta,
-                            'padding-top: 12px' => ! ($torrent->category->movie_meta || $torrent->category->tv_meta),
+                            'padding-top: 1px' =>
+                                $torrent->category->movie_meta || $torrent->category->tv_meta,
+                            'padding-top: 12px' => ! (
+                                $torrent->category->movie_meta || $torrent->category->tv_meta
+                            ),
                         ])
                     ></i>
                 @endif

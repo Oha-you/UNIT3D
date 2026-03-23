@@ -355,11 +355,14 @@
                             </p>
                         </div>
                     </div>
-                    @livewire('bbcode-input', [
-                        'name' => 'description',
-                        'label' => __('request.description'),
-                        'required' => true
-                    ])
+                    @livewire(
+                        'bbcode-input',
+                        [
+                            'name' => 'description',
+                            'label' => __('request.description'),
+                            'required' => true,
+                        ]
+                    )
                     <p class="form__group">
                         <input
                             id="bounty"

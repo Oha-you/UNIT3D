@@ -62,7 +62,7 @@
                         {{ __('forum.topic-title') }}
                     </label>
                 </p>
-                @livewire('bbcode-input', ['name' => 'content', 'label' => __('forum.post'), 'required' => true ])
+                @livewire('bbcode-input', ['name' => 'content', 'label' => __('forum.post'), 'required' => true])
                 <p class="form__group">
                     <input type="hidden" name="anon" value="0" />
                     <input

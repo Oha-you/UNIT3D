@@ -390,14 +390,15 @@
                                             {{ $group->name }}
                                         </th>
                                         @foreach ([
-                                            'json_profile_groups',
-                                            'json_achievement_groups',
-                                            'json_follower_groups',
-                                            'json_forum_groups',
-                                            'json_request_groups',
-                                            'json_torrent_groups',
-                                            'json_other_groups'
-                                        ] as $setting)
+                                                'json_profile_groups',
+                                                'json_achievement_groups',
+                                                'json_follower_groups',
+                                                'json_forum_groups',
+                                                'json_request_groups',
+                                                'json_torrent_groups',
+                                                'json_other_groups'
+                                            ]
+                                            as $setting)
                                             <td x-bind="cell">
                                                 <input
                                                     class="form__checkbox"

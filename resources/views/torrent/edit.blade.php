@@ -511,12 +511,15 @@
                         )
                     </label>
                 </p>
-                @livewire('bbcode-input', [
-                    'name'     => 'description',
-                    'label'    => __('common.description'),
-                    'required' => true,
-                    'content'  => $torrent->description
-                ])
+                @livewire(
+                    'bbcode-input',
+                    [
+                        'name' => 'description',
+                        'label' => __('common.description'),
+                        'required' => true,
+                        'content' => $torrent->description,
+                    ]
+                )
                 <p class="form__group">
                     <textarea
                         id="description"

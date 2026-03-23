@@ -47,7 +47,7 @@
         <form id="forum_reply_form" method="POST" action="{{ route('posts.store') }}">
             @csrf
             <input type="hidden" name="topic_id" value="{{ $topic->id }}" />
-            @livewire('bbcode-input', ['name' => 'content', 'label' => __('forum.post') ])
+            @livewire('bbcode-input', ['name' => 'content', 'label' => __('forum.post')])
             <p class="form__group">
                 <input type="hidden" name="anon" value="0" />
                 <input

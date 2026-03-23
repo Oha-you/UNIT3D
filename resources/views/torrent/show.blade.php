@@ -82,7 +82,7 @@
     @endif
 
     {{-- Extra meta block --}}
-    @include('torrent.partials.extra-meta', ['meta' => $torrent->movie ?? $torrent->tv ?? $torrent->game ?? null])
+    @include('torrent.partials.extra-meta', ['meta' => $torrent->movie ?? ($torrent->tv ?? ($torrent->game ?? null))])
 
     {{-- Comments block --}}
     @if ($torrent->status === \App\Enums\ModerationStatus::APPROVED)

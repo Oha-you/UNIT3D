@@ -460,7 +460,7 @@
                             </td>
                             <td class="user-torrents__ratio">
                                 @php
-                                    $ratio = $history->actual_ratio < 1000 ? \number_format($history->actual_ratio, 2) : INF
+                                    $ratio = $history->actual_ratio < 1000 ? \number_format($history->actual_ratio, 2) : INF;
                                 @endphp
 
                                 <span
@@ -476,7 +476,7 @@
                                 </span>
                                 <br />
                                 @php
-                                    $ratio = $history->ratio < 1000 ? \number_format($history->ratio, 2) : INF
+                                    $ratio = $history->ratio < 1000 ? \number_format($history->ratio, 2) : INF;
                                 @endphp
 
                                 <span
